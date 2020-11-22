@@ -109,7 +109,7 @@ estos se
 
 llegará a casa. Se habrá ganado la partida.
 
-<img src="https://drive.google.com/uc?export=view&id=1bE-1NtlS4uQ3fxiDbFfD5yqToq_cHSA2" style="width: 200spx; max-width: 100%; height: auto" title="Click to enlarge picture" />
+<img src="https://drive.google.com/uc?export=view&id=1bE-1NtlS4uQ3fxiDbFfD5yqToq_cHSA2" style="width: 200px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 **● Modo infinito**: se generarán bloques de nivel de manera infinita.
 El objetivo

@@ -24,8 +24,6 @@ llegar a la casa o
 
 conseguir llegar lo más lejos posible.
 
-<img src="https://drive.google.com/uc?export=view&id=12X0MJWfANM6GiR6b8BpbEWZB4SHJMueq" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
 **2. Mecánicas**
 
 ● Salto
@@ -35,11 +33,15 @@ encima
 
 de ellos)
 
+<img src="https://drive.google.com/uc?export=view&id=1GRD9oWegpVQfQZ0xhgefwLRKMNT82Jox" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+
 ● Agacharse
 
 ○ El jugador tiene la capacidad de agacharse (o dicho de otra forma,
 
 reducir su tamaño para pasar por sitios estrechos)
+
+<img src="https://drive.google.com/uc?export=view&id=1SlBCqvlv2Qqz3KWQYoO1qR1KHtnB6bWD" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Barra alcoholismo
 
@@ -107,6 +109,8 @@ estos se
 
 llegará a casa. Se habrá ganado la partida.
 
+<img src="https://drive.google.com/uc?export=view&id=1bE-1NtlS4uQ3fxiDbFfD5yqToq_cHSA2" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+
 **● Modo infinito**: se generarán bloques de nivel de manera infinita.
 El objetivo
 
@@ -119,6 +123,8 @@ vez
 mayor, teniendo así más dificultad sobrevivir más tiempo.
 
 En todo el recorrido, hay 4 niveles de altura:
+
+<img src="https://drive.google.com/uc?export=view&id=114L8m2PlxvZKWdm3hSz_TGK_xwSMeebH" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Cielo (Solo accesible con el champán)
 
@@ -146,11 +152,19 @@ resistencia del obstáculo (Representado con \[+\]).
 
 ● Jarrón que cae del cielo (+)
 
+<img src="https://drive.google.com/uc?export=view&id=1upcopjMJPmgcwtFmnJh2B8lIkb3kykya" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+
 ● Botella vacia (+)
+
+<img src="https://drive.google.com/uc?export=view&id=13ZZZhoWVxgsnDHkKQEV3tudYyuobbwmp" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Cajas(++)
 
+<img src="https://drive.google.com/uc?export=view&id=1IdZt6JYYtNDpooK4NqwNkzu2NVPnD_Yy" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+
 ● Barriles (de cerveza, como no) rodando por la calle (++)
+
+<img src="https://drive.google.com/uc?export=view&id=1bXjos-t07YJEoxVW6N9CEH7s0NeWIrwD" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Vallas con agujeros por debajo (++)
 
@@ -160,6 +174,8 @@ jugador
 se le vería a través de las ventanas. (+++)
 
 ● Vehículos (Camiones, coches) (++++)
+
+<img src="https://drive.google.com/uc?export=view&id=1viDylXW526J0YF8o26Df7jUT7L-zOpHn" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 --------------------------------Nivel de abajo-------------------
 
@@ -173,9 +189,15 @@ se le vería a través de las ventanas. (+++)
 
 ● Cerveza → Aumenta tu % de alcoholismo.
 
+<img src="https://drive.google.com/uc?export=view&id=15-vlhQtdKsPCwMEW9xjb4moLV6AzLM_v" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+
 ● Agua → Reduce tu % de alcoholismo.
 
+<img src="https://drive.google.com/uc?export=view&id=1vKtYMQBLHUmK960LU7MSF1Zzra_RnLzv" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+
 ● Champán → Accedes a una zona restringida del mapa (llena de monedas)
+
+<img src="https://drive.google.com/uc?export=view&id=1cXmyXo6kFnDmYHN0g3zq_MTLwDGCJvLq" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Jagger → Insta kill (Alcanzas el coma etílico en el acto)
 
@@ -189,6 +211,8 @@ parcial (Solo contra ciertos obstáculos \[No aplicable con vehículos por
 ejemplo\]) durante un tiempo limitado sin necesidad de aumentar su barra
 
 alcohólica.
+
+<img src="https://drive.google.com/uc?export=view&id=1tzrcsuQYkuCqcsvI27gZ6ePv1RAmCV-r" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Monedas → Dan puntos.
 

@@ -5,10 +5,10 @@ export default class Game extends Phaser.Scene {
   preload() {
     /*this.load.image('animAgacharse', 'sprites/Agacharse.gif')
     this.load.image('animCorrer', 'sprites/Correr.gif')*/
-    this.load.image('botellaCalimocho', '../Sprites/Items/Calimocho.png');
-    this.load.image('fondo1', '../Sprites/Background/Fondo_tras_del_todo.png');
-    this.load.image('barril', '../Sprites/Obstáculos/Barril.png');
-    this.load.spritesheet('playerSheet', '../Sprites/Chracters/playerRun.png', 4,37,234);
+    this.load.image('botellaCalimocho', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Items/Calimocho.png');
+    this.load.image('fondo1', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Background/Fondo_tras_del_todo.png');
+    this.load.image('barril', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Obstáculos/Barril.png');
+    this.load.spritesheet('playerSheet', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Chracters/playerRun.png', 4,37,234);
     // CAMBIAR VALORES DEL SPRITESHEET
     //El 4 y el 37 son las dimensiones de cada frame por separado (4x37), y el 234 es la CANTIDAD de frames que hay en el spriteSheet
     

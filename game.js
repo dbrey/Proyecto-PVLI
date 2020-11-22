@@ -5,14 +5,14 @@ export default class Game extends Phaser.Scene {
   preload() {
     /*this.load.image('animAgacharse', 'sprites/Agacharse.gif')
     this.load.image('animCorrer', 'sprites/Correr.gif')*/
-    this.load.image('botellaCalimocho', 'Sprites/Items/Calimocho.PNG');
-    this.load.image('fondo1', 'Sprites/Background/Fondo_tras_del_todo.PNG');
-    this.load.image('barril', 'Sprites/Obstáculos/Barril.PNG');
-    this.load.spritesheet('playerSheet', 'Sprites/Chracters/playerRun.PNG', 4,37,234);
+    this.load.image('botellaCalimocho', '../Sprites/Items/Calimocho.png');
+    this.load.image('fondo1', '../Sprites/Background/Fondo_tras_del_todo.png');
+    this.load.image('barril', '../Sprites/Obstáculos/Barril.png');
+    this.load.spritesheet('playerSheet', '../Sprites/Chracters/playerRun.png', 4,37,234);
     // CAMBIAR VALORES DEL SPRITESHEET
     //El 4 y el 37 son las dimensiones de cada frame por separado (4x37), y el 234 es la CANTIDAD de frames que hay en el spriteSheet
     
-    //this.load.image('botellaChampan', 'sprites/Champan CG.PNG');
+    //this.load.image('botellaChampan', 'sprites/Champan CG.png');
   }
 
   create() {
@@ -24,7 +24,7 @@ export default class Game extends Phaser.Scene {
     barrilImg.setScale(0.3);
 
     var playerRun = this.add.sprite(200,300, 'player');
-    playerRun.setScale(0.3);
+    playerRun.setScale(0.3); //CAMBIAR esta escala si veis que el personaje está muy grande o pequeño
     playerRun.animations.add('playerRunAnim');
     sprite.animations.play('playerRunAnim', 50, true);
     //NO SÉ QUE SIGNIFICA ESE 50, INTUYO (solo intuyo) que es la velocidad de la animacion. Pero ni idea.

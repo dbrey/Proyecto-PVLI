@@ -5,14 +5,32 @@ export default class Game extends Phaser.Scene {
   preload() {
     /*this.load.image('animAgacharse', 'sprites/Agacharse.gif')
     this.load.image('animCorrer', 'sprites/Correr.gif')*/
-    this.load.image('botellaCalimocho', 'sprites/Calimocho.PNG');
-    this.load.image('fondo1', 'sprites/Fondo tras del todo.PNG')
+    this.load.image('botellaCalimocho', 'Sprites/Items/Calimocho.PNG');
+    this.load.image('fondo1', 'Sprites/Background/Fondo_tras_del_todo.PNG');
+    this.load.image('barril', 'Sprites/Obstáculos/Barril.PNG');
+    this.load.spritesheet('playerSheet', 'Sprites/Chracters/playerRun.PNG', 4,37,234);
+    // CAMBIAR VALORES DEL SPRITESHEET
+    //El 4 y el 37 son las dimensiones de cada frame por separado (4x37), y el 234 es la CANTIDAD de frames que hay en el spriteSheet
+    
     //this.load.image('botellaChampan', 'sprites/Champan CG.PNG');
   }
 
   create() {
-    this.add.sprite(700, 400, 'fondo1');
-    this.add.sprite(300,200, 'botellaCalimocho');
+    var fondoImg = this.add.sprite(700, 400, 'fondo1');
+    fondoImg.setScale(1.7);
+    var calimoImg = this.add.sprite(1100,210, 'botellaCalimocho');
+    calimoImg.setScale(0.05);
+    var barrilImg = this.add.sprite(1100,300, 'barril');
+    barrilImg.setScale(0.3);
+
+    var playerRun = this.add.sprite(200,300, 'player');
+    playerRun.setScale(0.3);
+    playerRun.animations.add('playerRunAnim');
+    sprite.animations.play('playerRunAnim', 50, true);
+    //NO SÉ QUE SIGNIFICA ESE 50, INTUYO (solo intuyo) que es la velocidad de la animacion. Pero ni idea.
+    //Ah y el true tampoco sé que es. Intuyo que si en el futuro se cambia a false, la animación se para. Pero eso, ni idea.
+
+
     //this.add.text(10, 10, "¡Hola, mundo!", { fontColor: 0xffff00 });
     /*this.add.sprite(300, 200, 'animAgacharse');
     this.add.sprite(300, 200, 'animCorrer');*/

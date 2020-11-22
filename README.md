@@ -24,7 +24,7 @@ llegar a la casa o
 
 conseguir llegar lo más lejos posible.
 
-<a href="https://drive.google.com/uc?export=view&id=12X0MJWfANM6GiR6b8BpbEWZB4SHJMueq"/a><img src="https://drive.google.com/uc?export=view&id=12X0MJWfANM6GiR6b8BpbEWZB4SHJMueq" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+<img src="https://drive.google.com/uc?export=view&id=12X0MJWfANM6GiR6b8BpbEWZB4SHJMueq" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 **2. Mecánicas**
 

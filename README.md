@@ -7,8 +7,8 @@ sin que te pillen los guardias esquivando los distintos obstáculos.
 
 **1. Historia**
 
-El videojuego está inspirado en un personaje del libro “Luces de
-Bohemia” de
+El videojuego está inspirado en un personaje del libro "Luces de
+Bohemia" de
 
 Valle-Inclán llamado Máximo Estrella. (Específicamente, la escena
 cuarta)
@@ -33,15 +33,11 @@ encima
 
 de ellos)
 
-<img src="https://drive.google.com/uc?export=view&id=1GRD9oWegpVQfQZ0xhgefwLRKMNT82Jox" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
 ● Agacharse
 
 ○ El jugador tiene la capacidad de agacharse (o dicho de otra forma,
 
 reducir su tamaño para pasar por sitios estrechos)
-
-<img src="https://drive.google.com/uc?export=view&id=1SlBCqvlv2Qqz3KWQYoO1qR1KHtnB6bWD" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Barra alcoholismo
 
@@ -109,8 +105,6 @@ estos se
 
 llegará a casa. Se habrá ganado la partida.
 
-<img src="https://drive.google.com/uc?export=view&id=1bE-1NtlS4uQ3fxiDbFfD5yqToq_cHSA2" style="width: 200px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
 **● Modo infinito**: se generarán bloques de nivel de manera infinita.
 El objetivo
 
@@ -124,8 +118,6 @@ mayor, teniendo así más dificultad sobrevivir más tiempo.
 
 En todo el recorrido, hay 4 niveles de altura:
 
-<img src="https://drive.google.com/uc?export=view&id=114L8m2PlxvZKWdm3hSz_TGK_xwSMeebH" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
 ● Cielo (Solo accesible con el champán)
 
 ● Tejado(???): Si te subes a diferentes obstáculos cada vez más altos,
@@ -136,7 +128,7 @@ suelo
 
 o por el/los tejados.
 
-● Suelo (Nivel de altura “normal”).
+● Suelo (Nivel de altura "normal").
 
 ● Metro (Solo accesible por entradas al metro en el suelo)
 
@@ -152,19 +144,11 @@ resistencia del obstáculo (Representado con \[+\]).
 
 ● Jarrón que cae del cielo (+)
 
-<img src="https://drive.google.com/uc?export=view&id=1upcopjMJPmgcwtFmnJh2B8lIkb3kykya" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
 ● Botella vacia (+)
-
-<img src="https://drive.google.com/uc?export=view&id=13ZZZhoWVxgsnDHkKQEV3tudYyuobbwmp" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Cajas(++)
 
-<img src="https://drive.google.com/uc?export=view&id=1IdZt6JYYtNDpooK4NqwNkzu2NVPnD_Yy" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
 ● Barriles (de cerveza, como no) rodando por la calle (++)
-
-<img src="https://drive.google.com/uc?export=view&id=1bXjos-t07YJEoxVW6N9CEH7s0NeWIrwD" style="width: 200px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Vallas con agujeros por debajo (++)
 
@@ -175,9 +159,8 @@ se le vería a través de las ventanas. (+++)
 
 ● Vehículos (Camiones, coches) (++++)
 
-<img src="https://drive.google.com/uc?export=view&id=1viDylXW526J0YF8o26Df7jUT7L-zOpHn" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
---------------------------------Nivel de abajo-------------------
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--Nivel de
+abajo\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
 ● Botella vacia (+)
 
@@ -189,15 +172,9 @@ se le vería a través de las ventanas. (+++)
 
 ● Cerveza → Aumenta tu % de alcoholismo.
 
-<img src="https://drive.google.com/uc?export=view&id=15-vlhQtdKsPCwMEW9xjb4moLV6AzLM_v" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
 ● Agua → Reduce tu % de alcoholismo.
 
-<img src="https://drive.google.com/uc?export=view&id=1vKtYMQBLHUmK960LU7MSF1Zzra_RnLzv" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
 ● Champán → Accedes a una zona restringida del mapa (llena de monedas)
-
-<img src="https://drive.google.com/uc?export=view&id=1cXmyXo6kFnDmYHN0g3zq_MTLwDGCJvLq" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Jagger → Insta kill (Alcanzas el coma etílico en el acto)
 
@@ -212,14 +189,12 @@ ejemplo\]) durante un tiempo limitado sin necesidad de aumentar su barra
 
 alcohólica.
 
-<img src="https://drive.google.com/uc?export=view&id=1tzrcsuQYkuCqcsvI27gZ6ePv1RAmCV-r" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
 ● Monedas → Dan puntos.
 
 **7. Referencias**
 
-- Geometry Dash
+\- Geometry Dash
 
-- Subway Surfers
+\- Subway Surfers
 
-- Super Mario Run
+\- Super Mario Run

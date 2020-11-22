@@ -109,7 +109,7 @@ estos se
 
 llegará a casa. Se habrá ganado la partida.
 
-<img src="https://drive.google.com/uc?export=view&id=1bE-1NtlS4uQ3fxiDbFfD5yqToq_cHSA2" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+<img src="https://drive.google.com/uc?export=view&id=1bE-1NtlS4uQ3fxiDbFfD5yqToq_cHSA2" style="width: 200spx; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 **● Modo infinito**: se generarán bloques de nivel de manera infinita.
 El objetivo
@@ -164,7 +164,7 @@ resistencia del obstáculo (Representado con \[+\]).
 
 ● Barriles (de cerveza, como no) rodando por la calle (++)
 
-<img src="https://drive.google.com/uc?export=view&id=1bXjos-t07YJEoxVW6N9CEH7s0NeWIrwD" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+<img src="https://drive.google.com/uc?export=view&id=1bXjos-t07YJEoxVW6N9CEH7s0NeWIrwD" style="width: 200px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 ● Vallas con agujeros por debajo (++)
 

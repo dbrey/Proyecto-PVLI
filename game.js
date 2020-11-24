@@ -16,6 +16,13 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
+
+    // this.v = scene.input.keyboard.addKey('V');
+    // this.v.on('down', event => {El cambio de velocidad})
+
+
+
+
     var fondoImg = this.add.sprite(700, 400, 'fondo1');
     fondoImg.setScale(1.7);
     var calimoImg = this.add.sprite(1100,210, 'botellaCalimocho');
@@ -36,6 +43,12 @@ export default class Game extends Phaser.Scene {
     this.add.sprite(300, 200, 'animCorrer');*/
     //this.add.sprite(100,50,'botellaChampan');
   }
-
-  update(time, delta) {}
+ewsda
+  update(time, delta) 
+  {
+    if(this.v.isDown)
+    {
+        
+    }
+  }
 }

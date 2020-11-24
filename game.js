@@ -8,7 +8,7 @@ export default class Game extends Phaser.Scene {
     this.load.image('botellaCalimocho', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Items/Calimocho.png');
     this.load.image('fondo1', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Background/Fondo_tras_del_todo.png');
     this.load.image('barril', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Obstáculos/Barril.png');
-    this.load.spritesheet('playerSheet', 'D:/Spritesheet Correr.png', {frameWidth:161, frameHeight:216});
+    this.load.spritesheet('playerSheet', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Chracters/playerRun.png', 4,37,234);
     // CAMBIAR VALORES DEL SPRITESHEET
     //El 4 y el 37 son las dimensiones de cada frame por separado (4x37), y el 234 es la CANTIDAD de frames que hay en el spriteSheet
     
@@ -23,18 +23,17 @@ export default class Game extends Phaser.Scene {
     var barrilImg = this.add.sprite(1100,300, 'barril');
     barrilImg.setScale(0.3);
 
-    /*var playerRun = this.add.sprite(200,300, 'playerSheeet');
+    var playerRun = this.add.sprite(200,300, 'player');
     playerRun.setScale(0.3); //CAMBIAR esta escala si veis que el personaje está muy grande o pequeño
-    playerRun.animations.add('correr');
-    sprite.animations.play('correr', 50, true);*/
-    
-    this.add.sprite(200,300, 'playerSheet');
-    this.scene.anims.create({
-      key: 'standing_sprite',
-      frames: this.scene.anims.generateFrameNumbers('playersheet', { start: 0, end: 4 }),
+    playerRun.animations.add('playerRunAnim');
+    sprite.animations.play('playerRunAnim', 50, true);
+    /*this.add.sprite(200,300, 'player');
+    this.Scene.anims.create({
+      key: 'correrAnim',
+      frames:this.Scene.anims.generateFrameNumbers('playerSheet',{start:0, end:6}),
       frameRate: 2,
       repeat: -1
-    });
+    }) */
     //NO SÉ QUE SIGNIFICA ESE 50, INTUYO (solo intuyo) que es la velocidad de la animacion. Pero ni idea.
     //Ah y el true tampoco sé que es. Intuyo que si en el futuro se cambia a false, la animación se para. Pero eso, ni idea.
 

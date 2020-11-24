@@ -12,7 +12,7 @@ export default class Game extends Phaser.Scene
     this.load.image('botellaCalimocho', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Items/Calimocho.png');
     this.load.image('fondo1', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Background/Fondo_tras_del_todo.png');
     this.load.image('barril', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Obstáculos/Barril.png');
-    this.load.spritesheet('playerSheet', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Chracters/SpritesheetCorrer.png', { frameWidth: 161, frameHeight: 216 });
+    this.load.spritesheet('playerSheet', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Characters/SpritesheetCorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.image('plataforma', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Background/Plataforma.png');
     // CAMBIAR VALORES DEL SPRITESHEET
     //El 4 y el 37 son las dimensiones de cada frame por separado (4x37), y el 234 es la CANTIDAD de frames que hay en el spriteSheet

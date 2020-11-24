@@ -1,7 +1,11 @@
-export default class Game extends Phaser.Scene {
+export default class Game extends Phaser.Scene 
+{
   constructor() {
     super({ key: "main" });
   }
+    
+
+  
   preload() {
     /*this.load.image('animAgacharse', 'sprites/Agacharse.gif')
     this.load.image('animCorrer', 'sprites/Correr.gif')*/
@@ -14,6 +18,7 @@ export default class Game extends Phaser.Scene {
     
     //this.load.image('botellaChampan', 'sprites/Champan CG.png');
   }
+
 
   create() {
 
@@ -50,7 +55,7 @@ export default class Game extends Phaser.Scene {
     this.add.sprite(300, 200, 'animCorrer');*/
     //this.add.sprite(100,50,'botellaChampan');
   }
-ewsda
+
   update(time, delta) 
   {
     if(this.v.isDown)

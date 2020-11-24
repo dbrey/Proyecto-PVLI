@@ -28,7 +28,7 @@ export default class Game extends Phaser.Scene {
     playerRun.animations.add('correr');
     sprite.animations.play('correr', 50, true);*/
     
-    this.add.sprite(200,300, 'player');
+    this.add.sprite(200,300, 'playerSheet');
     this.scene.anims.create({
       key: 'correrAnim',
       frames:this.scene.anims.generateFrameNumbers('playerSheet',{start:0, end:5}),

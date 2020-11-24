@@ -28,16 +28,33 @@ export default class Game extends Phaser.Scene
     var fondoImg = this.add.sprite(700, 400, 'fondo1');
     fondoImg.setScale(1.7);
     var calimoImg = this.add.sprite(1100,210, 'botellaCalimocho');
-    calimoImg.setScale(0.05);
+    calimoImg.setScale(0.04);
     var barrilImg = this.add.sprite(1100,300, 'barril');
-    barrilImg.setScale(0.3);
-    var plataformaSuelo = this.add.sprite(100,100, 'plataforma');
+    barrilImg.setScale(0.15);
+
+
+    var plataformaSuelo;
+
+    plataformaSuelo = this.physics.add.staticGroup();
+
+    plataformaSuelo = this.add.sprite(100,430, 'plataforma');
+    plataformaSuelo = this.add.sprite(400,430, 'plataforma');
+    plataformaSuelo = this.add.sprite(700,430, 'plataforma');
+    plataformaSuelo = this.add.sprite(1000,430, 'plataforma');
+
 
     /*var playerRun = this.add.sprite(200,300, 'player');
     playerRun.setScale(0.3); //CAMBIAR esta escala si veis que el personaje está muy grande o pequeño
     playerRun.animations.add('playerRunAnim');
     sprite.animations.play('playerRunAnim', 50, true);*/
-    this.add.sprite(200,300, 'playerSheet');
+    var player;
+
+    // player.body.setGravityY(300);
+
+    // this.physics.add.collider(player, platforms);
+
+    player = this.add.sprite(180,430, 'playerSheet');
+    player.setScale(0.5);
     this.scene.anims.create({
       key: 'correrAnim',
       frames:this.scene.anims.generateFrameNumbers('playerSheet',{start:0, end:5}),

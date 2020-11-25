@@ -57,10 +57,11 @@ export default class Game extends Phaser.Scene
     player.setScale(0.5);
     this.scene.anims.create({
       key: 'correrAnim',
-      frames:this.scene.anims.generateFrameNumbers('playerSheet',{start:0, end:5}),
-      frameRate: 2,
+      frames: this.scene.anims.generateFrameNumbers('playerSheet'),
+      frameRate: 6,
       repeat: -1
     });
+    this.correr.play("correrAnim");
     //NO SÉ QUE SIGNIFICA ESE 50, INTUYO (solo intuyo) que es la velocidad de la animacion. Pero ni idea.
     //Ah y el true tampoco sé que es. Intuyo que si en el futuro se cambia a false, la animación se para. Pero eso, ni idea.
 

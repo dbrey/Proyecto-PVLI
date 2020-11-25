@@ -37,10 +37,10 @@ export default class Game extends Phaser.Scene
 
     plataformaSuelo = this.physics.add.staticGroup();
 
-    plataformaSuelo = this.add.sprite(100,430, 'plataforma');
-    plataformaSuelo = this.add.sprite(400,430, 'plataforma');
-    plataformaSuelo = this.add.sprite(700,430, 'plataforma');
-    plataformaSuelo = this.add.sprite(1000,430, 'plataforma');
+    plataformaSuelo.create(100,430, 'plataforma');
+    plataformaSuelo.create(400,430, 'plataforma');
+    plataformaSuelo.create(700,430, 'plataforma');
+    plataformaSuelo.create(1000,430, 'plataforma');
 
 
     /*var playerRun = this.add.sprite(200,300, 'player');
@@ -53,7 +53,12 @@ export default class Game extends Phaser.Scene
 
     // this.physics.add.collider(player, platforms);
 
-    player = this.add.sprite(180,430, 'playerSheet');
+    player = this.physics.add.sprite(180,300, 'playerSheet');
+
+    player.setCollideWorldBounds(true);
+
+    
+
     player.setScale(0.5);
     this.scene.anims.create({
       key: 'correrAnim',
@@ -70,13 +75,15 @@ export default class Game extends Phaser.Scene
     /*this.add.sprite(300, 200, 'animAgacharse');
     this.add.sprite(300, 200, 'animCorrer');*/
     //this.add.sprite(100,50,'botellaChampan');
+
+    cursors = this.input.keyboard.createCursorKeys();
   }
 
   update(time, delta) 
   {
-    if(this.v.isDown)
+    if (cursors.left.isDown)
     {
-        
+     player.setVelocityX(-160);
     }
   }
 }

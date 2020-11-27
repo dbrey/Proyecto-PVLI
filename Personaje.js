@@ -64,7 +64,7 @@ export default class Game extends Phaser.Scene
 
     player.setCollideWorldBounds(true);
 
-    player.setVelocityX(160);
+    //player.setVelocityX(160);
 
 
     this.physics.add.collider(player, plataformaSuelo);

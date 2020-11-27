@@ -37,10 +37,10 @@ export default class Game extends Phaser.Scene
 
     plataformaSuelo = this.physics.add.staticGroup();
 
-    plataformaSuelo.create(100,430, 'plataforma');
-    plataformaSuelo.create(400,430, 'plataforma');
-    plataformaSuelo.create(700,430, 'plataforma');
-    plataformaSuelo.create(1000,430, 'plataforma');
+    plataformaSuelo.create(100,490, 'plataforma');
+    plataformaSuelo.create(400,490, 'plataforma');
+    plataformaSuelo.create(700,490, 'plataforma');
+    plataformaSuelo.create(1000,490, 'plataforma');
 
 
     /*var playerRun = this.add.sprite(200,300, 'player');
@@ -57,7 +57,7 @@ export default class Game extends Phaser.Scene
 
     player.setCollideWorldBounds(true);
 
-    
+    this.physics.add.collider(player, plataformaSuelo);
 
     player.setScale(0.5);
     this.scene.anims.create({
@@ -76,14 +76,43 @@ export default class Game extends Phaser.Scene
     this.add.sprite(300, 200, 'animCorrer');*/
     //this.add.sprite(100,50,'botellaChampan');
 
-    cursors = this.input.keyboard.createCursorKeys();
+    
   }
 
   update(time, delta) 
   {
+    var cursors = this.cursors;
+    var player = this.player;
+
     if (cursors.left.isDown)
     {
      player.setVelocityX(-160);
     }
+
+    if (cursors.left.isDown)
+    {
+      player.setVelocityX(-160);
+
+      player.anims.play('left', true);
+    }
+    else if (cursors.right.isDown)
+    {
+      player.setVelocityX(160);
+
+      player.anims.play('right', true);
+    }
+    else
+    {
+      player.setVelocityX(0);
+
+      player.anims.play('turn');
+    }
+
+    if (cursors.up.isDown && player.body.touching.down)
+    {
+      player.setVelocityY(-330);
+    }
+
+
   }
 }

@@ -13,6 +13,7 @@ export default class Game extends Phaser.Scene
     this.load.image('barril', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Obstáculos/Barril.png');
     this.load.image('plataforma', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Background/Plataforma.png');
     this.load.spritesheet('playerSheet', 'https://dbrey.github.io/Proyecto-PVLI/Sprites/Characters/SpritesheetCorrer.png', { frameWidth: 161, frameHeight: 216 });
+    this.load.audio('mainSoundtrack', 'https://dbrey.github.io/Proyecto-PVLI/Sonidos - música/Queviva.mp3');
     // CAMBIAR VALORES DEL SPRITESHEET
     //El 4 y el 37 son las dimensiones de cada frame por separado (4x37), y el 234 es la CANTIDAD de frames que hay en el spriteSheet
     
@@ -27,8 +28,8 @@ export default class Game extends Phaser.Scene
     var fondoImg = this.add.sprite(700, 400, 'fondo1');
     fondoImg.setScale(1.7);
 
-
-
+    let music = this.sound.add('mainSoundtrack', {loop: true});
+    music.play();
     var calimoImg = this.physics.add.sprite(1100,210, 'botellaCalimocho');
     calimoImg.setScale(0.04);
     var barrilImg = this.physics.add.sprite(1100,300, 'barril');
@@ -87,7 +88,11 @@ export default class Game extends Phaser.Scene
     //this.add.sprite(100,50,'botellaChampan');
 
     var cursors = this.input.keyboard.createCursorKeys();
-  }
+  };
+
+
+
+  
 
   update(time, delta) 
   {

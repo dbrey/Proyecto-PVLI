@@ -89,6 +89,9 @@ export default class Game extends Phaser.Scene
     //this.add.sprite(100,50,'botellaChampan');
 
     cursors = this.input.keyboard.createCursorKeys();
+
+    this.cameras.main.setSize(400, 300);
+    myCameraMove = this.cameras.add(400, 0, 400, 300);
   };
 
 
@@ -101,6 +104,7 @@ export default class Game extends Phaser.Scene
     {
         player.setVelocityY(-50);
     }
+    myCameraMove.scrollX = 2;
   }
 
 

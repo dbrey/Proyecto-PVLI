@@ -1,4 +1,4 @@
-import Personaje from './Personaje.js'
+import Personaje from './personaje.js'
 
 export default class Game extends Phaser.Scene 
 {
@@ -72,19 +72,12 @@ export default class Game extends Phaser.Scene
     this.add.sprite(300, 200, 'animagacharse');
     this.add.sprite(300, 200, 'animcorrer');*/
 
-    this.cameras.main.setSize(400, 300);
-    this.mycameramove = this.cameras.add(400, 0, 400, 300);
+    this.cameramain = this.scene.cameras.main;
   };
-
-
-
 
 
   update(time, delta) 
   {
-    
-    myCameraMove.scrollX = 2;
+    this.cameramain.scrollX = 2;
   }
-
-
 }

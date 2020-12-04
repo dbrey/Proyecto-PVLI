@@ -9,17 +9,17 @@ export default class Personaje extends Phaser.GameObjects.Sprite
     this.scene.add.existing(this);
 
     this.scene.physics.world.enableBody(this);
-    //this.body.setColliderWorldBounds(true);
+    this.body.setCollideWorldBounds();
     this.body.velocity.x = 100;
 
-    //this.cursors = this.input.keyboard.createCursorKeys();
+    this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
 
   preUpdate()
   {
-    /*if (this.cursors.up.isDown && this.body.touching.down)
+    if (this.cursors.up.isDown && this.body.touching.down)
     {
-        this.setVelocityY(-50);
-    }*/
+        this.body.setVelocityY(-50);
+    }
   }  
 }

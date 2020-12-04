@@ -51,7 +51,7 @@ export default class Game extends Phaser.Scene
     this.physics.add.collider(this.calimoimg, this.plataformasuelo);
 
     this.player = new Personaje(this, 200,300,'playersheet');
-
+    this.physics.add.collider(this.player, this.plataformasuelo);
 
     /*this.playerrun = this.add.sprite(200,300, 'player');
     this.playerrun.setScale(0.3); //CAMBIAR esta escala si veis que el personaje está muy grande o pequeño
@@ -72,7 +72,7 @@ export default class Game extends Phaser.Scene
     this.add.sprite(300, 200, 'animagacharse');
     this.add.sprite(300, 200, 'animcorrer');*/
 
-    this.cameramain = this.scene.cameras.main;
+    //this.cameramain = this.scene.cameras.main;
   };
 
 

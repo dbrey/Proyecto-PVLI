@@ -72,12 +72,12 @@ export default class Game extends Phaser.Scene
     this.add.sprite(300, 200, 'animagacharse');
     this.add.sprite(300, 200, 'animcorrer');*/
 
-    //this.cameramain = this.scene.cameras.main;
+    this.cameramain = this.cameras.main;
   };
 
 
   update(time, delta) 
   {
-    this.cameramain.scrollX = 2;
+    this.cameramain.scrollX += 2;
   }
 }

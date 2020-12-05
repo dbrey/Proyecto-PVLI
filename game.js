@@ -1,4 +1,5 @@
 import Personaje from './personaje.js'
+import Player from './Player.js';
 
 export default class Game extends Phaser.Scene 
 {
@@ -50,27 +51,8 @@ export default class Game extends Phaser.Scene
     this.physics.add.collider(this.barrilimg, this.plataformasuelo);
     this.physics.add.collider(this.calimoimg, this.plataformasuelo);
 
-    this.player = new Personaje(this, 200,300,'playersheet');
+    this.player = new Player(this, 200,300,'playersheet');
     this.physics.add.collider(this.player, this.plataformasuelo);
-
-    /*this.playerrun = this.add.sprite(200,300, 'player');
-    this.playerrun.setScale(0.3); //CAMBIAR esta escala si veis que el personaje está muy grande o pequeño
-    this.playerrun.animations.add('playerrunanim');
-
-    this.physics.add.collider(player, plataformaSuelo);
-
-    
-    this.player.setScale(0.5);
-      this.anims.create({
-      key: 'correranim',
-      frames: this.anims.generateFrameNumbers('playersheet',{ start: 0, end: 5 }),
-      frameRate: 6,
-      repeat: -1
-    });
-
-
-    this.add.sprite(300, 200, 'animagacharse');
-    this.add.sprite(300, 200, 'animcorrer');*/
 
     this.cameramain = this.cameras.main;
   };

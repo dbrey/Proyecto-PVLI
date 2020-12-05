@@ -1,5 +1,6 @@
 import Personaje from './personaje.js'
 import Player from './Player.js';
+import Guardia from './guardia.js';
 
 export default class Game extends Phaser.Scene 
 {
@@ -14,6 +15,7 @@ export default class Game extends Phaser.Scene
     this.load.image('fondo1', './sprites/background/fondo_tras_del_todo.png');
     this.load.image('barril', './sprites/obstaculos/barril.png');
     this.load.image('plataforma', './sprites/background/plataforma.png');
+    this.load.image('guardia', './sprites/characters/guardia.png');
     this.load.spritesheet('playersheet', './sprites/characters/spritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
     // CAMBIAR VALORES DEL SPRITESHEET
@@ -51,11 +53,18 @@ export default class Game extends Phaser.Scene
     this.physics.add.collider(this.barrilimg, this.plataformasuelo);
     this.physics.add.collider(this.calimoimg, this.plataformasuelo);
 
-    this.player = new Player(this, 200,300,'playersheet');
+    this.player = new Player(this, 200,300, 'playersheet');
     this.physics.add.collider(this.player, this.plataformasuelo);
+    this.player.setScale(0.55); //Este valor se sustituirá cuando tengamos el sprite bueno del guardia
+
+    this.guardia = new Guardia(this, 10,300);
+    this.physics.add.collider(this.guardia, this.plataformasuelo);
+    this.guardia.setScale(0.25); //Este valor se sustituirá cuando tengamos el sprite bueno del guardia
 
     this.cameramain = this.cameras.main;
-    //this.cameramain.add(this.player);
+
+    /*this.cameramain.add(this.player);
+    this.add.existing(this.cameramain);*/
   };
 
 

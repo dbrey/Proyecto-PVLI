@@ -10,6 +10,7 @@ export default class Guardia extends Personaje
 
   preUpdate()
   {
+      
     /*if (tiene que saltar)
     {
         this.body.setVelocityY(-300);

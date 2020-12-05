@@ -6,6 +6,8 @@ export default class Player extends Personaje
 
     super(scene,x,y,anim);
 
+    this.setScale(0.4);
+
     var speed = 0;
     var maxspeed = 50;
     var minspeed = -50;

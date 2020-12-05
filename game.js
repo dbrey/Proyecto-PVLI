@@ -1,4 +1,4 @@
-import Personaje from './personaje.js'
+import Personaje from './Personaje.js'
 import Player from './Player.js';
 import Guardia from './guardia.js';
 

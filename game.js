@@ -61,6 +61,6 @@ export default class Game extends Phaser.Scene
 
   update(time, delta) 
   {
-    this.cameramain.scrollX += 2;
+    this.cameramain.scrollX += 0.7;
   }
 }

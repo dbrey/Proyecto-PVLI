@@ -6,6 +6,10 @@ export default class Player extends Personaje
 
     super(scene,x,y,anim);
 
+    var speed = 0;
+    var maxspeed = 50;
+    var minspeed = -50;
+
     this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
 
@@ -15,13 +19,15 @@ export default class Player extends Personaje
     {
         this.body.setVelocityY(-300);
     }
-    else if (this.cursors.left.isDown && this.body.touching.down) //Izquierda reducir vel
+    else if (this.cursors.left.isDown) //Izquierda reducir vel
     {
-        this.body.setVelocityX(-200);
+      this.speed--;
+      this.body.setVelocityX(-100); //this.speed
     }
-    else if (this.cursors.right.isDown && this.body.touching.down) //Derecha aumentar vel
+    else if (this.cursors.right.isDown) //Derecha aumentar vel
     {
-        this.body.setVelocityX(200);
+      this.speed++;
+      this.body.setVelocityX(100); //this.dpeed
     }
   }  
 }

@@ -12,7 +12,9 @@ export default class Personaje extends Phaser.GameObjects.Sprite
 
     this.scene.physics.world.enableBody(this);
     this.body.setCollideWorldBounds();
+    //this.body.setVelocityX(100); Esto lo está usando Álvaro para probar. Por eso está comentado no lo borréis
   }
+
   preupdate(t, d){
     super.preUpdate(t, d);
   }

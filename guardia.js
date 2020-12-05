@@ -4,13 +4,13 @@ export default class Guardia extends Personaje
 {
   constructor(scene, x, y) {
 
-    super(scene,x,y, 'guardia');
-    
+    super(scene,x,y,'guardia');
+    this.setScale(0.25); 
   }
 
-  preUpdate()
+  preUpdate(t,d)
   {
-      
+    super.preUpdate(t, d);
     /*if (tiene que saltar)
     {
         this.body.setVelocityY(-300);

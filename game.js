@@ -59,13 +59,11 @@ export default class Game extends Phaser.Scene
     this.physics.add.collider(this.calimoimg, this.plataformasuelo);
 
     this.player = new Player(this, 200,300);
-
     this.physics.add.collider(this.player, this.plataformasuelo);
-    this.player.setScale(0.55); //Este valor se sustituirá cuando tengamos el sprite bueno del guardia
 
     this.guardia = new Guardia(this, 10,300);
     this.physics.add.collider(this.guardia, this.plataformasuelo);
-    this.guardia.setScale(0.25); //Este valor se sustituirá cuando tengamos el sprite bueno del guardia
+    
 
     this.cameramain = this.cameras.main;
 

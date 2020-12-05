@@ -6,7 +6,7 @@ export default class Player extends Personaje
 
     super(scene,x,y,'playersheet');
 
-    this.setScale(0.4);
+    this.setScale(0.6);
 
     this.speed = 0;
     this.maxspeed = 50;

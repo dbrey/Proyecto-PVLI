@@ -29,7 +29,7 @@ export default class Game extends Phaser.Scene
 
   create() {
 
-    this.fondoimg = this.add.tileSsprite(0,0,1400, 800, 'fondo1');
+    this.fondoimg = this.add.tileSprite(0,0,1400, 800, 'fondo1');
     this.fondoimg.setScale(1.7);
     this.fondoimg.setOrigin(0,0);
     this.fondoimg.setScrollFactor(0);

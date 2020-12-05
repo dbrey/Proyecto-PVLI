@@ -55,6 +55,7 @@ export default class Game extends Phaser.Scene
     this.physics.add.collider(this.player, this.plataformasuelo);
 
     this.cameramain = this.cameras.main;
+    //this.cameramain.add(this.player);
   };
 
 

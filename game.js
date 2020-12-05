@@ -47,15 +47,22 @@ export default class Game extends Phaser.Scene
     this.plataformasuelo.create(1000,490, 'plataforma');
     this.plataformasuelo.create(1300,490, 'plataforma');
 
-
+    this.anims.create({
+      key: 'correr',
+      frames: this.anims.generateFrameNumbers('playersheet', { start:0, end: 5}),
+      frameRate: 6,
+      repeat: -1
+    }); 
     this.physics.add.collider(this.barrilimg, this.plataformasuelo);
     this.physics.add.collider(this.calimoimg, this.plataformasuelo);
 
-    this.player = new Player(this, 200,300,'playersheet');
+    this.player = new Player(this, 200,300);
+    
     this.physics.add.collider(this.player, this.plataformasuelo);
 
     this.cameramain = this.cameras.main;
     //this.cameramain.add(this.player);
+    
   };
 
 

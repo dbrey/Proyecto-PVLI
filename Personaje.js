@@ -13,9 +13,7 @@ export default class Personaje extends Phaser.GameObjects.Sprite
     this.scene.physics.world.enableBody(this);
     this.body.setCollideWorldBounds();
   }
-
-  preUpdate()
-  {
-    
-  }  
+  preupdate(t, d){
+    super.preUpdate(t, d);
+  }
 }

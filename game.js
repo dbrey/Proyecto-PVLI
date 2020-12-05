@@ -29,8 +29,10 @@ export default class Game extends Phaser.Scene
 
   create() {
 
-    this.fondoimg = this.add.sprite(700, 400, 'fondo1');
+    this.fondoimg = this.add.tileSsprite(0,0,1400, 800, 'fondo1');
     this.fondoimg.setScale(1.7);
+    this.fondoimg.setOrigin(0,0);
+    this.fondoimg.setScrollFactor(0);
 
     //let music = this.sound.add('mainsoundtrack', {loop: true});
     //music.play();
@@ -76,5 +78,6 @@ export default class Game extends Phaser.Scene
   update(time, delta) 
   {
     this.cameramain.scrollX += 0.7;
+    this.fondoimg.tilePositionX = this.cameramain.scrollX *3;
   }
 }

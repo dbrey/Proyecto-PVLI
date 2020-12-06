@@ -9,36 +9,59 @@ export default class Player extends Personaje
     this.setScale(0.6);
 
     this.speed = 0;
-    this.maxspeed = 50;
-    this.minspeed = -50;
+    this.limitspeed = 50;
+    this.aceleracion = 3; //Rapidez con la que cambia la velocidad con el input
+    this.aumentandoVelocidad = false;
+    this.disminuyendoVelocidad = false;
+
+    this.play('correr',true);
 
     this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
-  'agacharse'
+
   preUpdate(t, d)
   {
     super.preUpdate(t, d);
+
+    //LECTURA DE TECLADO
     if (this.cursors.up.isDown && this.body.touching.down)
     {
       this.saltar();
-        this.body.setVelocityY(-300);
-        this.play('correr',true);
     }
     else if (this.cursors.left.isDown) //Izquierda reducir vel
     {
-      this.speed--;
-      this.body.setVelocityX(-100); //this.speed
+      this.disminuyendoVelocidad = true;
+      this.aumentandoVelocidad = false;
     }
     else if (this.cursors.right.isDown) //Derecha aumentar vel
     {
-      this.speed++;
-      this.body.setVelocityX(100); //this.speed
+      this.aumentandoVelocidad = true;
+      this.disminuyendoVelocidad = false;
     }
-    else if (this.cursors.down.isDown) //Abajo
+    else if (this.cursors.down.isDown && this.body.touching.down) //Abajo
     {
-      this.play('agacharse', true);
+      this.agacharse();
     }
+
+
+    this.movimiento();
   }  
+
+  movimiento(){
+    if (this.disminuyendoVelocidad){
+      this.speed -= this.aceleracion; //Disminuye Vel
+      //Si ha llegado al límite, deja de disminuir
+      if (this.speed < -this.limitspeed) this.disminuyendoVelocidad = false;
+    }
+
+    if (this.aumentandoVelocidad){
+      this.speed += this.aceleracion; //Aumenta vel.
+      //Si ha llegado al límite, deja de aumentar
+      if (this.speed > this.limitspeed) this.aumentandoVelocidad = false;
+    }
+
+    this.body.setVelocityX(this.speed);
+  }
 
   saltar(){
     super.saltar();
@@ -49,5 +72,16 @@ export default class Player extends Personaje
     Guardia con otra.
     */
     //ANIMACIÓN DE SALTO
+    this.play('correr',true);
+  } 
+
+  agacharse(){
+    super.agacharse();
+
+    //Animación
+    this.play('agacharse', true);
+    
   }
+
+ 
 }

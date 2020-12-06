@@ -13,12 +13,12 @@ export default class Guardia extends Personaje
     super.preUpdate(t, d);
     /*if (tiene que saltar)
     {
-        saltar()
+        saltar();
     }
 
     //else if (tiene que agacharse) 
     {
-        se agacha :)
+        agacharse();
     }
     */
   }  
@@ -32,5 +32,11 @@ export default class Guardia extends Personaje
     Guardia con otra.
     */
     //ANIMACIÓN DE SALTO DEL GUARDIA
+  }
+
+  agacharse(){
+    super.agacharse();
+
+    //Animación agacharse del guardia
   }
 }

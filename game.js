@@ -16,7 +16,8 @@ export default class Game extends Phaser.Scene
     this.load.image('barril', './sprites/obstaculos/barril.png');
     this.load.image('plataforma', './sprites/background/plataforma.png');
     this.load.image('guardia', './sprites/characters/guardia.png');
-    this.load.spritesheet('playersheet', './sprites/characters/spritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
+    this.load.spritesheet('corrersheet', './sprites/characters/spritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
+    this.load.spritesheet('agacharsesheet', './sprites/characters/spritesheetagacharse.png', { frameWidth: 218, frameHeight: 218 })
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
     // CAMBIAR VALORES DEL SPRITESHEET
     //El 4 y el 37 son las dimensiones de cada frame por separado (4x37), y el 234 es la CANTIDAD de frames que hay en el spriteSheet
@@ -42,6 +43,20 @@ export default class Game extends Phaser.Scene
     this.barrilimg = this.physics.add.sprite(1100,300, 'barril');
     this.barrilimg.setScale(0.15);
 
+    this.anims.create({
+      key: 'correr',
+      frames: this.anims.generateFrameNumbers('corrersheet', { start:0, end: 5}),
+      frameRate: 1,
+      repeat: -1
+    }); 
+    this.anims.create({
+      key: 'agacharse',
+      frames: this.anims.generateFrameNumbers('agacharsesheet', { start:0, end: 8}),
+      frameRate: 1,
+      repeat: -1
+    }); 
+
+
     this.plataformasuelo = this.physics.add.staticGroup();
 
 
@@ -51,12 +66,7 @@ export default class Game extends Phaser.Scene
     this.plataformasuelo.create(1000,490, 'plataforma');
     this.plataformasuelo.create(1300,490, 'plataforma');
 
-    this.anims.create({
-      key: 'correr',
-      frames: this.anims.generateFrameNumbers('playersheet', { start:0, end: 5}),
-      frameRate: 6,
-      repeat: -1
-    }); 
+    
     this.physics.add.collider(this.barrilimg, this.plataformasuelo);
     this.physics.add.collider(this.calimoimg, this.plataformasuelo);
 

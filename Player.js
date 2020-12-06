@@ -4,7 +4,7 @@ export default class Player extends Personaje
 {
   constructor(scene, x, y) {
 
-    super(scene,x,y,'playersheet');
+    super(scene,x,y,'corrersheet');
 
     this.setScale(0.6);
 
@@ -14,7 +14,7 @@ export default class Player extends Personaje
 
     this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
-
+  'agacharse'
   preUpdate(t, d)
   {
     super.preUpdate(t, d);
@@ -32,6 +32,10 @@ export default class Player extends Personaje
     {
       this.speed++;
       this.body.setVelocityX(100); //this.speed
+    }
+    else if (this.cursors.down.isDown) //Abajo
+    {
+      this.play('agacharse', true);
     }
   }  
 }

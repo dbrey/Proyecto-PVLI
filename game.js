@@ -54,7 +54,7 @@ export default class Game extends Phaser.Scene
       frameRate: 1,
       repeat: -1
     }); 
-    this.anims.create({
+      this.anims.create({
       key: 'agacharse',
       frames: this.anims.generateFrameNumbers('agacharsesheet', { start:0, end: 8}),
       frameRate: 1,
@@ -75,17 +75,11 @@ export default class Game extends Phaser.Scene
     // this.physics.add.collider(this.barrilimg, this.plataformasuelo);
     // this.physics.add.collider(this.calimoimg, this.plataformasuelo);
 
+    
 
 
 
-    this.suelo = this.physics.add.staticGroup();
-    this.suelo.create(0,490, 'block1');
-
-    // this.map = this.make.tilemap({key: 'block1'});
-    // this.tileset = this.map.addTilesetImage('block1','citytileset');
-
-    // this.map.createStaticLayer('suelo',tileset);
-    // this.map.createStaticLayer('fondo',tileset);
+    
 
     this.player = new Player(this, 200,300);
     this.physics.add.collider(this.player, this.plataformasuelo);

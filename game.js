@@ -62,6 +62,25 @@ export default class Game extends Phaser.Scene
     this.fondoimg.setOrigin(0,0);
     this.fondoimg.setScrollFactor(0);
 
+    // ------------------------  MAPA  ---------------------------------
+
+   this.map = this.make.tilemap({ 
+    key: 'block1', 
+    tileWidth: 32, 
+    tileHeight: 32 
+  });
+
+  const tileset1 = this.map.addTilesetImage('suelo', 'city'); //1-Como llama al tile en TILES, 2- el nombre del tile en phaser
+  const tileset2 = this.map.addTilesetImage('edificios','rowhouse');
+
+  this.groundlayer =  this.map.createStaticLayer('suelo', [tileset1]);
+
+  this.behindlayer =  this.map.createStaticLayer('decorado', [tileset2]);
+  
+  this.physics.add.collider(this.player, this.groundlayer);
+  this.groundlayer.setCollision(15);
+
+// ------------------------------------------------------------------
     //let music = this.sound.add('mainsoundtrack', {loop: true});
     //music.play();
 
@@ -79,23 +98,6 @@ export default class Game extends Phaser.Scene
     
 
     this.cameramain = this.cameras.main;
-// ------------------------  MAPA  ---------------------------------
-
-   this.map = this.make.tilemap({ 
-      key: 'block1', 
-      tileWidth: 32, 
-      tileHeight: 32 
-    });
-
-    const tileset1 = this.map.addTilesetImage('suelo', 'city'); //1-Como llama al tile en TILES, 2- el nombre del tile en phaser
-
-    this.groundLayer =  this.map.createStaticLayer('suelo', [tileset1]);
-
-    
-    
-    //this.map.setCollision(1,10000,true,'suelo');
-    //this.physics.add.collider(this.player,this.groundLayer);
-// ------------------------------------------------------------------
   };
 
   onEvent()
@@ -105,7 +107,11 @@ export default class Game extends Phaser.Scene
   
   update(time, delta) 
   {
-    this.cameramain.scrollX += 0.7;
+    this.cameramain.scrollX += 0.5;
     this.fondoimg.tilePositionX = this.cameramain.scrollX *3;
+    if(this.cameramain.tilePositionX === 1000)
+    {
+      this.cameramain.tilePositionX = 0;
+    }
   }
 }

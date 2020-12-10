@@ -85,6 +85,4 @@ export default class Player extends Personaje
     this.play('agacharse', true);
     
   }
-
- 
 }

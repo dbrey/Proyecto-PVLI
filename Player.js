@@ -13,6 +13,7 @@ export default class Player extends Personaje
     this.aceleracion = 3; //Rapidez con la que cambia la velocidad con el input
     this.aumentandoVelocidad = false;
     this.disminuyendoVelocidad = false;
+    this.delay_input = 0;
 
     this.play('correr',true);
 
@@ -30,6 +31,8 @@ export default class Player extends Personaje
     }
     else if (this.cursors.left.isDown) //Izquierda reducir vel
     {
+      //Equivalente al invoke
+      //this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.scene.onEvent, [], this); 
       this.disminuyendoVelocidad = true;
       this.aumentandoVelocidad = false;
     }

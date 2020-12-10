@@ -75,9 +75,10 @@ export default class Game extends Phaser.Scene
 
     this.groundLayer =  this.map.createStaticLayer('suelo', [tileset1]);
 
-    //this.groundLayer.SetCollisionByProperty({collides: true});
     
-    this.physics.add.collider(this.player,this.groundLayer);
+    
+    //this.map.setCollision(1,10000,true,'suelo');
+    //this.physics.add.collider(this.player,this.groundLayer);
 // ------------------------------------------------------------------
   };
 

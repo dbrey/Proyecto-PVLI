@@ -14,6 +14,22 @@ export default class Game extends Phaser.Scene
     this.load.image('barril', './sprites/obstaculos/barril.png');
     this.load.image('plataforma', './sprites/background/plataforma.png');
     this.load.image('guardia', './sprites/characters/guardia.png');
+    this.load.image('barra_alcohol1', './barra_alcohol/barra_alcohol/healthbar1.png');
+    this.load.image('barra_alcohol2', './barra_alcohol/barra_alcohol/healthbar2.png');
+    this.load.image('barra_alcohol3', './barra_alcohol/barra_alcohol/healthbar3.png');
+    this.load.image('barra_alcohol4', './barra_alcohol/barra_alcohol/healthbar4.png');
+    this.load.image('barra_alcohol4', './barra_alcohol/barra_alcohol/healthbar4.png');
+    this.load.image('barra_alcohol5', './barra_alcohol/barra_alcohol/healthbar5.png');
+    this.load.image('barra_alcohol6', './barra_alcohol/barra_alcohol/healthbar6.png');
+    this.load.image('barra_alcohol7', './barra_alcohol/barra_alcohol/healthbar7.png');
+    this.load.image('barra_alcohol8', './barra_alcohol/barra_alcohol/healthbar8.png');
+    this.load.image('barra_alcohol9', './barra_alcohol/barra_alcohol/healthbar9.png');
+    this.load.image('barra_alcohol10', './barra_alcohol/barra_alcohol/healthbar10_normal.png');
+    this.load.image('barra_alcohol11', './barra_alcohol/barra_alcohol/healthbar11.png');
+    this.load.image('barra_alcohol12', './barra_alcohol/barra_alcohol/healthbar12.png')
+    this.load.image('barra_alcohol13', './barra_alcohol/barra_alcohol/healthbar13.png')
+    this.load.image('barra_alcohol14', './barra_alcohol/barra_alcohol/healthbar14.png')
+    this.load.image('barra_alcohol15', './barra_alcohol/barra_alcohol/healthbar15_full.png')
     this.load.spritesheet('corrersheet', './sprites/characters/spritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('agacharsesheet', './sprites/characters/spritesheetagacharse.png', { frameWidth: 218, frameHeight: 218 })
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
@@ -81,7 +97,11 @@ export default class Game extends Phaser.Scene
 // ------------------------------------------------------------------
   };
 
-
+  onEvent()
+  {
+    this.setScale(1);
+  }
+  
   update(time, delta) 
   {
     this.cameramain.scrollX += 0.7;

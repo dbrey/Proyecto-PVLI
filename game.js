@@ -1,4 +1,4 @@
-import Player from './Player.js';
+import Player from './player.js';
 import Guardia from './guardia.js';
 
 export default class Game extends Phaser.Scene 

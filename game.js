@@ -37,6 +37,7 @@ export default class Game extends Phaser.Scene
 
     this.load.image('city','./sprites/tiles/citytileset.png');
     this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');
+    this.load.image('devil','./sprites/tiles/devil.png');
     this.load.tilemapTiledJSON('block1','./sprites/tiles/block1.json');
   }
 
@@ -65,11 +66,11 @@ export default class Game extends Phaser.Scene
     //let music = this.sound.add('mainsoundtrack', {loop: true});
     //music.play();
 
-    this.calimoimg = this.physics.add.sprite(1100,210, 'botellacalimocho');
-    this.calimoimg.setScale(0.04);
+    // this.calimoimg = this.physics.add.sprite(1100,210, 'botellacalimocho');
+    // this.calimoimg.setScale(0.04);
 
-    this.barrilimg = this.physics.add.sprite(1100,300, 'barril');
-    this.barrilimg.setScale(0.15);
+    // this.barrilimg = this.physics.add.sprite(1100,300, 'barril');
+    // this.barrilimg.setScale(0.15);
 
     this.player = new Player(this, 200,300);
     this.physics.add.collider(this.player, this.plataformasuelo);
@@ -89,11 +90,21 @@ export default class Game extends Phaser.Scene
 
     const tileset1 = this.map.addTilesetImage('suelo', 'city'); //1-Como llama al tile en TILES, 2- el nombre del tile en phaser
     const tileset2 = this.map.addTilesetImage('edificios','rowhouse');
+    const tileset3 = this.map.addTilesetImage('extra','devil');
 
     this.groundlayer =  this.map.createStaticLayer('suelo', [tileset1]);
 
-    this.behindlayer =  this.map.createStaticLayer('decorado', [tileset2]);
+    this.farlayer =  this.map.createStaticLayer('fondo', [tileset3]);
+
+    this.behindlayer =  this.map.createStaticLayer('decorado', [tileset2, tileset3]);
     
+    this.behindlayer2 =  this.map.createStaticLayer('decorado2', [tileset1]);
+
+    this.platformlayer = this.map.createStaticLayer('plataformas', [tileset2, tileset3]);
+
+
+
+
     this.physics.add.collider(this.player, this.groundlayer);
     this.groundlayer.setCollision(15);
 
@@ -109,7 +120,7 @@ export default class Game extends Phaser.Scene
   {
     this.cameramain.scrollX += 0.5;
     this.fondoimg.tilePositionX = this.cameramain.scrollX *3;
-    if(this.cameramain.tilePositionX === 1000)
+    if(this.cameramain.tilePositionX === 100)
     {
       this.cameramain.tilePositionX = 0;
     }

@@ -6,7 +6,7 @@ export default class Player extends Personaje
 
     super(scene,x,y,'corrersheet');
 
-    this.setScale(0.6);
+    this.setScale(0.25);
 
     this.speed = 0;
     this.limitspeed = 50;
@@ -16,7 +16,7 @@ export default class Player extends Personaje
     this.delay_input = 0;
 
     this.play('correr',true);
-
+    this.setDepth(1);
     this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
 

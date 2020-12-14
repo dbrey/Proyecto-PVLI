@@ -25,7 +25,7 @@ export default class Player extends Personaje
     super.preUpdate(t, d);
 
     //LECTURA DE TECLADO
-    if (this.cursors.up.isDown && this.body.touching.down)
+    if (this.cursors.up.isDown)
     {
       this.saltar();
     }

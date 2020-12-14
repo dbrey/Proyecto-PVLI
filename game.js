@@ -102,7 +102,7 @@ export default class Game extends Phaser.Scene
 
     this.platformlayer = this.map.createStaticLayer('plataformas', [tileset2, tileset3]);
 
-
+    this.platformlayer.setCollision(false, false, true, false); // left, right, up, down
 
 
     this.physics.add.collider(this.player, this.groundlayer);

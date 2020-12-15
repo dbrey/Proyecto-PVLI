@@ -122,10 +122,6 @@ export default class Game extends Phaser.Scene
   update(time, delta) 
   {
     this.cameramain.scrollX += this.worldSpeed;
-    this.fondoimg.tilePositionX = this.cameramain.scrollX *3;
-    if(this.cameramain.tilePositionX === 100)
-    {
-      this.cameramain.tilePositionX = 0;
-    }
+    this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.25;
   }
 }

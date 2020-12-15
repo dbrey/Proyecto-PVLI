@@ -72,7 +72,7 @@ export default class Game extends Phaser.Scene
     // this.barrilimg = this.physics.add.sprite(1100,300, 'barril');
     // this.barrilimg.setScale(0.15);
 
-    this.worldSpeed = 2;
+    this.worldSpeed = 0.25;
 
     this.player = new Player(this, 200,300, this.worldSpeed);
     this.physics.add.collider(this.player, this.plataformasuelo);
@@ -104,7 +104,7 @@ export default class Game extends Phaser.Scene
 
     this.platformlayer = this.map.createStaticLayer('plataformas', [tileset2, tileset3]);
 
-    this.platformlayer.setCollision(false, false, true, false); // left, right, up, down
+    
 
     // this.platformlayer.layer.data.forEach((row) => { // here we are iterating through each tile.
 		// 	row.forEach((Tile) => {
@@ -117,12 +117,14 @@ export default class Game extends Phaser.Scene
 		// });
 
     
-
+    this.physics.add.collider(this.player, this.platformlayer);
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
 
+    this.platformlayer.setCollision(false, false, true, false); // left, right, up, down
+
     this.groundlayer.setCollision(15);
-    this.platformlayer.setCollisionBetween(0, 1000);;
+    this.platformlayer.setCollisionBetween(0, 1000);
 
 
 // ------------------------------------------------------------------

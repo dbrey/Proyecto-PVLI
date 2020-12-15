@@ -2,9 +2,9 @@ import Personaje from "./personaje.js";
 
 export default class Player extends Personaje
 {
-  constructor(scene, x, y) {
+  constructor(scene, x, y, speed) {
 
-    super(scene,x,y,'corrersheet');
+    super(scene,x,y,'corrersheet', speed * 62);
 
     this.setScale(0.25);
 
@@ -63,7 +63,11 @@ export default class Player extends Personaje
       if (this.speed > this.limitspeed) this.aumentandoVelocidad = false;
     }
 
-    this.body.setVelocityX(this.speed);
+    this.moverse();
+  }
+
+  moverse(){
+    super.moverse(this.speed);
   }
 
   saltar(){

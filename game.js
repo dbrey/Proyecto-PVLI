@@ -72,10 +72,12 @@ export default class Game extends Phaser.Scene
     // this.barrilimg = this.physics.add.sprite(1100,300, 'barril');
     // this.barrilimg.setScale(0.15);
 
-    this.player = new Player(this, 200,300);
+    this.worldSpeed = 2;
+
+    this.player = new Player(this, 200,300, this.worldSpeed);
     this.physics.add.collider(this.player, this.plataformasuelo);
 
-    this.guardia = new Guardia(this, 10,300);
+    this.guardia = new Guardia(this, 10,300, this.worldSpeed);
     this.physics.add.collider(this.guardia, this.plataformasuelo);
     
 
@@ -106,6 +108,7 @@ export default class Game extends Phaser.Scene
 
 
     this.physics.add.collider(this.player, this.groundlayer);
+    this.physics.add.collider(this.guardia, this.groundlayer);
     this.groundlayer.setCollision(15);
 
 // ------------------------------------------------------------------
@@ -118,7 +121,7 @@ export default class Game extends Phaser.Scene
   
   update(time, delta) 
   {
-    this.cameramain.scrollX += 0.5;
+    this.cameramain.scrollX += this.worldSpeed;
     this.fondoimg.tilePositionX = this.cameramain.scrollX *3;
     if(this.cameramain.tilePositionX === 100)
     {

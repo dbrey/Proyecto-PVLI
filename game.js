@@ -139,5 +139,10 @@ export default class Game extends Phaser.Scene
   {
     this.cameramain.scrollX += this.worldSpeed;
     this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.25;
+    console.log(this.cameramain.x);
+    if(this.cameramain.x === 2000)
+    {
+      this.cameramain.x = 400;
+    }
   }
 }

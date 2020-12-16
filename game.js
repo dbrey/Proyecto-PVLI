@@ -72,12 +72,12 @@ export default class Game extends Phaser.Scene
     // this.barrilimg = this.physics.add.sprite(1100,300, 'barril');
     // this.barrilimg.setScale(0.15);
 
-    this.worldSpeed = 0.25;
+    this.worldSpeed = 1;
 
-    this.player = new Player(this, 200,300, this.worldSpeed);
+    this.player = new Player(this, 200,420, this.worldSpeed);
     this.physics.add.collider(this.player, this.plataformasuelo);
 
-    this.guardia = new Guardia(this, 10,300, this.worldSpeed);
+    this.guardia = new Guardia(this, 10,420, this.worldSpeed);
     this.physics.add.collider(this.guardia, this.plataformasuelo);
     
 
@@ -139,10 +139,11 @@ export default class Game extends Phaser.Scene
   {
     this.cameramain.scrollX += this.worldSpeed;
     this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.25;
-    console.log(this.cameramain.x);
-    if(this.cameramain.x === 2000)
+    console.log(this.cameras.main.worldView.x);
+    if(this.cameras.main.worldView.x === 2000)
     {
-      this.cameramain.x = 400;
+      this.cameramain.scrollX= 0;
+      this.player.x = 0;
     }
   }
 }

@@ -14,8 +14,11 @@ export default class Player extends Personaje
     this.aumentandoVelocidad = false;
     this.disminuyendoVelocidad = false;
     this.delay_input = 0;
+    this.stAgachado = false;
 
     this.play('correr',true);
+    this.body.setSize(150, 220);
+    this.body.setOffset(0, 20);
     this.setDepth(1);
     this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
@@ -41,9 +44,11 @@ export default class Player extends Personaje
       this.aumentandoVelocidad = true;
       this.disminuyendoVelocidad = false;
     }
-    else if (this.cursors.down.isDown && this.body.touching.down) //Abajo
+    else if (this.cursors.down.isDown && !this.stAgachado) //Abajo
     {
+      this.stAgachado = true;
       this.agacharse();
+
     }
 
 
@@ -86,7 +91,17 @@ export default class Player extends Personaje
     super.agacharse();
 
     //Animación
-    this.play('agacharse', true);
+    this.anims.play('agacharse1', true);
+    this.anims.chain('agacharse2',true);
+
+    this.timedEvent = this.scene.time.delayedCall(500, this.scene.sizeAgachado, [], this);
+    this.anims.chain('agacharse3', true); 
+
+    this.timedEvent = this.scene.time.delayedCall(1250, this.scene.sizeLevantado, [], this);
+    this.timedEvent = this.scene.time.delayedCall(1500, this.scene.volverCorrer, [], this); 
     
+    // Esto impide agacharse varias veces, ya que si se agacha muy de seguido, las animaciones colapsan
+    this.timedEvent = this.scene.time.delayedCall(1000, this.scene.falsear, [], this); 
+
   }
 }

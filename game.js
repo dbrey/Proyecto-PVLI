@@ -44,18 +44,36 @@ export default class Game extends Phaser.Scene
 
   create() {
 // -------------------------- ANIMACIONES --------------------------
-    this.anims.create({
-      key: 'correr',
-      frames: this.anims.generateFrameNumbers('corrersheet', { start:0, end: 5}),
-      frameRate: 1,
-      repeat: -1
-    }); 
-      this.anims.create({
-      key: 'agacharse',
-      frames: this.anims.generateFrameNumbers('agacharsesheet', { start:0, end: 8}),
-      frameRate: 1,
-      repeat: -1
-    }); 
+this.anims.create({
+  key: 'correr',
+  frames: this.anims.generateFrameNumbers('corrersheet', { start:0, end: 5}),
+  frameRate: 7,
+  repeat: -1
+}); 
+this.anims.create({
+  key: 'agacharse',
+  frames: this.anims.generateFrameNumbers('agacharsesheet', { start:0, end: 8}),
+  frameRate: 6,
+  repeat: 0
+});
+this.anims.create({
+  key: 'agacharse1',
+  frames: this.anims.generateFrameNumbers('agacharsesheet', { start:0, end: 2}),
+  frameRate: 6,
+  repeat: 0
+});
+this.anims.create({
+  key: 'agacharse2',
+  frames: this.anims.generateFrameNumbers('agacharsesheet', { start:3, end: 5}),
+  frameRate: 6,
+  repeat: 0
+});
+this.anims.create({
+  key: 'agacharse3',
+  frames: this.anims.generateFrameNumbers('agacharsesheet', { start:6, end: 8}),
+  frameRate: 6,
+  repeat: 0
+}); 
 // ------------------------------------------------------------------
 // ---------------------- ELEMENTOS DEL JUEGO -----------------------
     this.fondoimg = this.add.tileSprite(0,0,1400, 800, 'fondo1');
@@ -74,10 +92,10 @@ export default class Game extends Phaser.Scene
 
     this.worldSpeed = 1;
 
-    this.player = new Player(this, 200,420, this.worldSpeed);
+    this.player = new Player(this, 200,580, this.worldSpeed);
     this.physics.add.collider(this.player, this.plataformasuelo);
 
-    this.guardia = new Guardia(this, 10,420, this.worldSpeed);
+    this.guardia = new Guardia(this, 10,565, this.worldSpeed);
     this.physics.add.collider(this.guardia, this.plataformasuelo);
     
 
@@ -130,10 +148,29 @@ export default class Game extends Phaser.Scene
 // ------------------------------------------------------------------
   };
 
-  onEvent()
+  volverCorrer()
   {
-    this.setScale(1);
+    this.anims.play('correr',true);
   }
+
+  sizeAgachado()
+  {
+    this.body.setSize(200, 120);
+    this.body.setOffset(0, 125);
+  }
+
+  sizeLevantado()
+  {
+    this.body.setSize(150, 220);
+    this.body.setOffset(0, 20);
+  }
+
+  falsear()
+  {
+    this.stAgachado = false;
+  }
+
+
   
   update(time, delta) 
   {

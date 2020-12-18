@@ -93,7 +93,6 @@ this.anims.create({
     this.worldSpeed = 1;
 
     this.player = new Player(this, 200,580, this.worldSpeed);
-    this.player.setActive(true);
     this.physics.add.collider(this.player, this.plataformasuelo);
 
     this.guardia = new Guardia(this, 10,565, this.worldSpeed);

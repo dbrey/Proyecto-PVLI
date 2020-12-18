@@ -28,7 +28,7 @@ export default class Player extends Personaje
     super.preUpdate(t, d);
 
     //LECTURA DE TECLADO
-    if (this.cursors.up.isDown && this.body.touching.down)
+    if (this.cursors.up.isDown && this.body.blocked.down)
     {
       this.saltar();
     }
@@ -44,7 +44,7 @@ export default class Player extends Personaje
       this.aumentandoVelocidad = true;
       this.disminuyendoVelocidad = false;
     }
-    else if (this.cursors.down.isDown && !this.stAgachado && this.body.touching.down) //Abajo
+    else if (this.cursors.down.isDown && !this.stAgachado && this.body.blocked.down) //Abajo
     {
       this.stAgachado = true;
       this.agacharse();

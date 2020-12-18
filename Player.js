@@ -9,8 +9,8 @@ export default class Player extends Personaje
     this.setScale(0.25);
 
     this.speed = 0;
-    this.limitspeed = 50;
-    this.aceleracion = 3; //Rapidez con la que cambia la velocidad con el input
+    this.limitspeed = 200;
+    this.aceleracion = 5; //Rapidez con la que cambia la velocidad con el input
     this.aumentandoVelocidad = false;
     this.disminuyendoVelocidad = false;
     this.delay_input = 0;
@@ -56,16 +56,12 @@ export default class Player extends Personaje
   }  
 
   movimiento(){
-    if (this.disminuyendoVelocidad){
+    if (this.disminuyendoVelocidad && this.speed > -this.limitspeed){
       this.speed -= this.aceleracion; //Disminuye Vel
-      //Si ha llegado al límite, deja de disminuir
-      if (this.speed < -this.limitspeed) this.disminuyendoVelocidad = false;
     }
 
-    if (this.aumentandoVelocidad){
+    if (this.aumentandoVelocidad && this.speed < this.limitspeed){
       this.speed += this.aceleracion; //Aumenta vel.
-      //Si ha llegado al límite, deja de aumentar
-      if (this.speed > this.limitspeed) this.aumentandoVelocidad = false;
     }
 
     this.moverse();

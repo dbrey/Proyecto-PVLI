@@ -76,8 +76,8 @@ this.anims.create({
 }); 
 // ------------------------------------------------------------------
 // ---------------------- ELEMENTOS DEL JUEGO -----------------------
-    this.fondoimg = this.add.tileSprite(0,0,1400, 800, 'fondo1');
-    this.fondoimg.setScale(1.7);
+    this.fondoimg = this.add.tileSprite(0,-150,1400, 800, 'fondo1');
+    this.fondoimg.setScale(1);
     this.fondoimg.setOrigin(0,0);
     this.fondoimg.setScrollFactor(0);
 
@@ -174,7 +174,7 @@ this.anims.create({
   {
     this.cameramain.scrollX += this.worldSpeed;
     this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.25;
-    console.log(this.cameras.main.worldView.x);
+    //console.log(this.cameras.main.worldView.x);
     if(this.cameras.main.worldView.x === 2000)
     {
       this.cameramain.scrollX= 0;

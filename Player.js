@@ -19,7 +19,7 @@ export default class Player extends Personaje
     this.play('correr',true);
     this.body.setSize(150, 220);
     this.body.setOffset(0, 20);
-    this.setDepth(1);
+    this.setDepth(5);
     this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
 

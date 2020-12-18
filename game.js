@@ -118,28 +118,26 @@ this.anims.create({
 
     this.behindlayer =  this.map.createStaticLayer('decorado', [tileset2, tileset3]);
     
-    this.behindlayer2 =  this.map.createStaticLayer('decorado2', [tileset1]);
+    this.behindlayer2 =  this.map.createStaticLayer('decorado2', [tileset1,tileset2,tileset3]);
 
     this.platformlayer = this.map.createStaticLayer('plataformas', [tileset2, tileset3]);
 
-    
-
-    // this.platformlayer.layer.data.forEach((row) => { // here we are iterating through each tile.
-		// 	row.forEach((Tile) => {
+    this.platformlayer.layer.data.forEach((row) => { // here we are iterating through each tile.
+		 	row.forEach((Tile) => {
 				
-    //       Tile.collideDown = false;
-		// 			Tile.collideLeft = false;
-		// 			Tile.collideRight = false;
+          Tile.collideDown = false;
+		 			Tile.collideLeft = false;
+          Tile.collideRight = false;
         
-		// 	})
-		// });
+		 	})
+    });
 
     
     this.physics.add.collider(this.player, this.platformlayer);
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
 
-    this.platformlayer.setCollision(false, false, true, false); // left, right, up, down
+    // this.platformlayer.setCollision(false, false, true, false); // left, right, up, down
 
     this.groundlayer.setCollision(15);
     this.platformlayer.setCollisionBetween(0, 1000);

@@ -93,6 +93,7 @@ this.anims.create({
     this.worldSpeed = 1;
 
     this.player = new Player(this, 200,580, this.worldSpeed);
+    this.player.setActive(true);
     this.physics.add.collider(this.player, this.plataformasuelo);
 
     this.guardia = new Guardia(this, 10,565, this.worldSpeed);
@@ -178,7 +179,8 @@ this.anims.create({
     if(this.cameras.main.worldView.x === 2000)
     {
       this.cameramain.scrollX= 0;
-      this.player.x = 0;
+      this.player.x = this.player.x - this.guardia.x; //se mantiene la distancia entre el jugador y el guardia
+      this.guardia.x = 10;
     }
   }
 }

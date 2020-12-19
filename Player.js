@@ -100,4 +100,9 @@ export default class Player extends Personaje
     this.timedEvent = this.scene.time.delayedCall(1000, this.scene.falsear, [], this); 
 
   }
+
+  ralentizar(dureza)
+  {
+      this.speed /= dureza;
+  }
 }

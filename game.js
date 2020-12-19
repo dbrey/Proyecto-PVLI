@@ -1,5 +1,6 @@
 import Player from './Player.js';
 import Guardia from './guardia.js';
+import Obstaculo from './obstaculo.js';
 
 export default class Game extends Phaser.Scene 
 {
@@ -12,6 +13,7 @@ export default class Game extends Phaser.Scene
     this.load.image('botellacalimocho', './sprites/items/calimocho.png');
     this.load.image('fondo1', './sprites/background/fondo_tras_del_todo.png');
     this.load.image('barril', './sprites/obstaculos/barril.png');
+    this.load.image('caja', './sprites/obstaculos/caja.png');
     this.load.image('plataforma', './sprites/background/plataforma.png');
     this.load.image('guardia', './sprites/characters/guardia.png');
     this.load.image('barra_alcohol1', './barra_alcohol/barra_alcohol/healthbar1.png');
@@ -51,12 +53,6 @@ this.anims.create({
   repeat: -1
 }); 
 this.anims.create({
-  key: 'agacharse',
-  frames: this.anims.generateFrameNumbers('agacharsesheet', { start:0, end: 8}),
-  frameRate: 6,
-  repeat: 0
-});
-this.anims.create({
   key: 'agacharse1',
   frames: this.anims.generateFrameNumbers('agacharsesheet', { start:0, end: 2}),
   frameRate: 6,
@@ -93,11 +89,11 @@ this.anims.create({
     this.worldSpeed = 1;
 
     this.player = new Player(this, 200,580, this.worldSpeed);
-    this.physics.add.collider(this.player, this.plataformasuelo);
 
     this.guardia = new Guardia(this, 10,565, this.worldSpeed);
-    this.physics.add.collider(this.guardia, this.plataformasuelo);
     
+    this.obs = new Obstaculo (this, 700, 500, 'caja', this.worldSpeed, 30);
+
 
     this.cameramain = this.cameras.main;
 // ------------------------  MAPA  ---------------------------------
@@ -136,13 +132,18 @@ this.anims.create({
     this.physics.add.collider(this.player, this.platformlayer);
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
+    
+    this.physics.add.collider(this.obs, this.groundlayer);
+    this.physics.add.collider(this.obs, this.platformlayer);
+    this.physics.add.collider(this.player, this.obs, function(player, obs) {
+      player.ralentizar(9000);
+      obs.destroy();
+    });
 
     // this.platformlayer.setCollision(false, false, true, false); // left, right, up, down
 
     this.groundlayer.setCollision(15);
     this.platformlayer.setCollisionBetween(0, 1000);
-
-
 // ------------------------------------------------------------------
   };
 
@@ -168,8 +169,6 @@ this.anims.create({
     this.stAgachado = false;
   }
 
-
-  
   update(time, delta) 
   {
     this.cameramain.scrollX += this.worldSpeed;

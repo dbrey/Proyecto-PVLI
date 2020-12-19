@@ -12,8 +12,14 @@ export default class Game extends Phaser.Scene
   preload() {
     this.load.image('botellacalimocho', './sprites/items/calimocho.png');
     this.load.image('fondo1', './sprites/background/fondo_tras_del_todo.png');
+
     this.load.image('barril', './sprites/obstaculos/barril.png');
-    this.load.image('caja', './sprites/obstaculos/caja.png');
+    this.load.image('barriltop', './sprites/obstaculos/barriltop.png');
+    this.load.image('botellavacia', './sprites/obstaculos/botellavacia.png');
+    this.load.image('cocheoscuro', './sprites/obstaculos/cocheoscuro.png');
+    this.load.image('coche', './sprites/obstaculos/coche.png');
+    this.load.image('jarron', './sprites/obstaculos/jarron.png');
+
     this.load.image('plataforma', './sprites/background/plataforma.png');
     this.load.image('guardia', './sprites/characters/guardia.png');
     this.load.image('barra_alcohol1', './barra_alcohol/barra_alcohol/healthbar1.png');
@@ -92,7 +98,7 @@ this.anims.create({
 
     this.guardia = new Guardia(this, 10,565, this.worldSpeed);
     
-    this.obs = new Obstaculo (this, 700, 500, 'caja', this.worldSpeed, 30);
+    
 
 
     this.cameramain = this.cameras.main;
@@ -117,6 +123,19 @@ this.anims.create({
     this.behindlayer2 =  this.map.createStaticLayer('decorado2', [tileset1,tileset2,tileset3]);
 
     this.platformlayer = this.map.createStaticLayer('plataformas', [tileset2, tileset3]);
+    
+    this.physics.add.collider(this.player, this.platformlayer);
+    this.physics.add.collider(this.player, this.groundlayer);
+    this.physics.add.collider(this.guardia, this.groundlayer);
+    
+    
+    this.physics.add.collider(this.player, this.obs, function(player, obs) {
+      player.ralentizar(9000);
+      obs.destroy();
+    });
+
+    this.groundlayer.setCollision(15);
+    this.platformlayer.setCollisionBetween(0, 1000);
 
     this.platformlayer.layer.data.forEach((row) => { // here we are iterating through each tile.
 		 	row.forEach((Tile) => {
@@ -128,22 +147,15 @@ this.anims.create({
 		 	})
     });
 
-    
-    this.physics.add.collider(this.player, this.platformlayer);
-    this.physics.add.collider(this.player, this.groundlayer);
-    this.physics.add.collider(this.guardia, this.groundlayer);
-    
+    this.obs = new Obstaculo (this, 1500, 400, 'caja', this.worldSpeed, 30);
     this.physics.add.collider(this.obs, this.groundlayer);
     this.physics.add.collider(this.obs, this.platformlayer);
-    this.physics.add.collider(this.player, this.obs, function(player, obs) {
-      player.ralentizar(9000);
-      obs.destroy();
-    });
+  
+    this.obs = new Obstaculo (this, 1580, 500, 'barril', this.worldSpeed, 30);
+    this.physics.add.collider(this.obs, this.groundlayer);
+    this.physics.add.collider(this.obs, this.platformlayer);
+    //colocarobjetosestaticos()
 
-    // this.platformlayer.setCollision(false, false, true, false); // left, right, up, down
-
-    this.groundlayer.setCollision(15);
-    this.platformlayer.setCollisionBetween(0, 1000);
 // ------------------------------------------------------------------
   };
 
@@ -168,17 +180,76 @@ this.anims.create({
   {
     this.stAgachado = false;
   }
+  colocarobjetosestaticos()
+  {
+      
+  }
+  colocarobjetosfisicos()
+  {
+    if(this.player.x >= 1300 && this.player.x <= 1305)
+    {
+      this.obs = new Obstaculo (this, 1520, 300, 'jarron', this.worldSpeed, 30);
+      this.physics.add.collider(this.obs, this.groundlayer);
+      this.physics.add.collider(this.obs, this.platformlayer);
+    }
+
+    //JARRONES EDIFICIO 2
+    else if(this.player.x >= 1700 && this.player.x <= 1705)
+    {
+      this.obs = new Obstaculo (this, 1790, 495, 'jarron', this.worldSpeed, 30);
+      this.physics.add.collider(this.obs, this.groundlayer);
+      this.physics.add.collider(this.obs, this.platformlayer);
+    }
+    else if(this.player.x >= 2050 && this.player.x <= 2055)
+    {
+      this.obs = new Obstaculo (this, 1950, 495, 'jarron', this.worldSpeed, 30);
+      this.physics.add.collider(this.obs, this.groundlayer);
+      this.physics.add.collider(this.obs, this.platformlayer);
+    }
+    else if(this.player.x >= 1980 && this.player.x <= 1985)
+    {
+      this.obs = new Obstaculo (this, 2080, 495, 'jarron', this.worldSpeed, 30);
+      this.physics.add.collider(this.obs, this.groundlayer);
+      this.physics.add.collider(this.obs, this.platformlayer);
+    }
+    else if(this.player.x >= 2100 && this.player.x <= 2105)
+    {
+      this.obs = new Obstaculo (this, 2210, 495, 'jarron', this.worldSpeed, 30);
+      this.physics.add.collider(this.obs, this.groundlayer);
+      this.physics.add.collider(this.obs, this.platformlayer);
+    }
+    else if(this.player.x >= 2160 && this.player.x <= 2165)
+    {
+      this.obs = new Obstaculo (this, 2370, 495, 'jarron', this.worldSpeed, 30);
+      this.physics.add.collider(this.obs, this.groundlayer);
+      this.physics.add.collider(this.obs, this.platformlayer);
+    }
+    
+    //-------------------------------------
+
+    else if(this.player.x >= 2000 && this.player.x <= 2005)
+    {
+      this.obs = new Obstaculo (this, 3000, 495, 'coche', -10, 30);
+      this.physics.add.collider(this.obs, this.groundlayer);
+      this.physics.add.collider(this.obs, this.platformlayer);
+    }
+  }
+
 
   update(time, delta) 
   {
     this.cameramain.scrollX += this.worldSpeed;
     this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.25;
     //console.log(this.cameras.main.worldView.x);
-    if(this.cameras.main.worldView.x === 2000)
+    console.log(this.player.x);
+    if(this.cameras.main.worldView.x === 6600)
     {
       this.cameramain.scrollX= 0;
-      this.player.x = this.player.x - this.guardia.x; //se mantiene la distancia entre el jugador y el guardia
+      this.player.x = this.player.x - 6600; //se mantiene la distancia entre el jugador y el guardia
+      console.log(this.player.x);
       this.guardia.x = 10;
     }
+    this.colocarobjetosfisicos()
   }
 }
+      

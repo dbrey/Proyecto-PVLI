@@ -127,12 +127,6 @@ this.anims.create({
     this.physics.add.collider(this.player, this.platformlayer);
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
-    
-    
-    this.physics.add.collider(this.player, this.obs, function(player, obs) {
-      player.ralentizar(9000);
-      obs.destroy();
-    });
 
     this.groundlayer.setCollision(15);
     this.platformlayer.setCollisionBetween(0, 1000);
@@ -148,12 +142,13 @@ this.anims.create({
     });
 
     this.obs = new Obstaculo (this, 1500, 400, 'caja', this.worldSpeed, 30);
-    this.physics.add.collider(this.obs, this.groundlayer);
-    this.physics.add.collider(this.obs, this.platformlayer);
   
     this.obs = new Obstaculo (this, 1580, 500, 'barril', this.worldSpeed, 30);
-    this.physics.add.collider(this.obs, this.groundlayer);
-    this.physics.add.collider(this.obs, this.platformlayer);
+    this.physics.add.collider(this.obs,this.player, function (obs, player) {
+      // Por alguna razon se eliminan los dos objetos??
+      player.ralentizar()
+      obs.destroy();
+    })
     //colocarobjetosestaticos()
 
 // ------------------------------------------------------------------
@@ -189,40 +184,28 @@ this.anims.create({
     if(this.player.x >= 1300 && this.player.x <= 1305)
     {
       this.obs = new Obstaculo (this, 1520, 300, 'jarron', this.worldSpeed, 30);
-      this.physics.add.collider(this.obs, this.groundlayer);
-      this.physics.add.collider(this.obs, this.platformlayer);
     }
 
     //JARRONES EDIFICIO 2
     else if(this.player.x >= 1700 && this.player.x <= 1705)
     {
       this.obs = new Obstaculo (this, 1790, 495, 'jarron', this.worldSpeed, 30);
-      this.physics.add.collider(this.obs, this.groundlayer);
-      this.physics.add.collider(this.obs, this.platformlayer);
     }
     else if(this.player.x >= 2050 && this.player.x <= 2055)
     {
       this.obs = new Obstaculo (this, 1950, 495, 'jarron', this.worldSpeed, 30);
-      this.physics.add.collider(this.obs, this.groundlayer);
-      this.physics.add.collider(this.obs, this.platformlayer);
     }
     else if(this.player.x >= 1980 && this.player.x <= 1985)
     {
       this.obs = new Obstaculo (this, 2080, 495, 'jarron', this.worldSpeed, 30);
-      this.physics.add.collider(this.obs, this.groundlayer);
-      this.physics.add.collider(this.obs, this.platformlayer);
     }
     else if(this.player.x >= 2100 && this.player.x <= 2105)
     {
       this.obs = new Obstaculo (this, 2210, 495, 'jarron', this.worldSpeed, 30);
-      this.physics.add.collider(this.obs, this.groundlayer);
-      this.physics.add.collider(this.obs, this.platformlayer);
     }
     else if(this.player.x >= 2160 && this.player.x <= 2165)
     {
       this.obs = new Obstaculo (this, 2370, 495, 'jarron', this.worldSpeed, 30);
-      this.physics.add.collider(this.obs, this.groundlayer);
-      this.physics.add.collider(this.obs, this.platformlayer);
     }
     
     //-------------------------------------
@@ -230,8 +213,6 @@ this.anims.create({
     else if(this.player.x >= 2000 && this.player.x <= 2005)
     {
       this.obs = new Obstaculo (this, 3000, 495, 'coche', -10, 30);
-      this.physics.add.collider(this.obs, this.groundlayer);
-      this.physics.add.collider(this.obs, this.platformlayer);
     }
   }
 

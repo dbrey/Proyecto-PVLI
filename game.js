@@ -141,16 +141,13 @@ this.anims.create({
 		 	})
     });
 
-    this.obs = new Obstaculo (this, 1500, 400, 'caja', this.worldSpeed, 30);
-  
-    this.obs = new Obstaculo (this, 1580, 500, 'barril', this.worldSpeed, 30);
+    this.colocarobjetosestaticos()
+    
     this.physics.add.collider(this.obs,this.player, function (obs, player) {
       // Por alguna razon se eliminan los dos objetos??
       player.ralentizar()
       obs.destroy();
     })
-    //colocarobjetosestaticos()
-
 // ------------------------------------------------------------------
   };
 
@@ -177,7 +174,24 @@ this.anims.create({
   }
   colocarobjetosestaticos()
   {
-      
+    this.obs = new Obstaculo (this, 1500, 400, 'caja', this.worldSpeed, 30);
+  
+    this.obs = new Obstaculo (this, 1580, 500, 'barril', this.worldSpeed, 30);
+
+    this.obs = new Obstaculo (this, 1580, 500, 'barril', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 2000, 500, 'barril', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 2750, 200, 'caja', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 3000, 300, 'barril', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 3250, 200, 'caja', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 3500, 200, 'caja', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 3250, 100, 'caja', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 3800, 100, 'caja', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 4000, 500, 'barril', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 4500, 500, 'barril', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 4700, 500, 'botellavacia', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 5700, 500, 'caja', this.worldSpeed, 30);
+    this.obs = new Obstaculo (this, 6000, 300, 'barril', this.worldSpeed, 30);ç
+
   }
   colocarobjetosfisicos()
   {
@@ -208,11 +222,69 @@ this.anims.create({
       this.obs = new Obstaculo (this, 2370, 495, 'jarron', this.worldSpeed, 30);
     }
     
-    //-------------------------------------
+    //EDIFICIO 3
 
     else if(this.player.x >= 2000 && this.player.x <= 2005)
     {
-      this.obs = new Obstaculo (this, 3000, 495, 'coche', -10, 30);
+      this.obs = new Obstaculo (this, 3100, 580, 'coche', -10, 30);
+    }
+
+    //EDIFICIO 4
+
+    else if(this.player.x >= 3630 && this.player.x <= 3635)
+    {
+      this.obs = new Obstaculo (this, 3760,420, 'jarron', this.worldSpeed, 30);
+    }
+    else if(this.player.x >= 3970 && this.player.x <= 3975)
+    {
+      this.obs = new Obstaculo (this, 4080,420, 'jarron', this.worldSpeed, 30);
+      this.obs = new Obstaculo (this, 4080,300, 'jarron', this.worldSpeed, 30);
+    }
+
+    //EDIFICIO 5
+    else if(this.player.x >= 3700 && this.player.x <= 3705)
+    {
+      this.obs = new Obstaculo (this, 5000,580, 'barriltop', -10, 30);
+    }
+    else if(this.player.x >= 4060 && this.player.x <= 4065)
+    {
+      this.obs = new Obstaculo (this, 4290,480, 'jarron', this.worldSpeed, 30);
+    }
+
+    //EDIFICIO 6
+    else if(this.player.x >= 4660 && this.player.x <= 4665)
+    {
+      this.obs = new Obstaculo (this, 4785,460, 'jarron', this.worldSpeed, 30);
+    }
+
+    else if(this.player.x >= 4780 && this.player.x <= 4785)
+    {
+      this.obs = new Obstaculo (this, 4850,460, 'jarron', this.worldSpeed, 30);
+    }
+
+    //EDIFICIO 7
+    else if(this.player.x >= 4890 && this.player.x <= 4895)
+    {
+      this.obs = new Obstaculo (this, 5010,370, 'jarron', this.worldSpeed, 30);
+    }
+    else if(this.player.x >= 5010 && this.player.x <= 5015)
+    {
+      this.obs = new Obstaculo (this, 5075,370, 'jarron', this.worldSpeed, 30);
+    }
+    else if(this.player.x >= 5060 && this.player.x <= 5065)
+    {
+      this.obs = new Obstaculo (this, 4085,460, 'cocheoscuro', 100, 30);
+    }
+
+    //EDIFICIO 9
+    else if(this.player.x >= 5600 && this.player.x <= 5605)
+    {
+      this.obs = new Obstaculo (this, 5740,460, 'jarron', this.worldSpeed, 30);
+    }
+    else if(this.player.x >= 5350 && this.player.x <= 5355)
+    {
+      this.obs = new Obstaculo (this, 6800,460, 'barriltop', -50, 30);
+      this.obs = new Obstaculo (this, 7000,460, 'barriltop', -50, 30);
     }
   }
 
@@ -220,10 +292,9 @@ this.anims.create({
   update(time, delta) 
   {
     this.cameramain.scrollX += this.worldSpeed;
-    this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.25;
-    //console.log(this.cameras.main.worldView.x);
-    console.log(this.player.x);
-    if(this.cameras.main.worldView.x === 6600)
+    this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
+
+    if(this.cameras.main.worldView.x === 6600) //Reseteo level
     {
       this.cameramain.scrollX= 0;
       this.player.x = this.player.x - 6600; //se mantiene la distancia entre el jugador y el guardia

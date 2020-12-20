@@ -86,7 +86,7 @@ this.anims.create({
     //let music = this.sound.add('mainsoundtrack', {loop: true});
     //music.play();;
 
-    this.worldSpeed = 1;
+    this.worldSpeed = 5;
 
     this.player = new Player(this, 200,580, this.worldSpeed);
 

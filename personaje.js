@@ -6,7 +6,7 @@ export default class Personaje extends Phaser.GameObjects.Sprite
 
     this.worldSpeed = speed;
     this.scene.add.existing(this);
-
+    this.setDepth(5);
     this.scene.physics.world.enableBody(this);
     //this.body.setVelocityX(100); //Esto lo está usando Álvaro para probar. Por eso está comentado no lo borréis
   }

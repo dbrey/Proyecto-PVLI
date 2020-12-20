@@ -104,6 +104,10 @@ export default class Player extends Personaje
 
   ralentizar(dureza)
   {
-      this.speed /= dureza;
+    this.speed -= dureza;
+    if(this.speed < -200)
+    {
+      this.speed = -200;
+    }    
   }
 }

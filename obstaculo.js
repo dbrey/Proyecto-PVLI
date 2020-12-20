@@ -13,22 +13,25 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
     this.scene.physics.world.enableBody(this);
     this.scene.physics.add.collider(this, this.scene.groundlayer);
     this.scene.physics.add.collider(this, this.scene.platformlayer);
-
-   this.scene.physics.add.collider(this,this.scene.player, function () {
-      this.scene.ralentizar(9000);
-      this.destroy();
-    })
-
-    /*this.scene.physics.add.collider(this, this.scene.player, function (player) {
-      //if (player.body.y + player.body.height) - this.body.y < 10) { };
-      .ralentizar(9000);
-      obs.destroy();
-    }*/
+    //this.scene.physics.add.collider(this,this.scene.player);
 
   }
-
-  preupdate(t, d){
+  
+  preUpdate(t, d){
     super.preUpdate(t, d);
-    this.body.setVelocityX(this.worldSpeed)
+
+    // Hace lo que el quiere por alguna razon
+    if(this.scene.physics.collide(this, this.scene.player)) {
+      this.ralentizar(400);
+
+    }
+    // Produce error raro al colisionar con varios objetos a la vezthis.body.setVelocityX(this.worldSpeed)
   }
+
+  ralentizar(dureza)
+  {
+    this.scene.player.ralentizar(dureza);
+    this.destroy(); 
+  }
+  
 }

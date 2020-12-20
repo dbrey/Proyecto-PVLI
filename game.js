@@ -14,6 +14,7 @@ export default class Game extends Phaser.Scene
     this.load.image('fondo1', './sprites/background/fondo_tras_del_todo.png');
 
     this.load.image('barril', './sprites/obstaculos/barril.png');
+    this.load.image('caja', './sprites/obstaculos/caja.png');
     this.load.image('barriltop', './sprites/obstaculos/barriltop.png');
     this.load.image('botellavacia', './sprites/obstaculos/botellavacia.png');
     this.load.image('cocheoscuro', './sprites/obstaculos/cocheoscuro.png');
@@ -135,13 +136,9 @@ this.anims.create({
 		 	})
     });
 
-    this.colocarobjetosestaticos()
-    
-    /*this.physics.add.collider(this.obs,this.player, function (obs, player) {
-      // Por alguna razon se eliminan los dos objetos??
-      player.ralentizar()
-      this.obs.destroy();
-    })*/
+    this.obstac = new Obstaculo (this, 1000, 500, 'barril', this.worldSpeed, 30);
+
+    this.colocarobjetosestaticos();
 // ------------------------------------------------------------------
   };
 
@@ -167,125 +164,118 @@ this.anims.create({
     this.stAgachado = false;
   }
 
-  ralentizar(dureza)
-  {
-    this.player.ralentizar(dureza);
-  }
-
+  
   colocarobjetosestaticos()
   {
-    this.obs = new Obstaculo (this, 1500, 400, 'caja', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 1580, 500, 'barril', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 1580, 500, 'barril', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 2000, 500, 'barril', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 2750, 200, 'caja', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 3000, 300, 'barril', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 3250, 200, 'caja', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 3500, 200, 'caja', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 3250, 100, 'caja', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 3800, 100, 'caja', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 4000, 500, 'barril', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 4500, 500, 'barril', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 4700, 500, 'botellavacia', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 5700, 500, 'caja', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 6000, 300, 'barril', this.worldSpeed, 30);
+    new Obstaculo (this, 1500, 400, 'caja', this.worldSpeed, 30);
+    new Obstaculo (this, 2000, 500, 'barril', this.worldSpeed, 30);
+    new Obstaculo (this, 2750, 200, 'caja', this.worldSpeed, 30);
+    new Obstaculo (this, 3000, 300, 'barril', this.worldSpeed, 30);
+    new Obstaculo (this, 3250, 200, 'caja', this.worldSpeed, 30);
+    new Obstaculo (this, 3500, 200, 'caja', this.worldSpeed, 30);
+    new Obstaculo (this, 3250, 100, 'caja', this.worldSpeed, 30);
+    new Obstaculo (this, 3800, 100, 'caja', this.worldSpeed, 30);
+    new Obstaculo (this, 4000, 500, 'barril', this.worldSpeed, 30);
+    new Obstaculo (this, 4500, 500, 'barril', this.worldSpeed, 30);
+    new Obstaculo (this, 4700, 500, 'botellavacia', this.worldSpeed, 30);
+    new Obstaculo (this, 5700, 500, 'caja', this.worldSpeed, 30);
+    new Obstaculo (this, 6000, 300, 'barril', this.worldSpeed, 30);
 
   }
   colocarobjetosfisicos()
   {
     if(this.player.x >= 1300 && this.player.x <= 1305)
     {
-      this.obs = new Obstaculo (this, 1520, 300, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 1520, 300, 'jarron', this.worldSpeed, 30);
     }
 
     //JARRONES EDIFICIO 2
     else if(this.player.x >= 1700 && this.player.x <= 1705)
     {
-      this.obs = new Obstaculo (this, 1790, 495, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 1790, 495, 'jarron', this.worldSpeed, 30);
     }
     else if(this.player.x >= 2050 && this.player.x <= 2055)
     {
-      this.obs = new Obstaculo (this, 1950, 495, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 1950, 495, 'jarron', this.worldSpeed, 30);
     }
     else if(this.player.x >= 1980 && this.player.x <= 1985)
     {
-      this.obs = new Obstaculo (this, 2080, 495, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 2080, 495, 'jarron', this.worldSpeed, 30);
     }
     else if(this.player.x >= 2100 && this.player.x <= 2105)
     {
-      this.obs = new Obstaculo (this, 2210, 495, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 2210, 495, 'jarron', this.worldSpeed, 30);
     }
     else if(this.player.x >= 2160 && this.player.x <= 2165)
     {
-      this.obs = new Obstaculo (this, 2370, 495, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 2370, 495, 'jarron', this.worldSpeed, 30);
     }
     
     //EDIFICIO 3
 
     else if(this.player.x >= 2000 && this.player.x <= 2005)
     {
-      this.obs = new Obstaculo (this, 3100, 580, 'coche', -10, 30);
+      new Obstaculo (this, 3100, 580, 'coche', -10, 30);
     }
 
     //EDIFICIO 4
 
     else if(this.player.x >= 3630 && this.player.x <= 3635)
     {
-      this.obs = new Obstaculo (this, 3760,420, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 3760,420, 'jarron', this.worldSpeed, 30);
     }
     else if(this.player.x >= 3970 && this.player.x <= 3975)
     {
-      this.obs = new Obstaculo (this, 4080,420, 'jarron', this.worldSpeed, 30);
-      this.obs = new Obstaculo (this, 4080,300, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 4080,420, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 4080,300, 'jarron', this.worldSpeed, 30);
     }
 
     //EDIFICIO 5
     else if(this.player.x >= 3700 && this.player.x <= 3705)
     {
-      this.obs = new Obstaculo (this, 5000,580, 'barriltop', -10, 30);
+      new Obstaculo (this, 5000,580, 'barriltop', -10, 30);
     }
     else if(this.player.x >= 4060 && this.player.x <= 4065)
     {
-      this.obs = new Obstaculo (this, 4290,480, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 4290,480, 'jarron', this.worldSpeed, 30);
     }
 
     //EDIFICIO 6
     else if(this.player.x >= 4660 && this.player.x <= 4665)
     {
-      this.obs = new Obstaculo (this, 4785,460, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 4785,460, 'jarron', this.worldSpeed, 30);
     }
 
     else if(this.player.x >= 4780 && this.player.x <= 4785)
     {
-      this.obs = new Obstaculo (this, 4850,460, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 4850,460, 'jarron', this.worldSpeed, 30);
     }
 
     //EDIFICIO 7
     else if(this.player.x >= 4890 && this.player.x <= 4895)
     {
-      this.obs = new Obstaculo (this, 5010,370, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 5010,370, 'jarron', this.worldSpeed, 30);
     }
     else if(this.player.x >= 5010 && this.player.x <= 5015)
     {
-      this.obs = new Obstaculo (this, 5075,370, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 5075,370, 'jarron', this.worldSpeed, 30);
     }
     else if(this.player.x >= 5060 && this.player.x <= 5065)
     {
-      this.obs = new Obstaculo (this, 4085,460, 'cocheoscuro', 100, 30);
+      new Obstaculo (this, 4085,460, 'cocheoscuro', 100, 30);
     }
 
     //EDIFICIO 9
     else if(this.player.x >= 5600 && this.player.x <= 5605)
     {
-      this.obs = new Obstaculo (this, 5740,460, 'jarron', this.worldSpeed, 30);
+      new Obstaculo (this, 5740,460, 'jarron', this.worldSpeed, 30);
     }
     else if(this.player.x >= 5350 && this.player.x <= 5355)
     {
-      this.obs = new Obstaculo (this, 6800,460, 'barriltop', -50, 30);
-      this.obs = new Obstaculo (this, 7000,460, 'barriltop', -50, 30);
+      new Obstaculo (this, 6800,460, 'barriltop', -50, 30);
+      new Obstaculo (this, 7000,460, 'barriltop', -50, 30);
     }
   }
-
 
   update(time, delta) 
   {

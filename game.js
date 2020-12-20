@@ -84,13 +84,7 @@ this.anims.create({
     this.fondoimg.setScrollFactor(0);
 
     //let music = this.sound.add('mainsoundtrack', {loop: true});
-    //music.play();
-
-    // this.calimoimg = this.physics.add.sprite(1100,210, 'botellacalimocho');
-    // this.calimoimg.setScale(0.04);
-
-    // this.barrilimg = this.physics.add.sprite(1100,300, 'barril');
-    // this.barrilimg.setScale(0.15);
+    //music.play();;
 
     this.worldSpeed = 1;
 
@@ -146,7 +140,7 @@ this.anims.create({
     this.physics.add.collider(this.obs,this.player, function (obs, player) {
       // Por alguna razon se eliminan los dos objetos??
       player.ralentizar()
-      obs.destroy();
+      this.obs.destroy();
     })
 // ------------------------------------------------------------------
   };
@@ -190,7 +184,7 @@ this.anims.create({
     this.obs = new Obstaculo (this, 4500, 500, 'barril', this.worldSpeed, 30);
     this.obs = new Obstaculo (this, 4700, 500, 'botellavacia', this.worldSpeed, 30);
     this.obs = new Obstaculo (this, 5700, 500, 'caja', this.worldSpeed, 30);
-    this.obs = new Obstaculo (this, 6000, 300, 'barril', this.worldSpeed, 30);ç
+    this.obs = new Obstaculo (this, 6000, 300, 'barril', this.worldSpeed, 30);
 
   }
   colocarobjetosfisicos()

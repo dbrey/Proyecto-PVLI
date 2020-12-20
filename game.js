@@ -137,11 +137,11 @@ this.anims.create({
 
     this.colocarobjetosestaticos()
     
-    this.physics.add.collider(this.obs,this.player, function (obs, player) {
+    /*this.physics.add.collider(this.obs,this.player, function (obs, player) {
       // Por alguna razon se eliminan los dos objetos??
       player.ralentizar()
       this.obs.destroy();
-    })
+    })*/
 // ------------------------------------------------------------------
   };
 
@@ -166,12 +166,16 @@ this.anims.create({
   {
     this.stAgachado = false;
   }
+
+  ralentizar(dureza)
+  {
+    this.player.ralentizar(dureza);
+  }
+
   colocarobjetosestaticos()
   {
     this.obs = new Obstaculo (this, 1500, 400, 'caja', this.worldSpeed, 30);
-  
     this.obs = new Obstaculo (this, 1580, 500, 'barril', this.worldSpeed, 30);
-
     this.obs = new Obstaculo (this, 1580, 500, 'barril', this.worldSpeed, 30);
     this.obs = new Obstaculo (this, 2000, 500, 'barril', this.worldSpeed, 30);
     this.obs = new Obstaculo (this, 2750, 200, 'caja', this.worldSpeed, 30);

@@ -13,12 +13,12 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
     this.scene.physics.world.enableBody(this);
     this.scene.physics.add.collider(this, this.scene.groundlayer);
     this.scene.physics.add.collider(this, this.scene.platformlayer);
-
-
   }
   
   preUpdate(t, d){
     super.preUpdate(t, d);
+
+    this.body.setVelocityX(-this.worldSpeed);
 
     if(this.scene.physics.collide(this, this.scene.player)) {   
       
@@ -29,12 +29,14 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
       }
       else if (this.scene.player.body.touching.down && this.body.touching.up)
       {
-        // Esto es probablemente es tremendamente feo, revisar
-            this.scene.physics.add.collider(this,this.scene.player);
+        // Esto es probablemente es tremendamente feo, revisar. Algunos casos especificos no funciona bien
+        this.scene.physics.add.collider(this,this.scene.player);
       }
       
     }
     
+    
+
   }
 
   ralentizar(dureza)

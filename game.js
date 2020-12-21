@@ -1,6 +1,7 @@
 import Player from './Player.js';
 import Guardia from './guardia.js';
 import Obstaculo from './obstaculo.js';
+import Barra_Alcohol from './barra_alcohol.js';
 
 export default class Game extends Phaser.Scene 
 {
@@ -23,7 +24,7 @@ export default class Game extends Phaser.Scene
 
     this.load.image('plataforma', './sprites/background/plataforma.png');
     this.load.image('guardia', './sprites/characters/guardia.png');
-    this.load.image('barra_alcohol1', './barra_alcohol/barra_alcohol/healthbar1.png');
+    /*this.load.image('barra_alcohol1', './barra_alcohol/barra_alcohol/healthbar1.png');
     this.load.image('barra_alcohol2', './barra_alcohol/barra_alcohol/healthbar2.png');
     this.load.image('barra_alcohol3', './barra_alcohol/barra_alcohol/healthbar3.png');
     this.load.image('barra_alcohol4', './barra_alcohol/barra_alcohol/healthbar4.png');
@@ -35,10 +36,11 @@ export default class Game extends Phaser.Scene
     this.load.image('barra_alcohol9', './barra_alcohol/barra_alcohol/healthbar9.png');
     this.load.image('barra_alcohol10', './barra_alcohol/barra_alcohol/healthbar10_normal.png');
     this.load.image('barra_alcohol11', './barra_alcohol/barra_alcohol/healthbar11.png');
-    this.load.image('barra_alcohol12', './barra_alcohol/barra_alcohol/healthbar12.png')
-    this.load.image('barra_alcohol13', './barra_alcohol/barra_alcohol/healthbar13.png')
-    this.load.image('barra_alcohol14', './barra_alcohol/barra_alcohol/healthbar14.png')
-    this.load.image('barra_alcohol15', './barra_alcohol/barra_alcohol/healthbar15_full.png')
+    this.load.image('barra_alcohol12', './barra_alcohol/barra_alcohol/healthbar12.png');
+    this.load.image('barra_alcohol13', './barra_alcohol/barra_alcohol/healthbar13.png');
+    this.load.image('barra_alcohol14', './barra_alcohol/barra_alcohol/healthbar14.png');
+    this.load.image('barra_alcohol15', './barra_alcohol/barra_alcohol/healthbar15_full.png');*/
+    this.load.spritesheet('alcoholsheet','./barra_alcohol/barra_alcohol/alcohol_anim.png', { frameWidth: 408, frameHeight: 122 });
     this.load.spritesheet('corrersheet', './sprites/characters/spritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('agacharsesheet', './sprites/characters/spritesheetagacharse.png', { frameWidth: 218, frameHeight: 218 })
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
@@ -77,6 +79,12 @@ this.anims.create({
   frameRate: 6,
   repeat: 0
 }); 
+this.anims.create({
+  key: 'alcoholismo',
+  frames: this.anims.generateFrameNumbers('alcoholsheet', { start:0, end: 14}),
+  frameRate: 1,
+  repeat: -1
+});
 // ------------------------------------------------------------------
 // ---------------------- ELEMENTOS DEL JUEGO -----------------------
     this.fondoimg = this.add.tileSprite(0,-150,1400, 800, 'fondo1');
@@ -92,9 +100,8 @@ this.anims.create({
     this.player = new Player(this, 200,580, this.worldSpeed);
 
     this.guardia = new Guardia(this, 10,565, this.worldSpeed);
-    
-    
 
+    this. alcohol = new Barra_Alcohol(this, 100, 70);
 
     this.cameramain = this.cameras.main;
 // ------------------------  MAPA  ---------------------------------
@@ -281,7 +288,7 @@ this.anims.create({
   {
     this.cameramain.scrollX += this.worldSpeed;
     this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
-
+    this.alcohol.x = this.cameramain.scrollX + 150;
     if(this.cameras.main.worldView.x === 6600) //Reseteo level
     {
       this.cameramain.scrollX= 0;

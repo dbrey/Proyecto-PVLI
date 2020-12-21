@@ -15,6 +15,7 @@ export default class Player extends Personaje
     this.disminuyendoVelocidad = false;
     this.delay_input = 0;
     this.stAgachado = false;
+    this.sube = true;
 
     this.play('correr',true);
     this.body.setSize(150, 220);

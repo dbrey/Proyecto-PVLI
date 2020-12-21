@@ -28,7 +28,7 @@ export default class Barra_Alcohol extends Phaser.GameObjects.Sprite
 
     preUpdate(t, d){
         
-        //(LINEA DEBUG)this.ebriedad += 5;
+      //this.ebriedad += 5;
         //console.log(this.ebriedad);
         super.preUpdate(t, d);
         switch(true){

@@ -12,15 +12,18 @@ export default class Barra_Alcohol extends Phaser.GameObjects.Sprite
         this.anims.play('alcoholismo',true);
         this.anims.stop();
         this.frame_buffer = this.anims.currentFrame.nextFrame;
+        this.primer_frame = this.anims.currentFrame;
     }
 
     aumentar_ebriedad(aumento){
         this.ebriedad += aumento;
+        this.scene.player.sube = true;
         if(this.ebriedad === this.max_alcohol){
             this.coma_etilico = true;
         }
     }
     reducir_ebriedad(reduccion){
+      this.scene.player.sube = false
         if(this.ebriedad > 0){
             this.ebriedad -= reduccion;
         }
@@ -29,9 +32,12 @@ export default class Barra_Alcohol extends Phaser.GameObjects.Sprite
     preUpdate(t, d){
         
       //this.ebriedad += 5;
-        //console.log(this.ebriedad);
+        console.log(this.ebriedad);
         super.preUpdate(t, d);
         switch(true){
+            case(this.ebriedad < 10):
+              this.anims.setCurrentFrame(this.primer_frame);
+              break;
             case((this.ebriedad > 10) && (this.ebriedad < 21)):
               this.cambio_frame(1);
               break;
@@ -82,7 +88,7 @@ export default class Barra_Alcohol extends Phaser.GameObjects.Sprite
         this.frame_buffer = this.anims.currentFrame.nextFrame;
         this.anims.setCurrentFrame(this.frame_buffer);
       }
-      else if((this.anims.currentFrame.index === (index_ref+1)) && !this.scene.player.sube){
+      else if((this.anims.currentFrame.index === (index_ref+2)) && !this.scene.player.sube){
         this.frame_buffer = this.anims.currentFrame.prevFrame;
         this.anims.setCurrentFrame(this.frame_buffer);
       }

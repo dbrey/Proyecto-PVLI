@@ -8,7 +8,7 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
     this.worldSpeed = speed;
     this.scene.add.existing(this);
 
-    this.setScale(0.1); 
+    this.setScale(0.12); 
     this.setDepth(5);
     this.scene.physics.world.enableBody(this);
     this.scene.physics.add.collider(this, this.scene.groundlayer);

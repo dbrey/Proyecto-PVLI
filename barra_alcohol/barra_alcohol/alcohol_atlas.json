@@ -1,0 +1,203 @@
+{
+    "frames": [
+        {
+            "filename": "healthbar1",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar2",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 122
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar3",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 244
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar4",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 366
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar5",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 488
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar6",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 610
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar7",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 732
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar8",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 854
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar9",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 976
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar10_normal",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 1098
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar11",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 1220
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar12",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 1342
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar13",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 1464
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar14",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 1586
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "healthbar15_full",
+            "frame": {
+                "w": 408,
+                "h": 122,
+                "x": 0,
+                "y": 1708
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

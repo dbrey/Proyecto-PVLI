@@ -15,6 +15,7 @@ export default class Player extends Personaje
     this.disminuyendoVelocidad = false;
     this.delay_input = 0;
     this.stAgachado = false;
+    this.sube = true;
 
     this.play('correr',true);
     this.body.setSize(150, 220);
@@ -104,6 +105,10 @@ export default class Player extends Personaje
 
   ralentizar(dureza)
   {
-      this.speed /= dureza;
+    this.speed -= dureza;
+    if(this.speed < -200)
+    {
+      this.speed = -200;
+    }    
   }
 }

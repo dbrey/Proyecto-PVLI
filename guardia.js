@@ -12,17 +12,6 @@ export default class Guardia extends Personaje
   {
     super.preUpdate(t, d);
     this.moverse();
-    
-    /*if (tiene que saltar)
-    {
-        saltar();
-    }
-
-    //else if (tiene que agacharse) 
-    {
-        agacharse();
-    }
-    */
   }  
 
   moverse(){

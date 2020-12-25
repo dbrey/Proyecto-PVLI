@@ -8,27 +8,41 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
     this.worldSpeed = speed;
     this.scene.add.existing(this);
 
-    this.setScale(0.1); 
+    this.setScale(0.12); 
     this.setDepth(5);
     this.scene.physics.world.enableBody(this);
     this.scene.physics.add.collider(this, this.scene.groundlayer);
     this.scene.physics.add.collider(this, this.scene.platformlayer);
-
-   this.scene.physics.add.collider(this,this.scene.player, function () {
-      this.scene.ralentizar(9000);
-      this.destroy();
-    })
-
-    /*this.scene.physics.add.collider(this, this.scene.player, function (player) {
-      //if (player.body.y + player.body.height) - this.body.y < 10) { };
-      .ralentizar(9000);
-      obs.destroy();
-    }*/
-
   }
-
-  preupdate(t, d){
+  
+  preUpdate(t, d){
     super.preUpdate(t, d);
-    this.body.setVelocityX(this.worldSpeed)
+
+    this.body.setVelocityX(-this.worldSpeed);
+
+    if(this.scene.physics.collide(this, this.scene.player)) {   
+      
+      if((this.scene.player.body.touching.right && this.body.touching.left) || 
+        (this.scene.player.body.touching.left && this.body.touching.right))
+      {
+        this.ralentizar(this.resistencia);
+      }
+      else if (this.scene.player.body.touching.down && this.body.touching.up)
+      {
+        // Esto es probablemente es tremendamente feo, revisar. Algunos casos especificos no funciona bien
+        this.scene.physics.add.collider(this,this.scene.player);
+      }
+      
+    }
+    
+    
+
   }
+
+  ralentizar(dureza)
+  {
+    this.scene.player.ralentizar(dureza);
+    this.destroy(); 
+  }
+  
 }

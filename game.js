@@ -19,13 +19,13 @@ export default class Game extends Phaser.Scene
     this.load.image('botella_agua', './sprites/items/waterbottle.png');
     this.load.image('cerveza', './sprites/items/mugofbeer.png');
 
-    this.load.image('barril', './sprites/obstaculos/barril.png');
-    this.load.image('caja', './sprites/obstaculos/caja.png');
-    this.load.image('barriltop', './sprites/obstaculos/barriltop.png');
-    this.load.image('botellavacia', './sprites/obstaculos/botellavacia.png');
-    this.load.image('cocheoscuro', './sprites/obstaculos/cocheoscuro.png');
-    this.load.image('coche', './sprites/obstaculos/coche.png');
-    this.load.image('jarron', './sprites/obstaculos/jarron.png');
+    this.load.image('barril', './sprites/obstaculos/32x32/barril.png');
+    this.load.image('caja', './sprites/obstaculos/32x32/caja.png');
+    this.load.image('barriltop', './sprites/obstaculos/32x32/barriltop.png');
+    this.load.image('botellavacia', './sprites/obstaculos/32x32/botellavacia.png');
+    this.load.image('cocheoscuro', './sprites/obstaculos/32x32/cocheoscuro.png');
+    this.load.image('coche', './sprites/obstaculos/32x32/coche.png');
+    this.load.image('jarron', './sprites/obstaculos/32x32/jarron.png');
 
     this.load.image('plataforma', './sprites/background/plataforma.png');
     this.load.image('guardia', './sprites/characters/guardia.png');
@@ -86,7 +86,7 @@ this.anims.create({
     this.music = this.sound.add('mainsoundtrack', {loop: true});
     this.music.play();
 
-    this.worldSpeed = 5;
+    this.worldSpeed = 1;
 
     this.player = new Player(this, 200,580, this.worldSpeed);
 
@@ -106,6 +106,9 @@ this.anims.create({
     const tileset1 = this.map.addTilesetImage('suelo', 'city'); //1-Como llama al tile en TILES, 2- el nombre del tile en phaser
     const tileset2 = this.map.addTilesetImage('edificios','rowhouse');
     const tileset3 = this.map.addTilesetImage('extra','devil');
+    const tileset4 = this.map.addTilesetImage('barril','barril');
+    const tileset5 = this.map.addTilesetImage('caja','caja');
+    const tileset6 = this.map.addTilesetImage('botellavacia','botellavacia');
 
     this.groundlayer =  this.map.createStaticLayer('suelo', [tileset1]);
 
@@ -117,12 +120,16 @@ this.anims.create({
 
     this.platformlayer = this.map.createStaticLayer('plataformas', [tileset2, tileset3]);
     
+    this.objestaticos =  this.map.createStaticLayer('objestaticos', [tileset6,tileset5,tileset4]);
+
     this.physics.add.collider(this.player, this.platformlayer);
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
+    this.physics.add.collider(this.player, this.objestaticos);
 
     this.groundlayer.setCollision(15);
     this.platformlayer.setCollisionBetween(0, 1000);
+    this.objestaticos.setCollisionBetween(0, 1000);
 
     this.platformlayer.layer.data.forEach((row) => { // here we are iterating through each tile.
 		 	row.forEach((Tile) => {
@@ -134,9 +141,17 @@ this.anims.create({
 		 	})
     });
 
+    this.platformlayer.layer.data.forEach((row) => { // here we are iterating through each tile.
+      row.forEach((Tile) => {
+       
+         Tile.collideDown = false;
+       
+      })
+   });
+
     this.obstac = new Obstaculo (this, 1500, 580, 'barriltop', 200, 30);
 
-    this.colocarobjetosestaticos();
+    //this.colocarobjetosestaticos();
 // ------------------------------------------------------------------
   };
 
@@ -291,7 +306,7 @@ this.anims.create({
       console.log(this.player.x);
       this.guardia.x = 10;
     }
-    this.colocarobjetosfisicos()
+    //this.colocarobjetosfisicos()
   }
 }
       

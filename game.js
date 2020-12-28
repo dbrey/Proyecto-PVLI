@@ -125,7 +125,7 @@ this.anims.create({
     this.physics.add.collider(this.player, this.platformlayer);
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
-    this.physics.add.collider(this.player, this.objestaticos);
+    this.physics.add.collider(this.player, this.objestaticos); 
 
     this.groundlayer.setCollision(15);
     this.platformlayer.setCollisionBetween(0, 1000);
@@ -141,7 +141,7 @@ this.anims.create({
 		 	})
     });
 
-    this.platformlayer.layer.data.forEach((row) => { // here we are iterating through each tile.
+    this.objestaticos.layer.data.forEach((row) => { // here we are iterating through each tile.
       row.forEach((Tile) => {
        
          Tile.collideDown = false;
@@ -149,7 +149,7 @@ this.anims.create({
       })
    });
 
-    this.obstac = new Obstaculo (this, 1500, 580, 'barriltop', 200, 30);
+    
 
     //this.colocarobjetosestaticos();
 // ------------------------------------------------------------------
@@ -203,94 +203,91 @@ this.anims.create({
   {
     if(this.player.x >= 1300 && this.player.x <= 1305)
     {
-      new Obstaculo (this, 1520, 300, 'jarron', 0, 200);
+     
+      this.obs = this.map.createFromObjects('fisicos', 22, {key: 'jarron'});
+      //new Obstaculo (this, 1520, 300, 'jarron', 0, 200);
     }
 
     //JARRONES EDIFICIO 2
     else if(this.player.x >= 1700 && this.player.x <= 1705)
     {
-      new Obstaculo (this, 1790, 495, 'jarron', 0, 200);
+      this.obs = this.map.createFromObjects('fisicos', 23, {key: 'jarron'});
     }
     else if(this.player.x >= 2050 && this.player.x <= 2055)
     {
-      new Obstaculo (this, 1950, 495, 'jarron', 0, 200);
+      this.obs = this.map.createFromObjects('fisicos', 24, {key: 'jarron'});
     }
     else if(this.player.x >= 1980 && this.player.x <= 1985)
     {
-      new Obstaculo (this, 2080, 495, 'jarron', 0, 200);
+      this.obs = this.map.createFromObjects('fisicos', 25, {key: 'jarron'});
     }
     else if(this.player.x >= 2100 && this.player.x <= 2105)
     {
-      new Obstaculo (this, 2210, 495, 'jarron', 0, 200);
+      this.obs = this.map.createFromObjects('fisicos', 26, {key: 'jarron'});
     }
     else if(this.player.x >= 2160 && this.player.x <= 2165)
     {
-      new Obstaculo (this, 2370, 495, 'jarron', 0, 200);
+      this.obs = this.map.createFromObjects('fisicos', 27, {key: 'jarron'});
     }
     
     //EDIFICIO 3
 
     else if(this.player.x >= 2000 && this.player.x <= 2005)
     {
-      new Obstaculo (this, 3100, 580, 'coche', 400, 200);
+      this.obs = this.map.createFromObjects('fisicos', 33, {key: 'coche'});
     }
 
     //EDIFICIO 4
 
     else if(this.player.x >= 3630 && this.player.x <= 3635)
     {
-      new Obstaculo (this, 3760,420, 'jarron', this.worldSpeed, 200);
+      this.obs = this.map.createFromObjects('fisicos', 29, {key: 'jarron'});
     }
     else if(this.player.x >= 3970 && this.player.x <= 3975)
     {
-      new Obstaculo (this, 4080,420, 'jarron', this.worldSpeed, 200);
-      new Obstaculo (this, 4080,300, 'jarron', this.worldSpeed, 200);
+      this.obs = this.map.createFromObjects('fisicos', 31, {key: 'jarron'});
+      this.obs = this.map.createFromObjects('fisicos', 32, {key: 'jarron'});
     }
 
     //EDIFICIO 5
     else if(this.player.x >= 3700 && this.player.x <= 3705)
     {
-      new Obstaculo (this, 5000,580, 'barriltop', 200, 200);
+      this.obs = this.map.createFromObjects('fisicos', 35, {key: 'barriltop'});
     }
     else if(this.player.x >= 4060 && this.player.x <= 4065)
     {
-      new Obstaculo (this, 4290,480, 'jarron', this.worldSpeed, 200);
+      this.obs = this.map.createFromObjects('fisicos', 36, {key: 'jarron'});
     }
 
     //EDIFICIO 6
     else if(this.player.x >= 4660 && this.player.x <= 4665)
     {
-      new Obstaculo (this, 4785,460, 'jarron', this.worldSpeed, 200);
+      this.obs = this.map.createFromObjects('fisicos', 37, {key: 'jarron'});;
     }
 
     else if(this.player.x >= 4780 && this.player.x <= 4785)
     {
-      new Obstaculo (this, 4850,460, 'jarron', this.worldSpeed, 200);
+      this.obs = this.map.createFromObjects('fisicos', 38, {key: 'jarron'});
     }
 
     //EDIFICIO 7
     else if(this.player.x >= 4890 && this.player.x <= 4895)
     {
-      new Obstaculo (this, 5010,370, 'jarron', this.worldSpeed, 200);
+      this.obs = this.map.createFromObjects('fisicos', 45, {key: 'jarron'});
     }
     else if(this.player.x >= 5010 && this.player.x <= 5015)
     {
-      new Obstaculo (this, 5075,370, 'jarron', this.worldSpeed, 200);
+      this.obs = this.map.createFromObjects('fisicos', 47, {key: 'jarron'});
     }
     else if(this.player.x >= 5060 && this.player.x <= 5065)
     {
-      new Obstaculo (this, 4085,460, 'cocheoscuro', 400, 200);
+      this.obs = this.map.createFromObjects('fisicos', 44, {key: 'cocheoscuro'});
     }
 
     //EDIFICIO 9
-    else if(this.player.x >= 5600 && this.player.x <= 5605)
-    {
-      new Obstaculo (this, 5740,460, 'jarron', 0, 200);
-    }
     else if(this.player.x >= 5350 && this.player.x <= 5355)
     {
-      new Obstaculo (this, 6800,460, 'barriltop', 200, 400);
-      new Obstaculo (this, 7000,460, 'barriltop', 200, 400);
+      this.obs = this.map.createFromObjects('fisicos', 42, {key: 'barriltop'});
     }
   }
 
@@ -306,7 +303,7 @@ this.anims.create({
       console.log(this.player.x);
       this.guardia.x = 10;
     }
-    //this.colocarobjetosfisicos()
+    this.colocarobjetosfisicos()
   }
 }
       

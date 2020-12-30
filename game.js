@@ -4,6 +4,7 @@ import Obstaculo from './obstaculo.js';
 import Barra_Alcohol from './barra_alcohol.js';
 import Agua from './agua.js';
 import Cerveza from './cerveza.js';
+import Champan from './Champan.js';
 
 export default class Game extends Phaser.Scene 
 {
@@ -18,6 +19,7 @@ export default class Game extends Phaser.Scene
     this.load.image('botellacalimocho', './sprites/items/calimocho.png');
     this.load.image('botella_agua', './sprites/items/waterbottle.png');
     this.load.image('cerveza', './sprites/items/mugofbeer.png');
+    this.load.image('champan', './sprites/items/champancg.png');
 
     this.load.image('barril', './sprites/obstaculos/32x32/barril.png');
     this.load.image('caja', './sprites/obstaculos/32x32/caja.png');
@@ -150,7 +152,7 @@ this.anims.create({
    });
 
     
-
+   this.cham = new Champan(this,700,400);
     //this.colocarobjetosestaticos();
 // ------------------------------------------------------------------
   };

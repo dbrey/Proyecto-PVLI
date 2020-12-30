@@ -10,6 +10,8 @@ export default class Player extends Personaje
 
     this.speed = 0;
     this.limitspeed = 200;
+    this.mov = true;
+    this.tiempo = 0;
     this.aceleracion = 5; //Rapidez con la que cambia la velocidad con el input
     this.aumentandoVelocidad = false;
     this.disminuyendoVelocidad = false;
@@ -25,8 +27,50 @@ export default class Player extends Personaje
 
   preUpdate(t, d)
   {
-    super.preUpdate(t, d);
+    super.preUpdate(t, d)
 
+    if(this.mov) //normal
+    {
+    this.normal();
+    }
+    else //Champan
+    {
+      this.champan();
+      if(tiempo === 30) //Se acabo el powerup
+      {
+        tiempo = 0;
+        this.cambiomov();
+      }
+      else
+      {
+        tiempo++;
+      }
+    }
+  }  
+
+  champan()
+  {
+    if (cursors.left.isDown) {
+      player.body.setVelocityX(-100);
+  }
+  else if (cursors.right.isDown) {
+      player.body.setVelocityX(100);
+  }
+
+  if (cursors.up.isDown) {
+      player.body.setVelocityY(-100);
+  }
+  else if (cursors.down.isDown) {
+      player.body.setVelocityY(100);
+  }
+  }
+
+  cambiomov()
+  {  //true normal, false champan
+    this.mov = !this.mov;
+  }
+  normal()
+  {
     //LECTURA DE TECLADO
     if (this.cursors.up.isDown && this.body.blocked.down)
     {
@@ -53,7 +97,7 @@ export default class Player extends Personaje
 
 
     this.movimiento();
-  }  
+  }
 
   movimiento(){
     if (this.disminuyendoVelocidad && this.speed > -this.limitspeed){

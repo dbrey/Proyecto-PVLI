@@ -4,7 +4,7 @@ export default class Champan extends Phaser.GameObjects.Sprite
         super(scene, x, y,'champan');
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this, true);
-        this.setScale(1.5);
+        this.setScale(0.05);
     }
 
     preUpdate(t,d){
@@ -13,8 +13,13 @@ export default class Champan extends Phaser.GameObjects.Sprite
         if(this.scene.physics.overlap(this, this.scene.player)){
             //Llamar a metodo de player q cambien el movimiento, unos segundos 45 grados y fuerza hacia arriba luego recto y movmiento libre
             
-            this.destroy();
-            console.log("CHAMPAN");
         }
+    }
+
+    chocar()
+    {
+        this.scene.player.cambiomov();
+        this.destroy();
+        console.log("CHAMPAN");
     }
 }

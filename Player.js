@@ -29,40 +29,46 @@ export default class Player extends Personaje
   {
     super.preUpdate(t, d)
 
-    if(this.mov) //normal
+    if(this.mov === true) //normal
     {
     this.normal();
     }
-    else //Champan
+    else //Champan FALTA CAMBIAR EL SPRITE
     {
       this.champan();
-      if(tiempo === 30) //Se acabo el powerup
+      if(this.tiempo === 3000) //Se acabo el powerup
       {
-        tiempo = 0;
+        this.tiempo = 0;
         this.cambiomov();
       }
       else
       {
-        tiempo++;
+        this.tiempo++;
       }
     }
   }  
 
   champan()
   {
-    if (cursors.left.isDown) {
-      player.body.setVelocityX(-100);
+
+    this.body.setGravityY(0);
+
+    if (this.cursors.left.isDown) {
+      this.disminuyendoVelocidad = true;
+      this.aumentandoVelocidad = false;
   }
-  else if (cursors.right.isDown) {
-      player.body.setVelocityX(100);
+  else if (this.cursors.right.isDown) {
+    this.aumentandoVelocidad = true;
+    this.disminuyendoVelocidad = false;
   }
 
-  if (cursors.up.isDown) {
-      player.body.setVelocityY(-100);
+  if (this.cursors.up.isDown) {
+      this.body.setVelocityY(-300);
   }
-  else if (cursors.down.isDown) {
-      player.body.setVelocityY(100);
+  else if (this.cursors.down.isDown) {
+      this.body.setVelocityY(300);
   }
+  this.movimiento();
   }
 
   cambiomov()

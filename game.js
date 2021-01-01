@@ -151,8 +151,9 @@ this.anims.create({
       })
    });
 
-    
-   this.cham = new Champan(this,700,400);
+   this.champan = new Champan(this,700,400);
+
+   this.physics.add.overlap(this.player, this.champan,this.champan.chocar());
     //this.colocarobjetosestaticos();
 // ------------------------------------------------------------------
   };
@@ -281,7 +282,7 @@ this.anims.create({
     {
       this.obs = this.map.createFromObjects('fisicos', 47, {key: 'jarron'});
     }
-    else if(this.player.x >= 5060 && this.player.x <= 5065)
+    else if(this.player.x >= 5860 && this.player.x <=5865)
     {
       this.obs = this.map.createFromObjects('fisicos', 44, {key: 'cocheoscuro'});
     }

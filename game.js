@@ -30,12 +30,12 @@ export default class Game extends Phaser.Scene
     this.load.image('jarron', './sprites/obstaculos/32x32/jarron.png');
 
     this.load.image('plataforma', './sprites/background/plataforma.png');
-    this.load.image('guardia', './sprites/characters/guardia.png');
     
     this.load.atlas('alcohol_atlas', './barra_alcohol/barra_alcohol/alcohol.png', './barra_alcohol/barra_alcohol/alcohol_atlas.json');
     this.load.spritesheet('alcoholsheet','./barra_alcohol/barra_alcohol/alcohol_anim.png', { frameWidth: 408, frameHeight: 122 });
     this.load.spritesheet('corrersheet', './sprites/characters/spritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('agacharsesheet', './sprites/characters/spritesheetagacharse.png', { frameWidth: 218, frameHeight: 218 })
+    this.load.spritesheet('guardiacorrersheet', './sprites/characters/guardiaspritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
 
 
@@ -78,6 +78,12 @@ this.anims.create({
   frameRate: 1,
   repeat: -1
 });
+this.anims.create({
+  key: 'guardiacorrer',
+  frames: this.anims.generateFrameNumbers('guardiacorrersheet', { start:0, end: 5}),
+  frameRate: 7,
+  repeat: -1
+}); 
 // ------------------------------------------------------------------
 // ---------------------- ELEMENTOS DEL JUEGO -----------------------
     this.fondoimg = this.add.tileSprite(0,-150,1400, 800, 'fondo1');
@@ -92,7 +98,7 @@ this.anims.create({
 
     this.player = new Player(this, 200,580, this.worldSpeed);
 
-    this.guardia = new Guardia(this, 10,565, this.worldSpeed);
+    this.guardia = new Guardia(this, 30,565, this.worldSpeed);
 
     this.alcohol = new Barra_Alcohol(this, 100, 70);
 
@@ -304,7 +310,7 @@ this.anims.create({
       this.cameramain.scrollX= 0;
       this.player.x = this.player.x - 6600; //se mantiene la distancia entre el jugador y el guardia
       console.log(this.player.x);
-      this.guardia.x = 10;
+      this.guardia.x = 30;
     }
     this.colocarobjetosfisicos()
   }

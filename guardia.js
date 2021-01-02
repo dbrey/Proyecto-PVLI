@@ -4,8 +4,9 @@ export default class Guardia extends Personaje
 {
   constructor(scene, x, y, speed) {
 
-    super(scene,x,y,'guardia', speed * 60);
+    super(scene,x,y,'guardiacorrersheet', speed * 60);
     this.setScale(0.25); 
+    this.play('guardiacorrer',true);
   }
 
   preUpdate(t,d)
@@ -27,6 +28,7 @@ export default class Guardia extends Personaje
     Guardia con otra.
     */
     //ANIMACIÓN DE SALTO DEL GUARDIA
+    this.play('guardiacorrer',true);
   }
 
   agacharse(){

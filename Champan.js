@@ -12,7 +12,6 @@ export default class Champan extends Phaser.GameObjects.Sprite
         
         if(this.scene.physics.overlap(this, this.scene.player)){
             //Llamar a metodo de player q cambien el movimiento, unos segundos 45 grados y fuerza hacia arriba luego recto y movmiento libre
-            
         }
     }
 

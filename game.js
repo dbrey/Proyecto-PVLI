@@ -158,8 +158,6 @@ this.anims.create({
    });
 
    this.champan = new Champan(this,700,400);
-
-   this.physics.add.overlap(this.player, this.champan,this.champan.chocar());
     //this.colocarobjetosestaticos();
 // ------------------------------------------------------------------
   };

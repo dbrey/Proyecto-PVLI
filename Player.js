@@ -10,7 +10,9 @@ export default class Player extends Personaje
 
     this.speed = 0;
     this.limitspeed = 200;
+
     this.mov = true;
+    
     this.tiempo = 0;
     this.aceleracion = 5; //Rapidez con la que cambia la velocidad con el input
     this.aumentandoVelocidad = false;
@@ -31,7 +33,7 @@ export default class Player extends Personaje
 
     if(this.mov === true) //normal
     {
-    this.normal();
+      this.normal();
     }
     else //Champan FALTA CAMBIAR EL SPRITE
     {
@@ -50,9 +52,6 @@ export default class Player extends Personaje
 
   champan()
   {
-
-    this.body.setGravityY(0);
-
     if (this.cursors.left.isDown) {
       this.disminuyendoVelocidad = true;
       this.aumentandoVelocidad = false;
@@ -74,6 +73,13 @@ export default class Player extends Personaje
   cambiomov()
   {  //true normal, false champan
     this.mov = !this.mov;
+    if(mov) //Poner Gravedad
+    {
+
+    }
+    else{ //Quitarla
+
+    }
   }
   normal()
   {

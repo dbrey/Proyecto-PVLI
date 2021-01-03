@@ -38,7 +38,7 @@ export default class Player extends Personaje
     else //Champan FALTA CAMBIAR EL SPRITE
     {
       this.champan();
-      if(this.tiempo === 3000) //Se acabo el powerup
+      if(this.tiempo === 1000) //Se acabo el powerup
       {
         this.tiempo = 0;
         this.cambiomov();
@@ -62,23 +62,27 @@ export default class Player extends Personaje
   }
 
   if (this.cursors.up.isDown) {
-      this.body.setVelocityY(-300);
+      this.body.setVelocityY(-70);
   }
   else if (this.cursors.down.isDown) {
-      this.body.setVelocityY(300);
+      this.body.setVelocityY(70);
   }
-  this.movimiento();
+  this.movimientochamp();
   }
 
   cambiomov()
   {  //true normal, false champan
     this.mov = !this.mov;
-    if(mov) //Poner Gravedad
+    if(this.mov) //Poner Gravedad y mov normal
     {
-
+      this.body.allowGravity = true;
+      this.scene.normal();
+      this.anims.play('correr',true);
     }
-    else{ //Quitarla
-
+    else{ //Quitarla y mov cielo
+      this.body.setVelocityY(-600);
+      this.anims.play('champan',true);
+      this.body.allowGravity = false;
     }
   }
   normal()
@@ -109,6 +113,21 @@ export default class Player extends Personaje
 
 
     this.movimiento();
+  }
+
+  movimientochamp()
+  {
+    if (this.disminuyendoVelocidad && this.speed > -this.limitspeed){
+      this.speed -= this.aceleracion; //Disminuye Vel
+      this.disminuyendoVelocidad = false;
+    }
+
+    if (this.aumentandoVelocidad){
+      this.speed += this.aceleracion; //Aumenta vel.
+      this.aumentandoVelocidad = false;
+    }
+
+    this.moverse();
   }
 
   movimiento(){

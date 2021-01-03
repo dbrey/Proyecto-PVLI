@@ -36,6 +36,7 @@ export default class Game extends Phaser.Scene
     this.load.spritesheet('corrersheet', './sprites/characters/spritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('agacharsesheet', './sprites/characters/spritesheetagacharse.png', { frameWidth: 218, frameHeight: 218 })
     this.load.spritesheet('guardiacorrersheet', './sprites/characters/guardiaspritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
+    this.load.spritesheet('spritesheetvolar', './sprites/characters/spritesheetvolar.png', { frameWidth: 170, frameHeight: 234 });
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
 
 
@@ -48,6 +49,12 @@ export default class Game extends Phaser.Scene
 
   create() {
 // -------------------------- ANIMACIONES --------------------------
+this.anims.create({
+  key: 'champan',
+  frames: this.anims.generateFrameNumbers('spritesheetvolar', { start: 0, end: 7}),
+  frameRate: 7,
+  repeat: -1
+}); 
 this.anims.create({
   key: 'correr',
   frames: this.anims.generateFrameNumbers('corrersheet', { start:0, end: 5}),
@@ -130,10 +137,10 @@ this.anims.create({
     
     this.objestaticos =  this.map.createStaticLayer('objestaticos', [tileset6,tileset5,tileset4]);
 
-    this.physics.add.collider(this.player, this.platformlayer);
+    this.physics.add.collider(this.player, this.platformlayer).name = 'plat';
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
-    this.physics.add.collider(this.player, this.objestaticos); 
+    this.physics.add.collider(this.player, this.objestaticos).name = 'estaticos';; 
 
     this.groundlayer.setCollision(15);
     this.platformlayer.setCollisionBetween(0, 1000);
@@ -157,8 +164,7 @@ this.anims.create({
       })
    });
 
-   this.champan = new Champan(this,700,400);
-    //this.colocarobjetosestaticos();
+   this.champan = new Champan(this,700,530);
 // ------------------------------------------------------------------
   };
 
@@ -184,33 +190,21 @@ this.anims.create({
     this.stAgachado = false;
   }
 
-  
-  colocarobjetosestaticos()
+  rapido()
   {
-    new Obstaculo (this, 1500, 400, 'caja', 0, 400);
-    new Obstaculo (this, 2000, 500, 'barril', 0, 400);
-    new Obstaculo (this, 2750, 200, 'caja', 0, 400);
-    new Obstaculo (this, 3000, 300, 'barril', 0, 400);
-    new Obstaculo (this, 3250, 200, 'caja', 0, 400);
-    new Obstaculo (this, 3500, 200, 'caja', 0, 400);
-    new Obstaculo (this, 3250, 100, 'caja', 0, 400);
-    new Obstaculo (this, 3800, 100, 'caja', 0, 400);
-    new Obstaculo (this, 4000, 500, 'barril', 0, 400);
-    new Obstaculo (this, 4500, 500, 'barril', 0, 400);
-    //new Obstaculo (this, 4700, 500, 'botellavacia', 0, 100);
-    new Obstaculo (this, 5700, 500, 'caja', 0, 400);
-    new Obstaculo (this, 6000, 300, 'barril', 0, 400);
-    new Agua(this, 5000,550);
-    new Cerveza(this, 3400, 550);
-    new Cerveza(this, 4000, 550);
-    
-
+    this.worldSpeed = 3;
   }
+
+  normal()
+  {
+    this.worldSpeed = 1;
+  }
+
+
   colocarobjetosfisicos()
   {
     if(this.player.x >= 1300 && this.player.x <= 1305)
     {
-     
       this.obs = this.map.createFromObjects('fisicos', 22, {key: 'jarron'});
       //new Obstaculo (this, 1520, 300, 'jarron', 0, 200);
     }

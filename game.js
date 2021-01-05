@@ -137,10 +137,10 @@ this.anims.create({
     
     this.objestaticos =  this.map.createStaticLayer('objestaticos', [tileset6,tileset5,tileset4]);
 
-    this.physics.add.collider(this.player, this.platformlayer).name = 'plat';
+    const platformCollider = this.physics.add.collider(this.player, this.platformlayer);
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
-    this.physics.add.collider(this.player, this.objestaticos).name = 'estaticos';; 
+    const objest = this.physics.add.collider(this.player, this.objestaticos); 
 
     this.groundlayer.setCollision(15);
     this.platformlayer.setCollisionBetween(0, 1000);
@@ -163,7 +163,6 @@ this.anims.create({
        
       })
    });
-
    this.champan = new Champan(this,700,530);
 // ------------------------------------------------------------------
   };
@@ -199,7 +198,6 @@ this.anims.create({
   {
     this.worldSpeed = 1;
   }
-
 
   colocarobjetosfisicos()
   {

@@ -78,11 +78,17 @@ export default class Player extends Personaje
       this.body.allowGravity = true;
       this.scene.normal();
       this.anims.play('correr',true);
+
+      //const platformCollider = this.physics.add.collider(this.player, this.platformlayer);
+      //const objest = this.physics.add.collider(this.player, this.objestaticos); 
     }
     else{ //Quitarla y mov cielo
       this.body.setVelocityY(-600);
       this.anims.play('champan',true);
       this.body.allowGravity = false;
+
+      //platformCollider.destroy();
+      //objest.destroy();
     }
   }
   normal()

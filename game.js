@@ -5,6 +5,8 @@ import Barra_Alcohol from './barra_alcohol.js';
 import Agua from './agua.js';
 import Cerveza from './cerveza.js';
 import Champan from './Champan.js';
+import Jagger from './jagger.js';
+import Calimocho from './calimocho.js';
 
 export default class Game extends Phaser.Scene 
 {
@@ -16,10 +18,11 @@ export default class Game extends Phaser.Scene
   preload() {
     this.load.image('fondo1', './sprites/background/fondo_tras_del_todo.png');
 
-    this.load.image('botellacalimocho', './sprites/items/calimocho.png');
+    this.load.image('calimocho', './sprites/items/calimocho.png');
     this.load.image('botella_agua', './sprites/items/waterbottle.png');
     this.load.image('cerveza', './sprites/items/mugofbeer.png');
     this.load.image('champan', './sprites/items/champancg.png');
+    this.load.image('jagger', './sprites/items/jagger.png');
 
     this.load.image('barril', './sprites/obstaculos/32x32/barril.png');
     this.load.image('caja', './sprites/obstaculos/32x32/caja.png');
@@ -32,7 +35,7 @@ export default class Game extends Phaser.Scene
     this.load.image('plataforma', './sprites/background/plataforma.png');
     
     this.load.atlas('alcohol_atlas', './barra_alcohol/barra_alcohol/alcohol.png', './barra_alcohol/barra_alcohol/alcohol_atlas.json');
-    this.load.spritesheet('alcoholsheet','./barra_alcohol/barra_alcohol/alcohol_anim.png', { frameWidth: 408, frameHeight: 122 });
+   // this.load.spritesheet('alcoholsheet','./barra_alcohol/barra_alcohol/alcohol_anim.png', { frameWidth: 408, frameHeight: 122 });
     this.load.spritesheet('corrersheet', './sprites/characters/spritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('agacharsesheet', './sprites/characters/spritesheetagacharse.png', { frameWidth: 218, frameHeight: 218 })
     this.load.spritesheet('guardiacorrersheet', './sprites/characters/guardiaspritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
@@ -79,12 +82,12 @@ this.anims.create({
   frameRate: 6,
   repeat: 0
 }); 
-this.anims.create({
+/*this.anims.create({
   key: 'alcoholismo',
   frames: this.anims.generateFrameNumbers('alcoholsheet', { start:0, end: 14}),
   frameRate: 1,
   repeat: -1
-});
+});*/
 this.anims.create({
   key: 'guardiacorrer',
   frames: this.anims.generateFrameNumbers('guardiacorrersheet', { start:0, end: 5}),
@@ -164,6 +167,10 @@ this.anims.create({
       })
    });
    this.champan = new Champan(this,700,530);
+   this.agua = new Agua(this, 5000,550);
+   this.calimocho = new Calimocho(this, 1000, 550);
+   this.cerveza = new Cerveza(this, 1100, 550);
+   this.jagger = new Jagger(this, 1200, 550);
 // ------------------------------------------------------------------
   };
 

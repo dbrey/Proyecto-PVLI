@@ -112,6 +112,8 @@ this.anims.create({
 
     this.alcohol = new Barra_Alcohol(this, 100, 70);
 
+    this.player.body.setCollideWorldBounds(true);
+    this.x = 0;
     this.cameramain = this.cameras.main;
 // ------------------------  MAPA  ---------------------------------
 
@@ -307,8 +309,12 @@ this.anims.create({
       this.player.x = this.player.x - 6600; //se mantiene la distancia entre el jugador y el guardia
       console.log(this.player.x);
       this.guardia.x = 30;
+      this.physics.world.bounds.setTo(0, 0, 1400, 800);
+      this.x = 0;
     }
     this.colocarobjetosfisicos()
+    this.x += this.worldSpeed;
+    this.physics.world.bounds.setTo(this.x, 0, 1400, 800);
   }
 }
       

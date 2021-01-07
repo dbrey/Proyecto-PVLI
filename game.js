@@ -308,18 +308,6 @@ this.anims.create({
   {
     if (this.sigueJugando)
     {
-<<<<<<< Updated upstream
-      this.cameramain.scrollX= 0;
-      this.player.x = this.player.x - 6600; //se mantiene la distancia entre el jugador y el guardia
-      console.log(this.player.x);
-      this.guardia.x = 30;
-      this.physics.world.bounds.setTo(0, 0, 1400, 800);
-      this.x = 0;
-    }
-    this.colocarobjetosfisicos()
-    this.x += this.worldSpeed;
-    this.physics.world.bounds.setTo(this.x, 0, 1400, 800);
-=======
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
       this.alcohol.x = this.cameramain.scrollX + 150;
@@ -329,16 +317,20 @@ this.anims.create({
         this.player.x = this.player.x - 6600; //se mantiene la distancia entre el jugador y el guardia
         console.log(this.player.x);
         this.guardia.x = 30;
+        this.physics.world.bounds.setTo(0, 0, 1400, 800);
+        this.x = 0;
       }
+
       this.colocarobjetosfisicos()
+      this.x += this.worldSpeed;
+      this.physics.world.bounds.setTo(this.x, 0, 1400, 800);
 
       if(this.physics.collide(this.player, this.guardia)) {
         //PIERDES
         console.log("TOCADO");
         this.sigueJugando = false;
       }
-    }
->>>>>>> Stashed changes
+    } 
   }
 }
       

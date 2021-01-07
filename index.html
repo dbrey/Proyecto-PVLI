@@ -14,6 +14,7 @@
     <h1>Bohemian Drunk</h1>
     <script type="module">
       import MenuScene from "./MenuScene.js";
+      import Intro from "./intro.js";
       import Game from "./game.js";
       var config = {
         type: Phaser.AUTO,
@@ -27,7 +28,7 @@
           mode: Phaser.Scale.FIT,
           autoCenter: Phaser.Scale.CENTER_BOTH,
         },
-        scene: [MenuScene, Game],
+        scene: [Intro, MenuScene, Game],
         physics: {
           default: "arcade",
           arcade: { gravity: { y: 400 }, debug: true },

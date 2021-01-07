@@ -101,7 +101,7 @@ this.anims.create({
     this.fondoimg.setOrigin(0,0);
     this.fondoimg.setScrollFactor(0);
 
-    this.music = this.sound.add('mainsoundtrack', {loop: true});
+    this.music = this.sound.add('mainsoundtrack', {volume: 0.05}, {loop: true});
     this.music.play();
 
     this.worldSpeed = 1;
@@ -211,7 +211,6 @@ this.anims.create({
     if(this.player.x >= 1300 && this.player.x <= 1305)
     {
       this.obs = this.map.createFromObjects('fisicos', 22, {key: 'jarron'});
-      //new Obstaculo (this, 1520, 300, 'jarron', 0, 200);
     }
 
     //JARRONES EDIFICIO 2

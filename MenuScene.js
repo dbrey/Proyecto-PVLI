@@ -1,6 +1,4 @@
-import Game from '../game';
-
-export class LoadScene extends Phaser.Scene 
+export default class LoadScene extends Phaser.Scene 
 {
   constructor() {
     super({ key: 'menu' });
@@ -9,7 +7,6 @@ export class LoadScene extends Phaser.Scene
 
   preload() {
     this.load.image('mainmenu', './imagenes/menu.jpg');
-
     this.load.image('botonplay', './sprites/obstaculos/32x32/coche.png');
   }
 

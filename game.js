@@ -104,6 +104,7 @@ this.anims.create({
     this.music = this.sound.add('mainsoundtrack', {volume: 0.05}, {loop: true});
     this.music.play();
 
+    this.sigueJugando = true;
     this.worldSpeed = 1;
 
     this.player = new Player(this, 200,580, this.worldSpeed);
@@ -145,6 +146,7 @@ this.anims.create({
     const platformCollider = this.physics.add.collider(this.player, this.platformlayer);
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
+    this.physics.add.collider(this.player, this.guardia);
     const objest = this.physics.add.collider(this.player, this.objestaticos); 
 
     this.groundlayer.setCollision(15);
@@ -298,13 +300,15 @@ this.anims.create({
     }
   }
 
+  sigoJugando(){
+    return this.sigueJugando;
+  }
+
   update(time, delta) 
   {
-    this.cameramain.scrollX += this.worldSpeed;
-    this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
-    this.alcohol.x = this.cameramain.scrollX + 150;
-    if(this.cameras.main.worldView.x === 6600) //Reseteo level
+    if (this.sigueJugando)
     {
+<<<<<<< Updated upstream
       this.cameramain.scrollX= 0;
       this.player.x = this.player.x - 6600; //se mantiene la distancia entre el jugador y el guardia
       console.log(this.player.x);
@@ -315,6 +319,26 @@ this.anims.create({
     this.colocarobjetosfisicos()
     this.x += this.worldSpeed;
     this.physics.world.bounds.setTo(this.x, 0, 1400, 800);
+=======
+      this.cameramain.scrollX += this.worldSpeed;
+      this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
+      this.alcohol.x = this.cameramain.scrollX + 150;
+      if(this.cameras.main.worldView.x === 6600) //Reseteo level
+      {
+        this.cameramain.scrollX= 0;
+        this.player.x = this.player.x - 6600; //se mantiene la distancia entre el jugador y el guardia
+        console.log(this.player.x);
+        this.guardia.x = 30;
+      }
+      this.colocarobjetosfisicos()
+
+      if(this.physics.collide(this.player, this.guardia)) {
+        //PIERDES
+        console.log("TOCADO");
+        this.sigueJugando = false;
+      }
+    }
+>>>>>>> Stashed changes
   }
 }
       

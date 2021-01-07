@@ -7,7 +7,7 @@ export default class Player extends Personaje
     super(scene,x,y,'corrersheet', speed * 62);
 
     this.setScale(0.25);
-
+    this.escenario = scene;
     this.speed = 0;
     this.limitspeed = 200;
 
@@ -28,25 +28,28 @@ export default class Player extends Personaje
 
   preUpdate(t, d)
   {
-    super.preUpdate(t, d)
+    if (this.escenario.sigoJugando()){
+      super.preUpdate(t, d)
 
-    if(this.mov === true) //normal
-    {
-      this.normal();
-    }
-    else //Champan FALTA CAMBIAR EL SPRITE
-    {
-      this.champan();
-      if(this.tiempo === 1000) //Se acabo el powerup
+      if(this.mov === true) //normal
       {
-        this.tiempo = 0;
-        this.cambiomov();
+        this.normal();
       }
-      else
+      else //Champan FALTA CAMBIAR EL SPRITE
       {
-        this.tiempo++;
+        this.champan();
+        if(this.tiempo === 1000) //Se acabo el powerup
+        {
+          this.tiempo = 0;
+          this.cambiomov();
+        }
+        else
+        {
+          this.tiempo++;
+        }
       }
     }
+    else this.body.setVelocityX(0);
   }  
 
   champan()

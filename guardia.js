@@ -7,12 +7,16 @@ export default class Guardia extends Personaje
     super(scene,x,y,'guardiacorrersheet', speed * 60);
     this.setScale(0.25); 
     this.play('guardiacorrer',true);
+    this.escenario = scene;
   }
 
   preUpdate(t,d)
   {
-    super.preUpdate(t, d);
-    this.moverse();
+    if (this.escenario.sigoJugando()){
+      super.preUpdate(t, d);
+      this.moverse();
+    }
+    else this.body.setVelocityX(0);
   }  
 
   moverse(){

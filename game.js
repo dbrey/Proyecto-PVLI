@@ -323,7 +323,7 @@ this.anims.create({
 
       this.colocarobjetosfisicos()
       this.x += this.worldSpeed;
-      this.physics.world.bounds.setTo(this.x, 0, 1400, 800);
+      this.physics.world.bounds.setTo(this.x, 25, 1350, 800);
 
       if(this.physics.collide(this.player, this.guardia)) {
         //PIERDES

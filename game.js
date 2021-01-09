@@ -175,6 +175,8 @@ this.anims.create({
    this.calimocho = new Calimocho(this, 1000, 550);
    this.cerveza = new Cerveza(this, 1100, 550);
    this.jagger = new Jagger(this, 1200, 550);
+
+   
 // ------------------------------------------------------------------
   };
 
@@ -212,92 +214,107 @@ this.anims.create({
 
   colocarobjetosfisicos()
   {
-    if(this.player.x >= 1300 && this.player.x <= 1305)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 22, {key: 'jarron'});
-    }
+    for (const objeto of this.map.getObjectLayer('fisicos').objects) {
+      if (objeto.x <= this.player.x + 100 && objeto.name === 'jarron') {
+        this.obs = new Obstaculo(this, objeto.x, objeto.y,'jarron',0,1);
+        console.log(objeto.x);
+      }
+      else if (objeto.x <= this.player.x + 1000 && objeto.name === 'coche') {
+        this.obs = new Obstaculo(this, objeto.x, objeto.y,'coche',0,1);
+      }
+      else if (objeto.x <= this.player.x  && objeto.name+ 1000 === 'cocheoscuro') {
+        this.obs = new Obstaculo(this, objeto.x, objeto.y,'cocheoscuro',0,1);
+      }
+      else if (objeto.x <= this.player.x + 1000 && objeto.name === 'barriltop') {
+        this.obs = new Obstaculo(this, objeto.x, objeto.y,'barriltop',0,1);
+      }
+  }
+    // if(this.player.x >= 1300 && this.player.x <= 1305)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 22, {key: 'jarron'});
+    // }
 
-    //JARRONES EDIFICIO 2
-    else if(this.player.x >= 1700 && this.player.x <= 1705)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 23, {key: 'jarron'});
-    }
-    else if(this.player.x >= 2050 && this.player.x <= 2055)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 24, {key: 'jarron'});
-    }
-    else if(this.player.x >= 1980 && this.player.x <= 1985)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 25, {key: 'jarron'});
-    }
-    else if(this.player.x >= 2100 && this.player.x <= 2105)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 26, {key: 'jarron'});
-    }
-    else if(this.player.x >= 2160 && this.player.x <= 2165)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 27, {key: 'jarron'});
-    }
+    // //JARRONES EDIFICIO 2
+    // else if(this.player.x >= 1700 && this.player.x <= 1705)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 23, {key: 'jarron'});
+    // }
+    // else if(this.player.x >= 2050 && this.player.x <= 2055)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 24, {key: 'jarron'});
+    // }
+    // else if(this.player.x >= 1980 && this.player.x <= 1985)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 25, {key: 'jarron'});
+    // }
+    // else if(this.player.x >= 2100 && this.player.x <= 2105)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 26, {key: 'jarron'});
+    // }
+    // else if(this.player.x >= 2160 && this.player.x <= 2165)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 27, {key: 'jarron'});
+    // }
     
-    //EDIFICIO 3
+    // //EDIFICIO 3
 
-    else if(this.player.x >= 2000 && this.player.x <= 2005)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 33, {key: 'coche'});
-    }
+    // else if(this.player.x >= 2000 && this.player.x <= 2005)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 33, {key: 'coche'});
+    // }
 
-    //EDIFICIO 4
+    // //EDIFICIO 4
 
-    else if(this.player.x >= 3630 && this.player.x <= 3635)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 29, {key: 'jarron'});
-    }
-    else if(this.player.x >= 3970 && this.player.x <= 3975)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 31, {key: 'jarron'});
-      this.obs = this.map.createFromObjects('fisicos', 32, {key: 'jarron'});
-    }
+    // else if(this.player.x >= 3630 && this.player.x <= 3635)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 29, {key: 'jarron'});
+    // }
+    // else if(this.player.x >= 3970 && this.player.x <= 3975)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 31, {key: 'jarron'});
+    //   this.obs = this.map.createFromObjects('fisicos', 32, {key: 'jarron'});
+    // }
 
-    //EDIFICIO 5
-    else if(this.player.x >= 3700 && this.player.x <= 3705)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 35, {key: 'barriltop'});
-    }
-    else if(this.player.x >= 4060 && this.player.x <= 4065)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 36, {key: 'jarron'});
-    }
+    // //EDIFICIO 5
+    // else if(this.player.x >= 3700 && this.player.x <= 3705)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 35, {key: 'barriltop'});
+    // }
+    // else if(this.player.x >= 4060 && this.player.x <= 4065)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 36, {key: 'jarron'});
+    // }
 
-    //EDIFICIO 6
-    else if(this.player.x >= 4660 && this.player.x <= 4665)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 37, {key: 'jarron'});;
-    }
+    // //EDIFICIO 6
+    // else if(this.player.x >= 4660 && this.player.x <= 4665)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 37, {key: 'jarron'});;
+    // }
 
-    else if(this.player.x >= 4780 && this.player.x <= 4785)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 38, {key: 'jarron'});
-    }
+    // else if(this.player.x >= 4780 && this.player.x <= 4785)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 38, {key: 'jarron'});
+    // }
 
-    //EDIFICIO 7
-    else if(this.player.x >= 4890 && this.player.x <= 4895)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 45, {key: 'jarron'});
-    }
-    else if(this.player.x >= 5010 && this.player.x <= 5015)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 47, {key: 'jarron'});
-    }
-    else if(this.player.x >= 5860 && this.player.x <=5865)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 44, {key: 'cocheoscuro'});
-    }
+    // //EDIFICIO 7
+    // else if(this.player.x >= 4890 && this.player.x <= 4895)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 45, {key: 'jarron'});
+    // }
+    // else if(this.player.x >= 5010 && this.player.x <= 5015)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 47, {key: 'jarron'});
+    // }
+    // else if(this.player.x >= 5860 && this.player.x <=5865)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 44, {key: 'cocheoscuro'});
+    // }
 
-    //EDIFICIO 9
-    else if(this.player.x >= 5350 && this.player.x <= 5355)
-    {
-      this.obs = this.map.createFromObjects('fisicos', 42, {key: 'barriltop'});
-    }
+    // //EDIFICIO 9
+    // else if(this.player.x >= 5350 && this.player.x <= 5355)
+    // {
+    //   this.obs = this.map.createFromObjects('fisicos', 42, {key: 'barriltop'});
+    // }
   }
 
   sigoJugando(){
@@ -321,10 +338,12 @@ this.anims.create({
         this.x = 0;
       }
 
-      this.colocarobjetosfisicos()
+      
       this.x += this.worldSpeed;
       this.physics.world.bounds.setTo(this.x, 25, 1350, 800);
 
+      this.colocarobjetosfisicos();
+      
       if(this.physics.collide(this.player, this.guardia)) {
         //PIERDES
         console.log("TOCADO");

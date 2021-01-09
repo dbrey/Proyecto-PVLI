@@ -10,6 +10,9 @@ export default class MenuScene extends Phaser.Scene
     this.load.image('botonplaynormal', './sprites/menu_inicial/playnormal.png');
     this.load.image('botonplayencima', './sprites/menu_inicial/playencima.png');
 
+    this.load.image('sonidoon', './sprites/menu_inicial/soundnormal.png');
+    this.load.image('sonidooff', './sprites/menu_inicial/soundnegativo.png');
+
     this.load.audio('menu', './sonidos/menu.mp3');
   }
 
@@ -32,9 +35,11 @@ export default class MenuScene extends Phaser.Scene
     this.fondo.setScale(1.5);
     //boton
     let play = this.add.image(316,154, 'botonplaynormal').setInteractive();
-
+    let sonido = this.add.image(1170,100, 'sonidoon').setInteractive();
+    
+    sonido.setScale(1.50);
     play.setScale(0.25);
-    //Acciones
+    //Acciones play
     play.on('pointerover', event => 
     {
       play = this.add.image(316,154, 'botonplayencima');
@@ -51,6 +56,23 @@ export default class MenuScene extends Phaser.Scene
       this.scene.start('game');
   });
 
+    this.sonidoactivo = true;
+      //Acciones sonido
+      sonido.on('pointerdown', event => 
+      {
+        this.sonidoactivo = !this.sonidoactivo;
+        if(this.sonidoactivo)//Si se activa el sonido
+        {
+          this.music.play();
+          sonido = this.add.image(1170,100, 'sonidoon');
+        }
+        else //Si se desactiva
+        {
+          this.music.stop();
+          sonido = this.add.image(1170,100, 'sonidooff');
+        }
+        sonido.setScale(1.50);
+    });
   };
 
 }

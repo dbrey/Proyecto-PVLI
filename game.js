@@ -47,10 +47,19 @@ export default class Game extends Phaser.Scene
     this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');
     this.load.image('devil','./sprites/tiles/devil.png');
     this.load.tilemapTiledJSON('block1','./sprites/tiles/block1.json');
+
+    this.load.bitmapFont('font', './imagenes/carrier_command.png','./imagenes/carrier_command.xml');
   }
 
 
   create() {
+    this.vueltas = 1;
+    this.points = 0;
+    this.text = this.add.bitmapText(1200, 10, 'font',this.points,20);
+    this.text.inputEnabled = true;
+    this.text.setDepth(6);
+    this.text.setScrollFactor(-0,5);
+
 // -------------------------- ANIMACIONES --------------------------
 this.anims.create({
   key: 'champan',
@@ -321,6 +330,11 @@ this.anims.create({
     return this.sigueJugando;
   }
 
+  puntos()
+  {
+    this.text.setText(this.points);
+  }
+
   update(time, delta) 
   {
     if (this.sigueJugando)
@@ -336,19 +350,23 @@ this.anims.create({
         this.guardia.x = 30;
         this.physics.world.bounds.setTo(0, 0, 1400, 800);
         this.x = 0;
+        this.vueltas++;
       }
 
       
       this.x += this.worldSpeed;
       this.physics.world.bounds.setTo(this.x, 25, 1350, 800);
 
-      this.colocarobjetosfisicos();
+      //this.colocarobjetosfisicos();
       
       if(this.physics.collide(this.player, this.guardia)) {
         //PIERDES
         console.log("TOCADO");
         this.sigueJugando = false;
       }
+
+      this.puntos();
+      this.points++; //Cada pixel 1 punto
     } 
   }
 }

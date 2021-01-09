@@ -361,8 +361,30 @@ this.anims.create({
       
       if(this.physics.collide(this.player, this.guardia)) {
         //PIERDES
-        console.log("TOCADO");
         this.sigueJugando = false;
+
+        //Botones (hay que cambiar los sprites
+        let playAgain = this.add.image(316,154, 'botonplaynormal').setInteractive();
+        let mainMenu = this.add.image(1170,100, 'sonidoon').setInteractive();
+
+        //PlayAgain:
+        playAgain.on('pointerover', event => 
+        {
+          playAgain = this.add.image(316,154, 'botonplayencima');
+        });
+
+        playAgain.on('pointerout', event => 
+        {
+          playAgain = this.add.image(316,154, 'botonplaynormal');
+        });
+
+        playAgain.on('pointerdown', event => {
+          this.scene.start('game');
+        });
+
+        mainMenu.on('pointerdown', event => {
+          this.scene.start('MenuScene');
+        });
       }
 
       this.puntos();

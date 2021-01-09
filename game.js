@@ -383,7 +383,7 @@ this.anims.create({
         });
 
         mainMenu.on('pointerdown', event => {
-          this.scene.start('MenuScene');
+          this.scene.start('menu');
         });
       }
 

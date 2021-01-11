@@ -41,24 +41,9 @@ export default class MenuScene extends Phaser.Scene
     
     sonido.setScale(1.50);
     play.setScale(0.25);
-    //Acciones play
-    play.on('pointerover', event => 
-    {
-      play = this.add.image(316,154, 'botonplayencima');
-      play.setScale(0.25);
-    });
-    play.on('pointerout', event => 
-    {
-      play = this.add.image(316,154, 'botonplaynormal');
-      play.setScale(0.25);
-    });
-
-    play.on('pointerdown', event => {
-      this.music.stop();
-      this.scene.start('game');
-  });
 
     this.sonidoactivo = true;
+
       //Acciones sonido
       sonido.on('pointerdown', event => 
       {
@@ -77,7 +62,22 @@ export default class MenuScene extends Phaser.Scene
     });
 
 
-    
+    //Acciones play
+    play.on('pointerover', event => 
+    {
+      play = this.add.image(316,154, 'botonplayencima');
+      play.setScale(0.25);
+    });
+    play.on('pointerout', event => 
+    {
+      play = this.add.image(316,154, 'botonplaynormal');
+      play.setScale(0.25);
+    });
+
+    play.on('pointerdown', event => {
+      this.music.stop();
+      this.scene.start('game', {bool:this.sonidoactivo});
+  });
     //PUNTUACION MAX
 
     this.puntuacion = 204863; //por ejemplo

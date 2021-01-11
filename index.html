@@ -63,6 +63,33 @@
 
   <main id="main">
 
+    <section id="juego" class="">
+      <script type="module">
+        import MenuScene from "./MenuScene.js";
+        import Intro from "./Intro.js";
+        import Game from "./game.js";
+        var config = {
+          type: Phaser.AUTO,
+          width: 1400,
+          height: 800,
+          pixelArt: true,
+          input: {
+            gamepad: true,
+          },
+          scale: {
+            mode: Phaser.Scale.FIT,
+            autoCenter: Phaser.Scale.CENTER_BOTH,
+          },
+          scene: [MenuScene, Game],
+          physics: {
+            default: "arcade",
+            arcade: { gravity: { y: 400 }, debug: true },
+          },
+        };
+        new Phaser.Game(config);
+      </script>
+    </section>
+
     <!-- ======= About Us Section ======= -->
     <section id="controles" class="about">
       <div class="container">
@@ -116,7 +143,7 @@
               <img src="assets/img/portada.jpg" alt="">
             </div>
             
-            <div class="col-md-6">
+            <div class="col-md-6npx">
               <div class="card-body">
                 <h5 class="card-title">Historia</h5>
                 <p class="card-text">El libro nos cuenta la historia de Max Estrella, un pobre poeta envejecido y ciego, quien reclama que su novela vale mas de lo que actualmente esta vendiendo. Sin embargo, no consiguen mejorar el precio y junto con su amigo Don Latino, acaba ahogando sus penas en una taverna.</p>
@@ -296,32 +323,7 @@
       </div>
     </section><!-- End Contact Section -->
 
-    <section id="juego" class="">
-      <script type="module">
-        import MenuScene from "./MenuScene.js";
-        import Intro from "./Intro.js";
-        import Game from "./game.js";
-        var config = {
-          type: Phaser.AUTO,
-          width: 1400,
-          height: 800,
-          pixelArt: true,
-          input: {
-            gamepad: true,
-          },
-          scale: {
-            mode: Phaser.Scale.FIT,
-            autoCenter: Phaser.Scale.CENTER_BOTH,
-          },
-          scene: [MenuScene, Game],
-          physics: {
-            default: "arcade",
-            arcade: { gravity: { y: 400 }, debug: true },
-          },
-        };
-        new Phaser.Game(config);
-      </script>
-    </section>
+    
 
   </main><!-- End #main -->
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

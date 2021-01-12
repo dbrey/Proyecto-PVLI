@@ -347,17 +347,11 @@
   <object id="50" name="caja" x="1489.33" y="457.333">
    <point/>
   </object>
-  <object id="51" x="1670.67" y="260" width="1.33333">
-   <ellipse/>
-  </object>
   <object id="53" name="caja" x="1921.33" y="385.333">
    <point/>
   </object>
   <object id="54" name="caja" x="2249.33" y="376">
    <point/>
-  </object>
-  <object id="55" x="1958.67" y="80">
-   <ellipse/>
   </object>
   <object id="56" name="barril" x="2161.33" y="582.667">
    <point/>
@@ -366,9 +360,6 @@
    <point/>
   </object>
   <object id="58" name="barril" x="2800" y="424">
-   <point/>
-  </object>
-  <object id="59" x="2797.33" y="61.3333">
    <point/>
   </object>
   <object id="60" name="barril" x="3345.33" y="585.333">

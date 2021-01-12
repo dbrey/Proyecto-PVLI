@@ -172,15 +172,13 @@ this.anims.create({
         
 		 	})
     });
-
-    
-   this.champan = new Champan(this,700,530);
-   this.agua = new Agua(this, 5000,550);
-   this.calimocho = new Calimocho(this, 1000, 550);
-   this.cerveza = new Cerveza(this, 1100, 550);
-   this.jagger = new Jagger(this, 1200, 550);
-
+   
+   
+   
+   
+   this.powerups();
    this.objetosfisicos();
+   this.objetosestaticos();
 
 // ------------------------------------------------------------------
   };
@@ -217,18 +215,59 @@ this.anims.create({
     this.worldSpeed = 1;
   }
 
+  powerups()
+  {
+    for (const objeto of this.map.getObjectLayer('powerup').objects) 
+    {
+      let value = Phaser.Math.Between(0, 11); //Puede que no salga nada
+      if(value == 0)
+      {
+        this.power = new Champan(this,objeto.x, objeto.y);
+      }
+      else if(value == 1 || value == 5)
+      {
+        this.power = new Agua(this, objeto.x, objeto.y);
+      }
+      else if(value == 2 || value == 6)
+      {
+        this.power = new Calimocho(this, objeto.x, objeto.y);
+      }
+      else if(value == 3 || value == 7)
+      {
+        this.power = new Cerveza(this, objeto.x, objeto.y);
+      }
+      else if(value == 4 || value == 8)
+      {
+        this.power = new Jagger(this, objeto.x, objeto.y);
+      }
+      console.log(value);
+    }
+  }
+
+  objetosestaticos()
+  {
+    for (const objeto of this.map.getObjectLayer('estaticos').objects) 
+    {
+      this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name, 0, 1);
+    }
+  }
+
   objetosfisicos()
   {
     //trigger
     for (const objeto of this.map.getObjectLayer('fisicos').objects) { //Por cada objeto de cada tipo creo un objeto vacio a  cierta distancia de el
-      if (objeto.name === 'jarron') {
+      if (objeto.name === 'jarron') 
+      {
 
         let collider = this.physics.add.image(objeto.x-50,500,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
 
-        this.physics.add.overlap(this.player, collider, this.activate(collider, objeto));
+        this.physics.add.overlap(this.player, collider, () => 
+        {
+          this.activate(collider, objeto)
+        })
       }
       else if (objeto.name === 'coche') {
         let collider = this.physics.add.image(objeto.x-1000,500,'barril');
@@ -236,7 +275,10 @@ this.anims.create({
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
 
-        //this.physics.add.overlap(this.player, collider, this.activate(collider, objeto));
+        this.physics.add.overlap(this.player, collider, () => 
+        {
+          this.activate(collider, objeto)
+        })
       }
       else if (objeto.name === 'cocheoscuro') {
         let collider = this.physics.add.image(objeto.x + 2000,500,'barril');
@@ -244,7 +286,10 @@ this.anims.create({
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
 
-        //this.physics.add.overlap(this.player, collider, this.activate(collider, objeto));
+        this.physics.add.overlap(this.player, collider, () => 
+        {
+          this.activate(collider, objeto)
+        })
       }
       else if (objeto.name === 'barriltop') {
         let collider = this.physics.add.image(objeto.x - 1000,500,'barril');
@@ -252,7 +297,10 @@ this.anims.create({
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
 
-        //this.physics.add.overlap(this.player, collider, this.activate(collider, objeto));
+        this.physics.add.overlap(this.player, collider, () => 
+        {
+          this.activate(collider, objeto)
+        })
       }
    }
   }
@@ -260,8 +308,7 @@ this.anims.create({
   activate(collider, objeto) //Aparece el objeto y destruyo el collider
   {
     this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name, 0, 1);
-    let collider = this.physics.add.image(300,200,'barril');
-    //collider.destroy();
+    collider.destroy();
   }
 
   sigoJugando(){

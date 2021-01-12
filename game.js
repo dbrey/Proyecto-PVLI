@@ -158,7 +158,6 @@ this.anims.create({
     this.physics.add.collider(this.player, this.platformlayer);
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
-    this.physics.add.collider(this.player, this.guardia);
 
     this.groundlayer.setCollision(15);
     this.platformlayer.setCollisionBetween(0, 1000);
@@ -342,7 +341,7 @@ this.anims.create({
       this.x += this.worldSpeed;
       this.physics.world.bounds.setTo(this.x, 25, 1350, 800);
       
-      if(this.physics.collide(this.player, this.guardia)) {
+      if(this.physics.overlap(this.player, this.guardia)) {
         //PIERDES
         this.sigueJugando = false;
 

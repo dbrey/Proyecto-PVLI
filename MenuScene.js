@@ -7,6 +7,9 @@ export default class MenuScene extends Phaser.Scene
 
   preload() {
     this.load.spritesheet('mainmenu', './sprites/menu_inicial/bar_atlas.png', { frameWidth: 960, frameHeight: 540 });
+    this.load.spritesheet('record', './sprites/menu_inicial/record_anim.png', { frameWidth: 536, frameHeight: 43 });
+
+
     this.load.image('botonplaynormal', './sprites/menu_inicial/playnormal.png');
     this.load.image('botonplayencima', './sprites/menu_inicial/playencima.png');
 
@@ -31,6 +34,19 @@ export default class MenuScene extends Phaser.Scene
       frameRate: 5,
       repeat: -1
     }); 
+
+    this.anims.create ({
+      key: 'r',
+      frames: this.anims.generateFrameNumbers('record', { start: 0, end: 7}),
+      frameRate: 5,
+      repeat: -1
+    }); 
+
+    this.max = this.add.sprite(160, 330, 'record');
+    this.max.anims.play("r");
+    this.max.setScale(0.2,0.3);
+    this.max.setDepth(2);
+
 
     this.fondo = this.add.sprite(700, 400, 'mainmenu');
     this.fondo.anims.play("menu");

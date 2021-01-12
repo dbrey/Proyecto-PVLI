@@ -346,26 +346,28 @@ this.anims.create({
         this.sigueJugando = false;
 
         //Botones (hay que cambiar los sprites
-        let playAgain = this.add.image(316,154, 'botonplaynormal').setInteractive();
-        let mainMenu = this.add.image(1170,100, 'sonidoon').setInteractive();
+        let playAgain = this.add.image(this.guardia.x + 316,this.guardia.y - 200, 'botonplaynormal').setInteractive();
+        let mainMenu = this.add.image(this.guardia.x + 1170,this.guardia.y - 200, 'sonidoon').setInteractive();
 
         //PlayAgain:
         playAgain.on('pointerover', event => 
         {
-          playAgain = this.add.image(316,154, 'botonplayencima');
+          playAgain = this.add.image(this.guardia.x + 316,this.guardia.y - 200, 'botonplayencima');
         });
 
         playAgain.on('pointerout', event => 
         {
-          playAgain = this.add.image(316,154, 'botonplaynormal');
+          playAgain = this.add.image(this.guardia.x + 316,this.guardia.y - 200, 'botonplaynormal');
         });
 
         playAgain.on('pointerdown', event => {
           this.scene.start('game');
+          this.music.stop();
         });
 
         mainMenu.on('pointerdown', event => {
           this.scene.start('menu');
+          this.music.stop();
         });
       }
 

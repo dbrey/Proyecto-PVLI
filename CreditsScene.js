@@ -22,17 +22,7 @@ export default class CreditsScene extends Phaser.Scene
     //boton
     let menu = this.add.image(150,700, 'botonplaynormal').setInteractive();
 
-    let enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-
-    enter.on('down', () => 
-     {
-       this.volvermenu;
-     })
-
-    // this.input.keyboard.on('ENTER',() => 
-    // {
-    //   this.volvermenu;
-    // });
+    this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 
     menu.on('pointerdown', event => {
       this.volvermenu();
@@ -44,7 +34,10 @@ export default class CreditsScene extends Phaser.Scene
     {
       this.fondo.y++;
     }
-    
+    if(this.enter.isDown)
+    {
+      this.volvermenu();
+    }
   }
 
   volvermenu()

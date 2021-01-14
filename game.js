@@ -13,6 +13,7 @@ export default class Game extends Phaser.Scene
   constructor() {
     super({ key: "game" });
     this.sonidoactive;
+    this.obs;
   }
 
   init(data)
@@ -40,7 +41,6 @@ export default class Game extends Phaser.Scene
     this.load.image('plataforma', './sprites/background/plataforma.png');
     
     this.load.atlas('alcohol_atlas', './barra_alcohol/barra_alcohol/alcohol.png', './barra_alcohol/barra_alcohol/alcohol_atlas.json');
-   // this.load.spritesheet('alcoholsheet','./barra_alcohol/barra_alcohol/alcohol_anim.png', { frameWidth: 408, frameHeight: 122 });
     this.load.spritesheet('corrersheet', './sprites/characters/spritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('agacharsesheet', './sprites/characters/spritesheetagacharse.png', { frameWidth: 218, frameHeight: 218 })
     this.load.spritesheet('guardiacorrersheet', './sprites/characters/guardiaspritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
@@ -319,6 +319,11 @@ this.anims.create({
     this.text.setText(this.points);
   }
 
+  reset()
+  {
+    this.objetosfisicos();
+    this.objetosestaticos();
+  }
   update(time, delta) 
   {
     if (this.sigueJugando)
@@ -335,6 +340,8 @@ this.anims.create({
         this.physics.world.bounds.setTo(0, 0, 1400, 800);
         this.x = 0;
         this.vueltas++;
+
+        //this.reset();
       }
 
       
@@ -366,7 +373,7 @@ this.anims.create({
         });
 
         mainMenu.on('pointerdown', event => {
-          this.scene.start('menu');
+          this.scene.start('menu',{int:this.points});
           this.music.stop();
         });
       }

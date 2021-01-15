@@ -74,7 +74,7 @@
     
         <script type="module">
           import MenuScene from "./MenuScene.js";
-          import Intro from "./Intro.js";
+          import Intro from "./intro.js";
           import Game from "./game.js";
           import CreditsScene from "./CreditsScene.js"
 
@@ -91,7 +91,7 @@
               mode: Phaser.Scale.FIT,
               autoCenter: Phaser.Scale.CENTER_BOTH,
             },
-            scene: [MenuScene,CreditsScene, Game],
+            scene: [Intro, MenuScene, CreditsScene, Game],
             physics: {
               default: "arcade",
               arcade: { gravity: { y: 400 }, debug: true },

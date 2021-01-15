@@ -111,7 +111,7 @@ this.anims.create({
 }); 
 // ------------------------------------------------------------------
 // ---------------------- ELEMENTOS DEL JUEGO -----------------------
-    this.fondoimg = this.add.tileSprite(0,-150,1400, 800, 'fondo1');
+    this.fondoimg = this.add.tileSprite(0,0,1050, 600, 'fondo1');
     this.fondoimg.setScale(1);
     this.fondoimg.setOrigin(0,0);
     this.fondoimg.setScrollFactor(0);
@@ -125,9 +125,9 @@ this.anims.create({
     this.sigueJugando = true;
     this.worldSpeed = 3;
 
-    this.player = new Player(this, 200,580, this.worldSpeed);
+    this.player = new Player(this, 200,450, this.worldSpeed);
 
-    this.guardia = new Guardia(this, 30,565, this.worldSpeed);
+    this.guardia = new Guardia(this, 30,450, this.worldSpeed);
 
     this.alcohol = new Barra_Alcohol(this, 100, 70);
 
@@ -173,8 +173,12 @@ this.anims.create({
 		 	})
     });
    
-   
-   
+   this.groundlayer.setScale(0.8);
+   this.farlayer.setScale(0.8);
+   this.behindlayer.setScale(0.8);
+   this.behindlayer2.setScale(0.8);
+   this.platformlayer.setScale(0.8);
+
    
    this.powerups();
    this.objetosfisicos();
@@ -247,7 +251,14 @@ this.anims.create({
   {
     for (const objeto of this.map.getObjectLayer('estaticos').objects) 
     {
-      this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name);
+      if(objeto.name !== "jarron")
+      {
+        this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name);
+      }
+      else
+      {
+        this.obs = new jarron(this, objeto.x, objeto.y, objeto.name);
+      }
     }
   }
 
@@ -258,7 +269,7 @@ this.anims.create({
       if (objeto.name === 'jarron') 
       {
 
-        let collider = this.physics.add.image(objeto.x-50,500,'barril');
+        let collider = this.physics.add.image(objeto.x,350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -269,7 +280,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'coche') {
-        let collider = this.physics.add.image(objeto.x-1000,500,'barril');
+        let collider = this.physics.add.image(objeto.x-250,350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -280,7 +291,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'cocheoscuro') {
-        let collider = this.physics.add.image(objeto.x + 2000,500,'barril');
+        let collider = this.physics.add.image(objeto.x + 250,350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -291,7 +302,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'barriltop') {
-        let collider = this.physics.add.image(objeto.x - 1000,500,'barril');
+        let collider = this.physics.add.image(objeto.x - 250,350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -337,7 +348,7 @@ this.anims.create({
         this.player.x = this.player.x - this.cameras.main.worldView.x; //se mantiene la distancia entre el jugador y el guardia
         console.log(this.player.x);
         this.guardia.x = 30;
-        this.physics.world.bounds.setTo(0, 0, 1400, 800);
+        this.physics.world.bounds.setTo(0, 0, 1050, 600);
         this.x = 0;
         this.vueltas++;
 
@@ -346,7 +357,7 @@ this.anims.create({
 
       
       this.x += this.worldSpeed;
-      this.physics.world.bounds.setTo(this.x, 25, 1350, 800);
+      this.physics.world.bounds.setTo(this.x, 25, 1050, 600);
       
       if(this.physics.overlap(this.player, this.guardia)) {
         //PIERDES

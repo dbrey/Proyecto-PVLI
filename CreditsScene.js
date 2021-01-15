@@ -24,17 +24,17 @@ export default class CreditsScene extends Phaser.Scene
     this.fondo.setDepth(2);
     this.creditos = this.add.sprite(700, 1130, 'credits');
     //boton
-    let menu = this.add.image(150,700, 'menuoff').setInteractive();
+    let menu = this.add.image(250,700, 'menuoff').setInteractive();
     menu.setDepth(3);
     this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 
     menu.on('pointerover', event => 
     {
-      menu = this.add.image(150,700, 'menuoff');
+      menu = this.add.image(250,700, 'menuon');
     });
     menu.on('pointerout', event => 
     {
-      menu = this.add.image(150,700, 'menuon');
+      menu = this.add.image(250,700, 'menuoff');
     });
 
     menu.on('pointerdown', event => {

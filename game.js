@@ -122,7 +122,7 @@ this.anims.create({
     }
 
     this.sigueJugando = true;
-    this.worldSpeed = 2.7;
+    this.worldSpeed = 3;
 
     this.player = new Player(this, 200,580, this.worldSpeed);
 
@@ -351,7 +351,9 @@ this.anims.create({
       if(this.physics.overlap(this.player, this.guardia)) {
         //PIERDES
         this.sigueJugando = false;
-
+        this.music.stop();
+        this.scene.start('deadmenu', {int:this.points}, {bool:this.sonidoactive});
+/*
         //Botones (hay que cambiar los sprites
         let playAgain = this.add.image(this.guardia.x + 316,this.guardia.y - 200, 'botonplaynormal').setInteractive();
         let mainMenu = this.add.image(this.guardia.x + 1170,this.guardia.y - 200, 'sonidoon').setInteractive();
@@ -375,7 +377,7 @@ this.anims.create({
         mainMenu.on('pointerdown', event => {
           this.scene.start('menu',{int:this.points});
           this.music.stop();
-        });
+        });*/
       }
 
       this.puntos();

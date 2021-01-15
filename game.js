@@ -60,10 +60,11 @@ export default class Game extends Phaser.Scene
   create() {
     this.vueltas = 1;
     this.points = 0;
-    this.text = this.add.bitmapText(1200, 10, 'font',this.points,20);
+    this.text = this.add.bitmapText(1200, 10, 'font',this.points,20,10);
     this.text.inputEnabled = true;
     this.text.setDepth(6);
     this.text.setScrollFactor(-0,5);
+    this.text.ALIGN_LEFT;
 
 // -------------------------- ANIMACIONES --------------------------
 this.anims.create({
@@ -239,7 +240,6 @@ this.anims.create({
       {
         this.power = new Jagger(this, objeto.x, objeto.y);
       }
-      console.log(value);
     }
   }
 
@@ -247,7 +247,7 @@ this.anims.create({
   {
     for (const objeto of this.map.getObjectLayer('estaticos').objects) 
     {
-      this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name, 0, 1);
+      this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name);
     }
   }
 
@@ -306,7 +306,7 @@ this.anims.create({
 
   activate(collider, objeto) //Aparece el objeto y destruyo el collider
   {
-    this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name, 0, 1);
+    this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name);
     collider.destroy();
   }
 

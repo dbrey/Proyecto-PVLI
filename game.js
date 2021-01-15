@@ -60,7 +60,7 @@ export default class Game extends Phaser.Scene
   create() {
     this.vueltas = 1;
     this.points = 0;
-    this.text = this.add.bitmapText(1200, 10, 'font',this.points,20,10);
+    this.text = this.add.bitmapText(1200, 10, 'font',this.points,20);
     this.text.inputEnabled = true;
     this.text.setDepth(6);
     this.text.setScrollFactor(-0,5);
@@ -123,7 +123,7 @@ this.anims.create({
     }
 
     this.sigueJugando = true;
-    this.worldSpeed = 2.7;
+    this.worldSpeed = 3;
 
     this.player = new Player(this, 200,580, this.worldSpeed);
 
@@ -240,7 +240,6 @@ this.anims.create({
       {
         this.power = new Jagger(this, objeto.x, objeto.y);
       }
-      console.log(value);
     }
   }
 
@@ -248,7 +247,7 @@ this.anims.create({
   {
     for (const objeto of this.map.getObjectLayer('estaticos').objects) 
     {
-      this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name, 0, 1);
+      this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name);
     }
   }
 
@@ -307,7 +306,7 @@ this.anims.create({
 
   activate(collider, objeto) //Aparece el objeto y destruyo el collider
   {
-    this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name, 0, 1);
+    this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name);
     collider.destroy();
   }
 
@@ -352,7 +351,9 @@ this.anims.create({
       if(this.physics.overlap(this.player, this.guardia)) {
         //PIERDES
         this.sigueJugando = false;
-
+        this.music.stop();
+        this.scene.start('deadmenu', {int:this.points}, {bool:this.sonidoactive});
+/*
         //Botones (hay que cambiar los sprites
         let playAgain = this.add.image(this.guardia.x + 316,this.guardia.y - 200, 'botonplaynormal').setInteractive();
         let mainMenu = this.add.image(this.guardia.x + 1170,this.guardia.y - 200, 'sonidoon').setInteractive();
@@ -376,7 +377,7 @@ this.anims.create({
         mainMenu.on('pointerdown', event => {
           this.scene.start('menu',{int:this.points});
           this.music.stop();
-        });
+        });*/
       }
 
       this.puntos();

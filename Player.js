@@ -12,7 +12,7 @@ export default class Player extends Personaje
     this.limitspeed = 200;
 
     this.mov = true;
-    
+
     this.tiempo = 0;
     this.aceleracion = 5; //Rapidez con la que cambia la velocidad con el input
     this.aumentandoVelocidad = false;
@@ -86,7 +86,6 @@ export default class Player extends Personaje
     }
     else{ //Quitarla y mov cielo
       this.body.setVelocityY(-600);
-      this.anims.play('champan',true);
       this.body.allowGravity = false;
 
       //platformCollider.destroy();
@@ -188,7 +187,9 @@ export default class Player extends Personaje
 
   ralentizar(dureza)
   {
-    this.speed -= dureza;
+    //this.speed -= dureza //Por alguna razon, si se pone este codigo, el jugador se destruye
+    
+    this.speed -= 100
     if(this.speed < -200)
     {
       this.speed = -200;

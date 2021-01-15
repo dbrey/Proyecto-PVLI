@@ -21,6 +21,8 @@ export default class MenuScene extends Phaser.Scene
     this.load.image('sonidoon', './sprites/menu_inicial/soundnormal.png');
     this.load.image('sonidooff', './sprites/menu_inicial/soundnegativo.png');
 
+    this.load.image('credit', './sprites/menu_inicial/credits_postit.png');
+    
     this.load.atlas('puntmax','./sprites/menu_inicial/numeros.png','./sprites/menu_inicial/numeros_atlas.json');
 
     this.load.audio('menu', './sonidos/menu.mp3');
@@ -63,7 +65,7 @@ export default class MenuScene extends Phaser.Scene
     //boton
     let play = this.add.image(316,154, 'botonplaynormal').setInteractive();
     let sonido = this.add.image(1170,100, 'sonidoon').setInteractive();
-    let credits = this.add.image(1170,400, 'botonplaynormal').setInteractive();
+    let credits = this.add.image(1100,560, 'credit').setInteractive();
 
 
     sonido.setScale(1.50);

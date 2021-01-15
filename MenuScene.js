@@ -65,12 +65,12 @@ export default class MenuScene extends Phaser.Scene
     //boton
     let play = this.add.image(316,154, 'botonplaynormal').setInteractive();
     let sonido = this.add.image(1170,100, 'sonidoon').setInteractive();
-    let credits = this.add.image(1100,560, 'credit').setInteractive();
+    let credits = this.add.image(1080,560, 'credit').setInteractive();
 
 
     sonido.setScale(1.50);
     play.setScale(0.25);
-    credits.setScale(0.25);
+    credits.setScale(0.5);
     this.sonidoactivo = true;
 
       //Acciones sonido

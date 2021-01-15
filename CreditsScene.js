@@ -18,6 +18,7 @@ export default class CreditsScene extends Phaser.Scene
 
   create() {
     this.fondo = this.add.sprite(700, 400, 'fondo');
+    this.fondo.setDepth(2);
     this.creditos = this.add.sprite(700, 1000, 'credits');
     //boton
     let menu = this.add.image(150,700, 'botonplaynormal').setInteractive();

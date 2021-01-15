@@ -248,7 +248,7 @@ this.anims.create({
   {
     for (const objeto of this.map.getObjectLayer('estaticos').objects) 
     {
-      this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name, 0, 1);
+      this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name);
     }
   }
 
@@ -307,7 +307,7 @@ this.anims.create({
 
   activate(collider, objeto) //Aparece el objeto y destruyo el collider
   {
-    this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name, 0, 1);
+    this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name);
     collider.destroy();
   }
 

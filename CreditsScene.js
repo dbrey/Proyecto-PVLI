@@ -39,8 +39,12 @@ export default class CreditsScene extends Phaser.Scene
 
     menu.on('pointerdown', event => {
       this.volvermenu();
-  });
+    });
   };
+
+
+
+  
   update() //Supongo que la imagen final tiene de tamaño 1000
   {
     if(this.creditos.y > -200)

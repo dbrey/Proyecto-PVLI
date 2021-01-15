@@ -53,24 +53,24 @@ export default class MenuScene extends Phaser.Scene
       repeat: -1
     }); 
 
-    this.max = this.add.sprite(160, 330, 'record');
+    this.max = this.add.sprite(135, 250, 'record');
     this.max.anims.play("r");
-    this.max.setScale(0.2,0.3);
+    this.max.setScale(0.13,0.2);
     this.max.setDepth(2);
 
 
-    this.fondo = this.add.sprite(700, 400, 'mainmenu');
+    this.fondo = this.add.sprite(525, 300, 'mainmenu');
     this.fondo.anims.play("menu");
-    this.fondo.setScale(1.5);
+    this.fondo.setScale(1.1);
     //boton
-    let play = this.add.image(316,154, 'botonplaynormal').setInteractive();
-    let sonido = this.add.image(1170,100, 'sonidoon').setInteractive();
-    let credits = this.add.image(1080,560, 'credit').setInteractive();
+    let play = this.add.image(243,120, 'botonplaynormal').setInteractive();
+    let sonido = this.add.image(870,80, 'sonidoon').setInteractive();
+    let credits = this.add.image(800,420, 'credit').setInteractive();
 
 
-    sonido.setScale(1.50);
-    play.setScale(0.25);
-    credits.setScale(0.5);
+    sonido.setScale(1.1);
+    play.setScale(0.19);
+    credits.setScale(0.4);
     this.sonidoactivo = true;
 
       //Acciones sonido
@@ -80,14 +80,14 @@ export default class MenuScene extends Phaser.Scene
         if(this.sonidoactivo)//Si se activa el sonido
         {
           this.music.play();
-          sonido = this.add.image(1170,100, 'sonidoon');
+          sonido = this.add.image(870,80, 'sonidoon');
         }
         else //Si se desactiva
         {
           this.music.stop();
-          sonido = this.add.image(1170,100, 'sonidooff');
+          sonido = this.add.image(870,80, 'sonidooff');
         }
-        sonido.setScale(1.50);
+        sonido.setScale(1.1);
     });
 
     credits.on('pointerdown', event => 
@@ -99,13 +99,13 @@ export default class MenuScene extends Phaser.Scene
     //Acciones play
     play.on('pointerover', event => 
     {
-      play = this.add.image(316,154, 'botonplayencima');
-      play.setScale(0.25);
+      play = this.add.image(243,120, 'botonplayencima');
+      play.setScale(0.19);
     });
     play.on('pointerout', event => 
     {
-      play = this.add.image(316,154, 'botonplaynormal');
-      play.setScale(0.25);
+      play = this.add.image(243,120, 'botonplaynormal');
+      play.setScale(0.19);
     });
 
     play.on('pointerdown', event => {
@@ -113,28 +113,28 @@ export default class MenuScene extends Phaser.Scene
       this.scene.start('game', {bool:this.sonidoactivo});
   });
     //PUNTUACION MAX
-
+this.puntuacion = 24332;
     this.numeros = this.textures.get('puntmax');
     this.frames = this.numeros.getFrameNames();
-    this.puntx = 314;
-    this.punty = 331;
+    this.puntx = 245;
+    this.punty = 248;
     if(this.puntuacion === 0)
     {
       this.image1 = this.add.image(this.puntx, this.punty, 'puntmax', this.puntuacion);
       this.image1.setDepth(6);
-      this.image1.setScale(0.3);
+      this.image1.setScale(0.2);
     }
     else{
       while(this.puntuacion > 0)
       {
         this.numero = this.puntuacion%10; //El primero numero que meto
-        this.puntuacion = this.puntuacion/10 - this.puntuacion/10;
+        this.puntuacion = Math.round(this.puntuacion/10);
         
         //Colocarlo
-      this.image1 = this.add.image(this.puntx, this.punty, 'puntmax', this.numero);
-      this.image1.setDepth(6);
-      this.image1.setScale(0.3);
-      this.puntx -= 16;
+        this.image1 = this.add.image(this.puntx, this.punty, 'puntmax', this.numero);
+        this.image1.setDepth(6);
+        this.image1.setScale(0.2);
+        this.puntx -= 12;
       }
     }
 

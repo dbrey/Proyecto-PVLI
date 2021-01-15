@@ -1,15 +1,16 @@
 export default class Obstaculo extends Phaser.GameObjects.Sprite 
 {
-  constructor(scene, x, y, anim, nombre) {
+  constructor(scene, x, y, anim) {
 
     super(scene,x,y, anim);
 
     this.scene.add.existing(this);
-
+    
     this.nombre2 = anim;
-    console.log (anim);   
     this.setDepth(5);
     this.scene.physics.world.enableBody(this);
+    this.scene.physics.add.collider(this, this.scene.player);
+
     if(anim === "caja" || anim === "barril")
     {
       this.setScale(1); 
@@ -38,32 +39,23 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
     {
       this.setScale(1);
       this.body.setVelocityY(350);
-
     }
     
   }
   
   preUpdate(t, d){
     super.preUpdate(t, d);
-   
-    if(this.scene.physics.collide(this, this.scene.player)) {
+
+    //{
       
-      if((this.scene.player.body.touching.right && this.body.touching.left) || 
+    if((this.scene.player.body.touching.right && this.body.touching.left) || 
         (this.scene.player.body.touching.left && this.body.touching.right))
-      {
-        this.ralentizar(this.resistencia);
-      }
-      else if (this.scene.player.body.touching.down && this.body.touching.up)
-      {
-        // Una vez crea el collider, no vuelve a detectar colision
-        this.scene.physics.add.collider(this,this.scene.player);
-        
-      }
+     {
+       this.ralentizar(this.resistencia);
+     }
       
-    }
-    else if(this.prueba < 10 && this.anim === "jarron")
+    else if(this.nombre2 === "jarron" && this.body.velocity.y <= 0)
     {
-      console.log("me cai wey");
       this.destroy();
     }
     else

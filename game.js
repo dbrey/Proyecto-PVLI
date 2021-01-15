@@ -240,7 +240,6 @@ this.anims.create({
       {
         this.power = new Jagger(this, objeto.x, objeto.y);
       }
-      console.log(value);
     }
   }
 

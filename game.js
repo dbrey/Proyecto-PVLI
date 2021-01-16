@@ -376,12 +376,12 @@ this.anims.create({
         if(this.sonidoactive)//Si se activa el sonido
         {
           this.music.play();
-          sonido = this.add.image(this.cameras.main.worldView.x + 1000,90, 'on');
+          sonido.setTexture('on');
         }
         else //Si se desactiva
         {
           this.music.stop();
-          sonido = this.add.image(this.cameras.main.worldView.x + 1000,90, 'off');
+          sonido.setTexture('off');
         }
         sonido.setScale(0.17);
     });

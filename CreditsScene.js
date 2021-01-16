@@ -33,11 +33,11 @@ export default class CreditsScene extends Phaser.Scene
 
     menu.on('pointerover', event => 
     {
-      menu = this.add.image(250,700, 'menuon');
+      menu.setTexture('menuon');
     });
     menu.on('pointerout', event => 
     {
-      menu = this.add.image(250,700, 'menuoff');
+      menu.setTexture('menuoff');
     });
 
     menu.on('pointerdown', event => {

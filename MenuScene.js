@@ -88,12 +88,12 @@ export default class MenuScene extends Phaser.Scene
         if(this.sonidoactivo)//Si se activa el sonido
         {
           this.music.play();
-          sonido = this.add.image(870,80, 'sonidoon');
+          sonido.setTexture('sonidoon');
         }
         else //Si se desactiva
         {
           this.music.stop();
-          sonido = this.add.image(870,80, 'sonidooff');
+          sonido.setTexture('sonidooff');
         }
         sonido.setScale(1.1);
     });

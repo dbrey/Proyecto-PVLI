@@ -77,6 +77,7 @@
           import Intro from "./intro.js";
           import Game from "./game.js";
           import CreditsScene from "./CreditsScene.js"
+          import DeadMenu from "./deadmenu.js"
 
           var config = {
             type: Phaser.AUTO, //Meter canvas
@@ -91,7 +92,7 @@
               mode: Phaser.Scale.FIT,
               autoCenter: Phaser.Scale.CENTER_BOTH,
             },
-            scene: [MenuScene, CreditsScene, Game],
+            scene: [MenuScene, CreditsScene, Game, DeadMenu],
             physics: {
               default: "arcade",
               arcade: { gravity: { y: 400 }, debug: true },

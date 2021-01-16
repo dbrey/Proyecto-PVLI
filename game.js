@@ -439,7 +439,15 @@ this.anims.create({
         //PIERDES
         this.sigueJugando = false;
         this.music.stop();
-        this.scene.start('deadmenu', {int:this.points}, {bool:this.sonidoactive});
+        if(this.points > this.maxpunt)
+      {
+        this.scene.start('deadmenu', {int:this.points, bool:this.sonidoactive});
+      }
+      else
+      {
+        this.scene.start('deadmenu', {int:this.maxpunt, bool:this.sonidoactive});
+      }
+        
 /*
         //Botones (hay que cambiar los sprites
         let playAgain = this.add.image(this.guardia.x + 316,this.guardia.y - 200, 'botonplaynormal').setInteractive();

@@ -20,7 +20,7 @@ export default class Intro extends Phaser.Scene
 
     if(this.video.getProgress() >= 0.99)
     {
-      this.scene.start('menu');
+      this.scene.start('menu', {bool:true, int:0});
     }
   };
 

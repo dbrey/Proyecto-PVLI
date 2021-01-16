@@ -141,11 +141,13 @@ export default class Player extends Personaje
     if (this.disminuyendoVelocidad && this.speed > -this.limitspeed){
       this.speed -= this.aceleracion; //Disminuye Vel
       this.disminuyendoVelocidad = false;
+      this.scene.alcohol.reducir_ebriedad(0.5);
     }
 
     if (this.aumentandoVelocidad && this.speed < this.limitspeed){
       this.speed += this.aceleracion; //Aumenta vel.
       this.aumentandoVelocidad = false;
+      this.scene.alcohol.aumentar_ebriedad(0.5);
     }
 
     this.moverse();

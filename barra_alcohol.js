@@ -20,18 +20,40 @@ export default class Barra_Alcohol extends Phaser.GameObjects.Sprite
     }
 
     aumentar_ebriedad(aumento){
+      this.ebriedad += aumento;
+      /*if((this.ebriedad + aumento) === this.max_alcohol)
+      {
+        this.ebriedad = this.max_alcohol;
+      }  
+      else
+      {
         this.ebriedad += aumento;
-        if(this.ebriedad === this.max_alcohol){
-            this.coma_etilico = true;
-        }
+      }
+      if(this.ebriedad === this.max_alcohol){
+        this.coma_etilico = true;
+      }*/
     }
     reducir_ebriedad(reduccion){
-        if(this.ebriedad > 0){
+      this.ebriedad -=reduccion;
+        /*if(this.ebriedad > 0){
             this.ebriedad -= reduccion;
-        }
+            if(this.ebiredad < 0){
+              this.ebriedad = 0;
+            }
+        }*/
+        
     }
 
     preUpdate(t, d){  
+      
+      if(this.ebriedad > this.max_alcohol){
+        this.ebriedad = this.max_alcohol;
+      }
+      else if(this.ebriedad < 0)
+      {
+        this.ebriedad = 0;
+      }
+      console.log(this.ebriedad);
       //this.ebriedad += 5;
       if(this.actualizar_barra){
         this.cambio_frame = Math.floor(this.ebriedad/10);

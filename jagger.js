@@ -18,7 +18,7 @@ export default class Jagger extends Phaser.GameObjects.Sprite
         }
     }
     alcohol_maximo(){
-        this.scene.alcohol.aumentar_ebriedad(this.scene.alcohol.max_alcohol);
+        this.scene.alcohol.ebriedad = this.scene.alcohol.max_alcohol;
         this.destroy();
         console.log("jagger");
     }

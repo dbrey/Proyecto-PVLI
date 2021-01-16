@@ -19,6 +19,7 @@ export default class Game extends Phaser.Scene
   init(data)
   {
     this.sonidoactive = data.bool;
+    this.maxpunt = data.int;
   }
 
   preload() {
@@ -38,6 +39,12 @@ export default class Game extends Phaser.Scene
     this.load.image('coche', './sprites/obstaculos/32x32/coche.png');
     this.load.image('jarron', './sprites/obstaculos/32x32/jarron.png');
 
+    //Pausa menu
+    this.load.image('menumain', './sprites/pausa/menu_button.png');
+    this.load.image('resume', './sprites/pausa/resume_button.png');
+    this.load.image('on', './sprites/pausa/sonido_si.png');
+    this.load.image('off', './sprites/pausa/sonido_no.png');
+    //-----------------
     this.load.image('plataforma', './sprites/background/plataforma.png');
     
     this.load.atlas('alcohol_atlas', './barra_alcohol/barra_alcohol/alcohol.png', './barra_alcohol/barra_alcohol/alcohol_atlas.json');
@@ -58,9 +65,10 @@ export default class Game extends Phaser.Scene
 
 
   create() {
+  //PUNTUACION
     this.vueltas = 1;
     this.points = 0;
-    this.text = this.add.bitmapText(1200, 10, 'font',this.points,20);
+    this.text = this.add.bitmapText(900, 10, 'font',this.points,20);
     this.text.inputEnabled = true;
     this.text.setDepth(6);
     this.text.setScrollFactor(-0,5);
@@ -184,6 +192,9 @@ this.anims.create({
    this.objetosfisicos();
    this.objetosestaticos();
 
+// Pause Menu
+  this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+  
 // ------------------------------------------------------------------
   };
 
@@ -335,6 +346,70 @@ this.anims.create({
     this.objetosfisicos();
     this.objetosestaticos();
   }
+
+  pause()
+  {
+ //MENU DE PAUSA
+    let resume = this.add.image(this.cameras.main.worldView.x + 525,400, 'resume').setInteractive();
+    resume.setScale(0.3);
+    resume.setDepth(9);
+
+    let menu = this.add.image(this.cameras.main.worldView.x + 525,200, 'menumain').setInteractive();
+    menu.setScale(0.3);
+    menu.setDepth(9);
+
+    let sonido;
+    if(this.sonidoactive)
+    {
+      sonido = this.add.image(this.cameras.main.worldView.x + 1000,90, 'on').setInteractive();
+    }
+    else 
+    {
+      sonido = this.add.image(this.cameras.main.worldView.x + 1000,90, 'off').setInteractive();
+    }
+    sonido.setScale(0.17);
+    sonido.setDepth(9);
+
+    sonido.on('pointerdown', event => 
+      {
+        this.sonidoactive = !this.sonidoactive;
+        if(this.sonidoactive)//Si se activa el sonido
+        {
+          this.music.play();
+          sonido = this.add.image(this.cameras.main.worldView.x + 1000,90, 'on');
+        }
+        else //Si se desactiva
+        {
+          this.music.stop();
+          sonido = this.add.image(this.cameras.main.worldView.x + 1000,90, 'off');
+        }
+        sonido.setScale(0.17);
+    });
+
+    resume.on('pointerdown', event => {
+      resume.destroy();
+      menu.destroy();
+      sonido.destroy();
+      this.sigueJugando = true;
+    });
+
+    menu.on('pointerdown', event => {
+      resume.destroy();
+      menu.destroy();
+      sonido.destroy();
+      this.music.stop();
+      if(this.points > this.maxpunt)
+      {
+        this.scene.start('menu', {int:this.points, bool:this.sonidoactive});
+      }
+      else
+      {
+        this.scene.start('menu', {int:this.maxpunt, bool:this.sonidoactive});
+      }
+    });
+
+
+  }
   update(time, delta) 
   {
     if (this.sigueJugando)
@@ -356,6 +431,7 @@ this.anims.create({
       }
 
       
+
       this.x += this.worldSpeed;
       this.physics.world.bounds.setTo(this.x, 25, 1050, 600);
       
@@ -391,9 +467,16 @@ this.anims.create({
         });*/
       }
 
-      this.puntos();
+
+      if(this.enter.isDown)
+      {
+        console.log('pausa');
+        this.sigueJugando = false;
+        this.pause();
+      }
       this.points++; //Cada pixel 1 punto
-    } 
+      this.puntos();
+    }
   }
 }
       

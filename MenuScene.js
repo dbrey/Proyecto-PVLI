@@ -8,6 +8,7 @@ export default class MenuScene extends Phaser.Scene
   init(data)
   {
     this.puntuacion = data.int;
+    this.soundactive = data.bool;
   }
 
   preload() {
@@ -37,7 +38,6 @@ export default class MenuScene extends Phaser.Scene
       this.puntuacion = 0;
     }
     this.music = this.sound.add('menu', {volume: 0.15}, {loop: true});
-    this.music.play();
 
     this.anims.create ({
       key: 'menu',
@@ -64,14 +64,22 @@ export default class MenuScene extends Phaser.Scene
     this.fondo.setScale(1.1);
     //boton
     let play = this.add.image(243,120, 'botonplaynormal').setInteractive();
-    let sonido = this.add.image(870,80, 'sonidoon').setInteractive();
     let credits = this.add.image(800,420, 'credit').setInteractive();
-
-
+    let sonido;
+    if(this.soundactive || this.soundactive === undefined)
+    {
+      sonido = this.add.image(870,80, 'sonidoon').setInteractive();
+      this.music.play();
+      this.sonidoactivo = true;
+    }
+    else 
+    {
+      sonido = this.add.image(870,80, 'sonidooff').setInteractive();
+      this.sonidoactivo = false;
+    }
     sonido.setScale(1.1);
     play.setScale(0.19);
     credits.setScale(0.4);
-    this.sonidoactivo = true;
 
       //Acciones sonido
       sonido.on('pointerdown', event => 
@@ -110,26 +118,26 @@ export default class MenuScene extends Phaser.Scene
 
     play.on('pointerdown', event => {
       this.music.stop();
-      this.scene.start('game', {bool:this.sonidoactivo});
+      this.scene.start('game', {bool:this.sonidoactivo, int:this.puntuacion});
   });
     //PUNTUACION MAX
-this.puntuacion = 24332;
     this.numeros = this.textures.get('puntmax');
     this.frames = this.numeros.getFrameNames();
     this.puntx = 245;
     this.punty = 248;
-    if(this.puntuacion === 0)
+    if(this.puntuacion === 0 ||this.puntuacion === undefined)
     {
-      this.image1 = this.add.image(this.puntx, this.punty, 'puntmax', this.puntuacion);
+      this.image1 = this.add.image(this.puntx, this.punty, 'puntmax', 0);
       this.image1.setDepth(6);
       this.image1.setScale(0.2);
     }
     else{
-      while(this.puntuacion > 0)
+      this.aux = this.puntuacion
+      while(this.aux > 0)
       {
-        this.numero = this.puntuacion%10; //El primero numero que meto
-        this.puntuacion = Math.round(this.puntuacion/10);
-        
+        this.numero = (this.aux%10); //El primero numero que meto
+        this.aux = Math.round((this.aux/10)-0.5);
+
         //Colocarlo
         this.image1 = this.add.image(this.puntx, this.punty, 'puntmax', this.numero);
         this.image1.setDepth(6);

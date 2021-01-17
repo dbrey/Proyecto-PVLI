@@ -24,11 +24,14 @@ export default class DeadMenu extends Phaser.Scene
 
     this.load.image('runagainoff', './sprites/pausa/runagain_negativo.png');
     this.load.image('runagainon', './sprites/pausa/runagain_positivo.png');
+
+    this.load.audio('click', './sonidos/menu1.mp3');
   }
 
 
   create() {
-    this.scene.bringToTop();
+
+    this.click = this.sound.add('click', {volume: 0.2});
 
     this.fondo = this.add.sprite(525, 300, 'deadmenubg');
     this.fondo.setDepth(2);
@@ -62,6 +65,10 @@ export default class DeadMenu extends Phaser.Scene
       menu.setScale(0.75);
     });
     menu.on('pointerdown', event => {
+      if(this.this.sonidoActivo)
+      {
+        this.click.play();
+      }
       this.volvermenu();
     });
 
@@ -79,6 +86,10 @@ export default class DeadMenu extends Phaser.Scene
         runagain.setScale(0.4);
     });
     runagain.on('pointerdown', event => {
+      if(this.this.sonidoActivo)
+      {
+        this.click.play();
+      }
       this.playagain();
     });
 

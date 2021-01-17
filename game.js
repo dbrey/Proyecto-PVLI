@@ -55,7 +55,7 @@ export default class Game extends Phaser.Scene
     this.load.spritesheet('guardiacorrersheet', './sprites/characters/guardiaspritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('spritesheetvolar', './sprites/characters/spritesheetvolar.png', { frameWidth: 170, frameHeight: 234 });
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
-
+    this.load.audio('champanmusic', './sonidos/cancan.mp3');
 
     this.load.image('city','./sprites/tiles/citytileset.png');
     this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');
@@ -200,6 +200,24 @@ this.anims.create({
     this.aux = new Champan(this,500,400);
 // ------------------------------------------------------------------
   };
+
+  tocarchampan(musica)
+  {
+    if(this.sonidoactive)
+    {
+      this.music.pause();
+      
+      musica.play();
+    }
+  }
+
+  tocarnormal()
+  {
+    if(this.sonidoactive)
+    {
+      this.music.resume();
+    }
+  }
 
   volverCorrer()
   {

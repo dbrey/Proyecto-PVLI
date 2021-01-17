@@ -128,7 +128,7 @@ this.anims.create({
     this.music = this.sound.add('mainsoundtrack', {volume: 0.05}, {loop: true});
     if(this.sonidoactive)
     {
-     // this.music.play();
+      this.music.play();
     }
 
     this.sigueJugando = true;
@@ -170,7 +170,8 @@ this.anims.create({
     this.physics.add.collider(this.guardia, this.groundlayer);
 
     this.groundlayer.setCollision(15);
-    this.platformlayer.setCollisionBetween(0, 1000);
+    this.groundlayer.setCollision(56);
+    this.platformlayer.setCollisionBetween(0, 2000);
 
     this.platformlayer.layer.data.forEach((row) => { // here we are iterating through each tile.
 		 	row.forEach((Tile) => {
@@ -196,6 +197,7 @@ this.anims.create({
 // Pause Menu
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
   
+    this.aux = new Champan(this,500,400);
 // ------------------------------------------------------------------
   };
 
@@ -223,12 +225,12 @@ this.anims.create({
 
   rapido()
   {
-    this.worldSpeed = 3;
+    this.worldSpeed = 4;
   }
 
   normal()
   {
-    this.worldSpeed = 1;
+    this.worldSpeed = 2;
   }
 
   powerups()
@@ -424,7 +426,7 @@ this.anims.create({
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
       this.alcohol.x = this.cameramain.scrollX + 150;
-      if(this.cameras.main.worldView.x > 12000) //Reseteo level
+      if(this.cameras.main.worldView.x > 17000) //Reseteo level
       {
         this.cameramain.scrollX= 0;
         this.player.x = this.player.x - this.cameras.main.worldView.x; //se mantiene la distancia entre el jugador y el guardia

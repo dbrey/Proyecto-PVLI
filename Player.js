@@ -87,7 +87,7 @@ export default class Player extends Personaje
     else{ //Quitarla y mov cielo
       this.body.setVelocityY(-400);
       this.body.allowGravity = false;
-
+      this.anims.play('champan',true);
       //platformCollider.destroy();
       //objest.destroy();
     }

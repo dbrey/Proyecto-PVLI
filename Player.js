@@ -159,7 +159,7 @@ export default class Player extends Personaje
   }
 
   saltar(){
-    super.saltar();
+    super.saltar(-250);
     /*
     En el caso de que cuando probemos este salto en el guardia, no salte
     será porque pesa más y hay que añadirle más fuerza. En ese caso al saltar() de Personaje
@@ -192,7 +192,6 @@ export default class Player extends Personaje
   {
     //this.speed -= dureza //Por alguna razon, si se pone este codigo, el jugador se destruye
     this.retroceso;
-    this.limite = 400;
     if(nombre === "caja" || nombre === "barril")
     {
       this.retroceso = 200;
@@ -203,8 +202,7 @@ export default class Player extends Personaje
     }
     else if(nombre === "coche" || nombre === "cocheoscuro")
     {
-      this.retroceso = 1000;
-      this.limite = 1000;
+      this.escenario.muerte(2);
     }
     else if (nombre === "barriltop")
     {
@@ -212,9 +210,9 @@ export default class Player extends Personaje
     }
 
     this.speed -= this.retroceso;
-    if(this.speed < -this.limite)
+    if(this.speed < -400)
     {
-      this.speed = -this.limite;
+      this.speed = -400;
     }    
   }
 }

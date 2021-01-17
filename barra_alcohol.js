@@ -12,6 +12,7 @@ export default class Barra_Alcohol extends Phaser.GameObjects.Sprite
       this.alcohol_texture = this.scene.textures.get('alcohol_atlas');
       this.frames_alcohol = this.alcohol_texture.getFrameNames();
       this.actualizar_barra = true;
+      this.escena = scene;
       //this.images.setFrame(this.frames_alcohol[2]);
       //this.add.sprite(1000, 500, 'alcohol_atlas');
       /*this.anims.play('alcoholismo',true);
@@ -49,6 +50,7 @@ export default class Barra_Alcohol extends Phaser.GameObjects.Sprite
       
       if(this.ebriedad > this.max_alcohol){
         this.ebriedad = this.max_alcohol;
+        this.escena.muerte(1);
       }
       else if(this.ebriedad < 0)
       {

@@ -169,6 +169,7 @@ this.anims.create({
     this.physics.add.collider(this.player, this.platformlayer);
     this.physics.add.collider(this.player, this.groundlayer);
     this.physics.add.collider(this.guardia, this.groundlayer);
+    this.physics.add.collider(this.guardia, this.platformlayer);
 
     this.groundlayer.setCollision(15);
     this.groundlayer.setCollision(56);
@@ -374,7 +375,7 @@ this.anims.create({
   triggersGuardia(){
     for (const objeto of this.map.getObjectLayer('guardia').objects){
       let collider;
-      collider = this.physics.add.image(objeto.x, objeto.y, 'barril');
+      collider = this.physics.add.image(objeto.x*0.8, objeto.y*0.8, 'barril');
       collider.setDepth(-1);
       collider.setScale(1,5);
       collider.body.setAllowGravity(false);
@@ -463,6 +464,21 @@ this.anims.create({
 
 
   }
+
+  muerte(razon){
+    this.sigueJugando = false;
+    this.music.stop();
+    if(this.points > this.maxpunt)
+      {
+        this.scene.start('deadmenu', {int:this.points, bool:this.sonidoactive, causa:razon});
+      }
+      else
+      {
+        this.scene.start('deadmenu', {int:this.maxpunt, bool:this.sonidoactive, causa:razon});
+      }
+      console.log(razon);
+  }
+
   update(time, delta) 
   {
     if (this.sigueJugando)
@@ -492,43 +508,7 @@ this.anims.create({
       this.physics.world.bounds.setTo(this.x, 25, 1050, 600);
       
       if(this.physics.overlap(this.player, this.guardia)) {
-        //PIERDES
-        this.sigueJugando = false;
-        this.music.stop();
-        if(this.points > this.maxpunt)
-      {
-        this.scene.start('deadmenu', {int:this.points, bool:this.sonidoactive});
-      }
-      else
-      {
-        this.scene.start('deadmenu', {int:this.maxpunt, bool:this.sonidoactive});
-      }
-        
-/*
-        //Botones (hay que cambiar los sprites
-        let playAgain = this.add.image(this.guardia.x + 316,this.guardia.y - 200, 'botonplaynormal').setInteractive();
-        let mainMenu = this.add.image(this.guardia.x + 1170,this.guardia.y - 200, 'sonidoon').setInteractive();
-
-        //PlayAgain:
-        playAgain.on('pointerover', event => 
-        {
-          playAgain = this.add.image(this.guardia.x + 316,this.guardia.y - 200, 'botonplayencima');
-        });
-
-        playAgain.on('pointerout', event => 
-        {
-          playAgain = this.add.image(this.guardia.x + 316,this.guardia.y - 200, 'botonplaynormal');
-        });
-
-        playAgain.on('pointerdown', event => {
-          this.scene.start('game');
-          this.music.stop();
-        });
-
-        mainMenu.on('pointerdown', event => {
-          this.scene.start('menu',{int:this.points});
-          this.music.stop();
-        });*/
+        this.muerte(0);
       }
 
 

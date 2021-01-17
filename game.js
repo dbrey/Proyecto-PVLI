@@ -139,7 +139,7 @@ this.anims.create({
 
     this.guardia = new Guardia(this, 30,450, this.worldSpeed);
 
-    this.alcohol = new Barra_Alcohol(this, 100, 70);
+    this.alcohol = new Barra_Alcohol(this, 150, 60);
 
     this.player.body.setCollideWorldBounds(true);
     this.x = 0;
@@ -437,7 +437,6 @@ this.anims.create({
     {
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
-      this.alcohol.x = this.cameramain.scrollX + 150;
       if(this.cameras.main.worldView.x > 17000) //Reseteo level
       {
         this.cameramain.scrollX= 0;

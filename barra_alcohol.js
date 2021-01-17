@@ -3,6 +3,7 @@ export default class Barra_Alcohol extends Phaser.GameObjects.Sprite
     constructor(scene, x ,y){
       super(scene, x, y,'alcohol_atlas');
       this.setScale(0.50);
+      this.setScrollFactor(0);
       this.images = this.scene.add.existing(this);
       this.ebriedad = 0;
       this.max_alcohol = 149;

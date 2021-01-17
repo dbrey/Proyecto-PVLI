@@ -5,7 +5,7 @@ export default class Agua extends Phaser.GameObjects.Sprite
         this.scene.add.existing(this);
         //this.scene.physics.add.staticImage(x, y,'botella_agua');
         this.scene.physics.add.existing(this, true);
-        this.setScale(1.5);
+        this.setScale(0.85);
     }
 
     preUpdate(t,d){

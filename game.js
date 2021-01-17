@@ -265,7 +265,7 @@ this.anims.create({
     {
       if(objeto.name !== "jarron")
       {
-        this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name);
+        this.obs = new Obstaculo(this,objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5), objeto.name);
       }
       else
       {
@@ -428,8 +428,10 @@ this.anims.create({
       {
         this.cameramain.scrollX= 0;
         this.player.x = this.player.x - this.cameras.main.worldView.x; //se mantiene la distancia entre el jugador y el guardia
+        this.player.y = 450;
         console.log(this.player.x);
         this.guardia.x = 30;
+        this.guardia.y = 450;
         this.physics.world.bounds.setTo(0, 0, 1050, 600);
         this.x = 0;
         this.vueltas++;

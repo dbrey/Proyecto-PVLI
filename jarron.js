@@ -7,7 +7,7 @@ export default class jarron extends Obstaculo
     super(scene,x,y, anim);
     
     this.setScale(0.85);
-    this.body.setVelocityY(250);
+    this.body.setVelocityY(150);
   }
   
   preUpdate(t, d){

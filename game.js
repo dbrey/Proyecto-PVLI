@@ -238,23 +238,23 @@ this.anims.create({
       let value = Phaser.Math.Between(0, 11); //Puede que no salga nada
       if(value == 0)
       {
-        this.power = new Champan(this,objeto.x, objeto.y);
+        this.power = new Champan(this,objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
       else if(value == 1 || value == 5)
       {
-        this.power = new Agua(this, objeto.x, objeto.y);
+        this.power = new Agua(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
       else if(value == 2 || value == 6)
       {
-        this.power = new Calimocho(this, objeto.x, objeto.y);
+        this.power = new Calimocho(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
       else if(value == 3 || value == 7)
       {
-        this.power = new Cerveza(this, objeto.x, objeto.y);
+        this.power = new Cerveza(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
       else if(value == 4 || value == 8)
       {
-        this.power = new Jagger(this, objeto.x, objeto.y);
+        this.power = new Jagger(this, objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
     }
   }
@@ -334,8 +334,7 @@ this.anims.create({
       }
       else
       {
-        this.obs = new Obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
-        //this.obs = new jarron(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
+        this.obs = new jarron(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
       }
     collider.destroy();
   }

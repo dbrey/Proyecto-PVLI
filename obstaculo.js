@@ -48,9 +48,14 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
   preUpdate(t, d){
     super.preUpdate(t, d);
     if((this.scene.player.body.touching.right && this.body.touching.left) || 
-        (this.scene.player.body.touching.left && this.body.touching.right))
+        (this.scene.player.body.touching.left && this.body.touching.right) || (this.scene.player.body.touching.up && this.body.touching.down && this.nombre2 === "jarron"))
      {
+       //console.log(this.scene.player.body);
        this.ralentizar(this.resistencia);
+     }
+     else if(this.body.velocity.y <= 0 && this.nombre2 === "jarron") // Por que aqui pilla el body pero en otro lado no?
+     {
+       this.destroy();
      }
   }
 

@@ -7,19 +7,21 @@ export default class jarron extends Obstaculo
     super(scene,x,y, anim);
     
     this.setScale(0.85);
-    this.body.setVelocityY(350);
+    this.body.setVelocityY(250);
   }
   
   preUpdate(t, d){
     super.preUpdate(t, d);
-    if(this.scene.player.body.touching.up && this.body.touching.down)
+
+    /*if(this.scene.player.body.touching.up && this.body.touching.down && this.nombre2 === "jarron")
     {
-      ralentizar(this.resistencia);
-    } 
-    else if(this.body.velocity.y <= 0)
+      super.ralentizar(10);
+
+    }
+    else if (this.body.velocity.y <= 0 && this.nombre2 === "jarron")
     {
       this.destroy();
-    }
+    }*/
   }
 
 }

@@ -454,7 +454,6 @@ this.anims.create({
     {
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
-      this.alcohol.x = this.cameramain.scrollX + 150;
       if(this.cameras.main.worldView.x > 27500) //Reseteo level
       {
         this.cameramain.scrollX= 0;
@@ -468,7 +467,6 @@ this.anims.create({
 
         //this.reset();
       }
-      console.log(this.cameras.main.worldView.x);
 
        //Guardia
        if (this.guardia.body.collideRight){

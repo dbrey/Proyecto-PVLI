@@ -36,7 +36,10 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
     super.preUpdate(t, d);
 
     if((this.scene.player.body.touching.right && this.body.touching.left) || 
-        (this.scene.player.body.touching.left && this.body.touching.right) || (this.scene.player.body.touching.up && this.body.touching.down && this.nombre2 === "jarron"))
+        (this.scene.player.body.touching.left && this.body.touching.right) ||
+         (this.scene.player.body.touching.up && this.body.touching.down && this.nombre2 === "jarron")
+         
+      )
      {
        this.ralentizar(this.resistencia);
      }
@@ -48,16 +51,16 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
 
   ralentizar(dureza)
   {
-    this.scene.player.ralentizar(dureza);
+    this.scene.player.ralentizar(dureza, this.nombre2);
     this.destroy(); 
   }
   
   chocarobsmov()
   {
-    if((this.body.touching.up && this.scene.player.body.touching.down))
+   /*if((this.body.touching.up && this.scene.player.body.touching.down))
     {
       this.ralentizar(10);
-    }
+    }*/
   }
 
   chocarjarron()

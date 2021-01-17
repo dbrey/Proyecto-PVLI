@@ -198,7 +198,9 @@ this.anims.create({
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
   
 // ------------------------------------------------------------------
-tocarchampan(musica)
+  };
+
+  tocarchampan(musica)
   {
     if(this.sonidoactive)
     {
@@ -215,8 +217,6 @@ tocarchampan(musica)
       this.music.resume();
     }
   }
-
-  };
 
   volverCorrer()
   {
@@ -454,7 +454,6 @@ tocarchampan(musica)
     {
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
-      this.alcohol.x = this.cameramain.scrollX + 150;
       if(this.cameras.main.worldView.x > 27500) //Reseteo level
       {
         this.cameramain.scrollX= 0;
@@ -468,7 +467,6 @@ tocarchampan(musica)
 
         //this.reset();
       }
-      console.log(this.cameras.main.worldView.x);
 
        //Guardia
        if (this.guardia.body.collideRight){

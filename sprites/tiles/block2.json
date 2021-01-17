@@ -2819,6 +2819,30 @@
                  "width":0,
                  "x":33492,
                  "y":678
+                }, 
+                {
+                 "height":0,
+                 "id":286,
+                 "name":"guardia",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":9800,
+                 "y":800
+                }, 
+                {
+                 "height":0,
+                 "id":287,
+                 "name":"guardia",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":10840,
+                 "y":694
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2827,7 +2851,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":286,
+ "nextobjectid":289,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

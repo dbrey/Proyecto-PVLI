@@ -370,6 +370,21 @@ this.anims.create({
     collider.destroy();
   }
 
+  triggersGuardia(){
+    for (const objeto of this.map.getObjectLayer('guardia').objects){
+      let collider;
+      collider = this.physics.add.image(objeto.x, objeto.y, 'barril');
+      collider.setDepth(-1);
+      collider.setScale(1,5);
+      collider.body.setAllowGravity(false);
+
+      this.physics.add.overlap(this.guardia, collider, () => 
+      {
+        this.guardia.saltar();
+      });
+    }
+  }
+
   sigoJugando(){
     return this.sigueJugando;
   }

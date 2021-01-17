@@ -193,6 +193,7 @@ this.anims.create({
    this.powerups();
    this.objetosfisicos();
    this.objetosestaticos();
+   this.triggersGuardia();
 
 // Pause Menu
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
@@ -368,6 +369,20 @@ this.anims.create({
       this.obs = new jarron(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);        
     }
     collider.destroy();
+  }
+
+  triggersGuardia(){
+    for (const objeto of this.map.getObjectLayer('guardia').objects){
+      let collider;
+      collider = this.physics.add.image(objeto.x, objeto.y, 'barril');
+      collider.setDepth(-1);
+      collider.setScale(1,5);
+      collider.body.setAllowGravity(false);
+      this.physics.add.overlap(this.guardia, collider, () => 
+      {
+        this.guardia.saltar();
+      });
+    }
   }
 
   sigoJugando(){

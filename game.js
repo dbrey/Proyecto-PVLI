@@ -8,6 +8,7 @@ import Champan from './Champan.js';
 import Jagger from './jagger.js';
 import Calimocho from './calimocho.js';
 import jarron from './jarron.js';
+import obsmov from './obsmov.js';
 
 export default class Game extends Phaser.Scene 
 {
@@ -337,14 +338,18 @@ this.anims.create({
 
   activate(collider, objeto) //Aparece el objeto y destruyo el collider
   {
-    if(objeto.name !== "jarron")
-      {
-        this.obs = new Obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
-      }
-      else
-      {
-        this.obs = new jarron(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);        
-      }
+    if(objeto.name !== "jarron" && objeto.name !== "coche" && objeto.name !== "cocheoscuro" && objeto.name !== "barriltop")
+    {
+      this.obs = new Obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
+    }
+    else if (objeto.name === "coche" || objeto.name === "cocheoscuro" || objeto.name === "barriltop" )
+    {
+      this.obs = new obsmov(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);        
+    }
+    else
+    {
+      this.obs = new jarron(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);        
+    }
     collider.destroy();
   }
 

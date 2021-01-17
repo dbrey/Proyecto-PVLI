@@ -59,7 +59,7 @@ export default class Game extends Phaser.Scene
     this.load.image('city','./sprites/tiles/citytileset.png');
     this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');
     this.load.image('devil','./sprites/tiles/devil.png');
-    this.load.tilemapTiledJSON('block1','./sprites/tiles/block1.json');
+    this.load.tilemapTiledJSON('block1','./sprites/tiles/block2.json');
 
     this.load.bitmapFont('font', './imagenes/carrier_command.png','./imagenes/carrier_command.xml');
   }
@@ -132,7 +132,7 @@ this.anims.create({
     }
 
     this.sigueJugando = true;
-    this.worldSpeed = 3;
+    this.worldSpeed = 2;
 
     this.player = new Player(this, 200,450, this.worldSpeed);
 
@@ -424,7 +424,7 @@ this.anims.create({
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
       this.alcohol.x = this.cameramain.scrollX + 150;
-      if(this.cameras.main.worldView.x > 6600) //Reseteo level
+      if(this.cameras.main.worldView.x > 12000) //Reseteo level
       {
         this.cameramain.scrollX= 0;
         this.player.x = this.player.x - this.cameras.main.worldView.x; //se mantiene la distancia entre el jugador y el guardia

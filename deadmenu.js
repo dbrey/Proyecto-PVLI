@@ -22,8 +22,8 @@ export default class DeadMenu extends Phaser.Scene
     this.load.image('soundoff', './sprites/menu_muerte/sonido_off.png');
     this.load.image('soundon', './sprites/menu_muerte/sonido_on.png');
 
-    this.load.image('runagainoff', './sprites/escena_creditos/main1.png');
-    this.load.image('runagainon', './sprites/escena_creditos/main2.png');
+    this.load.image('runagainoff', './sprites/pausa/runagain_negativo.png');
+    this.load.image('runagainon', './sprites/pausa/runagain_positivo.png');
   }
 
 
@@ -44,7 +44,7 @@ export default class DeadMenu extends Phaser.Scene
     runagain.setDepth(2);
     sound.setDepth(2);
     menu.setScale(0.75);
-    runagain.setScale(0.75);
+    runagain.setScale(0.4);
     sound.setScale(0.4);
     this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     this.keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
@@ -70,13 +70,13 @@ export default class DeadMenu extends Phaser.Scene
     {
         runagain = this.add.image(615,304, 'runagainon');
         runagain.setDepth(2);
-        runagain.setScale(0.75);
+        runagain.setScale(0.4);
     });
     runagain.on('pointerout', event => 
     {
         runagain = this.add.image(615,304, 'runagainoff');
         runagain.setDepth(2);
-        runagain.setScale(0.75);
+        runagain.setScale(0.4);
     });
     runagain.on('pointerdown', event => {
       this.playagain();

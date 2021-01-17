@@ -439,7 +439,10 @@ this.anims.create({
         //this.reset();
       }
 
-      
+      //Guardia
+      if (this.guardia.body.collideRight){
+        this.guardia.saltar();
+      }
 
       this.x += this.worldSpeed;
       this.physics.world.bounds.setTo(this.x, 25, 1050, 600);

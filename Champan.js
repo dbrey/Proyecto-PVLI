@@ -5,6 +5,7 @@ export default class Champan extends Phaser.GameObjects.Sprite
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this, true);
         this.setScale(0.025);
+        this.champmusic = this.scene.sound.add('champanmusic', {volume: 0.05}, {loop: false});
 
         this.body.setSize(20, 70);
         this.body.setOffset(155, 610);
@@ -20,6 +21,8 @@ export default class Champan extends Phaser.GameObjects.Sprite
 
     chocar()
     {
+
+        this.scene.tocarchampan(this.champmusic);
         this.scene.player.cambiomov();
         this.scene.rapido();
         this.destroy();

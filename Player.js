@@ -22,7 +22,7 @@ export default class Player extends Personaje
 
     this.play('correr',true);
     this.body.setSize(150, 220);
-    this.body.setOffset(0, 20);
+    this.body.setOffset(0, 0);
     this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
 
@@ -38,7 +38,7 @@ export default class Player extends Personaje
       else //Champan FALTA CAMBIAR EL SPRITE
       {
         this.champan();
-        if(this.tiempo === 1000) //Se acabo el powerup
+        if(this.tiempo === 1250) //Se acabo el powerup
         {
           this.tiempo = 0;
           this.cambiomov();
@@ -80,6 +80,7 @@ export default class Player extends Personaje
       this.body.allowGravity = true;
       this.scene.normal();
       this.anims.play('correr',true);
+      this.scene.tocarnormal();
 
       //const platformCollider = this.physics.add.collider(this.player, this.platformlayer);
       //const objest = this.physics.add.collider(this.player, this.objestaticos); 
@@ -87,7 +88,7 @@ export default class Player extends Personaje
     else{ //Quitarla y mov cielo
       this.body.setVelocityY(-400);
       this.body.allowGravity = false;
-
+      this.anims.play('champan',true);
       //platformCollider.destroy();
       //objest.destroy();
     }
@@ -191,7 +192,7 @@ export default class Player extends Personaje
   {
     //this.speed -= dureza //Por alguna razon, si se pone este codigo, el jugador se destruye
     
-    this.speed -= 100
+    this.speed -= 200
     if(this.speed < -200)
     {
       this.speed = -200;

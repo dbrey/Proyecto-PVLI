@@ -8,6 +8,7 @@ import Champan from './Champan.js';
 import Jagger from './jagger.js';
 import Calimocho from './calimocho.js';
 import jarron from './jarron.js';
+import obsmov from './obsmov.js';
 
 export default class Game extends Phaser.Scene 
 {
@@ -54,7 +55,7 @@ export default class Game extends Phaser.Scene
     this.load.spritesheet('guardiacorrersheet', './sprites/characters/guardiaspritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('spritesheetvolar', './sprites/characters/spritesheetvolar.png', { frameWidth: 170, frameHeight: 234 });
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
-
+    this.load.audio('champanmusic', './sonidos/cancan.mp3');
 
     this.load.image('city','./sprites/tiles/citytileset.png');
     this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');
@@ -120,7 +121,7 @@ this.anims.create({
 }); 
 // ------------------------------------------------------------------
 // ---------------------- ELEMENTOS DEL JUEGO -----------------------
-    this.fondoimg = this.add.tileSprite(0,-150,1050, 600, 'fondo1');
+    this.fondoimg = this.add.tileSprite(0,-50,1050, 700, 'fondo1');
     this.fondoimg.setScale(1);
     this.fondoimg.setOrigin(0,0);
     this.fondoimg.setScrollFactor(0);
@@ -128,7 +129,7 @@ this.anims.create({
     this.music = this.sound.add('mainsoundtrack', {volume: 0.05}, {loop: true});
     if(this.sonidoactive)
     {
-     // this.music.play();
+     this.music.play();
     }
 
     this.sigueJugando = true;
@@ -138,7 +139,7 @@ this.anims.create({
 
     this.guardia = new Guardia(this, 30,450, this.worldSpeed);
 
-    this.alcohol = new Barra_Alcohol(this, 100, 70);
+    this.alcohol = new Barra_Alcohol(this, 150, 60);
 
     this.player.body.setCollideWorldBounds(true);
     this.x = 0;
@@ -170,7 +171,8 @@ this.anims.create({
     this.physics.add.collider(this.guardia, this.groundlayer);
 
     this.groundlayer.setCollision(15);
-    this.platformlayer.setCollisionBetween(0, 1000);
+    this.groundlayer.setCollision(56);
+    this.platformlayer.setCollisionBetween(0, 2000);
 
     this.platformlayer.layer.data.forEach((row) => { // here we are iterating through each tile.
 		 	row.forEach((Tile) => {
@@ -187,7 +189,6 @@ this.anims.create({
    this.behindlayer.setScale(0.8);
    this.behindlayer2.setScale(0.8);
    this.platformlayer.setScale(0.8);
-
    
    this.powerups();
    this.objetosfisicos();
@@ -196,8 +197,27 @@ this.anims.create({
 // Pause Menu
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
   
+    this.aux = new Champan(this,500,400);
 // ------------------------------------------------------------------
   };
+
+  tocarchampan(musica)
+  {
+    if(this.sonidoactive)
+    {
+      this.music.pause();
+      
+      musica.play();
+    }
+  }
+
+  tocarnormal()
+  {
+    if(this.sonidoactive)
+    {
+      this.music.resume();
+    }
+  }
 
   volverCorrer()
   {
@@ -207,13 +227,13 @@ this.anims.create({
   sizeAgachado()
   {
     this.body.setSize(200, 120);
-    this.body.setOffset(0, 125);
+    this.body.setOffset(0, 100);
   }
 
   sizeLevantado()
   {
     this.body.setSize(150, 220);
-    this.body.setOffset(0, 20);
+    this.body.setOffset(0, 0);
   }
 
   falsear()
@@ -223,12 +243,12 @@ this.anims.create({
 
   rapido()
   {
-    this.worldSpeed = 3;
+    this.worldSpeed = 4;
   }
 
   normal()
   {
-    this.worldSpeed = 1;
+    this.worldSpeed = 2;
   }
 
   powerups()
@@ -280,7 +300,15 @@ this.anims.create({
     for (const objeto of this.map.getObjectLayer('fisicos').objects) { //Por cada objeto de cada tipo creo un objeto vacio a  cierta distancia de el
       if (objeto.name === 'jarron') 
       {
-        let collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 50) ,350,'barril');
+        let collider;
+        if(objeto.x < 3000)
+        {
+          collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 50) ,350,'barril');
+        }
+        else
+        {
+          collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 100) ,350,'barril');
+        }
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -291,7 +319,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'coche') {
-        let collider = this.physics.add.image(objeto.x-1500 ,350,'barril');
+        let collider = this.physics.add.image(objeto.x- (objeto.x/2) ,350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -302,7 +330,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'cocheoscuro') {
-        let collider = this.physics.add.image(objeto.x-1500 ,350,'barril');
+        let collider = this.physics.add.image(objeto.x- (objeto.x/2) ,350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -313,7 +341,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'barriltop') {
-        let collider = this.physics.add.image(objeto.x - 500,350,'barril');
+        let collider = this.physics.add.image(objeto.x - (objeto.x/2),350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -328,14 +356,18 @@ this.anims.create({
 
   activate(collider, objeto) //Aparece el objeto y destruyo el collider
   {
-    if(objeto.name !== "jarron")
-      {
-        this.obs = new Obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
-      }
-      else
-      {
-        this.obs = new jarron(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
-      }
+    if(objeto.name !== "jarron" && objeto.name !== "coche" && objeto.name !== "cocheoscuro" && objeto.name !== "barriltop")
+    {
+      this.obs = new Obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
+    }
+    else if (objeto.name === "coche" || objeto.name === "cocheoscuro" || objeto.name === "barriltop" )
+    {
+      this.obs = new obsmov(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);        
+    }
+    else
+    {
+      this.obs = new jarron(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);        
+    }
     collider.destroy();
   }
 
@@ -423,13 +455,11 @@ this.anims.create({
     {
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
-      this.alcohol.x = this.cameramain.scrollX + 150;
-      if(this.cameras.main.worldView.x > 12000) //Reseteo level
+      if(this.cameras.main.worldView.x > 17000) //Reseteo level
       {
         this.cameramain.scrollX= 0;
         this.player.x = this.player.x - this.cameras.main.worldView.x; //se mantiene la distancia entre el jugador y el guardia
         this.player.y = 450;
-        console.log(this.player.x);
         this.guardia.x = 30;
         this.guardia.y = 450;
         this.physics.world.bounds.setTo(0, 0, 1050, 600);

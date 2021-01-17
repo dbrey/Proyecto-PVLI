@@ -4,7 +4,7 @@ export default class Champan extends Phaser.GameObjects.Sprite
         super(scene, x, y,'champan');
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this, true);
-        this.setScale(0.05);
+        this.setScale(0.025);
 
         this.body.setSize(20, 70);
         this.body.setOffset(155, 610);

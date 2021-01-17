@@ -37,7 +37,7 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
     }
     else if(anim === "coche" || anim === "cocheoscuro")
     {
-      this.setScale(3); 
+      this.setScale(2.5); 
       this.body.setSize(27, 8);
       this.resistencia = 700;
       this.body.setVelocityX(-300);

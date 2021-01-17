@@ -22,7 +22,7 @@ export default class Player extends Personaje
 
     this.play('correr',true);
     this.body.setSize(150, 220);
-    this.body.setOffset(0, 20);
+    this.body.setOffset(0, 0);
     this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
 
@@ -191,7 +191,7 @@ export default class Player extends Personaje
   {
     //this.speed -= dureza //Por alguna razon, si se pone este codigo, el jugador se destruye
     
-    this.speed -= 100
+    this.speed -= 200
     if(this.speed < -200)
     {
       this.speed = -200;

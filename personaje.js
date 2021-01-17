@@ -21,7 +21,7 @@ export default class Personaje extends Phaser.GameObjects.Sprite
   }
 
   saltar(){
-    this.body.setVelocityY(-300);
+    this.body.setVelocityY(-250);
   }
 
   agacharse(){

@@ -39,7 +39,7 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
     {
       this.setScale(2.5); 
       this.body.setSize(27, 8);
-      this.resistencia = 700;
+      this.resistencia = 1000;
       this.body.setVelocityX(-300);
     }
     

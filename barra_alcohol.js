@@ -53,7 +53,7 @@ export default class Barra_Alcohol extends Phaser.GameObjects.Sprite
       {
         this.ebriedad = 0;
       }
-      console.log(this.ebriedad);
+      //console.log(this.ebriedad);
       //this.ebriedad += 5;
       if(this.actualizar_barra){
         this.cambio_frame = Math.floor(this.ebriedad/10);

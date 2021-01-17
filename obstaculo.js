@@ -10,10 +10,12 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
     this.setDepth(5);
     this.scene.physics.world.enableBody(this);
     this.scene.physics.add.collider(this, this.scene.player);
+    this.scene.physics.add.collider(this, this.scene.groundlayer);
+
 
     if(anim !== "jarron")
     {
-      this.scene.physics.add.collider(this, this.scene.groundlayer);
+      this.scene.physics.add.collider(this, this.scene.platform);
     }
 
     if(anim === "caja" || anim === "barril")
@@ -45,7 +47,6 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
   
   preUpdate(t, d){
     super.preUpdate(t, d);
-      
     if((this.scene.player.body.touching.right && this.body.touching.left) || 
         (this.scene.player.body.touching.left && this.body.touching.right))
      {

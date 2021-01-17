@@ -5,7 +5,7 @@ export default class Guardia extends Personaje
   constructor(scene, x, y, speed) {
 
     super(scene,x,y,'guardiacorrersheet', speed * 60);
-    this.setScale(0.25); 
+    this.setScale(0.2); 
     this.play('guardiacorrer',true);
     this.escenario = scene;
   }

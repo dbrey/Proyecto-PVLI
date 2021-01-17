@@ -69,7 +69,7 @@ export default class MenuScene extends Phaser.Scene
     if(this.soundactive || this.soundactive === undefined)
     {
       sonido = this.add.image(870,80, 'sonidoon').setInteractive();
-      this.music.play();
+      //this.music.play();
       this.sonidoactivo = true;
     }
     else 

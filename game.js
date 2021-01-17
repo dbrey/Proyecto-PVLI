@@ -7,6 +7,7 @@ import Cerveza from './cerveza.js';
 import Champan from './Champan.js';
 import Jagger from './jagger.js';
 import Calimocho from './calimocho.js';
+import jarron from './jarron.js';
 
 export default class Game extends Phaser.Scene 
 {
@@ -119,7 +120,7 @@ this.anims.create({
 }); 
 // ------------------------------------------------------------------
 // ---------------------- ELEMENTOS DEL JUEGO -----------------------
-    this.fondoimg = this.add.tileSprite(0,0,1050, 600, 'fondo1');
+    this.fondoimg = this.add.tileSprite(0,-150,1050, 600, 'fondo1');
     this.fondoimg.setScale(1);
     this.fondoimg.setOrigin(0,0);
     this.fondoimg.setScrollFactor(0);
@@ -127,7 +128,7 @@ this.anims.create({
     this.music = this.sound.add('mainsoundtrack', {volume: 0.05}, {loop: true});
     if(this.sonidoactive)
     {
-      this.music.play();
+     // this.music.play();
     }
 
     this.sigueJugando = true;
@@ -279,8 +280,7 @@ this.anims.create({
     for (const objeto of this.map.getObjectLayer('fisicos').objects) { //Por cada objeto de cada tipo creo un objeto vacio a  cierta distancia de el
       if (objeto.name === 'jarron') 
       {
-
-        let collider = this.physics.add.image(objeto.x,350,'barril');
+        let collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 50) ,350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -291,7 +291,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'coche') {
-        let collider = this.physics.add.image(objeto.x-250,350,'barril');
+        let collider = this.physics.add.image(objeto.x-1500 ,350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -302,7 +302,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'cocheoscuro') {
-        let collider = this.physics.add.image(objeto.x + 250,350,'barril');
+        let collider = this.physics.add.image(objeto.x-1500 ,350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -313,7 +313,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'barriltop') {
-        let collider = this.physics.add.image(objeto.x - 250,350,'barril');
+        let collider = this.physics.add.image(objeto.x - 500,350,'barril');
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -328,7 +328,15 @@ this.anims.create({
 
   activate(collider, objeto) //Aparece el objeto y destruyo el collider
   {
-    this.obs = new Obstaculo(this, objeto.x, objeto.y, objeto.name);
+    if(objeto.name !== "jarron")
+      {
+        this.obs = new Obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
+      }
+      else
+      {
+        this.obs = new Obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
+        //this.obs = new jarron(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
+      }
     collider.destroy();
   }
 

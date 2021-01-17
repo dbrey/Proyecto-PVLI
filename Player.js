@@ -6,7 +6,7 @@ export default class Player extends Personaje
 
     super(scene,x,y,'corrersheet', speed * 62);
 
-    this.setScale(0.25);
+    this.setScale(0.2);
     this.escenario = scene;
     this.speed = 0;
     this.limitspeed = 200;
@@ -85,7 +85,7 @@ export default class Player extends Personaje
       //const objest = this.physics.add.collider(this.player, this.objestaticos); 
     }
     else{ //Quitarla y mov cielo
-      this.body.setVelocityY(-600);
+      this.body.setVelocityY(-400);
       this.body.allowGravity = false;
 
       //platformCollider.destroy();

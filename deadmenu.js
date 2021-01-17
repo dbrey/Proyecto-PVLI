@@ -36,13 +36,16 @@ export default class DeadMenu extends Phaser.Scene
     //boton
     let menu = this.add.image(615,412, 'menuoff').setInteractive();
     let runagain = this.add.image(615,304, 'runagainoff').setInteractive();
-    let sound = this.add.image(562,529, 'soundoff').setInteractive();
+    this.soundText;
+    if (this.sonidoActivo) this.soundText = 'soundon';
+    else this.soundText = 'soundoff';
+    let sound = this.add.image(545,535, this.soundText).setInteractive();
     menu.setDepth(2);
     runagain.setDepth(2);
     sound.setDepth(2);
     menu.setScale(0.75);
     runagain.setScale(0.75);
-    sound.setScale(0.75);
+    sound.setScale(0.4);
     this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     this.keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
 
@@ -79,26 +82,34 @@ export default class DeadMenu extends Phaser.Scene
       this.playagain();
     });
 
+    this.iniFunctAudio(sound);
+    
+  };
+
+  iniFunctAudio(sound){
     sound.on('pointerdown', event => 
       {
         this.sonidoActivo = !this.sonidoActivo;
         if(this.sonidoActivo)//Si se activa el sonido
         {
-
-          sound = this.add.image(562,529, 'soundon');
+          sound.destroy();
+          sound = null;
+          sound = this.add.image(545,535, 'soundon').setInteractive();
           sound.setDepth(2);
-          sound.setScale(0.75);
+          sound.setScale(0.4);
+          this.iniFunctAudio(sound);
         }
         else //Si se desactiva
         {
-          sound = this.add.image(562,529, 'soundoff');
+          sound.destroy();
+          sound = null;
+          sound = this.add.image(545,535, 'soundoff').setInteractive();
           sound.setDepth(2);
-          sound.setScale(0.75);
+          sound.setScale(0.4);
+          this.iniFunctAudio(sound);
         }
-    });
-  };
-
-
+      });
+  }
 
 
   update() //Supongo que la imagen final tiene de tamaño 1000

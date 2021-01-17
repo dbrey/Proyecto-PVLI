@@ -142,6 +142,7 @@ this.anims.create({
     this.alcohol = new Barra_Alcohol(this, 150, 60);
 
     this.player.body.setCollideWorldBounds(true);
+    this.guardia.body.setCollideWorldBounds(true);
     this.x = 0;
     this.cameramain = this.cameras.main;
 // ------------------------  MAPA  ---------------------------------

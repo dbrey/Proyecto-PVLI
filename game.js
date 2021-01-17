@@ -193,6 +193,7 @@ this.anims.create({
    this.powerups();
    this.objetosfisicos();
    this.objetosestaticos();
+   this.triggersGuardia();
 
 // Pause Menu
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
@@ -377,7 +378,6 @@ this.anims.create({
       collider.setDepth(-1);
       collider.setScale(1,5);
       collider.body.setAllowGravity(false);
-
       this.physics.add.overlap(this.guardia, collider, () => 
       {
         this.guardia.saltar();

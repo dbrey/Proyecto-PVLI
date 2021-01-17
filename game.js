@@ -433,7 +433,7 @@ this.anims.create({
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
       this.alcohol.x = this.cameramain.scrollX + 150;
-      if(this.cameras.main.worldView.x > 17000) //Reseteo level
+      if(this.cameras.main.worldView.x > 50000) //Reseteo level
       {
         this.cameramain.scrollX= 0;
         this.player.x = this.player.x - this.cameras.main.worldView.x; //se mantiene la distancia entre el jugador y el guardia
@@ -443,9 +443,10 @@ this.anims.create({
         this.physics.world.bounds.setTo(0, 0, 1050, 600);
         this.x = 0;
         this.vueltas++;
-
+        
         //this.reset();
       }
+      console.log(this.cameras.main.worldView.x);
 
       
 

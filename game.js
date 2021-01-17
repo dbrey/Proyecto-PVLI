@@ -8,7 +8,7 @@ import Champan from './Champan.js';
 import Jagger from './jagger.js';
 import Calimocho from './calimocho.js';
 import jarron from './jarron.js';
-
+import obsmov from './obsmov.js';
 export default class Game extends Phaser.Scene 
 {
   constructor() {
@@ -54,7 +54,7 @@ export default class Game extends Phaser.Scene
     this.load.spritesheet('guardiacorrersheet', './sprites/characters/guardiaspritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('spritesheetvolar', './sprites/characters/spritesheetvolar.png', { frameWidth: 170, frameHeight: 234 });
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
-
+    this.load.audio('champanmusic', './sonidos/cancan.mp3');
 
     this.load.image('city','./sprites/tiles/citytileset.png');
     this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');
@@ -138,9 +138,10 @@ this.anims.create({
 
     this.guardia = new Guardia(this, 30,450, this.worldSpeed);
 
-    this.alcohol = new Barra_Alcohol(this, 100, 70);
+    this.alcohol = new Barra_Alcohol(this, 150, 60);
 
     this.player.body.setCollideWorldBounds(true);
+    this.guardia.body.setCollideWorldBounds(true);
     this.x = 0;
     this.cameramain = this.cameras.main;
 // ------------------------  MAPA  ---------------------------------
@@ -196,8 +197,25 @@ this.anims.create({
 // Pause Menu
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
   
-    this.aux = new Champan(this,500,400);
 // ------------------------------------------------------------------
+tocarchampan(musica)
+  {
+    if(this.sonidoactive)
+    {
+      this.music.pause();
+      
+      musica.play();
+    }
+  }
+
+  tocarnormal()
+  {
+    if(this.sonidoactive)
+    {
+      this.music.resume();
+    }
+  }
+
   };
 
   volverCorrer()
@@ -337,14 +355,18 @@ this.anims.create({
 
   activate(collider, objeto) //Aparece el objeto y destruyo el collider
   {
-    if(objeto.name !== "jarron")
-      {
-        this.obs = new Obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
-      }
-      else
-      {
-        this.obs = new jarron(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);        
-      }
+    if(objeto.name !== "jarron" && objeto.name !== "coche" && objeto.name !== "cocheoscuro" && objeto.name !== "barriltop")
+    {
+      this.obs = new Obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
+    }
+    else if (objeto.name === "coche" || objeto.name === "cocheoscuro" || objeto.name === "barriltop" )
+    {
+      this.obs = new obsmov(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);        
+    }
+    else
+    {
+      this.obs = new jarron(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);        
+    }
     collider.destroy();
   }
 
@@ -433,7 +455,7 @@ this.anims.create({
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
       this.alcohol.x = this.cameramain.scrollX + 150;
-      if(this.cameras.main.worldView.x > 50000) //Reseteo level
+      if(this.cameras.main.worldView.x > 27500) //Reseteo level
       {
         this.cameramain.scrollX= 0;
         this.player.x = this.player.x - this.cameras.main.worldView.x; //se mantiene la distancia entre el jugador y el guardia
@@ -443,12 +465,15 @@ this.anims.create({
         this.physics.world.bounds.setTo(0, 0, 1050, 600);
         this.x = 0;
         this.vueltas++;
-        
+
         //this.reset();
       }
       console.log(this.cameras.main.worldView.x);
 
-      
+       //Guardia
+       if (this.guardia.body.collideRight){
+        this.guardia.saltar();
+      }
 
       this.x += this.worldSpeed;
       this.physics.world.bounds.setTo(this.x, 25, 1050, 600);

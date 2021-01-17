@@ -38,7 +38,7 @@ export default class Player extends Personaje
       else //Champan FALTA CAMBIAR EL SPRITE
       {
         this.champan();
-        if(this.tiempo === 1000) //Se acabo el powerup
+        if(this.tiempo === 1250) //Se acabo el powerup
         {
           this.tiempo = 0;
           this.cambiomov();
@@ -80,6 +80,7 @@ export default class Player extends Personaje
       this.body.allowGravity = true;
       this.scene.normal();
       this.anims.play('correr',true);
+      this.scene.tocarnormal();
 
       //const platformCollider = this.physics.add.collider(this.player, this.platformlayer);
       //const objest = this.physics.add.collider(this.player, this.objestaticos); 
@@ -187,14 +188,33 @@ export default class Player extends Personaje
 
   }
 
-  ralentizar(dureza)
+  ralentizar(dureza, nombre)
   {
     //this.speed -= dureza //Por alguna razon, si se pone este codigo, el jugador se destruye
-    
-    this.speed -= 200
-    if(this.speed < -200)
+    this.retroceso;
+    this.limite = 400;
+    if(nombre === "caja" || nombre === "barril")
     {
-      this.speed = -200;
+      this.retroceso = 200;
+    }
+    else if(nombre === "botellavacia" || nombre === "jarron")
+    {
+      this.retroceso = 100;
+    }
+    else if(nombre === "coche" || nombre === "cocheoscuro")
+    {
+      this.retroceso = 1000;
+      this.limite = 1000;
+    }
+    else if (nombre === "barriltop")
+    {
+      this.retroceso = 300;
+    }
+
+    this.speed -= this.retroceso;
+    if(this.speed < -this.limite)
+    {
+      this.speed = -this.limite;
     }    
   }
 }

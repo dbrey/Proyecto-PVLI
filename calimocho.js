@@ -3,7 +3,7 @@ export default class Calimocho extends Phaser.GameObjects.Sprite
     constructor(scene, x, y){
         super(scene, x, y,'calimocho');
         this.scene.add.existing(this);
-        this.delay_time = 2000;
+        this.delay_time = 10000;
         //this.scene.physics.add.staticImage(x, y,'botella_agua');
         this.scene.physics.add.existing(this, true);
         this.setScale(0.025);

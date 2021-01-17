@@ -198,7 +198,9 @@ this.anims.create({
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
   
 // ------------------------------------------------------------------
-tocarchampan(musica)
+  };
+
+  tocarchampan(musica)
   {
     if(this.sonidoactive)
     {
@@ -215,8 +217,6 @@ tocarchampan(musica)
       this.music.resume();
     }
   }
-
-  };
 
   volverCorrer()
   {

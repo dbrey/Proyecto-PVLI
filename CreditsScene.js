@@ -8,6 +8,7 @@ export default class CreditsScene extends Phaser.Scene
   init(data)
   {
     this.puntuacion = data.int;
+    this.sonido = data.bool
   }
 
   preload() {
@@ -16,10 +17,14 @@ export default class CreditsScene extends Phaser.Scene
 
     this.load.image('menuoff', './sprites/escena_creditos/main1.png');
     this.load.image('menuon', './sprites/escena_creditos/main2.png');
+
+    this.load.audio('click', './sonidos/menu1.mp3');
   }
 
 
   create() {
+    this.click = this.sound.add('click', {volume: 0.2});
+
     this.fondo = this.add.sprite(525, 300, 'fondo');
     this.fondo.setDepth(2);
     this.fondo.setScale(0.75);
@@ -41,6 +46,10 @@ export default class CreditsScene extends Phaser.Scene
     });
 
     menu.on('pointerdown', event => {
+      if(this.sonido)
+      {
+        this.click.play();
+      }
       this.volvermenu();
     });
   };
@@ -62,7 +71,7 @@ export default class CreditsScene extends Phaser.Scene
 
   volvermenu()
   {
-    this.scene.start('menu', {int:this.puntuacion});
+    this.scene.start('menu', {int:this.puntuacion, bool:this.sonido});
   }
 }
       

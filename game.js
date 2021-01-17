@@ -62,10 +62,15 @@ export default class Game extends Phaser.Scene
     this.load.tilemapTiledJSON('block1','./sprites/tiles/block2.json');
 
     this.load.bitmapFont('font', './imagenes/carrier_command.png','./imagenes/carrier_command.xml');
+
+
+    this.load.audio('click', './sonidos/menu1.mp3');
   }
 
 
   create() {
+
+    this.click = this.sound.add('click', {volume: 0.2});
   //PUNTUACION
     this.vueltas = 1;
     this.points = 0;
@@ -444,6 +449,10 @@ this.anims.create({
       resume.destroy();
       menu.destroy();
       sonido.destroy();
+      if(this.sonidoactive)
+      {
+        this.click.play();
+      }
       this.sigueJugando = true;
     });
 
@@ -452,6 +461,10 @@ this.anims.create({
       menu.destroy();
       sonido.destroy();
       this.music.stop();
+      if(this.sonidoactive)
+      {
+        this.click.play();
+      }
       if(this.points > this.maxpunt)
       {
         this.scene.start('menu', {int:this.points, bool:this.sonidoactive});

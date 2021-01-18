@@ -17,11 +17,11 @@ export default class personaje extends Phaser.GameObjects.Sprite
 
   //Suma la velocidad del mapa (speed) más la velocidad del personaje (el guardia siempre será 0)
   moverse(velocidadAparte){
-    this.body.setVelocityX(this.worldSpeed + velocidadAparte);
+    this.body.setVelocityX(this.worldSpeed + velocidadAparte); //el player se mueve a la velocidad del mundo + la suya individual marcada por input
   }
 
   saltar(fuerza){
-    this.body.setVelocityY(fuerza);
+    this.body.setVelocityY(fuerza); //fuerza de salto
   }
 
   agacharse(){

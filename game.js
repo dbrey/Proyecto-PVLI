@@ -9,7 +9,7 @@ import jagger from './jagger.js';
 import calimocho from './calimocho.js';
 import jarron from './jarron.js';
 import obsmov from './obsmov.js';
-export default class Game extends Phaser.Scene 
+export default class game extends Phaser.Scene 
 {
   constructor() {
     super({ key: "game" });

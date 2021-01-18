@@ -212,7 +212,7 @@ this.anims.create({
 
   tocarchampan(musica)
   {
-    if(this.sonidoactive)
+    if(this.sonidoactive && this.sigueJugando)
     {
       this.music.pause();
       
@@ -222,7 +222,7 @@ this.anims.create({
 
   tocarnormal()
   {
-    if(this.sonidoactive)
+    if(this.sonidoactive && this.sigueJugando)
     {
       this.music.resume();
     }

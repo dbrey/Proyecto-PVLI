@@ -6,8 +6,10 @@ export default class jagger extends Phaser.GameObjects.Sprite
         //this.scene.physics.add.staticImage(x, y,'botella_agua');
         this.scene.physics.add.existing(this, true);
         this.setScale(0.025);
-        this.body.setSize(25, 60);
-        this.body.setOffset(210, 540);
+        this.body.setSize(25, 40);
+        this.body.setOffset(210, 550);
+
+        
     }
 
     preUpdate(t,d){

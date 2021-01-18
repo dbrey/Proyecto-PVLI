@@ -46,10 +46,10 @@ export default class obsmov extends obstaculo
     }
 
 
-    /*else if (this.body.velocity.x === 0 )
+    else if (this.body.velocity.x === 0 )
     {
       this.destroy();
-    }*/
+    }
   }
 
 }

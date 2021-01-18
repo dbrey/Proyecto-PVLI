@@ -4,16 +4,20 @@ export default class DeadMenu extends Phaser.Scene
     super({ key: 'deadmenu' });
     this.puntuacion;
     this.sonidoActivo;
+    this.causaDeMuerte;
   }
 
   init(data)
   {
     this.puntuacion = data.int;
     this.sonidoActivo = data.bool;
+    this.causaDeMuerte = data.causa;
   }
 
   preload() {
-    this.load.image('deadmenubg', './sprites/menu_muerte/menu_muerte.png');
+    this.load.image('deadmenubg_guardia', './sprites/menu_muerte/menu_muerte_guardia.png');
+    this.load.image('deadmenubg_alcohol', './sprites/menu_muerte/menu_muerte_alcohol.png');
+    this.load.image('deadmenubg_coche', './sprites/menu_muerte/menu_muerte_coche.png');
 
     //imagenes botones:
     this.load.image('menuoff', './sprites/escena_creditos/main1.png');
@@ -29,8 +33,11 @@ export default class DeadMenu extends Phaser.Scene
 
   create() {
     this.scene.bringToTop();
-
-    this.fondo = this.add.sprite(525, 300, 'deadmenubg');
+    this.fondo;
+    if (this.causaDeMuerte === 0) this.fondo = this.add.sprite(525, 300, 'deadmenubg_guardia');
+    else if (this.causaDeMuerte === 1) this.fondo = this.add.sprite(525, 300, 'deadmenubg_alcohol');
+    else this.fondo = this.add.sprite(525, 300, 'deadmenubg_coche');
+    
     this.fondo.setDepth(2);
     this.fondo.setScale(0.75);
     //boton

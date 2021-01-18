@@ -1,4 +1,4 @@
-export default class Obstaculo extends Phaser.GameObjects.Sprite 
+export default class obstaculo extends Phaser.GameObjects.Sprite 
 {
   constructor(scene, x, y, anim) {
 
@@ -35,18 +35,12 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
   preUpdate(t, d){
     super.preUpdate(t, d);
 
-    if((this.scene.player.body.touching.right && this.body.touching.left) || 
-        (this.scene.player.body.touching.left && this.body.touching.right) ||
-         (this.scene.player.body.touching.up && this.body.touching.down && this.nombre2 === "jarron")
-         
-      )
+    if((this.nombre2 !== "jarron") && (this.nombre2 !== "coche" && this.nombre2 !== "cocheoscuro" && this.nombre2 !== "barriltop") && ((this.scene.player.body.touching.right && this.body.touching.left) || 
+        (this.scene.player.body.touching.left && this.body.touching.right)))
      {
        this.ralentizar(this.resistencia);
      }
-     else if(this.body.velocity.y <= 0 && this.nombre2 === "jarron") // Por que aqui pilla el body pero en otro lado no?
-     {
-       this.destroy();
-     }
+     
   }
 
   ralentizar(dureza)
@@ -55,23 +49,4 @@ export default class Obstaculo extends Phaser.GameObjects.Sprite
     this.destroy(); 
   }
   
-  chocarobsmov()
-  {
-   /*if((this.body.touching.up && this.scene.player.body.touching.down))
-    {
-      this.ralentizar(10);
-    }*/
-  }
-
-  chocarjarron()
-  {
-    /*if(this.body.touching.down && this.scene.player.body.touching.up)
-    {
-      this.ralentizar(10);
-    }
-    else if(this.body.velocity.y <= 0)
-    {
-      this.destroy();
-    }*/
-  }
 }

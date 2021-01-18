@@ -1,4 +1,4 @@
-export default class Cerveza extends Phaser.GameObjects.Sprite 
+export default class cerveza extends Phaser.GameObjects.Sprite 
 {
     constructor(scene, x, y){
         super(scene, x, y,'cerveza');

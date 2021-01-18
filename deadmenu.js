@@ -1,4 +1,4 @@
-export default class DeadMenu extends Phaser.Scene 
+export default class deadmenu extends Phaser.Scene 
 {
   constructor() {
     super({ key: 'deadmenu' });
@@ -28,11 +28,16 @@ export default class DeadMenu extends Phaser.Scene
 
     this.load.image('runagainoff', './sprites/pausa/runagain_negativo.png');
     this.load.image('runagainon', './sprites/pausa/runagain_positivo.png');
+
+    this.load.audio('click', './sonidos/menu1.mp3');
   }
 
 
   create() {
     this.scene.bringToTop();
+
+    this.click = this.sound.add('click', {volume: 0.2});
+    
     this.fondo;
     if (this.causaDeMuerte === 0) this.fondo = this.add.sprite(525, 300, 'deadmenubg_guardia');
     else if (this.causaDeMuerte === 1) this.fondo = this.add.sprite(525, 300, 'deadmenubg_alcohol');
@@ -51,7 +56,7 @@ export default class DeadMenu extends Phaser.Scene
     runagain.setDepth(2);
     sound.setDepth(2);
     menu.setScale(0.75);
-    runagain.setScale(0.4);
+    runagain.setScale(0.75);
     sound.setScale(0.4);
     this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     this.keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
@@ -69,6 +74,10 @@ export default class DeadMenu extends Phaser.Scene
       menu.setScale(0.75);
     });
     menu.on('pointerdown', event => {
+      if(this.sonidoActivo)
+      {
+        this.click.play();
+      }
       this.volvermenu();
     });
 
@@ -77,15 +86,19 @@ export default class DeadMenu extends Phaser.Scene
     {
         runagain = this.add.image(615,304, 'runagainon');
         runagain.setDepth(2);
-        runagain.setScale(0.4);
+        runagain.setScale(0.75);
     });
     runagain.on('pointerout', event => 
     {
         runagain = this.add.image(615,304, 'runagainoff');
         runagain.setDepth(2);
-        runagain.setScale(0.4);
+        runagain.setScale(0.75);
     });
     runagain.on('pointerdown', event => {
+      if(this.sonidoActivo)
+      {
+        this.click.play();
+      }
       this.playagain();
     });
 

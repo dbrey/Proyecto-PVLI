@@ -1,4 +1,4 @@
-export default class Champan extends Phaser.GameObjects.Sprite 
+export default class champan extends Phaser.GameObjects.Sprite 
 {
     constructor(scene, x, y){
         super(scene, x, y,'champan');
@@ -7,8 +7,8 @@ export default class Champan extends Phaser.GameObjects.Sprite
         this.setScale(0.025);
         this.champmusic = this.scene.sound.add('champanmusic', {volume: 0.05}, {loop: false});
 
-        this.body.setSize(20, 70);
-        this.body.setOffset(155, 610);
+        this.body.setSize(20, 40);
+        this.body.setOffset(155, 630);
     }
 
     preUpdate(t,d){

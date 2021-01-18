@@ -1,6 +1,6 @@
-import Personaje from "./personaje.js";
+import personaje from "./personaje.js";
 
-export default class Player extends Personaje
+export default class player extends personaje
 {
   constructor(scene, x, y, speed) {
 
@@ -190,8 +190,8 @@ export default class Player extends Personaje
 
   ralentizar(dureza, nombre)
   {
-    //this.speed -= dureza //Por alguna razon, si se pone este codigo, el jugador se destruye
-    this.retroceso;
+    this.speed -= dureza //Por alguna razon, si se pone este codigo, el jugador se destruye
+    /*this.retroceso;
     if(nombre === "caja" || nombre === "barril")
     {
       this.retroceso = 200;
@@ -209,7 +209,7 @@ export default class Player extends Personaje
       this.retroceso = 300;
     }
 
-    this.speed -= this.retroceso;
+    this.speed -= this.retroceso;*/
     if(this.speed < -400)
     {
       this.speed = -400;

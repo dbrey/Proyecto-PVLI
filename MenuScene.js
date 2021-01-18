@@ -1,4 +1,4 @@
-export default class MenuScene extends Phaser.Scene 
+export default class menuscene extends Phaser.Scene 
 {
   constructor() {
     super({ key: 'menu' });
@@ -27,6 +27,7 @@ export default class MenuScene extends Phaser.Scene
     this.load.atlas('puntmax','./sprites/menu_inicial/numeros.png','./sprites/menu_inicial/numeros_atlas.json');
 
     this.load.audio('menu', './sonidos/menu.mp3');
+    this.load.audio('click', './sonidos/menu1.mp3');
   }
 
 
@@ -37,7 +38,8 @@ export default class MenuScene extends Phaser.Scene
     {
       this.puntuacion = 0;
     }
-    this.music = this.sound.add('menu', {volume: 0.15}, {loop: true});
+    this.music = this.sound.add('menu', {volume: 0.10}, {loop: true});
+    this.click = this.sound.add('click', {volume: 0.2});
 
     this.anims.create ({
       key: 'menu',
@@ -87,6 +89,7 @@ export default class MenuScene extends Phaser.Scene
         this.sonidoactivo = !this.sonidoactivo;
         if(this.sonidoactivo)//Si se activa el sonido
         {
+          
           this.music.play();
           sonido.setTexture('sonidoon');
         }
@@ -96,12 +99,17 @@ export default class MenuScene extends Phaser.Scene
           sonido.setTexture('sonidooff');
         }
         sonido.setScale(1.1);
+       
     });
 
     credits.on('pointerdown', event => 
       {
+        if(this.sonidoactivo)
+        {
+        this.click.play();
+      }
         this.music.stop();
-        this.scene.start('credits',this.puntuacion);
+        this.scene.start('credits',{int:this.puntuacion, bool:this.sonidoactivo});
     });
 
     //Acciones play
@@ -117,6 +125,10 @@ export default class MenuScene extends Phaser.Scene
     });
 
     play.on('pointerdown', event => {
+      if(this.sonidoactivo)
+      {
+        this.click.play();
+      }
       this.music.stop();
       this.scene.start('game', {bool:this.sonidoactivo, int:this.puntuacion});
   });

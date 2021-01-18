@@ -196,6 +196,9 @@ this.anims.create({
    this.behindlayer2.setScale(0.8);
    this.platformlayer.setScale(0.8);
    
+    //this.prueba = new obsmov(this, 2000, 500, "cocheoscuro");
+
+
    this.powerups();
    this.objetosfisicos();
    this.objetosestaticos();
@@ -289,14 +292,18 @@ this.anims.create({
   {
     for (const objeto of this.map.getObjectLayer('estaticos').objects) 
     {
-      if(objeto.name !== "jarron")
+      if(objeto.name !== "jarron"/* && objeto.name !== "botellavacia"*/)
       {
         this.obs = new Obstaculo(this,objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5), objeto.name);
       }
-      else
+      else //if (objeto.name === "jarron")
       {
         this.obs = new jarron(this, objeto.x, objeto.y, objeto.name);
       }
+     /* else
+      {
+        this.obs = new obsmov(this, objeto.x, objeto.y,objeto.name);
+      }*/
     }
   }
 
@@ -307,14 +314,9 @@ this.anims.create({
       if (objeto.name === 'jarron') 
       {
         let collider;
-        if(objeto.x < 3000)
-        {
-          collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 50) ,350,'barril');
-        }
-        else
-        {
-          collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 100) ,350,'barril');
-        }
+        
+        collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 50) ,objeto.y*1.17,'barril');
+        
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -506,7 +508,6 @@ this.anims.create({
 
   update(time, delta) 
   {
-    console.log(this.player.y);
     if (this.sigueJugando)
     {
       this.cameramain.scrollX += this.worldSpeed;

@@ -47,7 +47,7 @@ export default class DeadMenu extends Phaser.Scene
     runagain.setDepth(2);
     sound.setDepth(2);
     menu.setScale(0.75);
-    runagain.setScale(0.4);
+    runagain.setScale(0.75);
     sound.setScale(0.4);
     this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     this.keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
@@ -65,7 +65,7 @@ export default class DeadMenu extends Phaser.Scene
       menu.setScale(0.75);
     });
     menu.on('pointerdown', event => {
-      if(this.this.sonidoActivo)
+      if(this.sonidoActivo)
       {
         this.click.play();
       }
@@ -77,16 +77,16 @@ export default class DeadMenu extends Phaser.Scene
     {
         runagain = this.add.image(615,304, 'runagainon');
         runagain.setDepth(2);
-        runagain.setScale(0.4);
+        runagain.setScale(0.75);
     });
     runagain.on('pointerout', event => 
     {
         runagain = this.add.image(615,304, 'runagainoff');
         runagain.setDepth(2);
-        runagain.setScale(0.4);
+        runagain.setScale(0.75);
     });
     runagain.on('pointerdown', event => {
-      if(this.this.sonidoActivo)
+      if(this.sonidoActivo)
       {
         this.click.play();
       }

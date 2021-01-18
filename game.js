@@ -139,9 +139,9 @@ this.anims.create({
     this.sigueJugando = true;
     this.worldSpeed = 2;
 
-    this.player = new Player(this, 200,450, this.worldSpeed);
+    this.player = new Player(this, 200, 470, this.worldSpeed);
 
-    this.guardia = new Guardia(this, 30,450, this.worldSpeed);
+    this.guardia = new Guardia(this, 30, 470, this.worldSpeed);
 
     this.alcohol = new Barra_Alcohol(this, 150, 60);
 
@@ -492,12 +492,26 @@ this.anims.create({
       console.log(razon);
   }
 
+  seguimiento_camara(){
+    if(this.player.y > 490){
+        this.cameramain.y = (489 - this.player.y);
+    }
+    else if(this.player.y < 412){
+        this.cameramain.y = (412 - this.player.y);
+    }
+    else{
+      this.cameramain.y = 0;
+    }
+  }
+
   update(time, delta) 
   {
+    console.log(this.player.y);
     if (this.sigueJugando)
     {
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
+      this.seguimiento_camara();
       if(this.cameras.main.worldView.x > 27500) //Reseteo level
       {
         this.cameramain.scrollX= 0;

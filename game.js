@@ -1,15 +1,15 @@
-import Player from './Player.js';
-import Guardia from './guardia.js';
-import Obstaculo from './obstaculo.js';
-import Barra_Alcohol from './barra_alcohol.js';
-import Agua from './agua.js';
-import Cerveza from './cerveza.js';
-import Champan from './Champan.js';
-import Jagger from './jagger.js';
-import Calimocho from './calimocho.js';
+import player from './player.js';
+import guardia from './guardia.js';
+import obstaculo from './obstaculo.js';
+import barra_alcohol from './barra_alcohol.js';
+import agua from './agua.js';
+import cerveza from './cerveza.js';
+import champan from './champan.js';
+import jagger from './jagger.js';
+import calimocho from './calimocho.js';
 import jarron from './jarron.js';
 import obsmov from './obsmov.js';
-export default class Game extends Phaser.Scene 
+export default class game extends Phaser.Scene 
 {
   constructor() {
     super({ key: "game" });
@@ -139,11 +139,11 @@ this.anims.create({
     this.sigueJugando = true;
     this.worldSpeed = 2;
 
-    this.player = new Player(this, 200, 470, this.worldSpeed);
+    this.player = new player(this, 200, 470, this.worldSpeed);
 
-    this.guardia = new Guardia(this, 30, 470, this.worldSpeed);
+    this.guardia = new guardia(this, 30, 470, this.worldSpeed);
 
-    this.alcohol = new Barra_Alcohol(this, 150, 60);
+    this.alcohol = new barra_alcohol(this, 150, 60);
 
     this.player.body.setCollideWorldBounds(true);
     this.guardia.body.setCollideWorldBounds(true);
@@ -267,23 +267,23 @@ this.anims.create({
       let value = Phaser.Math.Between(0, 11); //Puede que no salga nada
       if(value == 0)
       {
-        this.power = new Champan(this,objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
+        this.power = new champan(this,objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
       else if(value == 1 || value == 5)
       {
-        this.power = new Agua(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
+        this.power = new agua(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
       else if(value == 2 || value == 6)
       {
-        this.power = new Calimocho(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
+        this.power = new calimocho(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
       else if(value == 3 || value == 7)
       {
-        this.power = new Cerveza(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
+        this.power = new cerveza(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
       else if(value == 4 || value == 8)
       {
-        this.power = new Jagger(this, objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5));
+        this.power = new jagger(this, objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
     }
   }
@@ -294,7 +294,7 @@ this.anims.create({
     {
       if(objeto.name !== "jarron"/* && objeto.name !== "botellavacia"*/)
       {
-        this.obs = new Obstaculo(this,objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5), objeto.name);
+        this.obs = new obstaculo(this,objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5), objeto.name);
       }
       else //if (objeto.name === "jarron")
       {
@@ -366,7 +366,7 @@ this.anims.create({
   {
     if(objeto.name !== "jarron" && objeto.name !== "coche" && objeto.name !== "cocheoscuro" && objeto.name !== "barriltop")
     {
-      this.obs = new Obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
+      this.obs = new obstaculo(this, objeto.x-(objeto.x/5), objeto.y-(objeto.y/5), objeto.name);
     }
     else if (objeto.name === "coche" || objeto.name === "cocheoscuro" || objeto.name === "barriltop" )
     {

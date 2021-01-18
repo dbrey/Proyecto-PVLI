@@ -1,4 +1,4 @@
-export default class DeadMenu extends Phaser.Scene 
+export default class deadmenu extends Phaser.Scene 
 {
   constructor() {
     super({ key: 'deadmenu' });

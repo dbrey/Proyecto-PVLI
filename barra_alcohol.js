@@ -1,4 +1,4 @@
-export default class Barra_Alcohol extends Phaser.GameObjects.Sprite 
+export default class barra_alcohol extends Phaser.GameObjects.Sprite 
 {
     constructor(scene, x ,y){
       super(scene, x, y,'alcohol_atlas');

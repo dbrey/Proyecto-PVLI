@@ -48,7 +48,6 @@
             <li><a href="#controles">Controles</a></li>
             <li><a href="#historia">Historia</a></li>
             <li><a href="#desarrolladores">Desarrolladores</a></li>
-            <li><a href="#contacto">Contacto</a></li>
 
             <li class="get-started"><a href="https://github.com/dbrey/Proyecto-PVLI">GitHub</a></li>
           </ul>
@@ -73,11 +72,11 @@
 
     
         <script type="module">
-          import MenuScene from "./MenuScene.js";
-          import Intro from "./intro.js";
-          import Game from "./game.js";
-          import CreditsScene from "./CreditsScene.js"
-          import DeadMenu from "./deadmenu.js"
+          import menuscene from "./menuscene.js";
+          import intro from "./intro.js";
+          import game from "./game.js";
+          import creditsscene from "./creditsscene.js"
+          import deadmenu from "./deadmenu.js"
 
           var config = {
             type: Phaser.AUTO, //Meter canvas
@@ -92,7 +91,7 @@
               mode: Phaser.Scale.FIT,
               autoCenter: Phaser.Scale.CENTER_BOTH,
             },
-            scene: [MenuScene, CreditsScene, Game, DeadMenu],
+            scene: [menuscene, creditsscene, game, deadmenu],
             physics: {
               default: "arcade",
               arcade: { gravity: { y: 400 }, debug: true},
@@ -180,12 +179,9 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
-                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                <img src="assets/img/team/pablo.png" class="img-fluid" alt="">
                 <div class="social">
                   <a href="https://twitter.com/Pablitin333_BS"><i class="icofont-twitter"></i></a>
-                  <a href="https://twitter.com/hideo_kojima_en?lang=es"><i class="icofont-facebook"></i></a>
-                  <a href="https://twitter.com/hideo_kojima_en?lang=es"><i class="icofont-instagram"></i></a>
-                  <a href="https://twitter.com/hideo_kojima_en?lang=es"><i class="icofont-linkedin"></i></a>
                 </div>
               </div>
               <div class="member-info">
@@ -229,12 +225,9 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="400">
               <div class="member-img">
-                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <img src="assets/img/team/alvaro.png" class="img-fluid" alt="">
                 <div class="social">
-                  <a href="https://twitter.com/hideo_kojima_en?lang=es"><i class="icofont-twitter"></i></a>
-                  <a href="https://twitter.com/hideo_kojima_en?lang=es"><i class="icofont-facebook"></i></a>
-                  <a href="https://twitter.com/hideo_kojima_en?lang=es"><i class="icofont-instagram"></i></a>
-                  <a href="https://twitter.com/hideo_kojima_en?lang=es"><i class="icofont-linkedin"></i></a>
+                  <a href="https://twitter.com/RubiKing01"><i class="icofont-twitter"></i></a>
                 </div>
               </div>
               <div class="member-info">
@@ -247,81 +240,6 @@
 
       </div>
     </section><!-- End Team Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contacto" class="contact">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>Contacto</h2>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="contact-about">
-              <h3>Cerves Games</h3>
-              <p>Si tiene cualquier tipo de duda contáctenos en nuestras redes</p>
-              <div class="social-links">
-                <a href="poner aqui link de la red" class="twitter"><i class="icofont-twitter"></i></a>
-                <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-                <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-            <div class="info">
-              <div>
-                <i class="ri-map-pin-line"></i>
-                <p>Tu corazón<br></p>
-              </div>
-
-              <div>
-                <i class="ri-mail-send-line"></i>
-                <p>info@example.com</p>
-              </div>
-
-              <div>
-                <i class="ri-phone-line"></i>
-                <p>+34 6969696969</p>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" />
-                <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Tema" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mensaje"></textarea>
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3">
-                <div class="loading">Cargando</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Tu mensaje ha sido enviado</div>
-              </div>
-              <div class="text-center"><button type="submit">Enviar</button></div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
 
     
 

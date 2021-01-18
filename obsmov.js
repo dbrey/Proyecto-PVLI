@@ -1,6 +1,6 @@
-import Obstaculo from"./obstaculo.js";
+import obstaculo from"./obstaculo.js";
 
-export default class Obsmov extends Obstaculo
+export default class obsmov extends obstaculo
 {
   constructor(scene, x, y, anim) {
 

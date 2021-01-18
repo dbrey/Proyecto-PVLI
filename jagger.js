@@ -1,4 +1,4 @@
-export default class Jagger extends Phaser.GameObjects.Sprite 
+export default class jagger extends Phaser.GameObjects.Sprite 
 {
     constructor(scene, x, y){
         super(scene, x, y,'jagger');

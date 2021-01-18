@@ -1,6 +1,6 @@
-import Personaje from "./personaje.js";
+import personaje from "./personaje.js";
 
-export default class Player extends Personaje
+export default class player extends personaje
 {
   constructor(scene, x, y, speed) {
 

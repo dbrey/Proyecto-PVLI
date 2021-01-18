@@ -1,4 +1,4 @@
-export default class Obstaculo extends Phaser.GameObjects.Sprite 
+export default class obstaculo extends Phaser.GameObjects.Sprite 
 {
   constructor(scene, x, y, anim) {
 

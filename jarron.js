@@ -1,6 +1,6 @@
-import Obstaculo from"./obstaculo.js";
+import obstaculo from"./obstaculo.js";
 
-export default class jarron extends Obstaculo
+export default class jarron extends obstaculo
 {
   constructor(scene, x, y, anim) {
 

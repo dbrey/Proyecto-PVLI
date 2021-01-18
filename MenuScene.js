@@ -1,4 +1,4 @@
-export default class MenuScene extends Phaser.Scene 
+export default class menuscene extends Phaser.Scene 
 {
   constructor() {
     super({ key: 'menu' });

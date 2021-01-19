@@ -315,7 +315,7 @@ this.anims.create({
       {
         let collider;
         
-        collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 50) ,objeto.y*1.17,'barril');
+        collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 50) ,objeto.y*1.17,'barril'); //Ajustar el X del collider para que salga x distancia antes que el obstaculo
         
         collider.setDepth(-1);
         collider.setScale(1,10);
@@ -338,7 +338,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'cocheoscuro') {
-        let collider = this.physics.add.image(objeto.x- (objeto.x/2) ,350,'barril');
+        let collider = this.physics.add.image(objeto.x- (objeto.x/2) ,350,'barril'); 
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);

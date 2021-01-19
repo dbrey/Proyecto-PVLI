@@ -48,7 +48,7 @@ export default class barra_alcohol extends Phaser.GameObjects.Sprite
 
     preUpdate(t, d){  
       
-      if(this.ebriedad > this.max_alcohol){
+      if(this.ebriedad >= this.max_alcohol){
         this.ebriedad = this.max_alcohol;
         this.escena.muerte(1);
       }

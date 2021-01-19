@@ -77,7 +77,7 @@ export default class Game extends Phaser.Scene
     this.text = this.add.bitmapText(900, 10, 'font',this.points,20);
     this.text.inputEnabled = true;
     this.text.setDepth(6);
-    this.text.setScrollFactor(-0,5);
+    this.text.setScrollFactor(0);
     this.text.ALIGN_LEFT;
 
 // -------------------------- ANIMACIONES --------------------------
@@ -496,13 +496,11 @@ this.anims.create({
 
   seguimiento_camara(){
     if(this.player.y > 490){
-        this.cameramain.y = (489 - this.player.y);
-    }
-    else if(this.player.y < 412){
-        this.cameramain.y = (412 - this.player.y);
+      this.cameramain.scrollY = (this.player.y -489);
+      //this.text.setScrollFactor(0, 1)
     }
     else{
-      this.cameramain.y = 0;
+      this.cameramain.scrollY = 0;
     }
   }
 
@@ -533,7 +531,7 @@ this.anims.create({
       }
 
       this.x += this.worldSpeed;
-      this.physics.world.bounds.setTo(this.x, 25, 1050, 600);
+      this.physics.world.bounds.setTo(this.x, 25, 1050, 800);
       
       if(this.physics.overlap(this.player, this.guardia)) {
         this.muerte(0);

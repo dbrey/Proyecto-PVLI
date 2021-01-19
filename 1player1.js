@@ -52,7 +52,7 @@ export default class player extends personaje
     else this.body.setVelocityX(0);
   }  
 
-  champan()
+  champan() //movimiento en champan
   {
     if (this.cursors.left.isDown) {
       this.disminuyendoVelocidad = true;
@@ -72,7 +72,7 @@ export default class player extends personaje
   this.movimientochamp();
   }
 
-  cambiomov()
+  cambiomov() //cambia el estado de champan a player o viceversa
   {  //true normal, false champan
     this.mov = !this.mov;
     if(this.mov) //Poner Gravedad y mov normal

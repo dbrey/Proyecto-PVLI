@@ -175,10 +175,11 @@ export default class player extends personaje
     //ANIMACIÓN DE SALTO
     this.play('correr',true);
   } 
-  
+
   incapacitar()
   {
     this.paralizado = false;
+    this.anims.resume();
   }
 
   agacharse(){
@@ -201,33 +202,32 @@ export default class player extends personaje
 
   ralentizar(segundos)
   {
-
+    this.prueba = 125;
     this.paralizado = true;
-    this.body.setVelocityX(0);
-    this.timedEvent = this.scene.time.delayedCall(segundos, this.incapacitar, [], this);
-    //this.speed -= dureza //Por alguna razon, si se pone este codigo, el jugador se destruye
-    /*this.retroceso;
-    if(nombre === "caja" || nombre === "barril")
-    {
-      this.retroceso = 200;
-    }
-    else if(nombre === "botellavacia" || nombre === "jarron")
-    {
-      this.retroceso = 100;
-    }
-    else if(nombre === "coche" || nombre === "cocheoscuro")
+    if (segundos >= 20000)
     {
       this.escenario.muerte(2);
     }
-    else if (nombre === "barriltop")
+    this.body.setVelocityX(0);
+    this.speed = 0;
+    this.anims.pause();
+    /*while(segundos > 0 )
     {
-      this.retroceso = 300;
-    }
+      console.log(this.speed);
 
-    this.speed -= this.retroceso;*/
-    if(this.speed < -400)
-    {
-      this.speed = -400;
-    }    
+      if(this.speed >= -200)
+      {
+        
+        this.timedEvent = this.scene.time.delayedCall(100, this.incapacitar, [], this);
+      }
+      this.prueba--;
+      
+    }*/
+
+    //this.speed = 0;
+   this.timedEvent = this.scene.time.delayedCall(segundos, this.incapacitar, [], this);
+    
+
+    
   }
 }

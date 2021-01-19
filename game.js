@@ -137,7 +137,7 @@ this.anims.create({
     }
 
     this.sigueJugando = true;
-    this.worldSpeed = 2;
+    this.worldSpeed = 2.5;
 
     this.player = new player(this, 200, 470, this.worldSpeed);
 
@@ -315,7 +315,8 @@ this.anims.create({
       {
         let collider;
         
-        collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 50) ,objeto.y*1.17,'barril'); //Ajustar el X del collider para que salga x distancia antes que el obstaculo
+        collider = this.physics.add.image(objeto.x-(objeto.x/5) - 50,objeto.y*1.17,'barril'); 
+        //Ajustar el X del collider para que salga x distancia antes que el obstaculo
         
         collider.setDepth(-1);
         collider.setScale(1,10);

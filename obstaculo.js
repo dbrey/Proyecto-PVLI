@@ -20,13 +20,13 @@ export default class obstaculo extends Phaser.GameObjects.Sprite
     if(anim === "caja" || anim === "barril")
     {
       this.setScale(0.8); 
-      this.resistencia = 200;
+      this.resistencia = 2000;
 
     }
     else if(anim === "botellavacia")
     {
       this.setScale(0.65);
-      this.resistencia =  100;
+      this.resistencia =  1000;
     }
 
     
@@ -45,7 +45,7 @@ export default class obstaculo extends Phaser.GameObjects.Sprite
 
   ralentizar(dureza)
   {
-    this.scene.player.ralentizar(dureza, this.nombre2);
+    this.scene.player.ralentizar(dureza);
     this.destroy(); 
   }
   

@@ -8,14 +8,14 @@ export default class obsmov extends obstaculo
     if (anim === "barriltop")
     {
       this.setScale(0.8); 
-      this.resistencia = 400;
+      this.resistencia = 2500;
       this.body.setVelocityX(-100);
     }
     else if(anim === "coche" || anim === "cocheoscuro")
     {
       this.setScale(2.5); 
       this.body.setSize(27, 8);
-      this.resistencia = 1000;
+      this.resistencia = 20000;
       this.body.setVelocityX(-300);
       if (anim === "cocheoscuro")
       {
@@ -42,7 +42,7 @@ export default class obsmov extends obstaculo
     if((this.scene.player.body.touching.down && this.body.touching.up) ||(this.scene.player.body.touching.right && this.body.touching.left) || 
      (this.scene.player.body.touching.left && this.body.touching.right))
     {
-      super.ralentizar(10);
+      super.ralentizar(this.resistencia);
     }
 
 

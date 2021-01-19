@@ -314,9 +314,13 @@ this.anims.create({
       if (objeto.name === 'jarron') 
       {
         let collider;
-        
-        collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 50) ,objeto.y*1.17,'barril');
-        
+                
+        collider = this.physics.add.image(objeto.x /*- (objeto.y * 0.875)*/ ,objeto.y*1.17,'barril');
+        /*console.log("Jarron de turno")
+        console.log(objeto.x);
+        console.log(objeto.y);
+        console.log(collider.x);*/
+
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);

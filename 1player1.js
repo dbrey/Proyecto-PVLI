@@ -10,6 +10,7 @@ export default class player extends personaje
     this.escenario = scene;
     this.speed = 0;
     this.limitspeed = 200;
+    this.paralizado = false;
 
     this.mov = true;
 
@@ -95,32 +96,37 @@ export default class player extends personaje
   }
   normal()
   {
-    //LECTURA DE TECLADO
-    if (this.cursors.up.isDown && this.body.blocked.down)
+    if(!this.paralizado)
     {
-      this.saltar();
-    }
-    else if (this.cursors.left.isDown) //Izquierda reducir vel
-    {
-      //Equivalente al invoke
-      //this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.scene.onEvent, [], this); 
-      this.disminuyendoVelocidad = true;
-      this.aumentandoVelocidad = false;
-    }
-    else if (this.cursors.right.isDown) //Derecha aumentar vel
-    {
-      this.aumentandoVelocidad = true;
-      this.disminuyendoVelocidad = false;
-    }
-    else if (this.cursors.down.isDown && !this.stAgachado && this.body.blocked.down) //Abajo
-    {
-      this.stAgachado = true;
-      this.agacharse();
+      //LECTURA DE TECLADO
+      if (this.cursors.up.isDown && this.body.blocked.down)
+      {
+        this.saltar();
+      }
+      else if (this.cursors.left.isDown) //Izquierda reducir vel
+      {
+        //Equivalente al invoke
+        //this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.scene.onEvent, [], this); 
+        this.disminuyendoVelocidad = true;
+        this.aumentandoVelocidad = false;
+      }
+      else if (this.cursors.right.isDown) //Derecha aumentar vel
+      {
+        this.aumentandoVelocidad = true;
+        this.disminuyendoVelocidad = false;
+      }
+      else if (this.cursors.down.isDown && !this.stAgachado && this.body.blocked.down) //Abajo
+      {
+        this.stAgachado = true;
+        this.agacharse();
+
+      }
+
+
+      this.movimiento();
 
     }
-
-
-    this.movimiento();
+    
   }
 
   movimientochamp()
@@ -169,6 +175,11 @@ export default class player extends personaje
     //ANIMACIÓN DE SALTO
     this.play('correr',true);
   } 
+  
+  incapacitar()
+  {
+    this.paralizado = false;
+  }
 
   agacharse(){
     super.agacharse();
@@ -188,10 +199,14 @@ export default class player extends personaje
 
   }
 
-  ralentizar(dureza, nombre)
+  ralentizar(segundos)
   {
+
+    this.paralizado = true;
+    this.body.setVelocityX(0);
+    this.timedEvent = this.scene.time.delayedCall(segundos, this.incapacitar, [], this);
     //this.speed -= dureza //Por alguna razon, si se pone este codigo, el jugador se destruye
-    this.retroceso;
+    /*this.retroceso;
     if(nombre === "caja" || nombre === "barril")
     {
       this.retroceso = 200;
@@ -209,7 +224,7 @@ export default class player extends personaje
       this.retroceso = 300;
     }
 
-    this.speed -= this.retroceso;
+    this.speed -= this.retroceso;*/
     if(this.speed < -400)
     {
       this.speed = -400;

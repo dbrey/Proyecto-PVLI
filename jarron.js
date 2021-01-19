@@ -15,7 +15,7 @@ export default class jarron extends obstaculo
     if((this.scene.player.body.touching.up && this.body.touching.down) ||(this.scene.player.body.touching.right && this.body.touching.left) || 
      (this.scene.player.body.touching.left && this.body.touching.right))
     {
-      super.ralentizar(10);
+      super.ralentizar(1000);
     }
     else if (this.body.velocity.y <= 0)
     {

@@ -9,6 +9,7 @@ import jagger from './jagger.js';
 import calimocho from './calimocho.js';
 import jarron from './jarron.js';
 import obsmov from './obsmov.js';
+import coins from './coin.js';
 export default class Game extends Phaser.Scene 
 {
   constructor() {
@@ -31,6 +32,7 @@ export default class Game extends Phaser.Scene
     this.load.image('cerveza', './sprites/items/mugofbeer.png');
     this.load.image('champan', './sprites/items/champancg.png');
     this.load.image('jagger', './sprites/items/jagger.png');
+    this.load.spritesheet('coinsheet', './sprites/items/coin.png', { frameWidth: 16, frameHeight: 16 });
 
     this.load.image('barril', './sprites/obstaculos/32x32/barril.png');
     this.load.image('caja', './sprites/obstaculos/32x32/caja.png');
@@ -39,6 +41,7 @@ export default class Game extends Phaser.Scene
     this.load.image('cocheoscuro', './sprites/obstaculos/32x32/cocheoscuro.png');
     this.load.image('coche', './sprites/obstaculos/32x32/coche.png');
     this.load.image('jarron', './sprites/obstaculos/32x32/jarron.png');
+    
 
     //Pausa menu
     this.load.image('menumain', './sprites/pausa/menu_button.png');
@@ -55,6 +58,7 @@ export default class Game extends Phaser.Scene
     this.load.spritesheet('spritesheetvolar', './sprites/characters/spritesheetvolar.png', { frameWidth: 170, frameHeight: 234 });
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
     this.load.audio('champanmusic', './sonidos/cancan.mp3');
+    this.load.audio('coinmusic', './sonidos/moneda.wav');
 
     this.load.image('city','./sprites/tiles/citytileset.png');
     this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');
@@ -69,7 +73,7 @@ export default class Game extends Phaser.Scene
 
 
   create() {
-
+    
     this.click = this.sound.add('click', {volume: 0.2});
   //PUNTUACION
     this.vueltas = 1;
@@ -81,6 +85,12 @@ export default class Game extends Phaser.Scene
     this.text.ALIGN_LEFT;
 
 // -------------------------- ANIMACIONES --------------------------
+this.anims.create({
+  key: 'coin',
+  frames: this.anims.generateFrameNumbers('coinsheet', { start: 0, end: 5}),
+  frameRate: 12,
+  repeat: -1
+}); 
 this.anims.create({
   key: 'champan',
   frames: this.anims.generateFrameNumbers('spritesheetvolar', { start: 0, end: 7}),
@@ -202,11 +212,11 @@ this.anims.create({
    this.powerups();
    this.objetosfisicos();
    this.objetosestaticos();
+   this.crearmonedas();
    this.triggersGuardia();
 
 // Pause Menu
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-  
 // ------------------------------------------------------------------
   };
 
@@ -250,15 +260,48 @@ this.anims.create({
     this.stAgachado = false;
   }
 
-  rapido()
+  rapido() //ademas de cambiar la velocidad crea las monedas en el aire
   {
-    this.worldSpeed = 4;
+    this.worldSpeed = 5;
+
+    this.n = 0;
+    this.monedax = this.player.x + 500;
+
+    while(this.n < 120) //creamos 40 monedas en el aire
+    {
+      let value = Phaser.Math.Between(0, 2); //Puede que no salga nada
+      this.monedax += 20;
+
+      if(value === 0) // arriba medio abajo
+      {
+        this.coin = new coins(this, this.monedax,30,this.sonidoactive);
+      }
+      else if( value === 1) //arriba medio abajo
+      {
+        this.coin = new coins(this, this.monedax,60,this.sonidoactive);
+      }
+      else
+      {
+        this.coin = new coins(this, this.monedax,90,this.sonidoactive);
+      }
+      if(this.n%20 === 0)
+      {
+        this.monedax += 100;
+      }
+      this.n++;
+    }
+  }
+
+  moneda()
+  {
+    this.points += 100;
   }
 
   normal()
   {
-    this.worldSpeed = 2;
+    this.worldSpeed = 2.5;
   }
+
 
   powerups()
   {
@@ -288,6 +331,23 @@ this.anims.create({
     }
   }
 
+  crearmonedas()
+  {
+    for (const objeto of this.map.getObjectLayer('monedas').objects) 
+    {
+    
+      this.n = 0;
+    this.monedax = objeto.x*0.8;
+
+    while(this.n < 5) 
+    {
+      this.coin = new coins(this, this.monedax, objeto.y*0.8, this.sonidoactive);
+
+      this.monedax += 20;
+      this.n++;
+    }
+    }
+  }
   objetosestaticos()
   {
     for (const objeto of this.map.getObjectLayer('estaticos').objects) 
@@ -407,6 +467,7 @@ this.anims.create({
   {
     this.objetosfisicos();
     this.objetosestaticos();
+    this.crearmonedas();
   }
 
   pause()
@@ -545,7 +606,7 @@ this.anims.create({
         this.sigueJugando = false;
         this.pause();
       }
-      this.points++; //Cada pixel 1 punto
+      this.points ++; //Cada pixel 1 punto
       this.puntos();
     }
   }

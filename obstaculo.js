@@ -11,12 +11,7 @@ export default class obstaculo extends Phaser.GameObjects.Sprite
     this.scene.physics.world.enableBody(this);
     this.scene.physics.add.collider(this, this.scene.player);
     this.scene.physics.add.collider(this, this.scene.groundlayer);
-
-    // Si no es un jarron, cualquier obstaculo puede estar en una plataforma
-    /*if(anim !== "jarron")
-    {
-      this.scene.physics.add.collider(this, this.scene.platform);
-    }*/
+    this.chocar = this.scene.sound.add('choq', {volume: 0.2}, {loop: false});
 
     // Dependiendo del objeto que recibamos, lo escalamos debidamente y le damos su resistencia correspondiente
     if(anim === "caja" || anim === "barril")
@@ -52,7 +47,9 @@ export default class obstaculo extends Phaser.GameObjects.Sprite
   // Dependiendo de la resistencia del obstaculo, lo ralentiza mas o menos tiempo
   ralentizar(dureza)
   {
+    this.chocar.play();
     this.scene.player.ralentizar(dureza);
+
     this.destroy(); 
   }
   

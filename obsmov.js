@@ -24,6 +24,7 @@ export default class obsmov extends obstaculo
         this.body.setOffset(7, 11);
       }
     }
+    
   }
   
   preUpdate(t, d){

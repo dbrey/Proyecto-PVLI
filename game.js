@@ -58,7 +58,15 @@ export default class Game extends Phaser.Scene
     this.load.spritesheet('spritesheetvolar', './sprites/characters/spritesheetvolar.png', { frameWidth: 170, frameHeight: 234 });
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
     this.load.audio('champanmusic', './sonidos/cancan.mp3');
+<<<<<<< HEAD
     this.load.audio('coinmusic', './sonidos/moneda.wav');
+=======
+    this.load.audio('powup', './sonidos/powerup.mp3');
+    this.load.audio('jmp', './sonidos/jump.mp3');
+    this.load.audio('cr', './sonidos/crash.mp3');
+    this.load.audio('choq', './sonidos/chocar.mp3');
+
+>>>>>>> 497ceda0805a33a68d4ae0b078e899305778097a
 
     this.load.image('city','./sprites/tiles/citytileset.png');
     this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');
@@ -121,12 +129,7 @@ this.anims.create({
   frameRate: 6,
   repeat: 0
 }); 
-/*this.anims.create({
-  key: 'alcoholismo',
-  frames: this.anims.generateFrameNumbers('alcoholsheet', { start:0, end: 14}),
-  frameRate: 1,
-  repeat: -1
-});*/
+
 this.anims.create({
   key: 'guardiacorrer',
   frames: this.anims.generateFrameNumbers('guardiacorrersheet', { start:0, end: 5}),
@@ -145,6 +148,7 @@ this.anims.create({
     {
      this.music.play();
     }
+    this.crashsound = this.sound.add('cr', {volume: 0.1}, {loop: false});
 
     this.sigueJugando = true;
     this.worldSpeed = 2.5;
@@ -206,9 +210,6 @@ this.anims.create({
    this.behindlayer2.setScale(0.8);
    this.platformlayer.setScale(0.8);
    
-    //this.prueba = new obsmov(this, 2000, 500, "cocheoscuro");
-
-
    this.powerups();
    this.objetosfisicos();
    this.objetosestaticos();
@@ -352,18 +353,15 @@ this.anims.create({
   {
     for (const objeto of this.map.getObjectLayer('estaticos').objects) 
     {
-      if(objeto.name !== "jarron"/* && objeto.name !== "botellavacia"*/)
+      if(objeto.name !== "jarron")
       {
         this.obs = new obstaculo(this,objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5), objeto.name);
       }
-      else //if (objeto.name === "jarron")
+      else
       {
         this.obs = new jarron(this, objeto.x, objeto.y, objeto.name);
       }
-     /* else
-      {
-        this.obs = new obsmov(this, objeto.x, objeto.y,objeto.name);
-      }*/
+
     }
   }
 
@@ -545,6 +543,8 @@ this.anims.create({
   muerte(razon){
     this.sigueJugando = false;
     this.music.stop();
+    this.crashsound.play();
+
     if(this.points > this.maxpunt)
       {
         this.scene.start('deadmenu', {int:this.points, bool:this.sonidoactive, causa:razon});

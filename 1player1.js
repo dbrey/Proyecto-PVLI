@@ -10,7 +10,6 @@ export default class player extends personaje
     this.escenario = scene;
     this.speed = 0;
     this.limitspeed = 200;
-    this.paralizado = false;
     this.mov = true;
 
     this.tiempo = 0;
@@ -50,7 +49,8 @@ export default class player extends personaje
       }
     }
     else this.body.setVelocityX(0);
-    this.delay_input = ((this.escenario.alcohol.ebriedad*100)/3);  
+    this.delay_input = ((this.escenario.alcohol.ebriedad)*6);  
+    //(this.escenario.alcohol.ebriedad*100)/3
   }  
 
   champan() //movimiento en champan
@@ -83,21 +83,17 @@ export default class player extends personaje
       this.anims.play('correr',true);
       this.scene.tocarnormal();
 
-      //const platformCollider = this.physics.add.collider(this.player, this.platformlayer);
-      //const objest = this.physics.add.collider(this.player, this.objestaticos); 
     }
     else{ //Quitarla y mov cielo
       this.body.setVelocityY(-400);
       this.body.allowGravity = false;
       this.anims.play('champan',true);
-      //platformCollider.destroy();
-      //objest.destroy();
+
     }
   }
   normal()
   {
-    if(!this.paralizado)
-    {
+    
       //LECTURA DE TECLADO
       if (this.cursors.up.isDown)
       {
@@ -120,15 +116,15 @@ export default class player extends personaje
         this.stAgachado = true;
         this.agacharse();
       }
-      console.log(this.delay_input);
       this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.movimiento, [], this);
-    }    
+       
   }
 
   
-
+  // Cambiamos el movimiento del jugador
   movimientochamp()
   {
+    
     if(this.disminuyendoVelocidad && this.speed > -this.limitspeed){
       this.speed -= this.aceleracion; //Disminuye Vel
       this.disminuyendoVelocidad = false;
@@ -142,6 +138,9 @@ export default class player extends personaje
   }
 
   movimiento(){
+    // Aumentamos o disminuimos la velocidad siempre que este dentro del limite
+    // Tambien aumentamos o disminuimos el nivel de alcoholismo de la barra
+
     if (this.disminuyendoVelocidad && this.speed > -this.limitspeed){
       this.speed -= this.aceleracion; //Disminuye Vel
       this.disminuyendoVelocidad = false;
@@ -165,20 +164,16 @@ export default class player extends personaje
     if(this.body.blocked.down){
       super.saltar(-250);
     }
-    /*
-    En el caso de que cuando probemos este salto en el guardia, no salte
-    será porque pesa más y hay que añadirle más fuerza. En ese caso al saltar() de Personaje
-    se le meterá un parámetro que será la fuerza y, desde Player se llamará con una fuerza y desde
-    Guardia con otra.
-    */
+    
     //ANIMACIÓN DE SALTO
     this.play('correr',true);
   } 
 
   incapacitar()
   {
-    this.paralizado = false;
-    this.anims.resume();
+    this.speed--;
+    /*this.paralizado = false;
+    this.anims.resume();*/
   }
 
   agacharse(){
@@ -188,9 +183,11 @@ export default class player extends personaje
     this.anims.play('agacharse1', true);
     this.anims.chain('agacharse2',true);
 
+    // Cambiamos la hitbox, reduciendolo
     this.timedEvent = this.scene.time.delayedCall(500, this.scene.sizeAgachado, [], this);
     this.anims.chain('agacharse3', true); 
 
+    // Le devolvemos la hitbox original y cambiamos la animacion de correr
     this.timedEvent = this.scene.time.delayedCall(1250, this.scene.sizeLevantado, [], this);
     this.timedEvent = this.scene.time.delayedCall(1500, this.scene.volverCorrer, [], this); 
     
@@ -201,32 +198,20 @@ export default class player extends personaje
 
   ralentizar(segundos)
   {
-    this.prueba = 125;
-    this.paralizado = true;
-    if (segundos >= 20000)
+    // Numero de veces que se va a reducir la velocidad
+    this.seg = segundos;  
+    if (segundos >= 1000)
     {
       this.escenario.muerte(2);
     }
-    this.body.setVelocityX(0);
-    this.speed = 0;
-    this.anims.pause();
-    /*while(segundos > 0 )
+     
+    while(this.seg > 0 && this.speed >= -50)
     {
+     
+      this.timedEvent = this.scene.time.delayedCall(80, this.incapacitar, [], this);
+      this.seg--;
       console.log(this.speed);
+    }
 
-      if(this.speed >= -200)
-      {
-        
-        this.timedEvent = this.scene.time.delayedCall(100, this.incapacitar, [], this);
-      }
-      this.prueba--;
-      
-    }*/
-
-    //this.speed = 0;
-   this.timedEvent = this.scene.time.delayedCall(segundos, this.incapacitar, [], this);
-    
-
-    
   }
 }

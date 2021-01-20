@@ -139,11 +139,11 @@ this.anims.create({
     this.sigueJugando = true;
     this.worldSpeed = 2.5;
 
-    this.player = new player(this, 200, 470, this.worldSpeed);
-
     this.guardia = new guardia(this, 30, 470, this.worldSpeed);
 
     this.alcohol = new barra_alcohol(this, 150, 60);
+
+    this.player = new player(this, 200, 470, this.worldSpeed);
 
     this.player.body.setCollideWorldBounds(true);
     this.guardia.body.setCollideWorldBounds(true);

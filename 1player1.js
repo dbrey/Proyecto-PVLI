@@ -11,7 +11,6 @@ export default class player extends personaje
     this.speed = 0;
     this.limitspeed = 200;
     this.paralizado = false;
-
     this.mov = true;
 
     this.tiempo = 0;
@@ -51,6 +50,7 @@ export default class player extends personaje
       }
     }
     else this.body.setVelocityX(0);
+    this.delay_input = ((this.escenario.alcohol.ebriedad*100)/3);  
   }  
 
   champan() //movimiento en champan
@@ -99,14 +99,14 @@ export default class player extends personaje
     if(!this.paralizado)
     {
       //LECTURA DE TECLADO
-      if (this.cursors.up.isDown && this.body.blocked.down)
+      if (this.cursors.up.isDown)
       {
-        this.saltar();
+        this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.saltar, [], this);
       }
       else if (this.cursors.left.isDown) //Izquierda reducir vel
       {
         //Equivalente al invoke
-        //this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.scene.onEvent, [], this); 
+        //this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.scene.onEvent, [], this);
         this.disminuyendoVelocidad = true;
         this.aumentandoVelocidad = false;
       }
@@ -119,28 +119,25 @@ export default class player extends personaje
       {
         this.stAgachado = true;
         this.agacharse();
-
       }
-
-
-      this.movimiento();
-
-    }
-    
+      console.log(this.delay_input);
+      this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.movimiento, [], this);
+    }    
   }
+
+  
 
   movimientochamp()
   {
-    if (this.disminuyendoVelocidad && this.speed > -this.limitspeed){
+    if(this.disminuyendoVelocidad && this.speed > -this.limitspeed){
       this.speed -= this.aceleracion; //Disminuye Vel
       this.disminuyendoVelocidad = false;
     }
 
-    if (this.aumentandoVelocidad){
+    if(this.aumentandoVelocidad){
       this.speed += this.aceleracion; //Aumenta vel.
       this.aumentandoVelocidad = false;
     }
-
     this.moverse();
   }
 
@@ -165,7 +162,9 @@ export default class player extends personaje
   }
 
   saltar(){
-    super.saltar(-250);
+    if(this.body.blocked.down){
+      super.saltar(-250);
+    }
     /*
     En el caso de que cuando probemos este salto en el guardia, no salte
     será porque pesa más y hay que añadirle más fuerza. En ese caso al saltar() de Personaje

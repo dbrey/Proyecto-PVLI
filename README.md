@@ -1,5 +1,9 @@
 **GDD de BOHEMIAN DRUNK :)**
 
+
+![alt text](./sprites/items/calimocho.png "Logo Title Text 1")
+
+
 Videojuego 2D de scroll lateral en el que tienes que correr de izquierda
 a la derecha
 

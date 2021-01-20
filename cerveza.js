@@ -1,20 +1,20 @@
-export default class cerveza extends Phaser.GameObjects.Sprite 
+import power_up from "./power_up.js";
+
+export default class cerveza extends power_up 
 {
     constructor(scene, x, y){
         super(scene, x, y,'cerveza');
-        this.scene.add.existing(this);
-        //this.scene.physics.add.staticImage(x, y,'botella_agua');
-        this.scene.physics.add.existing(this, true);
-        this.setScale(0.85);
+        super.set_powerup_scale(0.85);
     }
 
     preUpdate(t,d){
         super.preUpdate(t, d);
-        
-        if(this.scene.physics.overlap(this, this.scene.player)){
-            console.log("cerveza");
-            this.scene.alcohol.aumentar_ebriedad(15);
-            this.destroy();
-        }
+        super.recoger_powerup(this.beber_cerveza, this);
+    }
+
+    beber_cerveza(power_up){
+        console.log("cerveza");
+        power_up.scene.alcohol.aumentar_ebriedad(15);
+        power_up.destroy();
     }
 }

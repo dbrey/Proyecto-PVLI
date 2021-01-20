@@ -4,6 +4,7 @@ export default class barra_alcohol extends Phaser.GameObjects.Sprite
       super(scene, x, y,'alcohol_atlas');
       this.setScale(0.50);
       this.setScrollFactor(0);
+      this.setDepth(6);
       this.images = this.scene.add.existing(this);
       this.ebriedad = 0;
       this.max_alcohol = 149;
@@ -48,7 +49,7 @@ export default class barra_alcohol extends Phaser.GameObjects.Sprite
 
     preUpdate(t, d){  
       
-      if(this.ebriedad > this.max_alcohol){
+      if(this.ebriedad >= this.max_alcohol){
         this.ebriedad = this.max_alcohol;
         this.escena.muerte(1);
       }

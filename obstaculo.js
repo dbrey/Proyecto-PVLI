@@ -12,21 +12,23 @@ export default class obstaculo extends Phaser.GameObjects.Sprite
     this.scene.physics.add.collider(this, this.scene.player);
     this.scene.physics.add.collider(this, this.scene.groundlayer);
 
-    if(anim !== "jarron")
+    // Si no es un jarron, cualquier obstaculo puede estar en una plataforma
+    /*if(anim !== "jarron")
     {
       this.scene.physics.add.collider(this, this.scene.platform);
-    }
+    }*/
 
+    // Dependiendo del objeto que recibamos, lo escalamos debidamente y le damos su resistencia correspondiente
     if(anim === "caja" || anim === "barril")
     {
       this.setScale(0.8); 
-      this.resistencia = 200;
+      this.resistencia = 110;
 
     }
     else if(anim === "botellavacia")
     {
       this.setScale(0.65);
-      this.resistencia =  100;
+      this.resistencia =  75;
     }
 
     
@@ -35,17 +37,22 @@ export default class obstaculo extends Phaser.GameObjects.Sprite
   preUpdate(t, d){
     super.preUpdate(t, d);
 
-    if((this.nombre2 !== "jarron") && (this.nombre2 !== "coche" && this.nombre2 !== "cocheoscuro" && this.nombre2 !== "barriltop") && ((this.scene.player.body.touching.right && this.body.touching.left) || 
-        (this.scene.player.body.touching.left && this.body.touching.right)))
+    // Chequeamos si hay colision al lado izquierdo o derecho del obstaculo
+
+    // Algunos obstaculos (obstaculos en movimiento y jarrones) chequean ellos mismos sus colisiones particulares
+    // si se usa este chequeo tambien, produce errores
+    if((this.scene.player.body.touching.right && this.body.touching.left) || 
+        (this.scene.player.body.touching.left && this.body.touching.right))
      {
        this.ralentizar(this.resistencia);
      }
      
   }
 
+  // Dependiendo de la resistencia del obstaculo, lo ralentiza mas o menos tiempo
   ralentizar(dureza)
   {
-    this.scene.player.ralentizar(dureza, this.nombre2);
+    this.scene.player.ralentizar(dureza);
     this.destroy(); 
   }
   

@@ -72,10 +72,10 @@
 
     
         <script type="module">
-          import menuscene from "./menuscene.js";
+          import menuscene from "./1menuscene1.js";
           import intro from "./intro.js";
           import Game from "./game.js";
-          import creditsscene from "./creditsscene.js"
+          import creditsscene from "./1creditsscene1.js"
           import deadmenu from "./deadmenu.js"
 
           var config = {
@@ -94,7 +94,7 @@
             scene: [menuscene, creditsscene, Game, deadmenu],
             physics: {
               default: "arcade",
-              arcade: { gravity: { y: 400 }, debug: true},
+              arcade: { gravity: { y: 400 }, debug: false},
             }
           };
           new Phaser.Game(config);

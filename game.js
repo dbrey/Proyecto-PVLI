@@ -1,10 +1,10 @@
-import player from './player.js';
+import player from './1player1.js';
 import guardia from './guardia.js';
 import obstaculo from './obstaculo.js';
 import barra_alcohol from './barra_alcohol.js';
 import agua from './agua.js';
 import cerveza from './cerveza.js';
-import champan from './champan.js';
+import champan from './1champan1.js';
 import jagger from './jagger.js';
 import calimocho from './calimocho.js';
 import jarron from './jarron.js';
@@ -77,7 +77,7 @@ export default class Game extends Phaser.Scene
     this.text = this.add.bitmapText(900, 10, 'font',this.points,20);
     this.text.inputEnabled = true;
     this.text.setDepth(6);
-    this.text.setScrollFactor(-0,5);
+    this.text.setScrollFactor(0);
     this.text.ALIGN_LEFT;
 
 // -------------------------- ANIMACIONES --------------------------
@@ -137,13 +137,13 @@ this.anims.create({
     }
 
     this.sigueJugando = true;
-    this.worldSpeed = 2;
-
-    this.player = new player(this, 200, 470, this.worldSpeed);
+    this.worldSpeed = 2.5;
 
     this.guardia = new guardia(this, 30, 470, this.worldSpeed);
 
     this.alcohol = new barra_alcohol(this, 150, 60);
+
+    this.player = new player(this, 200, 470, this.worldSpeed);
 
     this.player.body.setCollideWorldBounds(true);
     this.guardia.body.setCollideWorldBounds(true);
@@ -315,7 +315,8 @@ this.anims.create({
       {
         let collider;
         
-        collider = this.physics.add.image(objeto.x - ((objeto.x/4) - 50) ,objeto.y*1.17,'barril');
+        collider = this.physics.add.image(objeto.x-(objeto.x/5) - 50,objeto.y*1.17,'barril'); 
+        //Ajustar el X del collider para que salga x distancia antes que el obstaculo
         
         collider.setDepth(-1);
         collider.setScale(1,10);
@@ -338,7 +339,7 @@ this.anims.create({
         })
       }
       else if (objeto.name === 'cocheoscuro') {
-        let collider = this.physics.add.image(objeto.x- (objeto.x/2) ,350,'barril');
+        let collider = this.physics.add.image(objeto.x- (objeto.x/2) ,350,'barril'); 
         collider.setDepth(-1);
         collider.setScale(1,10);
         collider.body.setAllowGravity(false);
@@ -496,13 +497,11 @@ this.anims.create({
 
   seguimiento_camara(){
     if(this.player.y > 490){
-        this.cameramain.y = (489 - this.player.y);
-    }
-    else if(this.player.y < 412){
-        this.cameramain.y = (412 - this.player.y);
+      this.cameramain.scrollY = (this.player.y -489);
+      //this.text.setScrollFactor(0, 1)
     }
     else{
-      this.cameramain.y = 0;
+      this.cameramain.scrollY = 0;
     }
   }
 
@@ -533,7 +532,7 @@ this.anims.create({
       }
 
       this.x += this.worldSpeed;
-      this.physics.world.bounds.setTo(this.x, 25, 1050, 600);
+      this.physics.world.bounds.setTo(this.x, 25, 1050, 800);
       
       if(this.physics.overlap(this.player, this.guardia)) {
         this.muerte(0);

@@ -131,7 +131,7 @@ export default class menuscene extends Phaser.Scene
       }
       this.music.stop();
       this.scene.start('game', {bool:this.sonidoactivo, int:this.puntuacion});
-  });
+    });
     //PUNTUACION MAX
     this.numeros = this.textures.get('puntmax');
     this.frames = this.numeros.getFrameNames();

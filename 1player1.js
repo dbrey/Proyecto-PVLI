@@ -10,7 +10,6 @@ export default class player extends personaje
     this.escenario = scene;
     this.speed = 0;
     this.limitspeed = 200;
-
     this.mov = true;
 
     this.tiempo = 0;
@@ -50,9 +49,11 @@ export default class player extends personaje
       }
     }
     else this.body.setVelocityX(0);
+    this.delay_input = ((this.escenario.alcohol.ebriedad)*6);  
+    //(this.escenario.alcohol.ebriedad*100)/3
   }  
 
-  champan()
+  champan() //movimiento en champan
   {
     if (this.cursors.left.isDown) {
       this.disminuyendoVelocidad = true;
@@ -72,7 +73,7 @@ export default class player extends personaje
   this.movimientochamp();
   }
 
-  cambiomov()
+  cambiomov() //cambia el estado de champan a player o viceversa
   {  //true normal, false champan
     this.mov = !this.mov;
     if(this.mov) //Poner Gravedad y mov normal
@@ -82,63 +83,64 @@ export default class player extends personaje
       this.anims.play('correr',true);
       this.scene.tocarnormal();
 
-      //const platformCollider = this.physics.add.collider(this.player, this.platformlayer);
-      //const objest = this.physics.add.collider(this.player, this.objestaticos); 
     }
     else{ //Quitarla y mov cielo
       this.body.setVelocityY(-400);
       this.body.allowGravity = false;
       this.anims.play('champan',true);
-      //platformCollider.destroy();
-      //objest.destroy();
+
     }
   }
   normal()
   {
-    //LECTURA DE TECLADO
-    if (this.cursors.up.isDown && this.body.blocked.down)
-    {
-      this.saltar();
-    }
-    else if (this.cursors.left.isDown) //Izquierda reducir vel
-    {
-      //Equivalente al invoke
-      //this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.scene.onEvent, [], this); 
-      this.disminuyendoVelocidad = true;
-      this.aumentandoVelocidad = false;
-    }
-    else if (this.cursors.right.isDown) //Derecha aumentar vel
-    {
-      this.aumentandoVelocidad = true;
-      this.disminuyendoVelocidad = false;
-    }
-    else if (this.cursors.down.isDown && !this.stAgachado && this.body.blocked.down) //Abajo
-    {
-      this.stAgachado = true;
-      this.agacharse();
-
-    }
-
-
-    this.movimiento();
+    
+      //LECTURA DE TECLADO
+      if (this.cursors.up.isDown)
+      {
+        this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.saltar, [], this);
+      }
+      else if (this.cursors.left.isDown) //Izquierda reducir vel
+      {
+        //Equivalente al invoke
+        //this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.scene.onEvent, [], this);
+        this.disminuyendoVelocidad = true;
+        this.aumentandoVelocidad = false;
+      }
+      else if (this.cursors.right.isDown) //Derecha aumentar vel
+      {
+        this.aumentandoVelocidad = true;
+        this.disminuyendoVelocidad = false;
+      }
+      else if (this.cursors.down.isDown && !this.stAgachado && this.body.blocked.down) //Abajo
+      {
+        this.stAgachado = true;
+        this.agacharse();
+      }
+      this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.movimiento, [], this);
+       
   }
 
+  
+  // Cambiamos el movimiento del jugador
   movimientochamp()
   {
-    if (this.disminuyendoVelocidad && this.speed > -this.limitspeed){
+    
+    if(this.disminuyendoVelocidad && this.speed > -this.limitspeed){
       this.speed -= this.aceleracion; //Disminuye Vel
       this.disminuyendoVelocidad = false;
     }
 
-    if (this.aumentandoVelocidad){
+    if(this.aumentandoVelocidad){
       this.speed += this.aceleracion; //Aumenta vel.
       this.aumentandoVelocidad = false;
     }
-
     this.moverse();
   }
 
   movimiento(){
+    // Aumentamos o disminuimos la velocidad siempre que este dentro del limite
+    // Tambien aumentamos o disminuimos el nivel de alcoholismo de la barra
+
     if (this.disminuyendoVelocidad && this.speed > -this.limitspeed){
       this.speed -= this.aceleracion; //Disminuye Vel
       this.disminuyendoVelocidad = false;
@@ -159,16 +161,20 @@ export default class player extends personaje
   }
 
   saltar(){
-    super.saltar(-250);
-    /*
-    En el caso de que cuando probemos este salto en el guardia, no salte
-    será porque pesa más y hay que añadirle más fuerza. En ese caso al saltar() de Personaje
-    se le meterá un parámetro que será la fuerza y, desde Player se llamará con una fuerza y desde
-    Guardia con otra.
-    */
+    if(this.body.blocked.down){
+      super.saltar(-250);
+    }
+    
     //ANIMACIÓN DE SALTO
     this.play('correr',true);
   } 
+
+  incapacitar()
+  {
+    this.speed--;
+    /*this.paralizado = false;
+    this.anims.resume();*/
+  }
 
   agacharse(){
     super.agacharse();
@@ -177,9 +183,11 @@ export default class player extends personaje
     this.anims.play('agacharse1', true);
     this.anims.chain('agacharse2',true);
 
+    // Cambiamos la hitbox, reduciendolo
     this.timedEvent = this.scene.time.delayedCall(500, this.scene.sizeAgachado, [], this);
     this.anims.chain('agacharse3', true); 
 
+    // Le devolvemos la hitbox original y cambiamos la animacion de correr
     this.timedEvent = this.scene.time.delayedCall(1250, this.scene.sizeLevantado, [], this);
     this.timedEvent = this.scene.time.delayedCall(1500, this.scene.volverCorrer, [], this); 
     
@@ -188,31 +196,22 @@ export default class player extends personaje
 
   }
 
-  ralentizar(dureza, nombre)
+  ralentizar(segundos)
   {
-    this.speed -= dureza //Por alguna razon, si se pone este codigo, el jugador se destruye
-    /*this.retroceso;
-    if(nombre === "caja" || nombre === "barril")
-    {
-      this.retroceso = 200;
-    }
-    else if(nombre === "botellavacia" || nombre === "jarron")
-    {
-      this.retroceso = 100;
-    }
-    else if(nombre === "coche" || nombre === "cocheoscuro")
+    // Numero de veces que se va a reducir la velocidad
+    this.seg = segundos;  
+    if (segundos >= 1000)
     {
       this.escenario.muerte(2);
     }
-    else if (nombre === "barriltop")
+     
+    while(this.seg > 0 && this.speed >= -50)
     {
-      this.retroceso = 300;
+     
+      this.timedEvent = this.scene.time.delayedCall(80, this.incapacitar, [], this);
+      this.seg--;
+      console.log(this.speed);
     }
 
-    this.speed -= this.retroceso;*/
-    if(this.speed < -400)
-    {
-      this.speed = -400;
-    }    
   }
 }

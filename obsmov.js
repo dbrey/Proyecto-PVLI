@@ -8,7 +8,7 @@ export default class obsmov extends obstaculo
     if (anim === "barriltop")
     {
       this.setScale(0.8); 
-      this.resistencia = 400;
+      this.resistencia = 200;
       this.body.setVelocityX(-100);
     }
     else if(anim === "coche" || anim === "cocheoscuro")
@@ -24,28 +24,17 @@ export default class obsmov extends obstaculo
         this.body.setOffset(7, 11);
       }
     }
-
-    /*else if(anim === "botellavacia")
-    {
-
-      this.setScale(0.65);
-      this.resistencia =  100;
-      console.log(this.scale);
-
-    }*/
-
   }
   
   preUpdate(t, d){
-    super.preUpdate(t, d);
-
+    //Chequeamos los lados y si el jugador lo ha tocado desde abajo
     if((this.scene.player.body.touching.down && this.body.touching.up) ||(this.scene.player.body.touching.right && this.body.touching.left) || 
      (this.scene.player.body.touching.left && this.body.touching.right))
     {
-      super.ralentizar(10);
+      super.ralentizar(this.resistencia);
     }
 
-
+    // Si choca con algo que no sea el jugador y reduce su velocidad, lo destruimos
     else if (this.body.velocity.x === 0 )
     {
       this.destroy();

@@ -1,31 +1,25 @@
-export default class champan extends Phaser.GameObjects.Sprite 
+import power_up from "./power_up.js";
+
+export default class champan extends power_up 
 {
     constructor(scene, x, y){
         super(scene, x, y,'champan');
-        this.scene.add.existing(this);
-        this.scene.physics.add.existing(this, true);
-        this.setScale(0.025);
+        super.set_powerup_scale(0.025);
+        super.set_offset(20, 40, 155, 630);
         this.champmusic = this.scene.sound.add('champanmusic', {volume: 0.05}, {loop: false});
-
-        this.body.setSize(20, 40);
-        this.body.setOffset(155, 630);
     }
 
     preUpdate(t,d){
         super.preUpdate(t, d);
-        
-        if(this.scene.physics.overlap(this, this.scene.player)){
-            this.chocar();
-        }
+        super.recoger_powerup(this.beber_champan, this);
     }
 
-    chocar()
+    beber_champan(power_up)
     {
-
-        this.scene.tocarchampan(this.champmusic);
-        this.scene.player.cambiomov();
-        this.scene.rapido();
-        this.destroy();
+        power_up.scene.tocarchampan(power_up.champmusic);
+        power_up.scene.player.cambiomov();
+        power_up.scene.rapido();
+        power_up.destroy();
         console.log("CHAMPAN");
     }
 }

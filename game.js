@@ -197,9 +197,6 @@ this.anims.create({
    this.behindlayer2.setScale(0.8);
    this.platformlayer.setScale(0.8);
    
-    this.prueba = new champan(this, 700, 500);
-
-
    this.powerups();
    this.objetosfisicos();
    this.objetosestaticos();

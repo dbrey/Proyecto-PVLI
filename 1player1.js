@@ -37,7 +37,7 @@ export default class player extends personaje
       else //Champan FALTA CAMBIAR EL SPRITE
       {
         this.champan();
-        if(this.tiempo === 1250) //Se acabo el powerup
+        if(this.tiempo === 1570) //Se acabo el powerup
         {
           this.tiempo = 0;
           this.cambiomov();

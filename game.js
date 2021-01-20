@@ -116,12 +116,7 @@ this.anims.create({
   frameRate: 6,
   repeat: 0
 }); 
-/*this.anims.create({
-  key: 'alcoholismo',
-  frames: this.anims.generateFrameNumbers('alcoholsheet', { start:0, end: 14}),
-  frameRate: 1,
-  repeat: -1
-});*/
+
 this.anims.create({
   key: 'guardiacorrer',
   frames: this.anims.generateFrameNumbers('guardiacorrersheet', { start:0, end: 5}),
@@ -202,7 +197,7 @@ this.anims.create({
    this.behindlayer2.setScale(0.8);
    this.platformlayer.setScale(0.8);
    
-    //this.prueba = new obsmov(this, 2000, 500, "cocheoscuro");
+    this.prueba = new champan(this, 700, 500);
 
 
    this.powerups();

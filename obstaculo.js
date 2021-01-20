@@ -11,7 +11,7 @@ export default class obstaculo extends Phaser.GameObjects.Sprite
     this.scene.physics.world.enableBody(this);
     this.scene.physics.add.collider(this, this.scene.player);
     this.scene.physics.add.collider(this, this.scene.groundlayer);
-    this.chocar = this.scene.sound.add('choq', {volume: 0.05}, {loop: false});
+    this.chocar = this.scene.sound.add('choq', {volume: 0.2}, {loop: false});
 
     // Dependiendo del objeto que recibamos, lo escalamos debidamente y le damos su resistencia correspondiente
     if(anim === "caja" || anim === "barril")

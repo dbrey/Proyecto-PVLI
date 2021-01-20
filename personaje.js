@@ -8,7 +8,7 @@ export default class personaje extends Phaser.GameObjects.Sprite
     this.scene.add.existing(this);
     this.setDepth(5);
     this.scene.physics.world.enableBody(this);
-    //this.body.setVelocityX(100); //Esto lo está usando Álvaro para probar. Por eso está comentado no lo borréis
+    this.jumpsound = this.scene.sound.add('jmp', {volume: 0.05}, {loop: false});
   }
 
   preupdate(t, d){
@@ -22,6 +22,7 @@ export default class personaje extends Phaser.GameObjects.Sprite
 
   saltar(fuerza){
     this.body.setVelocityY(fuerza); //fuerza de salto
+    this.jumpsound.play();
   }
 
   agacharse(){

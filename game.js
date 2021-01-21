@@ -148,7 +148,7 @@ this.anims.create({
     this.crashsound = this.sound.add('cr', {volume: 0.1}, {loop: false});
 
     this.sigueJugando = true;
-    this.worldSpeed = 2.5;
+    this.worldSpeed = 3.25;
 
     this.guardia = new guardia(this, 30, 470, this.worldSpeed);
 
@@ -213,6 +213,8 @@ this.anims.create({
    this.crearmonedas();
    this.triggersGuardia();
 
+   this.vel = 1;
+
 // Pause Menu
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 // ------------------------------------------------------------------
@@ -260,7 +262,7 @@ this.anims.create({
 
   rapido() //ademas de cambiar la velocidad crea las monedas en el aire
   {
-    this.worldSpeed = 5;
+    this.worldSpeed = this.worldSpeed * 1.3;
 
     this.n = 0;
     this.monedax = this.player.x + 500;
@@ -297,7 +299,7 @@ this.anims.create({
 
   normal()
   {
-    this.worldSpeed = 2.5;
+    this.worldSpeed = this.worldSpeed / 1.3;
   }
 
 
@@ -366,7 +368,8 @@ this.anims.create({
   {
     //trigger
     for (const objeto of this.map.getObjectLayer('fisicos').objects) { //Por cada objeto de cada tipo creo un objeto vacio a  cierta distancia de el
-      if (objeto.name === 'jarron') 
+      let value = Phaser.Math.Between(0, 4); //Puede que no salga nada
+      if (value != 3 && objeto.name === 'jarron') 
       {
         let collider;
         
@@ -596,14 +599,23 @@ this.anims.create({
         this.muerte(0);
       }
 
+  
 
       if(this.enter.isDown)
       {
-        console.log('pausa');
         this.sigueJugando = false;
         this.pause();
       }
-      this.points ++; //Cada pixel 1 punto
+
+      if (10000 * this.vel < this.points)
+      {
+        this.vel++;
+        this.worldSpeed += 0.25;
+        this.player.setWorldSpeed(this.worldSpeed);
+        this.guardia.setWorldSpeed(this.worldSpeed);
+      }
+      //this.points++; //Cada pixel 1 punto
+      this.points += this.vel;
       this.puntos();
     }
   }

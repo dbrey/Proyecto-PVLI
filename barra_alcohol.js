@@ -38,12 +38,6 @@ export default class barra_alcohol extends Phaser.GameObjects.Sprite
     }
     reducir_ebriedad(reduccion){
       this.ebriedad -=reduccion;
-        /*if(this.ebriedad > 0){
-            this.ebriedad -= reduccion;
-            if(this.ebiredad < 0){
-              this.ebriedad = 0;
-            }
-        }*/
         
     }
 

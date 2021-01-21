@@ -49,7 +49,7 @@ export default class player extends personaje
       }
     }
     else this.body.setVelocityX(0);
-    this.delay_input = ((this.escenario.alcohol.ebriedad)*6);  
+    this.delay_input = ((this.escenario.alcohol.ebriedad)*4);  
     //(this.escenario.alcohol.ebriedad*100)/3
   }  
 
@@ -162,7 +162,7 @@ export default class player extends personaje
 
   saltar(){
     if(this.body.blocked.down){
-      super.saltar(-250);
+      super.saltar(-265);
     }
     
     //ANIMACIÓN DE SALTO

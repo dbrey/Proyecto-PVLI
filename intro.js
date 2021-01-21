@@ -16,8 +16,6 @@ export default class intro extends Phaser.Scene
     this.video.play(true);
   }
   update() {
-    //console.log(this.video.getProgress()); // por donde va en el video
-
     if(this.video.getProgress() >= 0.99)
     {
       this.scene.start('menu', {bool:true, int:0});

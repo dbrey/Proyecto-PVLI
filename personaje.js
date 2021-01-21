@@ -22,7 +22,10 @@ export default class personaje extends Phaser.GameObjects.Sprite
 
   saltar(fuerza){
     this.body.setVelocityY(fuerza); //fuerza de salto
-    this.jumpsound.play();
+    if(this.scene.sonidoactive)
+    {
+      this.jumpsound.play();
+    }
   }
 
   agacharse(){

@@ -14,6 +14,5 @@ export default class agua extends power_up
     beber_agua(power_up){
         power_up.scene.alcohol.reducir_ebriedad(15);
         power_up.destroy();
-        console.log("BOTELLA");
     }
 }

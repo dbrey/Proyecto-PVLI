@@ -58,7 +58,7 @@ export default class Game extends Phaser.Scene
     this.load.spritesheet('spritesheetvolar', './sprites/characters/spritesheetvolar.png', { frameWidth: 170, frameHeight: 234 });
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
     this.load.audio('champanmusic', './sonidos/cancan.mp3');
-    
+
     this.load.audio('coinmusic', './sonidos/moneda.wav');
     this.load.audio('powup', './sonidos/powerup.mp3');
     this.load.audio('jmp', './sonidos/jump.mp3');
@@ -468,11 +468,11 @@ this.anims.create({
   pause()
   {
  //MENU DE PAUSA
-    let resume = this.add.image(this.cameras.main.worldView.x + 525,400, 'resume').setInteractive();
+    let resume = this.add.image(this.cameras.main.worldView.x + 525,200, 'resume').setInteractive();
     resume.setScale(0.3);
     resume.setDepth(9);
 
-    let menu = this.add.image(this.cameras.main.worldView.x + 525,200, 'menumain').setInteractive();
+    let menu = this.add.image(this.cameras.main.worldView.x + 525,400, 'menumain').setInteractive();
     menu.setScale(0.3);
     menu.setDepth(9);
 

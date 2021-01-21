@@ -574,7 +574,7 @@ this.anims.create({
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
       this.seguimiento_camara();
-      if(this.cameras.main.worldView.x > 2000) //Reseteo level 
+      if(this.cameras.main.worldView.x > 27500) //Reseteo level 
       {
         this.cameramain.scrollX= 0;
         this.player.x = this.player.x - this.cameras.main.worldView.x; //se mantiene la distancia entre el jugador y el guardia

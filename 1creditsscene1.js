@@ -19,6 +19,8 @@ export default class creditsscene extends Phaser.Scene
     this.load.image('menuon', './sprites/escena_creditos/main2.png');
 
     this.load.audio('click', './sonidos/menu1.mp3');
+    this.load.audio('cred', './sonidos/credits.mp3')
+
   }
 
 
@@ -35,6 +37,12 @@ export default class creditsscene extends Phaser.Scene
     menu.setScale(0.8,0.75);
     menu.setDepth(3);
     this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+    this.creditos = this.sound.add('cred', {volume: 0.05}, {loop: true});
+
+    if(this.sonido)
+    {
+      this.creditos.play();
+    }
 
     menu.on('pointerover', event => 
     {
@@ -71,6 +79,7 @@ export default class creditsscene extends Phaser.Scene
 
   volvermenu()
   {
+    this.creditos.stop();
     this.scene.start('menu', {int:this.puntuacion, bool:this.sonido});
   }
 }

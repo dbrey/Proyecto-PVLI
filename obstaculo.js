@@ -47,7 +47,10 @@ export default class obstaculo extends Phaser.GameObjects.Sprite
   // Dependiendo de la resistencia del obstaculo, lo ralentiza mas o menos tiempo
   ralentizar(dureza)
   {
-    this.chocar.play();
+    if(this.scene.sonidoactive)
+    {
+      this.chocar.play();
+    }
     this.scene.player.ralentizar(dureza);
 
     this.destroy(); 

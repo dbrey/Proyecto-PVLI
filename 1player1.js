@@ -23,6 +23,9 @@ export default class player extends personaje
     this.body.setSize(150, 220);
     this.body.setOffset(0, 0);
     this.cursors = this.scene.input.keyboard.createCursorKeys();
+
+    this.champmusic = this.scene.sound.add('champanmusic', {volume: 0.05}, {loop: false});
+
   }
 
   preUpdate(t, d)
@@ -37,7 +40,7 @@ export default class player extends personaje
       else //Champan FALTA CAMBIAR EL SPRITE
       {
         this.champan();
-        if(this.tiempo === 1570) //Se acabo el powerup
+        if(this.tiempo === 1250) //Se acabo el powerup
         {
           this.tiempo = 0;
           this.cambiomov();
@@ -73,6 +76,15 @@ export default class player extends personaje
   this.movimientochamp();
   }
 
+  tocarchampan()
+  {
+   if(this.scene.sonidoactive && this.scene.sigueJugando)
+  {
+      this.scene.music.pause();
+      this.champmusic.play();
+  }
+  }
+
   cambiomov() //cambia el estado de champan a player o viceversa
   {  //true normal, false champan
     this.mov = !this.mov;
@@ -87,6 +99,7 @@ export default class player extends personaje
     else{ //Quitarla y mov cielo
       this.body.setVelocityY(-400);
       this.body.allowGravity = false;
+      this.tocarchampan();
       this.anims.play('champan',true);
 
     }
@@ -210,7 +223,6 @@ export default class player extends personaje
      
       this.timedEvent = this.scene.time.delayedCall(80, this.incapacitar, [], this);
       this.seg--;
-      console.log(this.speed);
     }
 
   }

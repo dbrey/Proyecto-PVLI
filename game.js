@@ -278,7 +278,7 @@ this.anims.create({
       }
       if(this.n%20 === 0)
       {
-        this.monedax += 100;
+        this.monedax += 200;
       }
       this.n++;
     }
@@ -300,23 +300,23 @@ this.anims.create({
     for (const objeto of this.map.getObjectLayer('powerup').objects) 
     {
       let value = Phaser.Math.Between(0, 11); //Puede que no salga nada
-      if(value == 0)
+      if(value ===0)
       {
         this.power = new champan(this,objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
-      else if(value == 1 || value == 5)
+      else if(value === 1 || value === 5)
       {
         this.power = new agua(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
-      else if(value == 2 || value == 6)
+      else if(value === 2 || value === 6)
       {
         this.power = new calimocho(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
-      else if(value == 3 || value == 7)
+      else if(value === 3 || value === 7)
       {
         this.power = new cerveza(this, objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
-      else if(value == 4 || value == 8)
+      else if(value === 4 || value === 8)
       {
         this.power = new jagger(this, objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
@@ -574,7 +574,7 @@ this.anims.create({
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
       this.seguimiento_camara();
-      if(this.cameras.main.worldView.x > 2000) //Reseteo level 
+      if(this.cameras.main.worldView.x > 43500) //Reseteo level 
       {
         this.cameramain.scrollX= 0;
         this.player.x = this.player.x - this.cameras.main.worldView.x; //se mantiene la distancia entre el jugador y el guardia
@@ -584,7 +584,7 @@ this.anims.create({
         this.physics.world.bounds.setTo(0, 0, 1050, 600);
         this.x = 0;
         this.vueltas++;
-
+        
         this.reset();
       }
 
@@ -592,7 +592,7 @@ this.anims.create({
        if (this.guardia.body.collideRight){
         this.guardia.saltar();
       }
-
+      console.log(this.cameras.main.worldView.x);
       this.x += this.worldSpeed;
       this.physics.world.bounds.setTo(this.x, 25, 1050, 800);
       

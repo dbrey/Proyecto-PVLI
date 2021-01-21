@@ -58,15 +58,12 @@ export default class Game extends Phaser.Scene
     this.load.spritesheet('spritesheetvolar', './sprites/characters/spritesheetvolar.png', { frameWidth: 170, frameHeight: 234 });
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
     this.load.audio('champanmusic', './sonidos/cancan.mp3');
-<<<<<<< HEAD
+    
     this.load.audio('coinmusic', './sonidos/moneda.wav');
-=======
     this.load.audio('powup', './sonidos/powerup.mp3');
     this.load.audio('jmp', './sonidos/jump.mp3');
     this.load.audio('cr', './sonidos/crash.mp3');
     this.load.audio('choq', './sonidos/chocar.mp3');
-
->>>>>>> 497ceda0805a33a68d4ae0b078e899305778097a
 
     this.load.image('city','./sprites/tiles/citytileset.png');
     this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');

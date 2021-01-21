@@ -59,7 +59,7 @@ export default class Game extends Phaser.Scene
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
     this.load.audio('champanmusic', './sonidos/cancan.mp3');
 
-    this.load.audio('coinmusic', './sonidos/moneda.wav');
+    this.load.audio('coinmusic', './sonidos/moneda.mp3');
     this.load.audio('powup', './sonidos/powerup.mp3');
     this.load.audio('jmp', './sonidos/jump.mp3');
     this.load.audio('cr', './sonidos/crash.mp3');
@@ -219,16 +219,6 @@ this.anims.create({
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 // ------------------------------------------------------------------
   };
-
-  tocarchampan(musica)
-  {
-    if(this.sonidoactive && this.sigueJugando)
-    {
-      this.music.pause();
-      
-      musica.play();
-    }
-  }
 
   tocarnormal()
   {
@@ -496,12 +486,20 @@ this.anims.create({
         this.sonidoactive = !this.sonidoactive;
         if(this.sonidoactive)//Si se activa el sonido
         {
-          this.music.play();
+          if(this.player.mov)
+          {
+            this.music.play();
+          }
+          else
+          {
+            this.player.champmusic.resume();
+          }
           sonido.setTexture('on');
         }
         else //Si se desactiva
         {
           this.music.stop();
+          this.player.champmusic.pause();
           sonido.setTexture('off');
         }
         sonido.setScale(0.17);
@@ -543,7 +541,10 @@ this.anims.create({
   muerte(razon){
     this.sigueJugando = false;
     this.music.stop();
-    this.crashsound.play();
+    if(this.sonidoactive)
+    {
+      this.crashsound.play();
+    }
 
     if(this.points > this.maxpunt)
       {
@@ -553,13 +554,11 @@ this.anims.create({
       {
         this.scene.start('deadmenu', {int:this.maxpunt, bool:this.sonidoactive, causa:razon});
       }
-      console.log(razon);
   }
 
   seguimiento_camara(){
     if(this.player.y > 490){
       this.cameramain.scrollY = (this.player.y -489);
-      //this.text.setScrollFactor(0, 1)
     }
     else{
       this.cameramain.scrollY = 0;

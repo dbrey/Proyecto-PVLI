@@ -15,6 +15,5 @@ export default class jagger extends power_up
     beber_jagger(power_up){
         power_up.scene.alcohol.ebriedad = power_up .scene.alcohol.max_alcohol;
         power_up.destroy();
-        console.log("jagger");
     }
 }

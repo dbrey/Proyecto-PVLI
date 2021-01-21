@@ -13,7 +13,6 @@ export default class cerveza extends power_up
     }
 
     beber_cerveza(power_up){
-        console.log("cerveza");
         power_up.scene.alcohol.aumentar_ebriedad(15);
         power_up.destroy();
     }

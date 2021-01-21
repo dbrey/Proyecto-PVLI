@@ -20,7 +20,6 @@ export default class calimocho extends power_up
         power_up.y = 3000;
         power_up.body.setOffset(155, 1000);
         power_up.timedEvent = power_up.scene.time.delayedCall(power_up.delay_time, power_up.onEvent, [], power_up);
-        console.log("calimocho");
     }
 
     onEvent(){

@@ -207,13 +207,15 @@ this.anims.create({
    this.behindlayer2.setScale(0.8);
    this.platformlayer.setScale(0.8);
    
+   this.vel = 1;
+
    this.powerups();
    this.objetosfisicos();
    this.objetosestaticos();
    this.crearmonedas();
    this.triggersGuardia();
 
-   this.vel = 1;
+   
 
 // Pause Menu
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
@@ -431,7 +433,7 @@ this.anims.create({
   triggersGuardia(){
     for (const objeto of this.map.getObjectLayer('guardia').objects){
       let collider;
-      collider = this.physics.add.image(objeto.x*0.8, objeto.y*0.8, 'barril');
+      collider = this.physics.add.image(objeto.x*0.8-this.vel*5, objeto.y*0.8, 'barril');
       collider.setDepth(-1);
       collider.setScale(1,5);
       collider.body.setAllowGravity(false);
@@ -572,7 +574,7 @@ this.anims.create({
       this.cameramain.scrollX += this.worldSpeed;
       this.fondoimg.tilePositionX = this.cameramain.scrollX * 0.4;
       this.seguimiento_camara();
-      if(this.cameras.main.worldView.x > 27500) //Reseteo level 
+      if(this.cameras.main.worldView.x > 2000) //Reseteo level 
       {
         this.cameramain.scrollX= 0;
         this.player.x = this.player.x - this.cameras.main.worldView.x; //se mantiene la distancia entre el jugador y el guardia

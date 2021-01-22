@@ -25,8 +25,7 @@ export default class Game extends Phaser.Scene
   }
 
   preload() {
-    this.load.image('fondo1', './sprites/background/fondo_tras_del_todo.png');
-
+    // Power-Ups & Obstaculos
     this.load.image('calimocho', './sprites/items/calimocho.png');
     this.load.image('botella_agua', './sprites/items/waterbottle.png');
     this.load.image('cerveza', './sprites/items/mugofbeer.png');
@@ -41,39 +40,41 @@ export default class Game extends Phaser.Scene
     this.load.image('cocheoscuro', './sprites/obstaculos/32x32/cocheoscuro.png');
     this.load.image('coche', './sprites/obstaculos/32x32/coche.png');
     this.load.image('jarron', './sprites/obstaculos/32x32/jarron.png');
-    
+    //-----------------
 
     //Pausa menu
     this.load.image('menumain', './sprites/pausa/menu_button.png');
     this.load.image('resume', './sprites/pausa/resume_button.png');
     this.load.image('on', './sprites/pausa/sonido_si.png');
     this.load.image('off', './sprites/pausa/sonido_no.png');
+    this.load.image('control', './sprites/pausa/tutorial_pausa.png');
     //-----------------
+    // Escenario
     this.load.image('plataforma', './sprites/background/plataforma.png');
-    
+    this.load.image('fondo1', './sprites/background/fondo_tras_del_todo.png');
     this.load.atlas('alcohol_atlas', './barra_alcohol/barra_alcohol/alcohol.png', './barra_alcohol/barra_alcohol/alcohol_atlas.json');
     this.load.spritesheet('corrersheet', './sprites/characters/spritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('agacharsesheet', './sprites/characters/spritesheetagacharse.png', { frameWidth: 218, frameHeight: 218 })
     this.load.spritesheet('guardiacorrersheet', './sprites/characters/guardiaspritesheetcorrer.png', { frameWidth: 161, frameHeight: 216 });
     this.load.spritesheet('spritesheetvolar', './sprites/characters/spritesheetvolar.png', { frameWidth: 170, frameHeight: 234 });
+    this.load.image('city','./sprites/tiles/citytileset.png');
+    this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');
+    this.load.image('devil','./sprites/tiles/devil.png');
+    this.load.tilemapTiledJSON('block1','./sprites/tiles/block2.json');
+    //-----------------
+
+    // Sonidos & Banda sonora
     this.load.audio('mainsoundtrack', './sonidos/queviva.mp3');
     this.load.audio('champanmusic', './sonidos/cancan.mp3');
-
     this.load.audio('coinmusic', './sonidos/moneda.mp3');
     this.load.audio('powup', './sonidos/powerup.mp3');
     this.load.audio('jmp', './sonidos/jump.mp3');
     this.load.audio('cr', './sonidos/crash.mp3');
     this.load.audio('choq', './sonidos/chocar.mp3');
-
-    this.load.image('city','./sprites/tiles/citytileset.png');
-    this.load.image('rowhouse','./sprites/tiles/rowhousetileset.png');
-    this.load.image('devil','./sprites/tiles/devil.png');
-    this.load.tilemapTiledJSON('block1','./sprites/tiles/block2.json');
-
-    this.load.bitmapFont('font', './imagenes/carrier_command.png','./imagenes/carrier_command.xml');
-
-
     this.load.audio('click', './sonidos/menu1.mp3');
+    //-----------------
+    // Otros
+    this.load.bitmapFont('font', './imagenes/carrier_command.png','./imagenes/carrier_command.xml');
   }
 
 
@@ -464,13 +465,17 @@ this.anims.create({
   {
     this.physics.pause();
  //MENU DE PAUSA
-    let resume = this.add.image(this.cameras.main.worldView.x + 525,200, 'resume').setInteractive();
+    let resume = this.add.image(this.cameras.main.worldView.x + 300,200, 'resume').setInteractive();
     resume.setScale(0.3);
     resume.setDepth(10);
 
-    let menu = this.add.image(this.cameras.main.worldView.x + 525,400, 'menumain').setInteractive();
+    let menu = this.add.image(this.cameras.main.worldView.x + 300,400, 'menumain').setInteractive();
     menu.setScale(0.3);
     menu.setDepth(10);
+
+    this.imgcontroles = this.add.image(this.cameras.main.worldView.x + 750,300, 'control');
+    this.imgcontroles.setScale(0.6);
+    this.imgcontroles.setDepth(10);
 
     let sonido;
     if(this.sonidoactive)
@@ -511,6 +516,7 @@ this.anims.create({
     resume.on('pointerdown', event => {
       resume.destroy();
       menu.destroy();
+      this.imgcontroles.destroy();
       sonido.destroy();
       if(this.sonidoactive)
       {
@@ -523,6 +529,7 @@ this.anims.create({
     menu.on('pointerdown', event => {
       resume.destroy();
       menu.destroy();
+      this.imgcontroles.destroy();
       sonido.destroy();
       this.music.stop();
       if(this.sonidoactive)

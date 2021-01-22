@@ -11,7 +11,7 @@ export default class agua extends power_up
         super.preUpdate(t, d);
         super.recoger_powerup(this.beber_agua, this);
     }
-    
+    //Reduce en 60 puntos los puntos de ebriedad
     beber_agua(power_up){
         power_up.scene.alcohol.reducir_ebriedad(60);
         power_up.destroy();

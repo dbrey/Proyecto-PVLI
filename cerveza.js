@@ -11,7 +11,7 @@ export default class cerveza extends power_up
         super.preUpdate(t, d);
         super.recoger_powerup(this.beber_cerveza, this);
     }
-
+    //Aumenta en 15 puntos le nivel de ebriedad
     beber_cerveza(power_up){
         power_up.scene.alcohol.aumentar_ebriedad(15);
         power_up.destroy();

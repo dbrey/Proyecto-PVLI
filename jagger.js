@@ -12,6 +12,7 @@ export default class jagger extends power_up
         super.preUpdate(t, d);
         super.recoger_powerup(this.beber_jagger, this);
     }
+    //Aumenta al máximo el nivel de ebriedad
     beber_jagger(power_up){
         power_up.scene.alcohol.ebriedad = power_up .scene.alcohol.max_alcohol;
         power_up.destroy();

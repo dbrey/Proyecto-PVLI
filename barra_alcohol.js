@@ -25,7 +25,7 @@ export default class barra_alcohol extends Phaser.GameObjects.Sprite
 
     preUpdate(t, d){  
       super.preUpdate(t,d);
-
+    //EL contador de ebriedad debe estar siempre entre 0 y 149
       if(this.ebriedad > this.max_alcohol){
         this.ebriedad = this.max_alcohol; 
       }

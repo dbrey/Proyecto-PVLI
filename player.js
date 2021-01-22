@@ -185,8 +185,6 @@ export default class player extends personaje
   }
 
   agacharse(){
-    super.agacharse();
-
     //Animación
     this.anims.play('agacharse1', true);
     this.anims.chain('agacharse2',true);

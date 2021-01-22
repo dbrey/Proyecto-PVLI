@@ -55,7 +55,7 @@ export default class deadmenu extends Phaser.Scene
     this.scoreText.setScrollFactor(0);
     this.scoreText.ALIGN_LEFT;
 
-    //boton
+    //botones del menú de muerte
     let menu = this.add.image(615,412, 'menuoff').setInteractive();
     let runagain = this.add.image(615,304, 'runagainoff').setInteractive();
     this.soundText;
@@ -142,7 +142,7 @@ export default class deadmenu extends Phaser.Scene
   }
 
 
-  update() //Supongo que la imagen final tiene de tamaño 1000
+  update() 
   {
     if(this.enter.isDown)
     {

@@ -167,7 +167,7 @@ Telegram es una plataforma de mensajería de texto usada para la coordinación d
 ![contribucion](./recursos_gdd/contribucion_banner.png "Contribución.")
 
 |Alfonso Rodulfo 27%|
----------------------
+|-------------------|
 |**Pablo González 26%**|
 |**Álvaro Cuerva 24%**|
 |**David Brey 23%**|

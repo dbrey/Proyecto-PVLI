@@ -6,7 +6,6 @@ export default class obsmov extends obstaculo
 
     super(scene,x,y, anim);
     this.escenario = scene;
-    this.inicio = false;
     if (anim === "barriltop")
     {
       this.setScale(0.8); 
@@ -35,11 +34,6 @@ export default class obsmov extends obstaculo
     
     if(this.escenario.sigoJugando())
     {
-      if(this.inicio)
-      {
-        this.scene.physics.resume();
-        this.inicio = false;
-      }
 
       if((this.scene.player.body.touching.down && this.body.touching.up) ||(this.scene.player.body.touching.right && this.body.touching.left) || 
       (this.scene.player.body.touching.left && this.body.touching.right))
@@ -53,12 +47,7 @@ export default class obsmov extends obstaculo
         this.destroy();
      }
     }
-    else
-    {
-      this.inicio = true;
-      this.scene.physics.pause();
 
-    }
 
     
   }

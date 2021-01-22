@@ -462,6 +462,7 @@ this.anims.create({
 
   pause()
   {
+    this.physics.pause();
  //MENU DE PAUSA
     let resume = this.add.image(this.cameras.main.worldView.x + 525,200, 'resume').setInteractive();
     resume.setScale(0.3);
@@ -516,6 +517,7 @@ this.anims.create({
         this.click.play();
       }
       this.sigueJugando = true;
+      this.physics.resume();
     });
 
     menu.on('pointerdown', event => {

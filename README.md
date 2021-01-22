@@ -1,206 +1,173 @@
-**GDD de BOHEMIAN DRUNK :)**
+![Imagen titulo studio](./recursos_gdd/titulo_estudio.png "Bohemian Drunk by Cerves Games")
 
+|INTEGRANTES DEL EQUIPO|
+-----------------
+|Alfonso Rodulfo| 
+|David Brey|
+|Álvaro Cuerva|
+|Pablo González|
 
-![alt text](./sprites/items/calimocho.png "Logo Title Text 1")
+|ENLACES DE INTERÉS|
+--------------------
+|[**PÁGINA DEL JUEGO**](https://dbrey.github.io/Proyecto-PVLI/)|
+|[**ENLACE A PIVOTAL TRACKER**](https://www.pivotaltracker.com/n/projects/2470810)|
 
+|**GÉNERO**|**Modo**|
+|:------:|:--------:|
+|Runner, Scrool Lateral|Solitario|
+|**PLATAFORMA**|**PÚBLICO**|
+|PC|Mayores de 16 años|
 
-Videojuego 2D de scroll lateral en el que tienes que correr de izquierda
-a la derecha
+![Introducción](./recursos_gdd/introduccion_banner.png "Introducción")
 
-sin que te pillen los guardias esquivando los distintos obstáculos.
+"Bohemian Drunk" es un runner plataformas 2D en scroll lateral en el que encarnamos a Max Estrella en su huida del Capitán Pitito.
+En dicha huida, el ebrio Max debe mantener vigilado su nivel de borrachera mientras sortea obstáculos en el Madrid de los años 20 y bebe distintos brebajes que afectan a dicha borrachera y a como él ve el mundo, mientras nota como su borrachera afecta a la agilidad con la que se mueve.
 
-**1. Historia**
+![Narrativa](./recursos_gdd/narrativo_banner.png "Narrativa")
 
-El videojuego está inspirado en un personaje del libro "Luces de
-Bohemia" de
+### Basado en Luces de Bohemia:
 
-Valle-Inclán llamado Máximo Estrella. (Específicamente, la escena
-cuarta)
+* ### Personajes:
+Máximo Estrella: Un escritor ciego con poco éxito en su carrera y por ende su familia está sumida en la pobreza. Durante gran parte de la obra está notablemente borracho.
 
-En dicha escena, el personaje es arrestado, pero en el juego el jugador
-intentará
+ Capitán Pitito: Capitán de un cuerpo de las autoridades, quien arresta (en la obra) a Máximo Estrella.
 
-escapar de los centinelas/policía. Sin embargo, al haber consumido mucho
-alcohol,
+* ### Escena del libro en la que sucede Bohemian Drunk:
 
-los movimientos del jugador son caóticos. El objetivo del juego es
-llegar a la casa o
+Máximo Estrella, harto de que su libro no consiga las ventas que él cree que merece, se va con su amigo Don Latino a beber a un bar cercano. Al salir, ambos están muy borrachos y se encuentran con las autoridades, lideradas por el Capitán Pitito. Este, al verlos tan borrachos, se decepciona y arresta a Máximo por faltarle el respeto.
 
-conseguir llegar lo más lejos posible.
+![Libro](./recursos_gdd/portada.jpg "Libro")
 
-**2. Mecánicas**
+![Mecanicas](./recursos_gdd/mecanicas_banner.png "Mecánicas")
 
-● Salto
+* **Salto:**
+El jugador tiene la capacidad de saltar encima de obstáculos (y correr por encima de ellos).
 
-○ El jugador tiene la capacidad de saltar obstáculos (y correr por
-encima
+* **Agacharse:**
+El jugador tiene la capacidad de agacharse y evitar ciertos objetos consumibles.
 
-de ellos)
+* **Barra de alcoholismo:**
+Barra que representa el estado de ebriedad del personaje jugable, cuanto más borracho más llena estará y viceversa. Esta barra representa 150 puntos de ebriedad.
+El estado de ebriedad puede aumentar o disminuir en función de distintos factores:
+1.La velocidad a la que el jugador corre lo hace aumentar o disminuir  en función de si acelera o desacelera respectivamente.
 
-● Agacharse
+2.Distintos objetos consumibles que se encuentran esparcidos a lo largo de mapa.
 
-○ El jugador tiene la capacidad de agacharse (o dicho de otra forma,
+El porcentaje de complecion de la barra establece el delay que habrá desde que el jugador realiza un input y la respuesta de Max, ya sea acelerar, desacelerar agacharse o saltar.
+Además de estos factores, llenar por completo la barra , significa que se cae en coma etílico y la partida termina.
 
-reducir su tamaño para pasar por sitios estrechos)
+* **Obstáculos:**
+A lo largo del juego, el jugador se encuentra con distintos obstáculos en movimiento o estáticos. En caso de chocarse con alguno de ellos la velocidad del jugador se verá reducida bruscamente en menor o mayor medida, en algunos casos llevándote incluso a perder la partida instantáneamente en caso de chocar.
 
-● Barra alcoholismo
+* **Power ups:** Esparcidos por el mapa, se encuentran objetos consumibles o power-ups que varían la experiencia de juego.
+Algunos afectarán directamente a tu estado de ebriedad, otros te daran la habilidad de volar libremente haciendo más fácil avanzar y otros causarán que partes del HUD desaparezcan por cierto tiempo.
 
-○ Dependiendo del porcentaje de alcoholismo, la cantidad de delay entre
+* **Puntuación:** Cuanto más tiempo se logre escapar de la policía y no caer en coma etílico, más puntuación obtiene el jugador. Además, esparcidas por el mapa se encuentran monedas que, en caso de ser recogidas, otorgan puntuación extra.
 
-que el jugador pulsa X botón hasta que realiza la acción
+![Dinámicas](./recursos_gdd/dinamica_banner.png "Dinámicas")
 
-correspondiente varía.
+El juego pretende hacer sentir al jugador la pérdida de control al manejar a un
+personaje borracho. Aumentar la velocidad permitirá al jugador alejarse del guardia que le persigue pero esto se traducirá en  un aumento del nivel de borrachera con todo lo que ello conlleva, por otro lado jugar de manera lenta, no aumentara dicha borrachera pero si que hará que sea mas facil ser capturado por el guardia al mínimo fallo.
 
-○ Si el jugador alcanza el 100% de la barra alcohólica, morirá por un
+![Estética](./recursos_gdd/estetica_banner.png "Estética")
 
-coma etílico y perderá la partida.
+Bohemian Drunk cuenta con una estetica pixelada 2d, con unos escenarios coloridos y una música desenfadada. El arte cuenta con una paleta de colores vivos y alegres, acordes al carácter arcade del juego.
+Tiles de la ciudad creados por Guardian
+Animacion del menu creade por 
+Pixel Art de la ciudad de fondo creado por Joseth
+Font usada en el juego proveniente de Carrier Command
+Musica del menu creada por Axel del Grey(“Desvelado 8 Bit)
+Musica del juego  creada por 
+Resto del arte creada por Cerves Games.
 
-○ La velocidad del jugador depende de esta barra. Su velocidad BASE
+![Tiles](./recursos_gdd/rowhousetileset.png "Tiles")
+![Fondo](./recursos_gdd/devil.png "Fondo")
 
-se multiplica por la cantidad de alcohol que tenga encima. Aumentar la
+![Contenido](./recursos_gdd/contenido_banner.png "Contenido")
 
-velocidad, supone aumentar tu alcoholismo y reducir la velocidad,
+* **Nivel:**
+El juego consta de un bloque que se repetirá de forma infinita hasta que el jugador pierda. Cada vez que el jugador llegue al final de este bloque, la velocidad general del mapa aumentará un poco poniendo más diícil el aumento de la puntuación y la supervivencia del jugador.
 
-supone reducir dicha barra.
+En todo el recorrido, podemos encontrar tres niveles por los que transitar:
 
-○ Algunos power-ups/Items, pueden afectar a esta barra.
+○ Cielo accesible con el objeto consumible "champán" en el que se ofrecerá una zona segura en la que conseguir puntos y monedas con facilidad.
 
-● Puntuación
+○ Plataformas de edificios: Ya sea en el tejado o por terrazas el jugador podrá moverse a distintas alturas.
 
-○ Cuanto más distancia hayas recorrido, más puntos obtendrás
+○ Suelo (Nivel de altura “normal”), el cuál cuenta con un relieve para evitar así que sea un nivel plano.
 
-○ Además, las monedas y los power-ups te darán puntos extra.
+* **Obstáculos:**
 
-○ Esta puntuación es especialmente importante en el modo de juego
+○ Estáticos:
+El objetivo del jugador será esquivarlos. Cada uno de estos ralentiza/penaliza al jugador en función de una resistencia establecida. No se mueven.
 
-infinito.
+|**Nombre**|**Sprite**|**Resistencia**|**Descripción**|
+|:----------:|:----------:|:---------------:|:---------------:|
+|Botella Vacía|![Imagen titulo studio](botellavacia.png "Botella vacia")|100|Es una botella y se encuentra de forma uniforme por todas las zona del mapa.|
+|Caja|![Imagen titulo studio](caja.png "Caja")|200|Cubo que representa una caja y que se encuentra principalmente en el suelo.|
+|Barril|![Imagen titulo studio](barril.png "Barril")|200|Barrica de cerveza que suele encontrarse en las terrazas.|
 
-**3. Dinámicas**
+○ Físicos:
+Tienen el mismo efecto que los obstáculos estáticos pero estos se mueven.
 
-El juego pretende hacer sentir al jugador la pérdida de control al
-manejar un
+|**Nombre**|**Sprite**|**Resistencia**|**Descripción**|
+|:----------:|:----------:|:---------------:|:---------------:|
+|Jarrón|![Imagen titulo studio](jarron.png "Jarrón")|100|Cae de las ventanas y se rompe al chocar con el suelo, para que spawnee el jugador tiene que estar cierta altura por debajo de la ventana.|
+|Barril rodando|![Imagen titulo studio](barriltodando.png "Barril rodando")|400|Spawnea cuando tiene al jugador a cierta distancia y viene por delante del jugador.|
+|Coche verde|![Imagen titulo studio](cocheverde.png "Coche verde")|Te mata al colisionar|Spawnea cuando tiene al jugador a cierta distancia y viene por delante del jugador.|
+|Coche negro|![Imagen titulo studio](cochenegro.png "Coche negro")|Te mata al colisionar|Spawnea cuando tiene al jugador a cierta distancia y viene por delante del jugador.|Spawnea cuando tiene al jugador a cierta distancia y viene por detrás del jugador.|
 
-personaje borracho.
+* **Power-ups:** Aplican un efecto al ser cogido, ya sea bueno o malo.
 
-Jugar de una manera rápida aumentará tu nivel de alcoholismo, lo que
-tendrá como
+|**Nombre**|**Sprite**|**Efecto**|
+|:----------:|:----------:|:---------------:|
+|Cerveza|![Imagen titulo studio](cerveza.png "Cerveza")|Aumenta en 15 puntos tu nivel de ebriedad.|
+|Agua|![Imagen titulo studio](agua.png "Agua")|Disminuye en 60 puntos tu nivel de ebriedad.|
+|Champán|![Imagen titulo studio](champan.png "Champán") ![Imagen titulo studio](champanontado.png "Champán montado")|Permite al jugador subir encima de la botella aumentando la velocidad con la que se mueve y avanzar con facilidad en el nivel. Además permite conseguir gran cantidad de monedas que aparecen solo cuando se consume este power up|
+|Jägger|![Imagen titulo studio](jagger.png "Jägger")|Aumenta al máximo tu nivel de ebriedad, haciéndote perder la partida.|
+|Calimocho|![Imagen titulo studio](calimocho.png "Calimocho")|Oculta temporalmente la barra de alcohol.|
+|Monedas|![Imagen titulo studio](coin.png "Moneda")|Aumenta en 100 puntos tu puntuación actual.|
 
-consecuencia mayor delay en las acciones (y ver más borroso?).
+![HUD](./recursos_gdd/hud_banner.png "Hud")
 
-Por otro lado, jugar de forma lenta, hará que cualquier mínimo error en
-la carrera, te
+**Menú inicial:**
 
-pillen los guardias.
+![Interfaz](menu.png "Menu.")
 
-**4. Generación de niveles**
+**Interfaz in-game:**
 
-La generación de niveles estará hecha por bloques. Tendremos partes de
-niveles ya
+![In-game](ingame.png "Ingame.")
 
-creados y a la hora de jugar el nivel se irán generando esas partes con
-orden
+![Arquitectura](arquitectura_banner.png "Arquitectura")
 
-aleatorio.
+![UML](uml.png "UML.")
 
-Dispondremos de dos modos de juego:
+![gestion](gestion_banner.png "Gestión.")
 
-**● Modo Resaca (historia):** se generarán X bloques de nivel y tras
-estos se
+**Plataforma de gestión:**
 
-llegará a casa. Se habrá ganado la partida.
+Pivotal Tracker es una herramienta de cordinación de proyectos que permite establecer historias de usuario de manera ordenada para que cada uno de los miembros de un proyecto puedan, de manera sencilla, asignarse historias y tanto su dificultad como su compleción quede registrada día a día.
 
-**● Modo infinito**: se generarán bloques de nivel de manera infinita.
-El objetivo
+**Plataformas de comunicación:**
 
-es sobrevivir lo máximo posible consiguiendo la mayor cantidad de
-puntos.
+Discord es una plataforma de comunicación vía voz, que hemos usado para reuniones de voz.
+Telegram es una plataforma de mensajería de texto usada para la coordinación día a día.
 
-Como extra, en este modo infinito, la velocidad del jugador será cada
-vez
+![Controles](controles_banner.png "Control.")
 
-mayor, teniendo así más dificultad sobrevivir más tiempo.
+![control](controles.png "Controles.")
 
-En todo el recorrido, hay 4 niveles de altura:
+![referencias](Referencias_banner.png "Referencias.")
 
-● Cielo (Solo accesible con el champán)
+- Luces de Bohemia
+- Geometry Dash
+- Subway Surfers
+- Super Mario Run
 
-● Tejado(???): Si te subes a diferentes obstáculos cada vez más altos,
-puedes
+![contribucion](Rcontribucion_banner.png "Contribución.")
 
-acabar decidiendo subirte a tejados. Esto es opcional, puedes ir por el
-suelo
-
-o por el/los tejados.
-
-● Suelo (Nivel de altura "normal").
-
-● Metro (Solo accesible por entradas al metro en el suelo)
-
-**5. Obstáculos**
-
-Cada obstáculo tiene su propia resistencia, y si el jugador choca con un
-obstáculo,
-
-la cantidad de distancia que pierde con los guardias se calcula en base
-a la
-
-resistencia del obstáculo (Representado con \[+\]).
-
-● Jarrón que cae del cielo (+)
-
-● Botella vacia (+)
-
-● Cajas(++)
-
-● Barriles (de cerveza, como no) rodando por la calle (++)
-
-● Vallas con agujeros por debajo (++)
-
-● Meterse en casas por la ventana (hay que saltar) o por la puerta. Al
-jugador
-
-se le vería a través de las ventanas. (+++)
-
-● Vehículos (Camiones, coches) (++++)
-
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--Nivel de
-abajo\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
-
-● Botella vacia (+)
-
-● Túneles (++)
-
-● Trenes (Solo en el metro, te obligan a subir arriba)(++++)
-
-**6. POWER-UPS / ITEMS**
-
-● Cerveza → Aumenta tu % de alcoholismo.
-
-● Agua → Reduce tu % de alcoholismo.
-
-● Champán → Accedes a una zona restringida del mapa (llena de monedas)
-
-● Jagger → Insta kill (Alcanzas el coma etílico en el acto)
-
-● Calimocho → Te pone tan ciego, que no ves la barra de alcohol.
-
-● Vodka → Da al jugador un boost de velocidad temporal y le da
-invencibilidad
-
-parcial (Solo contra ciertos obstáculos \[No aplicable con vehículos por
-
-ejemplo\]) durante un tiempo limitado sin necesidad de aumentar su barra
-
-alcohólica.
-
-● Monedas → Dan puntos.
-
-**7. Referencias**
-
-\- Geometry Dash
-
-\- Subway Surfers
-
-\- Super Mario Run
-
-https://www.pivotaltracker.com/n/projects/2470810
+|Alfonso Rodulfo 27%|
+---------------------
+|**Pablo González 26%**|
+|**Álvaro Cuerva 24%**|
+|**David Brey 23%**|

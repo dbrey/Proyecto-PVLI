@@ -79,7 +79,7 @@ export default class creditsscene extends Phaser.Scene
 
   volvermenu()
   {
-    this.creditos.stop();
+    this.credits.stop();
     this.scene.start('menu', {int:this.puntuacion, bool:this.sonido});
   }
 }

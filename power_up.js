@@ -8,6 +8,7 @@ export default class power_up extends Phaser.GameObjects.Sprite{
 
     }
 
+    // Recoge el power-up y ejecuta su metodo correspondiente
     recoger_powerup(callback, power_up){
         if(this.scene.physics.overlap(this, this.scene.player)){
             if(this.scene.sonidoactive)

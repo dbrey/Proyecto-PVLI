@@ -14,35 +14,18 @@ export default class barra_alcohol extends Phaser.GameObjects.Sprite
       this.frames_alcohol = this.alcohol_texture.getFrameNames();
       this.actualizar_barra = true;
       this.escena = scene;
-      //this.images.setFrame(this.frames_alcohol[2]);
-      //this.add.sprite(1000, 500, 'alcohol_atlas');
-      /*this.anims.play('alcoholismo',true);
-      this.anims.stop();
-      this.frame_buffer = this.anims.currentFrame.nextFrame;
-      this.primer_frame = this.anims.currentFrame;*/
     }
 
     aumentar_ebriedad(aumento){
       this.ebriedad += aumento;
-      /*if((this.ebriedad + aumento) === this.max_alcohol)
-      {
-        this.ebriedad = this.max_alcohol;
-      }  
-      else
-      {
-        this.ebriedad += aumento;
-      }
-      if(this.ebriedad === this.max_alcohol){
-        this.coma_etilico = true;
-      }*/
     }
     reducir_ebriedad(reduccion){
       this.ebriedad -=reduccion;
-        
     }
 
     preUpdate(t, d){  
       super.preUpdate(t,d);
+
       if(this.ebriedad > this.max_alcohol){
         this.ebriedad = this.max_alcohol; 
       }
@@ -50,12 +33,13 @@ export default class barra_alcohol extends Phaser.GameObjects.Sprite
       {
         this.ebriedad = 0;
       }
+      // Si sobrepasa el maximo de alcohol, vamos a la escena de muerte
       if(this.ebriedad === this.max_alcohol){
         this.escena.muerte(1);
       }
-      //console.log(this.ebriedad);
-      //this.ebriedad += 5;
+      
       if(this.actualizar_barra){
+        // Actualizamos la imagen de barra de alcoholismo segun su nivel de ebriedad
         this.cambio_frame = Math.floor(this.ebriedad/10);
         this.images.setFrame(this.frames_alcohol[this.cambio_frame]);
       }

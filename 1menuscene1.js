@@ -65,10 +65,12 @@ export default class menuscene extends Phaser.Scene
     this.fondo = this.add.sprite(525, 300, 'mainmenu');
     this.fondo.anims.play("menu");
     this.fondo.setScale(1.1);
-    //boton
+
+    //boton para jugar
     let play = this.add.image(220,120, 'botonplaynormal').setInteractive();
     let credits = this.add.image(800,420, 'credit').setInteractive();
     let sonido;
+
     if(this.soundactive || this.soundactive === undefined)
     {
       sonido = this.add.image(860,90, 'sonidoon').setInteractive();
@@ -90,7 +92,6 @@ export default class menuscene extends Phaser.Scene
         this.sonidoactivo = !this.sonidoactivo;
         if(this.sonidoactivo)//Si se activa el sonido
         {
-          
           this.music.play();
           sonido.setTexture('sonidoon');
         }
@@ -102,6 +103,7 @@ export default class menuscene extends Phaser.Scene
         sonido.setScale(1.1);
        
     });
+
     //Acciones créditos
     credits.on('pointerover', event => 
     {
@@ -143,6 +145,7 @@ export default class menuscene extends Phaser.Scene
       this.music.stop();
       this.scene.start('game', {bool:this.sonidoactivo, int:this.puntuacion});
     });
+    
     //PUNTUACION MAX
     this.numeros = this.textures.get('puntmax');
     this.frames = this.numeros.getFrameNames();

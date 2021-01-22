@@ -32,10 +32,12 @@ export default class creditsscene extends Phaser.Scene
     this.fondo.setScale(0.75);
 
     this.creditos = this.add.sprite(525, 1130, 'credits');
-    //boton
+    
+    //boton del menu
     let menu = this.add.image(180,525, 'menuoff').setInteractive();
     menu.setScale(0.8,0.75);
     menu.setDepth(3);
+    
     this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     this.credits = this.sound.add('cred', {volume: 0.04}, {loop: true});
 

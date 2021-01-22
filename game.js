@@ -211,17 +211,13 @@ this.anims.create({
    
    this.vel = 1;
 
-   this.prueba = new champan (this,700, 400);
-
    this.powerups();
    this.objetosfisicos();
    this.objetosestaticos();
    this.crearmonedas();
    this.triggersGuardia();
 
-   
 
-// Pause Menu
   this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 // ------------------------------------------------------------------
   };
@@ -333,7 +329,7 @@ this.anims.create({
 
   crearmonedas()
   {
-
+    // Situa todas las monedas
     for (const objeto of this.map.getObjectLayer('monedas').objects) 
     {
     

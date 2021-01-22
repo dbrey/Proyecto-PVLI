@@ -19,6 +19,7 @@ export default class obsmov extends obstaculo
       this.setScale(2.5); 
       this.body.setSize(27, 8);
       this.resistencia = 1000;
+      this.body.setVelocityX(-250);
       if (anim === "cocheoscuro")
       {
         this.flipX = true;
@@ -36,27 +37,27 @@ export default class obsmov extends obstaculo
     {
       if(this.inicio)
       {
+        this.scene.physics.resume();
         this.inicio = false;
-        this.body.setVelocityX(this.vel);
       }
 
       if((this.scene.player.body.touching.down && this.body.touching.up) ||(this.scene.player.body.touching.right && this.body.touching.left) || 
       (this.scene.player.body.touching.left && this.body.touching.right))
-     {
-       super.ralentizar(this.resistencia);
-     }
+      {
+        super.ralentizar(this.resistencia);
+      }
  
      // Si choca con algo que no sea el jugador y reduce su velocidad, lo destruimos
      else if (this.body.velocity.x === 0 )
      {
-       this.destroy();
+        this.destroy();
      }
     }
     else
     {
       this.inicio = true;
-      this.body.setVelocityX(0);
-      this.body.setVelocityY(0);
+      this.scene.physics.pause();
+
     }
 
     

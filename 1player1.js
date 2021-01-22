@@ -53,7 +53,6 @@ export default class player extends personaje
     }
     else this.body.setVelocityX(0);
     this.delay_input = ((this.escenario.alcohol.ebriedad)*4);  
-    //(this.escenario.alcohol.ebriedad*100)/3
   }  
 
   champan() //movimiento en champan
@@ -76,6 +75,7 @@ export default class player extends personaje
   this.movimientochamp();
   }
 
+  // Pausa la musica normal y toca la del champan, si esta activado el sonido y sigue jugando
   tocarchampan()
   {
    if(this.scene.sonidoactive && this.scene.sigueJugando)
@@ -114,8 +114,6 @@ export default class player extends personaje
       }
       else if (this.cursors.left.isDown) //Izquierda reducir vel
       {
-        //Equivalente al invoke
-        //this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.scene.onEvent, [], this);
         this.disminuyendoVelocidad = true;
         this.aumentandoVelocidad = false;
       }
@@ -133,7 +131,6 @@ export default class player extends personaje
        
   }
 
-  
   // Cambiamos el movimiento del jugador
   movimientochamp()
   {
@@ -185,8 +182,6 @@ export default class player extends personaje
   incapacitar()
   {
     this.speed--;
-    /*this.paralizado = false;
-    this.anims.resume();*/
   }
 
   agacharse(){

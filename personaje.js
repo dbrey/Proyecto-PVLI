@@ -28,11 +28,6 @@ export default class personaje extends Phaser.GameObjects.Sprite
     }
   }
 
-  agacharse(){
-    //Cambio de hitbox
-
-  }
-
   setWorldSpeed(vel){
     this.worldSpeed = vel;
   }

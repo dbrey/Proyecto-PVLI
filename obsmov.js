@@ -31,7 +31,6 @@ export default class obsmov extends obstaculo
   
   preUpdate(t, d){
     //Chequeamos los lados y si el jugador lo ha tocado desde abajo
-    
     if(this.escenario.sigoJugando())
     {
 
@@ -46,10 +45,7 @@ export default class obsmov extends obstaculo
      {
         this.destroy();
      }
-    }
-
-
-    
+    }    
   }
 
 }

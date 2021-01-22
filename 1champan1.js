@@ -13,6 +13,7 @@ export default class champan extends power_up
         super.recoger_powerup(this.beber_champan, this);
     }
 
+    // Activa el champan
     beber_champan(power_up)
     {
         power_up.scene.player.cambiomov();

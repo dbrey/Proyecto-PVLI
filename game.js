@@ -192,7 +192,7 @@ this.anims.create({
     this.groundlayer.setCollision(56);
     this.platformlayer.setCollisionBetween(0, 2000);
 
-    this.platformlayer.layer.data.forEach((row) => { // here we are iterating through each tile.
+    this.platformlayer.layer.data.forEach((row) => { 
 		 	row.forEach((Tile) => {
 				
           Tile.collideDown = false;
@@ -202,6 +202,7 @@ this.anims.create({
 		 	})
     });
    
+   // Escalamos todos los layer
    this.groundlayer.setScale(0.8);
    this.farlayer.setScale(0.8);
    this.behindlayer.setScale(0.8);
@@ -209,6 +210,8 @@ this.anims.create({
    this.platformlayer.setScale(0.8);
    
    this.vel = 1;
+
+   this.prueba = new champan (this,700, 400);
 
    this.powerups();
    this.objetosfisicos();
@@ -225,6 +228,7 @@ this.anims.create({
 
   tocarnormal()
   {
+    // Si el sonido esta activado y sigue jugando, entonces volvemos a tocar la cancion normal
     if(this.sonidoactive && this.sigueJugando)
     {
       this.music.resume();
@@ -238,12 +242,14 @@ this.anims.create({
 
   sizeAgachado()
   {
+    // Adaptamos la hitbox del personaje cuando se agacha
     this.body.setSize(200, 120);
     this.body.setOffset(0, 100);
   }
 
   sizeLevantado()
   {
+    // Devolvemos la hitbox al personaje
     this.body.setSize(150, 220);
     this.body.setOffset(0, 0);
   }
@@ -298,10 +304,11 @@ this.anims.create({
 
   powerups()
   {
+    // Se escoge un powrup al azar, y puede que no salga nada
     for (const objeto of this.map.getObjectLayer('powerup').objects) 
     {
       let value = Phaser.Math.Between(0, 11); //Puede que no salga nada
-      if(value ===0)
+      if(value === 0 || value === 11)
       {
         this.power = new champan(this,objeto.x - (objeto.x/5), objeto.y - (objeto.y/4.5));
       }
@@ -326,10 +333,11 @@ this.anims.create({
 
   crearmonedas()
   {
+
     for (const objeto of this.map.getObjectLayer('monedas').objects) 
     {
     
-      this.n = 0;
+    this.n = 0;
     this.monedax = objeto.x*0.8;
 
     while(this.n < 5) 
@@ -341,19 +349,13 @@ this.anims.create({
     }
     }
   }
+
   objetosestaticos()
   {
+    // Por cada objeto estatico que hay 
     for (const objeto of this.map.getObjectLayer('estaticos').objects) 
-    {
-      if(objeto.name !== "jarron")
-      {
-        this.obs = new obstaculo(this,objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5), objeto.name);
-      }
-      else
-      {
-        this.obs = new jarron(this, objeto.x, objeto.y, objeto.name);
-      }
-
+    {      
+      this.obs = new obstaculo(this,objeto.x- (objeto.x/5), objeto.y - (objeto.y/4.5), objeto.name);
     }
   }
 
@@ -362,12 +364,13 @@ this.anims.create({
     //trigger
     for (const objeto of this.map.getObjectLayer('fisicos').objects) { //Por cada objeto de cada tipo creo un objeto vacio a  cierta distancia de el
       let value = Phaser.Math.Between(0, 4); //Puede que no salga nada
+      
+      // Generamos un jarron
       if (value != 3 && objeto.name === 'jarron') 
       {
         let collider;
         
         collider = this.physics.add.image(objeto.x-(objeto.x/5) - 50,objeto.y*1.17,'barril'); 
-        //Ajustar el X del collider para que salga x distancia antes que el obstaculo
         
         collider.setDepth(-1);
         collider.setScale(1,10);
@@ -378,6 +381,7 @@ this.anims.create({
           this.activate(collider, objeto)
         })
       }
+      // Generamos un coche
       else if (objeto.name === 'coche') {
         let collider = this.physics.add.image(objeto.x- (objeto.x/2) ,350,'barril');
         collider.setDepth(-1);
@@ -389,6 +393,7 @@ this.anims.create({
           this.activate(collider, objeto)
         })
       }
+      // Generamos un coche oscuro
       else if (objeto.name === 'cocheoscuro') {
         let collider = this.physics.add.image(objeto.x- (objeto.x/2) ,350,'barril'); 
         collider.setDepth(-1);
@@ -400,6 +405,7 @@ this.anims.create({
           this.activate(collider, objeto)
         })
       }
+      //Generamos un barril en movimiento
       else if (objeto.name === 'barriltop') {
         let collider = this.physics.add.image(objeto.x - (objeto.x/2),350,'barril');
         collider.setDepth(-1);
@@ -432,6 +438,7 @@ this.anims.create({
   }
 
   triggersGuardia(){
+    // Generamos un trigger para que cuando el guardia lo toque, este salte ciertas zonas
     for (const objeto of this.map.getObjectLayer('guardia').objects){
       let collider;
       collider = this.physics.add.image(objeto.x*0.8-this.vel*5, objeto.y*0.8, 'barril');
@@ -461,23 +468,28 @@ this.anims.create({
     this.crearmonedas();
   }
 
+   //MENU DE PAUSA
   pause()
   {
     this.physics.pause();
- //MENU DE PAUSA
+
+    // Boton para continuar
     let resume = this.add.image(this.cameras.main.worldView.x + 300,200, 'resume').setInteractive();
     resume.setScale(0.3);
     resume.setDepth(10);
 
+    // Boton para volver al menu
     let menu = this.add.image(this.cameras.main.worldView.x + 300,400, 'menumain').setInteractive();
     menu.setScale(0.3);
     menu.setDepth(10);
 
+    // Boton para mostrar los controles
     this.imgcontroles = this.add.image(this.cameras.main.worldView.x + 750,300, 'control');
     this.imgcontroles.setScale(0.6);
     this.imgcontroles.setDepth(10);
 
     let sonido;
+    // Dependiendo si el sonido esta activado o no, cambiamos a la imagen correspondiente
     if(this.sonidoactive)
     {
       sonido = this.add.image(this.cameras.main.worldView.x + 1000,90, 'on').setInteractive();
@@ -489,6 +501,7 @@ this.anims.create({
     sonido.setScale(0.17);
     sonido.setDepth(9);
 
+    // Activa o desactiva el sonido
     sonido.on('pointerdown', event => 
       {
         this.sonidoactive = !this.sonidoactive;
@@ -513,6 +526,7 @@ this.anims.create({
         sonido.setScale(0.17);
     });
 
+    // Continua la partida
     resume.on('pointerdown', event => {
       resume.destroy();
       menu.destroy();
@@ -526,6 +540,7 @@ this.anims.create({
       this.physics.resume();
     });
 
+    // Vuelve al menu
     menu.on('pointerdown', event => {
       resume.destroy();
       menu.destroy();
@@ -608,18 +623,19 @@ this.anims.create({
         this.muerte(0);
       }
 
+      // Pausa el juego
       if(this.enter.isDown)
       {
         this.sigueJugando = false;
         this.pause();
       }
 
+      // Si sobrepasa cierta puntuacion, entonces aceleramos el juego
       if (10000 * this.vel < this.points)
       {
         this.vel++;
         this.player.limitspeed += 200;
         this.worldSpeed += 0.25;
-        this.player.setWorldSpeed(this.worldSpeed);
         this.guardia.setWorldSpeed(this.worldSpeed);
       }
       this.points += this.vel;

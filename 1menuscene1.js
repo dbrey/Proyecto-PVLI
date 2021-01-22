@@ -23,6 +23,7 @@ export default class menuscene extends Phaser.Scene
     this.load.image('sonidooff', './sprites/menu_inicial/soundnegativo.png');
 
     this.load.image('credit', './sprites/menu_inicial/credits_postit.png');
+    this.load.image('creditencima', './sprites/menu_inicial/credits_postit_neg.png')
     
     this.load.atlas('puntmax','./sprites/menu_inicial/numeros.png','./sprites/menu_inicial/numeros_atlas.json');
 
@@ -101,7 +102,17 @@ export default class menuscene extends Phaser.Scene
         sonido.setScale(1.1);
        
     });
-
+    //Acciones créditos
+    credits.on('pointerover', event => 
+    {
+      credits = this.add.image(800,420, 'creditencima');
+      credits.setScale(0.4);
+    });
+    credits.on('pointerout', event => 
+    {
+      credits = this.add.image(800,420, 'credit');
+      credits.setScale(0.4);
+    });
     credits.on('pointerdown', event => 
       {
         if(this.sonidoactivo)

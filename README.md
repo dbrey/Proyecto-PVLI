@@ -1,14 +1,14 @@
 ![Imagen titulo studio](./recursos_gdd/titulo_estudio.png "Bohemian Drunk by Cerves Games")
 
 |INTEGRANTES DEL EQUIPO|
------------------
+|----------------------|
 |Alfonso Rodulfo| 
 |David Brey|
 |Álvaro Cuerva|
 |Pablo González|
 
 |ENLACES DE INTERÉS|
---------------------
+|------------------|
 |[**PÁGINA DEL JUEGO**](https://dbrey.github.io/Proyecto-PVLI/)|
 |[**ENLACE A PIVOTAL TRACKER**](https://www.pivotaltracker.com/n/projects/2470810)|
 
@@ -103,46 +103,46 @@ El objetivo del jugador será esquivarlos. Cada uno de estos ralentiza/penaliza 
 
 |**Nombre**|**Sprite**|**Resistencia**|**Descripción**|
 |:----------:|:----------:|:---------------:|:---------------:|
-|Botella Vacía|![Imagen titulo studio](botellavacia.png "Botella vacia")|100|Es una botella y se encuentra de forma uniforme por todas las zona del mapa.|
-|Caja|![Imagen titulo studio](caja.png "Caja")|200|Cubo que representa una caja y que se encuentra principalmente en el suelo.|
-|Barril|![Imagen titulo studio](barril.png "Barril")|200|Barrica de cerveza que suele encontrarse en las terrazas.|
+|Botella Vacía|![Imagen titulo studio](./recursos_gdd/botellavacia_gdd.png "Botella vacia")|100|Es una botella y se encuentra de forma uniforme por todas las zona del mapa.|
+|Caja|![Imagen titulo studio](./recursos_gdd/caja_gdd.png "Caja")|200|Cubo que representa una caja y que se encuentra principalmente en el suelo.|
+|Barril|![Imagen titulo studio](./recursos_gdd/barrildepie_gdd.png "Barril")|200|Barrica de cerveza que suele encontrarse en las terrazas.|
 
 ○ Físicos:
 Tienen el mismo efecto que los obstáculos estáticos pero estos se mueven.
 
 |**Nombre**|**Sprite**|**Resistencia**|**Descripción**|
 |:----------:|:----------:|:---------------:|:---------------:|
-|Jarrón|![Imagen titulo studio](jarron.png "Jarrón")|100|Cae de las ventanas y se rompe al chocar con el suelo, para que spawnee el jugador tiene que estar cierta altura por debajo de la ventana.|
-|Barril rodando|![Imagen titulo studio](barriltodando.png "Barril rodando")|400|Spawnea cuando tiene al jugador a cierta distancia y viene por delante del jugador.|
-|Coche verde|![Imagen titulo studio](cocheverde.png "Coche verde")|Te mata al colisionar|Spawnea cuando tiene al jugador a cierta distancia y viene por delante del jugador.|
-|Coche negro|![Imagen titulo studio](cochenegro.png "Coche negro")|Te mata al colisionar|Spawnea cuando tiene al jugador a cierta distancia y viene por delante del jugador.|Spawnea cuando tiene al jugador a cierta distancia y viene por detrás del jugador.|
+|Jarrón|![Imagen titulo studio](./recursos_gdd/jarron_gdd.png "Jarrón")|100|Cae de las ventanas y se rompe al chocar con el suelo, para que spawnee el jugador tiene que estar cierta altura por debajo de la ventana.|
+|Barril rodando|![Imagen titulo studio](./recursos_gdd/barriltumbado_gdd.png "Barril rodando")|400|Spawnea cuando tiene al jugador a cierta distancia y viene por delante del jugador.|
+|Coche verde|![Imagen titulo studio](./recursos_gdd/cocheverde_gdd.png "Coche verde")|Te mata al colisionar|Spawnea cuando tiene al jugador a cierta distancia y viene por delante del jugador.|
+|Coche negro|![Imagen titulo studio](./recursos_gdd/cochenegro_gdd.png "Coche negro")|Te mata al colisionar|Spawnea cuando tiene al jugador a cierta distancia y viene por delante del jugador.|Spawnea cuando tiene al jugador a cierta distancia y viene por detrás del jugador.|
 
 * **Power-ups:** Aplican un efecto al ser cogido, ya sea bueno o malo.
 
 |**Nombre**|**Sprite**|**Efecto**|
 |:----------:|:----------:|:---------------:|
-|Cerveza|![Imagen titulo studio](cerveza.png "Cerveza")|Aumenta en 15 puntos tu nivel de ebriedad.|
-|Agua|![Imagen titulo studio](agua.png "Agua")|Disminuye en 60 puntos tu nivel de ebriedad.|
-|Champán|![Imagen titulo studio](champan.png "Champán") ![Imagen titulo studio](champanontado.png "Champán montado")|Permite al jugador subir encima de la botella aumentando la velocidad con la que se mueve y avanzar con facilidad en el nivel. Además permite conseguir gran cantidad de monedas que aparecen solo cuando se consume este power up|
-|Jägger|![Imagen titulo studio](jagger.png "Jägger")|Aumenta al máximo tu nivel de ebriedad, haciéndote perder la partida.|
-|Calimocho|![Imagen titulo studio](calimocho.png "Calimocho")|Oculta temporalmente la barra de alcohol.|
-|Monedas|![Imagen titulo studio](coin.png "Moneda")|Aumenta en 100 puntos tu puntuación actual.|
+|Cerveza|![Imagen titulo studio](./recursos_gdd/cerveza_gdd.png "Cerveza")|Aumenta en 15 puntos tu nivel de ebriedad.|
+|Agua|![Imagen titulo studio](./recursos_gdd/agua_gdd.png "Agua")|Disminuye en 60 puntos tu nivel de ebriedad.|
+|Champán|![Imagen titulo studio](./recursos_gdd/champan_gdd.png "Champán")|Permite al jugador subir encima de la botella aumentando la velocidad con la que se mueve y avanzar con facilidad en el nivel. Además permite conseguir gran cantidad de monedas que aparecen solo cuando se consume este power up|
+|Jägger|![Imagen titulo studio](./recursos_gdd/jagger_gdd.png "Jägger")|Aumenta al máximo tu nivel de ebriedad, haciéndote perder la partida.|
+|Calimocho|![Imagen titulo studio](./recursos_gdd/calimocho_gdd.png "Calimocho")|Oculta temporalmente la barra de alcohol.|
+|Monedas|![Imagen titulo studio](./recursos_gdd/coin_gdd.png "Moneda")|Aumenta en 100 puntos tu puntuación actual.|
 
 ![HUD](./recursos_gdd/hud_banner.png "Hud")
 
 **Menú inicial:**
 
-![Interfaz](menu.png "Menu.")
+![Interfaz](./recursos_gdd/menu.PNG "Menu.")
 
 **Interfaz in-game:**
 
-![In-game](ingame.png "Ingame.")
+![In-game](./recursos_gdd/interfaz_juego.PNG "Ingame.")
 
-![Arquitectura](arquitectura_banner.png "Arquitectura")
+![Arquitectura](./recursos_gdd/arquitectura_banner.png "Arquitectura")
 
-![UML](uml.png "UML.")
+![UML](./recursos_gdd/diagrama.png "UML.")
 
-![gestion](gestion_banner.png "Gestión.")
+![gestion](./recursos_gdd/gestion_banner.png "Gestión.")
 
 **Plataforma de gestión:**
 
@@ -153,18 +153,18 @@ Pivotal Tracker es una herramienta de cordinación de proyectos que permite esta
 Discord es una plataforma de comunicación vía voz, que hemos usado para reuniones de voz.
 Telegram es una plataforma de mensajería de texto usada para la coordinación día a día.
 
-![Controles](controles_banner.png "Control.")
+![Controles](./recursos_gdd/controles_banner.png "Control.")
 
-![control](controles.png "Controles.")
+![control](.recursos_gdd/controles.png "Controles.")
 
-![referencias](Referencias_banner.png "Referencias.")
+![referencias](./recursos_gdd/referencias_banner.png "Referencias.")
 
 - Luces de Bohemia
 - Geometry Dash
 - Subway Surfers
 - Super Mario Run
 
-![contribucion](Rcontribucion_banner.png "Contribución.")
+![contribucion](./recursos_gdd/contribucion_banner.png "Contribución.")
 
 |Alfonso Rodulfo 27%|
 ---------------------

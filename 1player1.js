@@ -127,7 +127,7 @@ export default class player extends personaje
       else if (this.cursors.down.isDown && !this.stAgachado && this.body.blocked.down) //Abajo
       {
         this.stAgachado = true;
-        this.agacharse();
+        this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.agacharse, [], this);
       }
       this.timedEvent = this.scene.time.delayedCall(this.delay_input, this.movimiento, [], this);
        

@@ -592,15 +592,12 @@ this.anims.create({
        if (this.guardia.body.collideRight){
         this.guardia.saltar();
       }
-      console.log(this.cameras.main.worldView.x);
       this.x += this.worldSpeed;
       this.physics.world.bounds.setTo(this.x, 25, 1050, 800);
       
       if(this.physics.overlap(this.player, this.guardia)) {
         this.muerte(0);
       }
-
-  
 
       if(this.enter.isDown)
       {
@@ -611,11 +608,11 @@ this.anims.create({
       if (10000 * this.vel < this.points)
       {
         this.vel++;
+        this.player.limitspeed += 200;
         this.worldSpeed += 0.25;
         this.player.setWorldSpeed(this.worldSpeed);
         this.guardia.setWorldSpeed(this.worldSpeed);
       }
-      //this.points++; //Cada pixel 1 punto
       this.points += this.vel;
       this.puntos();
     }

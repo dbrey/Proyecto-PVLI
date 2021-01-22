@@ -7,7 +7,7 @@ export default class coins extends power_up
         this.play('coin',true);
         this.set_powerup_scale(1.3);
         
-        this.setDepth(10);
+        this.setDepth(9);
     }
 
     preUpdate(t,d){

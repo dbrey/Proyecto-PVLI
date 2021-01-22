@@ -466,11 +466,11 @@ this.anims.create({
  //MENU DE PAUSA
     let resume = this.add.image(this.cameras.main.worldView.x + 525,200, 'resume').setInteractive();
     resume.setScale(0.3);
-    resume.setDepth(9);
+    resume.setDepth(10);
 
     let menu = this.add.image(this.cameras.main.worldView.x + 525,400, 'menumain').setInteractive();
     menu.setScale(0.3);
-    menu.setDepth(9);
+    menu.setDepth(10);
 
     let sonido;
     if(this.sonidoactive)

@@ -65,18 +65,18 @@ export default class menuscene extends Phaser.Scene
     this.fondo.anims.play("menu");
     this.fondo.setScale(1.1);
     //boton
-    let play = this.add.image(243,120, 'botonplaynormal').setInteractive();
+    let play = this.add.image(220,120, 'botonplaynormal').setInteractive();
     let credits = this.add.image(800,420, 'credit').setInteractive();
     let sonido;
     if(this.soundactive || this.soundactive === undefined)
     {
-      sonido = this.add.image(870,80, 'sonidoon').setInteractive();
+      sonido = this.add.image(860,90, 'sonidoon').setInteractive();
       this.music.play();
       this.sonidoactivo = true;
     }
     else 
     {
-      sonido = this.add.image(870,80, 'sonidooff').setInteractive();
+      sonido = this.add.image(860,90, 'sonidooff').setInteractive();
       this.sonidoactivo = false;
     }
     sonido.setScale(1.1);
@@ -115,12 +115,12 @@ export default class menuscene extends Phaser.Scene
     //Acciones play
     play.on('pointerover', event => 
     {
-      play = this.add.image(243,120, 'botonplayencima');
+      play = this.add.image(220,120, 'botonplayencima');
       play.setScale(0.19);
     });
     play.on('pointerout', event => 
     {
-      play = this.add.image(243,120, 'botonplaynormal');
+      play = this.add.image(220,120, 'botonplaynormal');
       play.setScale(0.19);
     });
 

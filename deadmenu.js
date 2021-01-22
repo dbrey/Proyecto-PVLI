@@ -2,16 +2,18 @@ export default class deadmenu extends Phaser.Scene
 {
   constructor() {
     super({ key: 'deadmenu' });
-    this.puntuacion;
+    this.puntuacionMax;
     this.sonidoActivo;
     this.causaDeMuerte;
+    this.puntos;
   }
 
   init(data)
   {
-    this.puntuacion = data.int;
+    this.puntuacionMax = data.int;
     this.sonidoActivo = data.bool;
     this.causaDeMuerte = data.causa;
+    this.puntos = data.puntos;
   }
 
   preload() {
@@ -45,6 +47,14 @@ export default class deadmenu extends Phaser.Scene
     
     this.fondo.setDepth(2);
     this.fondo.setScale(0.75);
+
+    //Texto score
+    this.scoreText = this.add.bitmapText(560, 32, 'font',this.puntos,43);
+    this.scoreText.inputEnabled = true;
+    this.scoreText.setDepth(6);
+    this.scoreText.setScrollFactor(0);
+    this.scoreText.ALIGN_LEFT;
+
     //boton
     let menu = this.add.image(615,412, 'menuoff').setInteractive();
     let runagain = this.add.image(615,304, 'runagainoff').setInteractive();
@@ -146,10 +156,10 @@ export default class deadmenu extends Phaser.Scene
 
   volvermenu()
   {
-    this.scene.start('menu', {int:this.puntuacion, bool:this.sonidoActivo});
+    this.scene.start('menu', {int:this.puntuacionMax, bool:this.sonidoActivo});
   }
 
   playagain(){
-      this.scene.start("game", {bool:this.sonidoActivo, int:this.puntuacion});
+      this.scene.start("game", {bool:this.sonidoActivo, int:this.puntuacionMax});
   }
 }

@@ -135,7 +135,7 @@ this.anims.create({
 }); 
 // ------------------------------------------------------------------
 // ---------------------- ELEMENTOS DEL JUEGO -----------------------
-    this.fondoimg = this.add.tileSprite(0,-50,1050, 700, 'fondo1');
+    this.fondoimg = this.add.tileSprite(0,-150,1050, 700, 'fondo1');
     this.fondoimg.setScale(1);
     this.fondoimg.setOrigin(0,0);
     this.fondoimg.setScrollFactor(0);
@@ -552,11 +552,11 @@ this.anims.create({
 
     if(this.points > this.maxpunt)
       {
-        this.scene.start('deadmenu', {int:this.points, bool:this.sonidoactive, causa:razon});
+        this.scene.start('deadmenu', {int:this.points, bool:this.sonidoactive, causa:razon, puntos:this.points});
       }
       else
       {
-        this.scene.start('deadmenu', {int:this.maxpunt, bool:this.sonidoactive, causa:razon});
+        this.scene.start('deadmenu', {int:this.maxpunt, bool:this.sonidoactive, causa:razon, puntos:this.points});
       }
   }
 

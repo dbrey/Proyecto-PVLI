@@ -155,7 +155,7 @@ Telegram es una plataforma de mensajería de texto usada para la coordinación d
 
 ![Controles](./recursos_gdd/controles_banner.png "Control.")
 
-![control](.recursos_gdd/controles.png "Controles.")
+![control](./recursos_gdd/controles.png "Controles.")
 
 ![referencias](./recursos_gdd/referencias_banner.png "Referencias.")
 

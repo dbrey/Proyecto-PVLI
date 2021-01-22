@@ -37,11 +37,11 @@ export default class creditsscene extends Phaser.Scene
     menu.setScale(0.8,0.75);
     menu.setDepth(3);
     this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-    this.creditos = this.sound.add('cred', {volume: 0.05}, {loop: true});
+    this.credits = this.sound.add('cred', {volume: 0.04}, {loop: true});
 
     if(this.sonido)
     {
-      this.creditos.play();
+      this.credits.play();
     }
 
     menu.on('pointerover', event => 
@@ -67,7 +67,7 @@ export default class creditsscene extends Phaser.Scene
   
   update() //Supongo que la imagen final tiene de tamaño 1000
   {
-    if(this.creditos.y > -200)
+    if(this.creditos.y > -400)
     {
       this.creditos.y -= 0.7;
     }

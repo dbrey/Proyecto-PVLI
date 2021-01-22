@@ -42,14 +42,16 @@ export default class barra_alcohol extends Phaser.GameObjects.Sprite
     }
 
     preUpdate(t, d){  
-      
-      if(this.ebriedad >= this.max_alcohol){
-        this.ebriedad = this.max_alcohol;
-        this.escena.muerte(1);
+      super.preUpdate(t,d);
+      if(this.ebriedad > this.max_alcohol){
+        this.ebriedad = this.max_alcohol; 
       }
       else if(this.ebriedad < 0)
       {
         this.ebriedad = 0;
+      }
+      if(this.ebriedad === this.max_alcohol){
+        this.escena.muerte(1);
       }
       //console.log(this.ebriedad);
       //this.ebriedad += 5;
